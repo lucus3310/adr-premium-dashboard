@@ -133,24 +133,34 @@ def get_binance_futures_price(symbol):
         print(f"Error fetching Binance live price for {symbol}: {e}")
         return None
 
-def get_binance_klines(symbol, interval="1d", limit=1000):
+def get_binance_klines(symbol, interval="1d", limit=1000, time_format="%Y-%m-%d"):
     """
-    Fetches historical daily close prices for a Binance Futures symbol.
+    Fetches historical close prices for a Binance Futures symbol.
+    Returns a DataFrame with a DatetimeIndex (date-only, no time component).
     """
     url = f"https://fapi.binance.com/fapi/v1/klines?symbol={symbol}&interval={interval}&limit={limit}"
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=5) as response:
+        with urllib.request.urlopen(req, timeout=10) as response:
             data = json.loads(response.read().decode())
+            if not data:
+                return pd.DataFrame(columns=["Close"])
             records = []
             for item in data:
-                date_str = datetime.datetime.fromtimestamp(item[0]/1000.0).strftime("%Y-%m-%d")
+                # Convert ms timestamp to UTC date string
+                dt = datetime.datetime.fromtimestamp(item[0] / 1000.0, tz=datetime.timezone.utc)
+                date_str = dt.strftime(time_format)
                 close_price = float(item[4])
                 records.append((date_str, close_price))
-            return records
+            df = pd.DataFrame(records, columns=["Date", "Close"])
+            # Normalize index to date-only (same as Yahoo Finance output)
+            df["Date"] = pd.to_datetime(df["Date"]).dt.normalize()
+            df = df.set_index("Date")
+            df = df[~df.index.duplicated(keep="last")]
+            return df
     except Exception as e:
         print(f"Error fetching Binance klines for {symbol}: {e}")
-        return []
+        return pd.DataFrame(columns=["Close"])
 
 def get_live_price(symbol, ticker_obj):
     """
@@ -245,16 +255,11 @@ def fetch_data():
         print(f"Downloading {t}...")
         try:
             if t.endswith("USDT"):
-                # Download Binance klines
-                klines = get_binance_klines(t)
-                if not klines:
+                # Download Binance Futures klines (returns DataFrame directly)
+                df = get_binance_klines(t)
+                if df.empty:
                     print(f"Warning: No Binance data returned for {t}")
-                    df = pd.DataFrame(columns=["Close"])
-                else:
-                    df = pd.DataFrame(klines, columns=["Date", "Close"])
-                    df["Date"] = pd.to_datetime(df["Date"])
-                    df = df.set_index("Date")
-                downloaded_tickers[t] = None
+                downloaded_tickers[t] = None  # No yfinance Ticker object for Binance
             else:
                 # Download Yahoo Finance history
                 ticker = yf.Ticker(t)
@@ -264,6 +269,7 @@ def fetch_data():
                     print(f"Warning: No data returned for {t}")
                     df = pd.DataFrame(columns=["Close"])
                 else:
+                    # Normalize to date-only index (no time/timezone)
                     df.index = pd.to_datetime(df.index.date)
                     df = df[["Close"]]
             
@@ -294,17 +300,17 @@ def fetch_data():
             else:
                 fx_df = downloaded_data[fx_t].rename(columns={"Close": "fx_close"})
             
-            # Merge datasets
+            # Merge datasets (outer join to keep all dates)
             merged = dr_df.join([local_df, fx_df], how="outer")
             
-            # Get live active prices
-            live_dr = get_live_price(dr_t, downloaded_tickers[dr_t])
-            live_local = get_live_price(local_t, downloaded_tickers[local_t])
+            # Get live active prices (use Binance live for USDT pairs, yfinance for others)
+            live_dr = get_live_price(dr_t, downloaded_tickers.get(dr_t))
+            live_local = get_live_price(local_t, downloaded_tickers.get(local_t))
             
             if fx_t == "1.0":
                 live_fx = 1.0
             else:
-                live_fx = get_live_price(fx_t, downloaded_tickers[fx_t])
+                live_fx = get_live_price(fx_t, downloaded_tickers.get(fx_t))
             
             # Merge live points into today's date slot
             today_dt = pd.to_datetime(datetime.date.today())
