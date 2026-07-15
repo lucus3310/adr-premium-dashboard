@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>大型股票海外存託憑證 (ADR/GDR) 歷史折溢價分析儀表板</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -743,33 +743,300 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* =====================================================
+           MOBILE OPTIMIZATIONS (≤ 768px)
+           All rules below only apply on phones.
+           Desktop layout is completely unaffected.
+        ====================================================== */
         @media (max-width: 768px) {
+
+            /* ① Shrink body padding & support iOS safe area */
             body {
-                padding: 1rem 1rem;
+                padding: 0.75rem 0.875rem;
+                padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+            }
+
+            /* ① Compact header */
+            header {
+                margin-bottom: 1.25rem;
+            }
+            header::after {
+                bottom: -0.625rem;
+            }
+            .header-title-container {
+                gap: 0.75rem;
+                flex-wrap: nowrap;
+                align-items: flex-start;
             }
             h1 {
-                font-size: 1.75rem;
+                font-size: 1.35rem;
+                letter-spacing: -0.02em;
             }
+            .subtitle {
+                font-size: 0.8rem;
+                margin-top: 0.15rem;
+            }
+            .last-update {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.75rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            /* ② Stock tabs – horizontal scroll, no wrap */
             .nav-section {
-                gap: 0.75rem;
+                gap: 0.625rem;
+                margin-bottom: 1.25rem;
             }
+            .stock-tabs {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding: 0.25rem;
+                gap: 0.375rem;
+                border-radius: 12px;
+            }
+            .stock-tabs::-webkit-scrollbar { display: none; }
+            .stock-btn {
+                flex-shrink: 0;
+                padding: 0.625rem 1rem;
+                font-size: 0.85rem;
+                min-height: 44px;
+                border-radius: 10px;
+                white-space: nowrap;
+            }
+
+            /* DR tabs – also horizontal scroll */
             .controls-row {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 0.625rem;
             }
             .dr-tabs {
-                flex-direction: column;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding: 0.25rem;
+                gap: 0.25rem;
             }
+            .dr-tabs::-webkit-scrollbar { display: none; }
+            .dr-btn {
+                flex-shrink: 0;
+                padding: 0.625rem 1rem;
+                font-size: 0.82rem;
+                min-height: 44px;
+                white-space: nowrap;
+            }
+
+            /* Timeframe buttons – horizontal scroll */
             .timeframe-group {
-                justify-content: space-between;
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding: 0.25rem;
+                justify-content: flex-start;
             }
-            .search-input {
+            .timeframe-group::-webkit-scrollbar { display: none; }
+            .time-btn {
+                flex-shrink: 0;
+                min-height: 40px;
+                padding: 0.5rem 0.875rem;
+                font-size: 0.82rem;
+                white-space: nowrap;
+            }
+
+            /* ③ Stats grid – 2 columns on mobile */
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+            .stat-card {
+                padding: 1rem 0.875rem;
+                border-radius: 14px;
+            }
+            .stat-card:hover {
+                transform: none; /* disable hover lift on touch */
+            }
+            .stat-title {
+                font-size: 0.72rem;
+                margin-bottom: 0.375rem;
+            }
+            .stat-value {
+                font-size: 1.4rem;
+                margin-bottom: 0.2rem;
+            }
+            /* Range card spans full width since it has 2 values */
+            #card-range {
+                grid-column: 1 / -1;
+            }
+            #card-range .stat-value {
+                font-size: 1.2rem !important;
+            }
+            .stat-desc {
+                font-size: 0.72rem;
+            }
+            .stat-icon {
+                display: none; /* hide icons on mobile to save space */
+            }
+
+            /* ④ Chart – taller on mobile for readability */
+            .main-grid {
+                gap: 1rem;
+                margin-bottom: 1.25rem;
+            }
+            .chart-card {
+                padding: 1.125rem 1rem;
+                min-height: unset;
+                border-radius: 16px;
+            }
+            .chart-header {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 0.875rem;
+            }
+            .chart-title {
+                font-size: 1rem;
+            }
+            .chart-legend {
+                font-size: 0.75rem;
+            }
+            .chart-wrapper {
+                height: 260px;
+            }
+            .chart-toggle-group {
+                order: 3;
                 width: 100%;
+                justify-content: center;
+            }
+            .chart-toggle-btn {
+                flex: 1;
+                text-align: center;
+                min-height: 36px;
+            }
+
+            /* ⑤ Calculator – collapsible on mobile */
+            .mobile-calc-toggle {
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid var(--card-border);
+                border-radius: 12px;
+                padding: 0.875rem 1.125rem;
+                color: var(--text-primary);
+                font-family: 'Outfit', sans-serif;
+                font-size: 0.95rem;
+                font-weight: 600;
+                cursor: pointer;
+                min-height: 52px;
+                transition: var(--transition);
+            }
+            .mobile-calc-toggle:hover {
+                background: rgba(255, 255, 255, 0.07);
+                border-color: var(--border-hover);
+            }
+            .mobile-calc-toggle .toggle-arrow {
+                transition: transform 0.3s ease;
+                opacity: 0.6;
+                font-size: 0.75rem;
+            }
+            .mobile-calc-toggle.open .toggle-arrow {
+                transform: rotate(180deg);
+            }
+            .mobile-calc-body {
+                display: none;
+                padding-top: 0.5rem;
+            }
+            .mobile-calc-body.open {
+                display: block;
+            }
+            /* Inner card in collapsed mode needs no redundant header */
+            .calc-inner-card {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-top: none;
+                margin-top: 0;
+            }
+
+            /* ⑥ Table – simplified on mobile */
+            .table-card {
+                padding: 1.125rem 0.875rem;
+                border-radius: 16px;
             }
             .table-header {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 0.625rem;
+                margin-bottom: 1rem;
             }
+            .table-header h3 {
+                font-size: 1rem !important;
+            }
+            .search-input {
+                width: 100%;
+            }
+            .btn-export {
+                justify-content: center;
+                min-height: 44px;
+                padding: 0.6rem 1rem;
+            }
+            /* Hide equiv column on mobile */
+            .mobile-hide-col {
+                display: none;
+            }
+            table {
+                font-size: 0.82rem;
+            }
+            th, td {
+                padding: 0.75rem 0.625rem;
+            }
+            /* ⑦ Pagination – larger touch targets */
+            .pagination-container {
+                font-size: 0.78rem;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .page-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            /* General touch-friendly adjustments */
+            .calc-input {
+                padding: 0.75rem 1rem;
+                font-size: 1rem; /* prevent iOS zoom on input focus */
+                min-height: 44px;
+            }
+            .btn-apply {
+                min-height: 44px;
+                font-size: 0.9rem;
+            }
+            .calc-result-value {
+                font-size: 1.85rem;
+            }
+
+            /* Note box compact */
+            .note-container {
+                padding: 0.75rem;
+                font-size: 0.8rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        /* Mobile calc toggle is hidden on desktop */
+        .mobile-calc-toggle {
+            display: none;
         }
 
         /* Chart toggle buttons layout */
@@ -946,6 +1213,16 @@
 
             <!-- Calculator Card -->
             <div class="chart-card" style="min-height: auto;">
+                <!-- Mobile-only collapsible toggle -->
+                <button class="mobile-calc-toggle" id="mobile-calc-toggle" aria-expanded="false">
+                    <span style="display:flex;align-items:center;gap:0.5rem;">
+                        <svg style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                        折溢價即時計算器
+                    </span>
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <!-- Calculator body (always visible on desktop, collapsible on mobile) -->
+                <div class="mobile-calc-body" id="mobile-calc-body">
                 <div class="chart-header" style="margin-bottom: 1.25rem;">
                     <div class="chart-title">
                         <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
@@ -996,8 +1273,8 @@
                     <div class="calc-result-value" id="calc-result-value">--</div>
                     <div class="calc-result-desc" id="calc-result-desc">請輸入數值進行計算</div>
                 </div>
-            </div>
-        </div>
+                </div><!-- Close mobile-calc-body -->
+            </div><!-- Close chart-card -->
 
         <!-- Raw Data Table -->
         <div class="table-card">
@@ -1029,7 +1306,7 @@
                             <th id="th-local">原股收盤價</th>
                             <th id="th-adr">DR 收盤價</th>
                             <th id="th-fx" style="cursor: pointer; user-select: none;" title="點擊切換匯率換算方向">匯率 🔄</th>
-                            <th id="th-equiv">DR 折合原股價</th>
+                            <th id="th-equiv" class="mobile-hide-col">DR 折合原股價</th>
                             <th style="text-align: right;">折溢價率</th>
                         </tr>
                     </thead>
@@ -1094,7 +1371,7 @@
             let currentDr = 'us';
             let currentTimeframe = 'all';
             let currentPage = 1;
-            const rowsPerPage = 15;
+            const rowsPerPage = () => window.innerWidth <= 768 ? 10 : 15;
             let filteredHistory = [];
             let chartInstance = null;
             let activeBinanceChartView = 'live';
@@ -1517,13 +1794,13 @@
                 // Sort newest to oldest for display
                 const reversedData = [...tableData].reverse();
                 const totalRows = reversedData.length;
-                const totalPages = Math.ceil(totalRows / rowsPerPage) || 1;
+                const totalPages = Math.ceil(totalRows / rowsPerPage()) || 1;
 
                 if (currentPage > totalPages) currentPage = totalPages;
                 if (currentPage < 1) currentPage = 1;
 
-                const startIdx = (currentPage - 1) * rowsPerPage;
-                const endIdx = Math.min(startIdx + rowsPerPage, totalRows);
+                const startIdx = (currentPage - 1) * rowsPerPage();
+                const endIdx = Math.min(startIdx + rowsPerPage(), totalRows);
                 
                 const pageData = reversedData.slice(startIdx, endIdx);
 
@@ -1582,7 +1859,7 @@
                                 <td>${localColHtml}</td>
                                 <td>${item.adr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${drCurrSymbol}</td>
                                 <td>${fxColText}</td>
-                                <td>
+                                <td class="mobile-hide-col">
                                     ${equivColHtml}
                                 </td>
                                 <td style="text-align: right;">
@@ -1854,12 +2131,33 @@
 
             btnNextPage.addEventListener('click', () => {
                 const totalRows = filteredHistory.length;
-                const totalPages = Math.ceil(totalRows / rowsPerPage) || 1;
+                const totalPages = Math.ceil(totalRows / rowsPerPage()) || 1;
                 if (currentPage < totalPages) {
                     currentPage++;
                     renderTable();
                 }
             });
+
+            // Mobile calculator collapsible toggle
+            const mobileCalcToggle = document.getElementById('mobile-calc-toggle');
+            const mobileCalcBody = document.getElementById('mobile-calc-body');
+            if (mobileCalcToggle && mobileCalcBody) {
+                // On desktop: always show body; on mobile: start collapsed
+                if (window.innerWidth > 768) {
+                    mobileCalcBody.classList.add('open');
+                }
+                mobileCalcToggle.addEventListener('click', () => {
+                    const isOpen = mobileCalcBody.classList.toggle('open');
+                    mobileCalcToggle.classList.toggle('open', isOpen);
+                    mobileCalcToggle.setAttribute('aria-expanded', isOpen);
+                });
+                // Also re-show on resize to desktop
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        mobileCalcBody.classList.add('open');
+                    }
+                });
+            }
 
             // CSV Export Handler
             btnExportCsv.addEventListener('click', () => {
