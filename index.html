@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大型股票海外存託憑證 (ADR/GDR) 歷史折溢價分析儀表板</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(23, 28, 41, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            
+            /* Dynamic Theme variables (controlled by JS based on selected stock) */
+            --accent-primary: #00f2fe;
+            --accent-secondary: #4facfe;
+            --accent-glow: rgba(0, 242, 254, 0.15);
+            
+            /* Universal States */
+            --up-color: #10b981;
+            --down-color: #ef4444;
+            --border-hover: rgba(255, 255, 255, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.03) 0%, transparent 40%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Style */
+        header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .header-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 2.25rem;
+            background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        .last-update {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .last-update:hover {
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .last-update::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--up-color);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--up-color);
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: var(--card-border); box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+            50% { border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); }
+            100% { border-color: var(--card-border); box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+        }
+        .pulse-glow {
+            animation: borderPulse 2s infinite;
+        }
+
+        /* Navigation Layout */
+        .nav-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Primary Stock Tabs */
+        .stock-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.35rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .stock-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .stock-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .stock-btn.active {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* Smooth dashboard transition */
+        .main-dashboard-wrapper {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .fade-out {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        /* Secondary DR Tab Bar */
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .dr-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.3rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        .dr-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+
+        .dr-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .dr-btn.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #0b0f19;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        /* Timeframe Selector */
+        .timeframe-group {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .time-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .time-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .time-btn.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .stat-title {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-value.up {
+            color: var(--up-color);
+        }
+
+        .stat-value.down {
+            color: var(--down-color);
+        }
+
+        .stat-icon {
+            opacity: 0.5;
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
+            fill: none;
+            stroke: currentColor;
+        }
+
+        /* Chart & Analytics Container */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 480px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .chart-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .chart-wrapper {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            height: 380px;
+        }
+
+        /* Calculator Styles */
+        .calc-group {
+            margin-bottom: 1.25rem;
+        }
+        .calc-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .calc-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0.65rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .calc-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.02);
+        }
+        .calc-input option {
+            background-color: #111827;
+            color: #f3f4f6;
+        }
+        .helper-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: var(--transition);
+        }
+        .helper-toggle-btn:hover {
+            color: var(--text-primary);
+        }
+        .helper-content {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .btn-apply {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+        .btn-apply:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--border-hover);
+        }
+        .calc-result-box {
+            margin-top: auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .calc-result-value {
+            font-size: 2.25rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 0.25rem;
+            transition: var(--transition);
+        }
+        .calc-result-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .calc-result-box.up {
+            background: rgba(16, 185, 129, 0.03);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        .calc-result-box.up .calc-result-value {
+            color: var(--up-color);
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+        }
+        .calc-result-box.down {
+            background: rgba(239, 68, 68, 0.03);
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+        .calc-result-box.down .calc-result-value {
+            color: var(--down-color);
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+        }
+
+        /* Table Card Section */
+        .table-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            padding: 0.6rem 1rem 0.6rem 2.25rem;
+            font-size: 0.875rem;
+            width: 240px;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-secondary);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .btn-export {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0.6rem 1.25rem;
+            border-radius: 10px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-export:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-hover);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 1.25rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--card-border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--card-border);
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .badge-premium {
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .badge-premium.up {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--up-color);
+        }
+
+        .badge-premium.down {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--down-color);
+        }
+
+        /* Pagination */
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .page-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .page-btn:hover:not(.disabled) {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        /* Note warning */
+        .note-container {
+            background: rgba(255, 153, 0, 0.05);
+            border: 1px solid rgba(255, 153, 0, 0.15);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            color: #fbd38d;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .note-icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .error-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-color);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .error-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .error-box h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--down-color);
+            margin-bottom: 1rem;
+        }
+
+        .error-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 1rem;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+            .nav-section {
+                gap: 0.75rem;
+            }
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .dr-tabs {
+                flex-direction: column;
+            }
+            .timeframe-group {
+                justify-content: space-between;
+            }
+            .search-input {
+                width: 100%;
+            }
+            .table-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Chart toggle buttons layout */
+        .chart-toggle-group {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+        }
+        .chart-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .chart-toggle-btn:hover {
+            color: var(--text-primary);
+        }
+        .chart-toggle-btn.active {
+            background: var(--accent-primary);
+            color: #0b0f19;
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fallback if data is missing -->
+    <div id="error-overlay" class="error-overlay" style="display: none;">
+        <div class="error-box">
+            <h2>找不到數據檔案 (data.js)</h2>
+            <p>請先執行 <code>python data_fetcher.py</code> 以生成數據檔案。如果您是直接雙擊打開此 HTML，請確保 <code>data.js</code> 與 <code>index.html</code> 位於同一個資料夾中。</p>
+            <button class="btn-export" style="margin: 0 auto;" onclick="window.location.reload()">重新載入</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-title-container">
+                <div>
+                    <h1>海外存託憑證 (DR) 折溢價分析儀表板</h1>
+                    <div class="subtitle">大型科技與權值股 ADR/GDR 歷史數據整理、溢價波動與套利監測</div>
+                </div>
+                <div class="last-update" id="latest-update-time">數據載入中...</div>
+            </div>
+        </header>
+
+        <!-- Dynamic Stock & DR Selectors -->
+        <div class="nav-section">
+            <!-- Stock Selection Tabs -->
+            <div class="stock-tabs" id="stock-tab-bar">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- Controls Row: DR selection & Timeframe -->
+            <div class="controls-row">
+                <!-- DR Selection Tabs -->
+                <div class="dr-tabs" id="dr-tab-bar">
+                    <!-- Dynamically populated -->
+                </div>
+
+                <!-- Timeframe Selector -->
+                <div class="timeframe-group">
+                    <button class="time-btn" data-time="1m">1 個月</button>
+                    <button class="time-btn" data-time="3m">3 個月</button>
+                    <button class="time-btn" data-time="1y">1 年</button>
+                    <button class="time-btn" data-time="3y">3 年</button>
+                    <button class="time-btn" data-time="5y">5 年</button>
+                    <button class="time-btn active" data-time="all">全部歷史</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Content Wrapper (with switch transition) -->
+        <div id="main-dashboard-content" class="main-dashboard-wrapper">
+
+        <!-- Dynamic Notice for Hynix US ADR (Optional warning box) -->
+        <div id="hynix-notice" class="note-container" style="display: none;">
+            <svg class="note-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div>
+                <strong>提示：</strong> 當前選定的憑證歷史交易數據較短。建議切換至同一檔股票的歐股或德股憑證（如有），以取得完整的歷史統計溢價。
+            </div>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="stats-grid">
+            <!-- Card 1: Latest -->
+            <div class="stat-card" id="card-latest">
+                <div class="stat-title">
+                    <span>最新溢價率</span>
+                    <svg class="stat-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </div>
+                <div class="stat-value" id="val-latest">0.00%</div>
+                <div class="stat-desc" id="desc-latest">收盤價日期: --</div>
+            </div>
+
+            <!-- Card 2: Average -->
+            <div class="stat-card" id="card-mean">
+                <div class="stat-title">
+                    <span>區間平均溢價</span>
+                    <svg class="stat-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="stat-value" id="val-mean">0.00%</div>
+                <div class="stat-desc" id="desc-mean">選定時間範圍的算術平均</div>
+            </div>
+
+            <!-- Card 3: Median -->
+            <div class="stat-card" id="card-median">
+                <div class="stat-title">
+                    <span>區間中位數</span>
+                    <svg class="stat-icon" viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+                </div>
+                <div class="stat-value" id="val-median">0.00%</div>
+                <div class="stat-desc" id="desc-median">剔除極端值影響的中位數</div>
+            </div>
+
+            <!-- Card 4: Min / Max -->
+            <div class="stat-card" id="card-range">
+                <div class="stat-title">
+                    <span>歷史極值 (最低 / 最高)</span>
+                    <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                </div>
+                <div class="stat-value" id="val-range" style="font-size: 1.35rem; padding: 0.35rem 0;">0.00% / 0.00%</div>
+                <div class="stat-desc" id="desc-range">當前區間內的波動範圍</div>
+            </div>
+
+            <!-- Card 5: Std Dev -->
+            <div class="stat-card" id="card-std">
+                <div class="stat-title">
+                    <span>波動標準差</span>
+                    <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div class="stat-value" id="val-std">0.00%</div>
+                <div class="stat-desc" id="desc-std">反映折溢價率的偏離幅度</div>
+            </div>
+        </div>
+
+        <!-- Main Chart & Calculator Block -->
+        <div class="main-grid">
+            <!-- Chart Card -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="17" x2="9" y2="10"></line><line x1="15" y1="17" x2="15" y2="7"></line><line x1="12" y1="17" x2="12" y2="13"></line></svg>
+                        <span id="chart-main-title">折溢價率波動趨勢</span>
+                    </div>
+                    <!-- Binance Toggle buttons -->
+                    <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none; margin-left: 1rem;">
+                        <button class="chart-toggle-btn active" id="btn-chart-live">⚡ 即時溢價</button>
+                        <button class="chart-toggle-btn" id="btn-chart-daily">📅 日線歷史</button>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color"></div>
+                            <span id="legend-label">溢價率 (%)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="premiumChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Calculator Card -->
+            <div class="chart-card" style="min-height: auto;">
+                <div class="chart-header" style="margin-bottom: 1.25rem;">
+                    <div class="chart-title">
+                        <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                        <span>ADR/GDR 折溢價即時計算器</span>
+                    </div>
+                </div>
+                
+                <div class="calc-group">
+                    <label class="calc-label">當前換算模板</label>
+                    <select id="calc-asset" class="calc-input">
+                        <!-- Dynamically populated or custom -->
+                    </select>
+                </div>
+                
+                <div class="calc-group" id="calc-ratio-group" style="display: none;">
+                    <label class="calc-label">自訂換算比例 (1 DR = N 股)</label>
+                    <input type="number" id="calc-ratio" class="calc-input" value="1" step="any" min="0.0001">
+                </div>
+                
+                <div class="calc-group">
+                    <label class="calc-label" id="label-calc-adr-price">DR 價格 (USD)</label>
+                    <input type="number" id="calc-adr-price" class="calc-input" placeholder="載入中..." step="any" min="0">
+                </div>
+                
+                <div class="calc-group">
+                    <label class="calc-label" id="label-calc-local-usd-price">原股美元價格 (USD)</label>
+                    <input type="number" id="calc-local-usd-price" class="calc-input" placeholder="載入中..." step="any" min="0">
+                </div>
+                
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <button type="button" class="btn-apply" id="btn-autofill-current" style="margin: 0; padding: 0.4rem 0.75rem; flex: 1; font-size: 0.75rem; background: rgba(255,255,255,0.03);">⚡ 帶入最新收盤價</button>
+                    <button type="button" class="helper-toggle-btn" id="helper-toggle" style="margin: 0; padding: 0.4rem; font-size: 0.75rem;">💡 我只有本地原股價？</button>
+                </div>
+                
+                <div class="helper-content" id="helper-content" style="display: none;">
+                    <div class="calc-group" style="margin-bottom: 0.75rem;">
+                        <label class="calc-label" style="font-size: 0.75rem;" id="label-helper-local-price">原股本地價格</label>
+                        <input type="number" id="helper-local-price" class="calc-input" style="padding: 0.5rem 0.75rem; font-size: 0.8rem;" placeholder="輸入價格...">
+                    </div>
+                    <div class="calc-group" style="margin-bottom: 0.75rem;">
+                        <label class="calc-label" style="font-size: 0.75rem;" id="label-helper-fx">美元/外幣匯率</label>
+                        <input type="number" id="helper-fx" class="calc-input" style="padding: 0.5rem 0.75rem; font-size: 0.8rem;" placeholder="輸入匯率...">
+                    </div>
+                    <button type="button" class="btn-apply" id="btn-apply-helper">計算並帶入美元原股價</button>
+                </div>
+                
+                <div class="calc-result-box" id="calc-result-box">
+                    <div class="calc-result-value" id="calc-result-value">--</div>
+                    <div class="calc-result-desc" id="calc-result-desc">請輸入數值進行計算</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Raw Data Table -->
+        <div class="table-card">
+            <div class="table-header">
+                <h3 style="font-family:'Outfit', sans-serif; font-size:1.15rem; font-weight:600; display:flex; align-items:center; gap:0.5rem;">
+                    <svg style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    歷史折溢價數據明細
+                </h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="search-container">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="search-date" class="search-input" placeholder="搜尋日期 (YYYY-MM-DD)">
+                    </div>
+                    <button class="btn-export" id="btn-export-csv">
+                        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        匯出當前 CSV 數據
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th id="th-local">原股收盤價</th>
+                            <th id="th-adr">DR 收盤價</th>
+                            <th id="th-fx" style="cursor: pointer; user-select: none;" title="點擊切換匯率換算方向">匯率 🔄</th>
+                            <th id="th-equiv">DR 折合原股價</th>
+                            <th style="text-align: right;">折溢價率</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination-container">
+                <div id="pagination-info">顯示第 1 到 15 筆，共 0 筆數據</div>
+                <div class="pagination-controls">
+                    <div class="page-btn disabled" id="btn-prev-page">
+                        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    </div>
+                    <div class="page-btn" id="btn-next-page">
+                        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Close main-dashboard-content -->
+    </div> <!-- Close container -->
+
+    <!-- Dynamic Inject data.js with cache busting -->
+    <script>
+        let runDashboardInit = null;
+        (function() {
+            const script = document.createElement('script');
+            script.src = 'data.js?v=' + new Date().getTime();
+            script.onload = () => {
+                if (typeof window.HISTORICAL_DATA === 'undefined') {
+                    document.getElementById('error-overlay').style.display = 'flex';
+                    return;
+                }
+                if (runDashboardInit) runDashboardInit();
+            };
+            script.onerror = () => {
+                document.getElementById('error-overlay').style.display = 'flex';
+            };
+            document.head.appendChild(script);
+        })();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            runDashboardInit = () => {
+                const data = window.HISTORICAL_DATA;
+            if (!data) return;
+
+            // Global stock styling themes map
+            const STOCK_THEMES = {
+                tsmc: { primary: '#00f2fe', secondary: '#4facfe', glow: 'rgba(0, 242, 254, 0.15)' },
+                skhynix: { primary: '#ff9900', secondary: '#ff5e62', glow: 'rgba(255, 153, 0, 0.15)' },
+                samsung: { primary: '#3b82f6', secondary: '#1d4ed8', glow: 'rgba(59, 130, 246, 0.15)' },
+                asml: { primary: '#34d399', secondary: '#059669', glow: 'rgba(52, 211, 153, 0.15)' },
+                alibaba: { primary: '#f97316', secondary: '#c2410c', glow: 'rgba(249, 115, 22, 0.15)' },
+                tencent: { primary: '#06b6d4', secondary: '#0891b2', glow: 'rgba(6, 182, 212, 0.15)' }
+            };
+
+            // Global State Variables
+            let currentStock = 'tsmc';
+            let currentDr = 'us';
+            let currentTimeframe = 'all';
+            let currentPage = 1;
+            const rowsPerPage = 15;
+            let filteredHistory = [];
+            let chartInstance = null;
+            let activeBinanceChartView = 'live';
+            let fxDirectionFlipped = false;
+
+            // DOM Elements
+            const stockTabBar = document.getElementById('stock-tab-bar');
+            const drTabBar = document.getElementById('dr-tab-bar');
+            const timeframeButtons = document.querySelectorAll('.time-btn');
+            const latestUpdateEl = document.getElementById('latest-update-time');
+            const hynixNoticeEl = document.getElementById('hynix-notice');
+            
+            // Cards Elements
+            const valLatest = document.getElementById('val-latest');
+            const descLatest = document.getElementById('desc-latest');
+            const valMean = document.getElementById('val-mean');
+            const valMedian = document.getElementById('val-median');
+            const valRange = document.getElementById('val-range');
+            const valStd = document.getElementById('val-std');
+
+            // Table Elements
+            const tableBody = document.getElementById('table-body');
+            const searchInput = document.getElementById('search-date');
+            const paginationInfo = document.getElementById('pagination-info');
+            const btnPrevPage = document.getElementById('btn-prev-page');
+            const btnNextPage = document.getElementById('btn-next-page');
+            const btnExportCsv = document.getElementById('btn-export-csv');
+
+            // Calculator Elements
+            const calcAsset = document.getElementById('calc-asset');
+            const calcRatioGroup = document.getElementById('calc-ratio-group');
+            const calcRatio = document.getElementById('calc-ratio');
+            const calcAdrPrice = document.getElementById('calc-adr-price');
+            const calcLocalUsdPrice = document.getElementById('calc-local-usd-price');
+            const helperToggle = document.getElementById('helper-toggle');
+            const helperContent = document.getElementById('helper-content');
+            const helperLocalPrice = document.getElementById('helper-local-price');
+            const helperFx = document.getElementById('helper-fx');
+            const btnApplyHelper = document.getElementById('btn-apply-helper');
+            const btnAutofillCurrent = document.getElementById('btn-autofill-current');
+            const calcResultBox = document.getElementById('calc-result-box');
+            const calcResultValue = document.getElementById('calc-result-value');
+            const calcResultDesc = document.getElementById('calc-result-desc');
+
+            // 1. Build Stock Selection tabs dynamically
+            function buildStockTabs() {
+                let html = '';
+                for (const [key, stockInfo] of Object.entries(data.metadata)) {
+                    const activeClass = key === currentStock ? 'active' : '';
+                    html += `<button class="stock-btn ${activeClass}" data-stock="${key}">${stockInfo.name}</button>`;
+                }
+                stockTabBar.innerHTML = html;
+
+                // Add click handlers
+                document.querySelectorAll('.stock-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const wrapper = document.getElementById('main-dashboard-content');
+                        wrapper.classList.add('fade-out');
+                        setTimeout(() => {
+                            currentStock = btn.getAttribute('data-stock');
+                            // Auto-select the first DR listing for this stock
+                            const drList = Object.keys(data.metadata[currentStock].dr_listings);
+                            currentDr = drList[0];
+                            
+                            currentPage = 1;
+                            searchInput.value = ''; // Reset search
+                            fxDirectionFlipped = false; // Reset FX conversion direction
+                            
+                            // Reset Binance chart view states
+                            activeBinanceChartView = 'live';
+                            document.getElementById('btn-chart-live').classList.add('active');
+                            document.getElementById('btn-chart-daily').classList.remove('active');
+                            
+                            buildDRTabs();
+                            updateTheme();
+                            processData();
+                            renderDashboard();
+                            initCalculatorOptions();
+                            
+                            // Set active class
+                            document.querySelectorAll('.stock-btn').forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            
+                            wrapper.classList.remove('fade-out');
+                        }, 150);
+                    });
+                });
+            }
+
+            // 2. Build DR Selection tabs dynamically
+            function buildDRTabs() {
+                const stockInfo = data.metadata[currentStock];
+                let html = '';
+                for (const [drKey, drInfo] of Object.entries(stockInfo.dr_listings)) {
+                    const activeClass = drKey === currentDr ? 'active' : '';
+                    html += `<button class="dr-btn ${activeClass}" data-dr="${drKey}">${drInfo.name}</button>`;
+                }
+                drTabBar.innerHTML = html;
+
+                // Add click handlers
+                document.querySelectorAll('.dr-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const wrapper = document.getElementById('main-dashboard-content');
+                        wrapper.classList.add('fade-out');
+                        setTimeout(() => {
+                            currentDr = btn.getAttribute('data-dr');
+                            currentPage = 1;
+                            searchInput.value = ''; // Reset search
+                            fxDirectionFlipped = false; // Reset FX conversion direction
+                            
+                            // Reset Binance chart view states
+                            activeBinanceChartView = 'live';
+                            document.getElementById('btn-chart-live').classList.add('active');
+                            document.getElementById('btn-chart-daily').classList.remove('active');
+                            
+                            // Set active class
+                            document.querySelectorAll('.dr-btn').forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            
+                            processData();
+                            renderDashboard();
+                            initCalculatorOptions();
+                            
+                            wrapper.classList.remove('fade-out');
+                        }, 150);
+                    });
+                });
+            }
+
+            // 3. Update CSS Variables based on selected stock to morph theme colors
+            function updateTheme() {
+                const theme = STOCK_THEMES[currentStock] || STOCK_THEMES.tsmc;
+                document.documentElement.style.setProperty('--accent-primary', theme.primary);
+                document.documentElement.style.setProperty('--accent-secondary', theme.secondary);
+                document.documentElement.style.setProperty('--accent-glow', theme.glow);
+
+                // Show notice if historical data is extremely short (e.g. skhynix US ADR)
+                const seriesKey = `${currentStock}_${currentDr}`;
+                const historyCount = data.series[seriesKey].history.length;
+                if (historyCount < 50 && currentDr !== 'binance') {
+                    hynixNoticeEl.style.display = 'flex';
+                } else {
+                    hynixNoticeEl.style.display = 'none';
+                }
+            }
+
+            // 4. Filter data by timeframe
+            function processData() {
+                const seriesKey = `${currentStock}_${currentDr}`;
+                const seriesData = data.series[seriesKey];
+                if (!seriesData || !seriesData.history) {
+                    filteredHistory = [];
+                    return;
+                }
+
+                const rawHistory = seriesData.history;
+                if (rawHistory.length === 0) {
+                    filteredHistory = [];
+                    return;
+                }
+
+                // Latest date cutoff calculation
+                const latestDateStr = rawHistory[rawHistory.length - 1].date;
+                const latestDate = new Date(latestDateStr);
+                let cutoffDate = new Date(latestDate);
+
+                if (currentTimeframe === '1m') cutoffDate.setMonth(latestDate.getMonth() - 1);
+                else if (currentTimeframe === '3m') cutoffDate.setMonth(latestDate.getMonth() - 3);
+                else if (currentTimeframe === '1y') cutoffDate.setFullYear(latestDate.getFullYear() - 1);
+                else if (currentTimeframe === '3y') cutoffDate.setFullYear(latestDate.getFullYear() - 3);
+                else if (currentTimeframe === '5y') cutoffDate.setFullYear(latestDate.getFullYear() - 5);
+                else cutoffDate = new Date(0); // All time
+
+                filteredHistory = rawHistory.filter(item => {
+                    const itemDate = new Date(item.date);
+                    return itemDate >= cutoffDate;
+                });
+            }
+
+            // 5. Update Statistics cards
+            function renderStats() {
+                if (filteredHistory.length === 0) {
+                    valLatest.innerText = '--';
+                    descLatest.innerText = '無收盤價數據';
+                    valMean.innerText = '--';
+                    valMedian.innerText = '--';
+                    valRange.innerText = '--';
+                    valStd.innerText = '--';
+                    return;
+                }
+
+                const latestRecord = filteredHistory[filteredHistory.length - 1];
+                const latestPrem = latestRecord.premium;
+                
+                // Latest close value & style
+                valLatest.innerText = (latestPrem >= 0 ? '+' : '') + latestPrem.toFixed(2) + '%';
+                valLatest.className = 'stat-value ' + (latestPrem >= 0 ? 'up' : 'down');
+                descLatest.innerText = `交易收盤日期: ${latestRecord.date}`;
+
+                // Calculate arrays of clean values
+                const prems = filteredHistory
+                    .map(item => item.premium)
+                    .filter(v => v !== null && !isNaN(v));
+
+                if (prems.length === 0) return;
+
+                // Mean
+                const sum = prems.reduce((a, b) => a + b, 0);
+                const mean = sum / prems.length;
+                valMean.innerText = (mean >= 0 ? '+' : '') + mean.toFixed(2) + '%';
+                valMean.className = 'stat-value ' + (mean >= 0 ? 'up' : 'down');
+
+                // Median
+                const sorted = [...prems].sort((a, b) => a - b);
+                const mid = Math.floor(sorted.length / 2);
+                const median = sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+                valMedian.innerText = (median >= 0 ? '+' : '') + median.toFixed(2) + '%';
+                valMedian.className = 'stat-value ' + (median >= 0 ? 'up' : 'down');
+
+                // Range
+                const min = Math.min(...prems);
+                const max = Math.max(...prems);
+                valRange.innerText = `${min.toFixed(2)}% / ${max >= 0 ? '+' : ''}${max.toFixed(2)}%`;
+
+                // Standard Deviation
+                const squareDiffs = prems.map(v => Math.pow(v - mean, 2));
+                const avgSquareDiff = squareDiffs.reduce((a, b) => a + b, 0) / prems.length;
+                const std = Math.sqrt(avgSquareDiff);
+                valStd.innerText = std.toFixed(2) + '%';
+            }
+
+            function createLineChart(ctx, dataset, labelText, theme) {
+                const dates = dataset.map(item => item.date || item.time || '');
+                const premiums = dataset.map(item => item.premium);
+                const mainColor = theme.primary;
+                const glowColor = theme.glow;
+
+                const chartGradient = ctx.createLinearGradient(0, 0, 0, 250);
+                chartGradient.addColorStop(0, glowColor);
+                chartGradient.addColorStop(1, 'transparent');
+
+                return new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: labelText,
+                            data: premiums,
+                            borderColor: mainColor,
+                            borderWidth: 2,
+                            pointBackgroundColor: mainColor,
+                            pointBorderColor: '#0b0f19',
+                            pointHoverBackgroundColor: '#ffffff',
+                            pointHoverBorderColor: mainColor,
+                            pointRadius: dates.length > 150 ? 0 : (dates.length > 50 ? 1 : 3),
+                            pointHoverRadius: 5,
+                            tension: 0.1,
+                            fill: true,
+                            backgroundColor: chartGradient
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(11, 15, 25, 0.95)',
+                                titleColor: '#f3f4f6',
+                                bodyColor: '#9ca3af',
+                                borderColor: 'rgba(255, 255, 255, 0.15)',
+                                borderWidth: 1,
+                                padding: 12,
+                                boxPadding: 6,
+                                callbacks: {
+                                    label: function(context) {
+                                        const idx = context.dataIndex;
+                                        const record = dataset[idx];
+                                        const stockInfo = data.metadata[currentStock];
+                                        const drInfo = stockInfo.dr_listings[currentDr];
+                                        const localCurrency = drInfo.override_local_currency || stockInfo.local_currency;
+                                        const drCurrency = drInfo.currency;
+                                        
+                                        if (record.fx !== undefined) {
+                                            return [
+                                                `折溢價率: ${context.formattedValue}%`,
+                                                `原股價格: ${record.local.toLocaleString()} ${localCurrency}`,
+                                                `海外存託: ${record.adr.toLocaleString()} ${drCurrency}`,
+                                                `適用匯率: ${record.fx.toFixed(4)} (${drCurrency}➔${localCurrency})`,
+                                                `折合單股價: ${(record.equiv / drInfo.ratio).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${localCurrency}`
+                                            ];
+                                        } else {
+                                            // Binance intraday item structure
+                                            const equivInDr = record.adr / drInfo.ratio;
+                                            return [
+                                                `折溢價率: ${context.formattedValue}%`,
+                                                `原股合約: ${record.local.toLocaleString()} ${localCurrency}`,
+                                                `海外合約: ${record.adr.toLocaleString()} ${drCurrency}`,
+                                                `折合單股價: ${equivInDr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.03)',
+                                    borderColor: 'transparent'
+                                },
+                                ticks: {
+                                    color: '#9ca3af',
+                                    font: { size: 10 },
+                                    maxTicksLimit: 10
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.05)',
+                                    borderColor: 'transparent'
+                                },
+                                ticks: {
+                                    color: '#9ca3af',
+                                    font: { size: 10 },
+                                    callback: function(value) {
+                                        return value.toFixed(1) + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 6. Draw Chart
+            function renderChart() {
+                const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                const toggleGroup = document.getElementById('binance-chart-toggle');
+                const timeframeGroup = document.querySelector('.timeframe-group');
+                const theme = STOCK_THEMES[currentStock] || STOCK_THEMES.tsmc;
+                
+                const ctx = document.getElementById('premiumChart').getContext('2d');
+                if (chartInstance) {
+                    chartInstance.destroy();
+                }
+
+                if (!isBinance) {
+                    // Hide toggle, enable timeframe
+                    toggleGroup.style.display = 'none';
+                    timeframeGroup.style.opacity = '1';
+                    timeframeGroup.style.pointerEvents = 'auto';
+
+                    if (filteredHistory.length === 0) return;
+
+                    const stockInfo = data.metadata[currentStock];
+                    const drInfo = stockInfo.dr_listings[currentDr];
+                    const labelText = `${stockInfo.name} ${drInfo.name} 溢價率 (%)`;
+                    
+                    chartInstance = createLineChart(ctx, filteredHistory, labelText, theme);
+                } else {
+                    // Show toggle
+                    toggleGroup.style.display = 'flex';
+                    
+                    const seriesKey = `${currentStock}_${currentDr}`;
+                    const seriesData = data.series[seriesKey];
+                    if (!seriesData) return;
+
+                    if (activeBinanceChartView === 'live') {
+                        // Dim timeframe selector (not applicable to live 1m)
+                        timeframeGroup.style.opacity = '0.35';
+                        timeframeGroup.style.pointerEvents = 'none';
+
+                        const liveData = seriesData.intraday_1m || [];
+                        if (liveData.length > 0) {
+                            chartInstance = createLineChart(ctx, liveData, '即時 1 分鐘溢價 (%)', theme);
+                        } else {
+                            chartInstance = createLineChart(ctx, [{time: '無即時數據', local: 0, adr: 0, premium: 0}], '即時 1 分鐘溢價 (%)', theme);
+                        }
+                    } else {
+                        // Enable timeframe selector
+                        timeframeGroup.style.opacity = '1';
+                        timeframeGroup.style.pointerEvents = 'auto';
+
+                        if (filteredHistory.length > 0) {
+                            chartInstance = createLineChart(ctx, filteredHistory, '日線級別歷史溢價 (%)', theme);
+                        }
+                    }
+                }
+            }
+
+            // 7. Render Table
+            function renderTable() {
+                const stockInfo = data.metadata[currentStock];
+                const drInfo = stockInfo.dr_listings[currentDr];
+                const ratio = drInfo.ratio;
+                
+                const localCurrency = drInfo.override_local_currency || stockInfo.local_currency;
+                
+                // Translate Column Headers
+                if (!fxDirectionFlipped) {
+                    document.getElementById('th-local').innerText = `原股收盤價 (${localCurrency})`;
+                    document.getElementById('th-fx').innerText = `匯率 (${drInfo.currency}→${localCurrency}) 🔄`;
+                    document.getElementById('th-equiv').innerText = `DR 折合單股價 (${localCurrency})`;
+                } else {
+                    document.getElementById('th-local').innerText = `原股折合單股價 (${drInfo.currency})`;
+                    document.getElementById('th-fx').innerText = `匯率 (${localCurrency}→${drInfo.currency}) 🔄`;
+                    document.getElementById('th-equiv').innerText = `DR 折合單股價 (${drInfo.currency})`;
+                }
+
+                // Filter search
+                const searchVal = searchInput.value.trim().toLowerCase();
+                let tableData = filteredHistory;
+                if (searchVal) {
+                    tableData = filteredHistory.filter(item => item.date.includes(searchVal));
+                }
+
+                // Sort newest to oldest for display
+                const reversedData = [...tableData].reverse();
+                const totalRows = reversedData.length;
+                const totalPages = Math.ceil(totalRows / rowsPerPage) || 1;
+
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                const startIdx = (currentPage - 1) * rowsPerPage;
+                const endIdx = Math.min(startIdx + rowsPerPage, totalRows);
+                
+                const pageData = reversedData.slice(startIdx, endIdx);
+
+                let html = '';
+                if (pageData.length === 0) {
+                    html = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 2rem;">查無交易數據記錄</td></tr>`;
+                } else {
+                    const localCurrSymbol = localCurrency;
+                    const drCurrSymbol = drInfo.currency;
+
+                    pageData.forEach(item => {
+                        const premium = item.premium;
+                        const badgeClass = premium >= 0 ? 'up' : 'down';
+                        const sign = premium >= 0 ? '+' : '';
+                        
+                        let localColHtml = '';
+                        let fxColText = '';
+                        let equivColHtml = '';
+
+                        if (!fxDirectionFlipped) {
+                            const equivSingleShare = item.equiv / ratio;
+                            const formulaText = `(${item.adr.toFixed(2)} × ${item.fx.toFixed(4)}) ÷ ${ratio}`;
+                            
+                            localColHtml = `${item.local.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${localCurrSymbol}`;
+                            fxColText = item.fx.toFixed(4);
+                            equivColHtml = `
+                                <div style="font-weight: 600; color: var(--accent-primary);">${equivSingleShare.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${localCurrSymbol}</div>
+                                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.15rem; font-family: monospace;">${formulaText}</div>
+                            `;
+                        } else {
+                            // Reverse conversion: Local stock converted to DR currency (USD/EUR)
+                            const localInDr = item.local / item.fx;
+                            const localFormula = `${item.local.toFixed(2)} ÷ ${item.fx.toFixed(4)}`;
+                            
+                            // DR single share price directly in DR currency (USD/EUR)
+                            const equivSingleShareInDr = item.adr / ratio;
+                            const equivFormula = `${item.adr.toFixed(2)} ÷ ${ratio}`;
+                            
+                            // Reverse FX rate: Local currency -> DR currency
+                            const reverseFx = 1 / item.fx;
+
+                            localColHtml = `
+                                <div>${localInDr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${drCurrSymbol}</div>
+                                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.15rem; font-family: monospace;">${localFormula}</div>
+                            `;
+                            fxColText = reverseFx.toFixed(6); // Flipped exchange rate typically requires more decimals (e.g. KRW->USD is ~0.00067)
+                            equivColHtml = `
+                                <div style="font-weight: 600; color: var(--accent-primary);">${equivSingleShareInDr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${drCurrSymbol}</div>
+                                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.15rem; font-family: monospace;">${equivFormula}</div>
+                            `;
+                        }
+
+                        html += `
+                            <tr>
+                                <td style="font-weight: 500;">${item.date}</td>
+                                <td>${localColHtml}</td>
+                                <td>${item.adr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${drCurrSymbol}</td>
+                                <td>${fxColText}</td>
+                                <td>
+                                    ${equivColHtml}
+                                </td>
+                                <td style="text-align: right;">
+                                    <span class="badge-premium ${badgeClass}">${sign}${premium.toFixed(2)}%</span>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+
+                tableBody.innerHTML = html;
+
+                // Update pagination controls
+                paginationInfo.innerText = totalRows === 0 
+                    ? '顯示第 0 到 0 筆，共 0 筆數據'
+                    : `顯示第 ${startIdx + 1} 到 ${endIdx} 筆，共 ${totalRows} 筆數據 (由新到舊排序)`;
+
+                if (currentPage === 1) btnPrevPage.classList.add('disabled');
+                else btnPrevPage.classList.remove('disabled');
+
+                if (currentPage === totalPages) btnNextPage.classList.add('disabled');
+                else btnNextPage.classList.remove('disabled');
+            }
+
+            // 8. Dynamic Calculator Options Initializer
+            function initCalculatorOptions() {
+                const stockInfo = data.metadata[currentStock];
+                const drInfo = stockInfo.dr_listings[currentDr];
+                
+                // Build calculator template selector
+                let html = '';
+                
+                // Add preset templates matching metadata
+                for (const [sKey, sInfo] of Object.entries(data.metadata)) {
+                    for (const [dKey, dInfo] of Object.entries(sInfo.dr_listings)) {
+                        const isSelected = (sKey === currentStock && dKey === currentDr) ? 'selected' : '';
+                        html += `<option value="${dInfo.ratio}" data-stock="${sKey}" data-dr="${dKey}" ${isSelected}>`;
+                        html += `${sInfo.name.split(' (')[0]} → ${dInfo.name.split(' (')[0]} (1:${dInfo.ratio})`;
+                        html += `</option>`;
+                    }
+                }
+                
+                // Add custom option
+                html += `<option value="custom">自訂比例 (Custom)...</option>`;
+                calcAsset.innerHTML = html;
+
+                // Update label units dynamically
+                updateCalculatorLabels(drInfo.currency, stockInfo.local_currency);
+                
+                // Show/hide ratio group and trigger calculations
+                if (calcAsset.value === 'custom') {
+                    calcRatioGroup.style.display = 'block';
+                } else {
+                    calcRatioGroup.style.display = 'none';
+                    calcRatio.value = calcAsset.value;
+                }
+
+                // Auto-fill calculator with latest database values
+                autofillCalculator();
+            }
+
+            function updateCalculatorLabels(drCurr, localCurr) {
+                document.getElementById('label-calc-adr-price').innerText = `DR 價格 (${drCurr})`;
+                document.getElementById('label-calc-local-usd-price').innerText = `原股等值美元價格 (USD)`;
+                
+                document.getElementById('label-helper-local-price').innerText = `原股本地貨幣價格 (${localCurr})`;
+                document.getElementById('label-helper-fx').innerText = `美元兌本地貨幣匯率 (USD/${localCurr} 或 EUR/${localCurr})`;
+            }
+
+            // Autofill inputs using current latest close records
+            function autofillCalculator() {
+                if (filteredHistory.length === 0) {
+                    calcAdrPrice.value = '';
+                    calcLocalUsdPrice.value = '';
+                    helperLocalPrice.value = '';
+                    helperFx.value = '';
+                    calcResultValue.innerText = '--';
+                    calcResultDesc.innerText = '請輸入數值進行計算';
+                    return;
+                }
+
+                const latestRecord = filteredHistory[filteredHistory.length - 1];
+                
+                // For local price in USD:
+                // If local price is in local currency (e.g. 2440 TWD), and FX is USDTWD (e.g. 32.10)
+                // then Local USD price = Local Price / FX.
+                const localUsdPrice = latestRecord.local / latestRecord.fx;
+
+                calcAdrPrice.value = latestRecord.adr;
+                calcLocalUsdPrice.value = localUsdPrice.toFixed(4);
+
+                // Helper fields
+                helperLocalPrice.value = latestRecord.local;
+                helperFx.value = latestRecord.fx.toFixed(4);
+
+                calculatePremium();
+            }
+
+            // Live Calculator Calculations
+            function calculatePremium() {
+                const adrPrice = parseFloat(calcAdrPrice.value);
+                const localUsdPrice = parseFloat(calcLocalUsdPrice.value);
+                
+                let ratio = parseFloat(calcRatio.value);
+                const selectedOpt = calcAsset.options[calcAsset.selectedIndex];
+                const isCustom = calcAsset.value === 'custom';
+
+                if (!isCustom) {
+                    ratio = parseFloat(calcAsset.value);
+                    calcRatio.value = ratio;
+                }
+
+                if (isNaN(adrPrice) || isNaN(localUsdPrice) || isNaN(ratio) || localUsdPrice <= 0 || ratio <= 0) {
+                    calcResultValue.innerText = '--';
+                    calcResultDesc.innerText = '請輸入有效價格與折算比例';
+                    calcResultBox.className = 'calc-result-box';
+                    return;
+                }
+
+                // Premium Formula: (ADR Price / (Original USD Price * Ratio) - 1) * 100
+                const premium = ((adrPrice / (localUsdPrice * ratio)) - 1) * 100;
+                const sign = premium >= 0 ? '+' : '';
+                
+                calcResultValue.innerText = sign + premium.toFixed(2) + '%';
+
+                const drShareUsd = adrPrice / ratio;
+                const formulaText = `計算公式：(DR 單股值 $${drShareUsd.toFixed(2)} / 原股單股 $${localUsdPrice.toFixed(2)} - 1) × 100`;
+
+                if (premium >= 0) {
+                    calcResultBox.className = 'calc-result-box up';
+                    calcResultDesc.innerHTML = `
+                        <div style="font-weight: 600;">當前呈現【溢價】(DR 較貴，套利空間：賣出 DR、買入原股)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.35rem; font-family: sans-serif;">
+                            DR 折合單股：<strong>$${drShareUsd.toFixed(2)} USD</strong> | 原股單股：<strong>$${localUsdPrice.toFixed(2)} USD</strong>
+                            <br><span style="font-family: monospace; font-size: 0.72rem; color: var(--text-secondary); display: inline-block; margin-top: 0.15rem;">${formulaText}</span>
+                        </div>
+                    `;
+                } else {
+                    calcResultBox.className = 'calc-result-box down';
+                    calcResultDesc.innerHTML = `
+                        <div style="font-weight: 600;">當前呈現【折價】(DR 較便宜，套利空間：買入 DR、換回原股)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.35rem; font-family: sans-serif;">
+                            DR 折合單股：<strong>$${drShareUsd.toFixed(2)} USD</strong> | 原股單股：<strong>$${localUsdPrice.toFixed(2)} USD</strong>
+                            <br><span style="font-family: monospace; font-size: 0.72rem; color: var(--text-secondary); display: inline-block; margin-top: 0.15rem;">${formulaText}</span>
+                        </div>
+                    `;
+                }
+            }
+
+            // Calculator Select Change Event
+            calcAsset.addEventListener('change', () => {
+                const selectedOpt = calcAsset.options[calcAsset.selectedIndex];
+                const isCustom = calcAsset.value === 'custom';
+
+                if (isCustom) {
+                    calcRatioGroup.style.display = 'block';
+                    updateCalculatorLabels('USD', '本地');
+                } else {
+                    calcRatioGroup.style.display = 'none';
+                    calcRatio.value = calcAsset.value;
+                    
+                    const stockKey = selectedOpt.getAttribute('data-stock');
+                    const drKey = selectedOpt.getAttribute('data-dr');
+                    const stockInfo = data.metadata[stockKey];
+                    const drInfo = stockInfo.dr_listings[drKey];
+                    
+                    const localCurrency = drInfo.override_local_currency || stockInfo.local_currency;
+                    updateCalculatorLabels(drInfo.currency, localCurrency);
+                    
+                    // Autofill with values of the selected template's latest date if available
+                    const seriesKey = `${stockKey}_${drKey}`;
+                    const templateHist = data.series[seriesKey].history;
+                    if (templateHist.length > 0) {
+                        const rec = templateHist[templateHist.length - 1];
+                        calcAdrPrice.value = rec.adr;
+                        calcLocalUsdPrice.value = (rec.local / rec.fx).toFixed(4);
+                        helperLocalPrice.value = rec.local;
+                        helperFx.value = rec.fx.toFixed(4);
+                    }
+                }
+                calculatePremium();
+            });
+
+            // Toggle Calculator local-to-USD helper
+            helperToggle.addEventListener('click', () => {
+                if (helperContent.style.display === 'none') {
+                    helperContent.style.display = 'block';
+                    helperToggle.innerHTML = '💡 隱藏換算計算器';
+                } else {
+                    helperContent.style.display = 'none';
+                    helperToggle.innerHTML = '💡 我只有本地原股價？';
+                }
+            });
+
+            // Apply helper results
+            btnApplyHelper.addEventListener('click', () => {
+                const localPrice = parseFloat(helperLocalPrice.value);
+                const fx = parseFloat(helperFx.value);
+                if (!isNaN(localPrice) && !isNaN(fx) && fx > 0) {
+                    const usdPrice = localPrice / fx;
+                    calcLocalUsdPrice.value = usdPrice.toFixed(4);
+                    calculatePremium();
+                } else {
+                    alert('請輸入有效的股價與匯率數值');
+                }
+            });
+
+            // Autofill Current Button click
+            btnAutofillCurrent.addEventListener('click', autofillCalculator);
+
+            // Bind Live Calculator Calculation Trigger Events
+            [calcRatio, calcAdrPrice, calcLocalUsdPrice].forEach(input => {
+                input.addEventListener('input', calculatePremium);
+            });
+
+            // Timeframe Selector Buttons Event
+            timeframeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const wrapper = document.getElementById('main-dashboard-content');
+                    wrapper.classList.add('fade-out');
+                    setTimeout(() => {
+                        timeframeButtons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        currentTimeframe = btn.getAttribute('data-time');
+                        currentPage = 1;
+                        processData();
+                        renderDashboard();
+                        wrapper.classList.remove('fade-out');
+                    }, 150);
+                });
+            });
+
+            // Search Bar Input Event
+            searchInput.addEventListener('input', () => {
+                currentPage = 1;
+                renderTable();
+            });
+
+            // Bind click event to exchange rate header to toggle conversion direction
+            document.getElementById('th-fx').addEventListener('click', () => {
+                fxDirectionFlipped = !fxDirectionFlipped;
+                renderTable();
+            });
+
+            // Bind click events to Binance Chart Toggle buttons
+            document.getElementById('btn-chart-live').addEventListener('click', () => {
+                if (activeBinanceChartView === 'live') return;
+                activeBinanceChartView = 'live';
+                document.getElementById('btn-chart-live').classList.add('active');
+                document.getElementById('btn-chart-daily').classList.remove('active');
+                renderChart();
+            });
+
+            document.getElementById('btn-chart-daily').addEventListener('click', () => {
+                if (activeBinanceChartView === 'daily') return;
+                activeBinanceChartView = 'daily';
+                document.getElementById('btn-chart-daily').classList.add('active');
+                document.getElementById('btn-chart-live').classList.remove('active');
+                renderChart();
+            });
+
+            // Pagination Click Events
+            btnPrevPage.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                }
+            });
+
+            btnNextPage.addEventListener('click', () => {
+                const totalRows = filteredHistory.length;
+                const totalPages = Math.ceil(totalRows / rowsPerPage) || 1;
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderTable();
+                }
+            });
+
+            // CSV Export Handler
+            btnExportCsv.addEventListener('click', () => {
+                if (filteredHistory.length === 0) return;
+                
+                const stockInfo = data.metadata[currentStock];
+                const drInfo = stockInfo.dr_listings[currentDr];
+                const ratio = drInfo.ratio;
+                const localCurrency = drInfo.override_local_currency || stockInfo.local_currency;
+                
+                // Add UTF-8 BOM so Excel opens Chinese text correctly
+                let csvContent = "\uFEFF"; 
+                
+                if (!fxDirectionFlipped) {
+                    csvContent += `日期,原股收盤價(${localCurrency}),DR收盤價(${drInfo.currency}),匯率(${drInfo.currency}→${localCurrency}),DR折合單股價(${localCurrency}),折溢價率(%)\n`;
+                    filteredHistory.forEach(item => {
+                        const equivSingleShare = item.equiv / ratio;
+                        csvContent += `${item.date},${item.local},${item.adr},${item.fx},${equivSingleShare.toFixed(4)},${item.premium.toFixed(4)}\n`;
+                    });
+                } else {
+                    csvContent += `日期,原股折合單股價(${drInfo.currency}),DR收盤價(${drInfo.currency}),匯率(${localCurrency}→${drInfo.currency}),DR折合單股價(${drInfo.currency}),折溢價率(%)\n`;
+                    filteredHistory.forEach(item => {
+                        const localInDr = item.local / item.fx;
+                        const equivSingleShareInDr = item.adr / ratio;
+                        const reverseFx = 1 / item.fx;
+                        csvContent += `${item.date},${localInDr.toFixed(4)},${item.adr},${reverseFx.toFixed(6)},${equivSingleShareInDr.toFixed(4)},${item.premium.toFixed(4)}\n`;
+                    });
+                }
+
+                // Generate download link trigger
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.setAttribute("href", url);
+                const fileName = `${currentStock}_${currentDr}_premium_${currentTimeframe}.csv`;
+                link.setAttribute("download", fileName);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+
+            // Render Dashboard Main Wrapper
+            function renderDashboard() {
+                renderStats();
+                renderChart();
+                renderTable();
+            }
+
+            // Countdown Timer Initialization
+            function parseDateString(str) {
+                if (!str) return new Date();
+                const parts = str.split(' ');
+                const dateParts = parts[0].split('-');
+                const timeParts = parts[1].split(':');
+                return new Date(
+                    parseInt(dateParts[0]),
+                    parseInt(dateParts[1]) - 1,
+                    parseInt(dateParts[2]),
+                    parseInt(timeParts[0]),
+                    parseInt(timeParts[1]),
+                    parseInt(timeParts[2])
+                );
+            }
+
+            function initUpdateTimer() {
+                const lastUpdatedStr = data.last_updated;
+                if (!lastUpdatedStr) {
+                    latestUpdateEl.innerText = '數據已載入';
+                    return;
+                }
+
+                // Make element clickable for manual refresh
+                latestUpdateEl.style.cursor = 'pointer';
+                latestUpdateEl.title = '點擊重新整理網頁';
+                latestUpdateEl.addEventListener('click', () => {
+                    window.location.reload();
+                });
+
+                function updateCountdown() {
+                    const currentLastUpdatedStr = data.last_updated;
+                    if (!currentLastUpdatedStr) return;
+
+                    const lastUpdated = parseDateString(currentLastUpdatedStr);
+                    const nextUpdate = new Date(lastUpdated.getTime() + 5 * 60 * 1000); // +5 minutes from last download
+                    const now = new Date();
+                    const diffMs = nextUpdate - now;
+                    
+                    if (diffMs <= 0) {
+                        latestUpdateEl.innerHTML = '<span class="pulse-text" style="color: var(--accent-primary); font-weight: bold;">⚡ 數據已更新，已自動載入新價格</span>';
+                        latestUpdateEl.classList.add('pulse-glow');
+                        return;
+                    }
+
+                    const totalSec = Math.floor(diffMs / 1000);
+                    const min = Math.floor(totalSec / 60);
+                    const sec = totalSec % 60;
+                    const pad = (n) => n.toString().padStart(2, '0');
+                    
+                    latestUpdateEl.innerHTML = `上次更新: ${currentLastUpdatedStr.split(' ')[1]} | 下次更新倒數: <strong style="color: var(--accent-primary); font-family: monospace;">${pad(min)}:${pad(sec)}</strong>`;
+                }
+
+                // Background polling to fetch data.json every 30 seconds
+                function startBackgroundPolling() {
+                    setInterval(async () => {
+                        try {
+                            const res = await fetch('data.json?t=' + new Date().getTime());
+                            if (res.ok) {
+                                const newData = await res.json();
+                                if (newData.last_updated !== data.last_updated) {
+                                    console.log("New data detected! Auto-updating dashboard...");
+                                    window.HISTORICAL_DATA = newData;
+                                    data = newData;
+                                    processData();
+                                    renderDashboard();
+                                    latestUpdateEl.classList.remove('pulse-glow');
+                                }
+                            }
+                        } catch (e) {
+                            console.error("Background data polling failed:", e);
+                        }
+                    }, 30000); // 30 seconds
+                }
+
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+                startBackgroundPolling();
+            }
+
+            // RUN INITIALIZATION
+            buildStockTabs();
+            buildDRTabs();
+            updateTheme();
+            processData();
+            renderDashboard();
+            initCalculatorOptions();
+            initUpdateTimer();
+            };
+            if (typeof window.HISTORICAL_DATA !== 'undefined') {
+                runDashboardInit();
+            }
+        });
+    </script>
+</body>
+</html>
