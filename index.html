@@ -164,6 +164,8 @@
             cursor: pointer;
             transition: var(--transition);
             font-size: 0.95rem;
+            flex: 1 1 auto;       /* stretch to fill tab bar width */
+            text-align: center;
         }
 
         .stock-btn:hover {
@@ -217,6 +219,8 @@
             cursor: pointer;
             transition: var(--transition);
             font-size: 0.85rem;
+            flex: 1 1 auto;       /* stretch to fill dr tab bar width */
+            text-align: center;
         }
 
         .dr-btn:hover {
@@ -263,9 +267,16 @@
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(5, 1fr); /* always 5 equal columns, no orphan cards */
             gap: 1.5rem;
             margin-bottom: 2rem;
+        }
+
+        /* At narrower desktop/tablet widths, drop to 3 columns */
+        @media (max-width: 1100px) and (min-width: 769px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         .stat-card {
@@ -802,7 +813,7 @@
             }
             .stock-tabs::-webkit-scrollbar { display: none; }
             .stock-btn {
-                flex-shrink: 0;
+                flex: 0 0 auto; /* override desktop flex:1, prevent growth in scroll container */
                 padding: 0.625rem 1rem;
                 font-size: 0.85rem;
                 min-height: 44px;
@@ -828,7 +839,7 @@
             }
             .dr-tabs::-webkit-scrollbar { display: none; }
             .dr-btn {
-                flex-shrink: 0;
+                flex: 0 0 auto; /* override desktop flex:1, prevent growth in scroll container */
                 padding: 0.625rem 1rem;
                 font-size: 0.82rem;
                 min-height: 44px;
