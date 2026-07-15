@@ -854,39 +854,51 @@
                 white-space: nowrap;
             }
 
-            /* ③ Stats grid – 2 columns on mobile */
+            /* ③ Stats grid – full width single column on mobile (matches chart width) */
             .stats-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
                 gap: 0.75rem;
                 margin-bottom: 1.25rem;
             }
             .stat-card {
-                padding: 1rem 0.875rem;
+                padding: 1rem 1.125rem;
                 border-radius: 14px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
             }
             .stat-card:hover {
-                transform: none; /* disable hover lift on touch */
+                transform: none;
             }
             .stat-title {
-                font-size: 0.72rem;
-                margin-bottom: 0.375rem;
+                font-size: 0.75rem;
+                margin-bottom: 0.2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
             }
             .stat-value {
-                font-size: 1.4rem;
-                margin-bottom: 0.2rem;
+                font-size: 1.5rem;
+                margin-bottom: 0;
             }
-            /* Range card spans full width since it has 2 values */
+            /* Range card no longer needs special spanning */
             #card-range {
-                grid-column: 1 / -1;
+                grid-column: auto;
             }
             #card-range .stat-value {
-                font-size: 1.2rem !important;
+                font-size: 1.4rem !important;
             }
             .stat-desc {
                 font-size: 0.72rem;
             }
             .stat-icon {
-                display: none; /* hide icons on mobile to save space */
+                display: none;
+            }
+            /* Left section of stat card (label + desc), right section (value) */
+            .stat-card .stat-title,
+            .stat-card .stat-desc {
+                flex: 1;
             }
 
             /* ④ Chart – taller on mobile for readability */
