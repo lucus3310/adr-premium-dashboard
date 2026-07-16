@@ -8,8 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Chart.js -->
+    <!-- Chart.js and Zoom Plugins -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -388,8 +390,34 @@
 
         .chart-legend {
             display: flex;
+            align-items: center;
             gap: 1rem;
             font-size: 0.85rem;
+        }
+
+        .chart-reset-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .chart-reset-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .chart-reset-btn:active {
+            transform: scale(0.95);
         }
 
         .legend-item {
@@ -918,7 +946,7 @@
                 margin-bottom: 1.25rem;
             }
             .chart-card {
-                padding: 1.125rem 1rem;
+                padding: 1.125rem 1.125rem;
                 min-height: unset;
                 border-radius: 16px;
             }
@@ -994,7 +1022,7 @@
 
             /* ⑥ Table – simplified on mobile */
             .table-card {
-                padding: 1.125rem 0.875rem;
+                padding: 1.125rem 1.125rem;
                 border-radius: 16px;
             }
             .table-header {
@@ -1223,6 +1251,10 @@
                         <button class="chart-toggle-btn" id="btn-chart-daily">📅 日線歷史</button>
                     </div>
                     <div class="chart-legend">
+                        <button id="btn-reset-zoom" class="chart-reset-btn" style="display: none; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.72rem; margin-right: 0.5rem; align-items: center; gap: 0.25rem;">
+                            <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M2.5 2v6h6M21.5 22v-6h-6M22 11.5A10 10 0 0 0 3.2 7.2L2.5 8M2 12.5a10 10 0 0 0 18.8 4.3l.7-.8"/></svg>
+                            重置縮放
+                        </button>
                         <div class="legend-item">
                             <div class="legend-color"></div>
                             <span id="legend-label">溢價率 (%)</span>
@@ -1730,6 +1762,30 @@
                                         return '#d1d5db';
                                     }
                                 }
+                            },
+                            zoom: {
+                                pan: {
+                                    enabled: true,
+                                    mode: 'x',
+                                    onPan: function() {
+                                        const resetBtn = document.getElementById('btn-reset-zoom');
+                                        if (resetBtn) resetBtn.style.display = 'inline-flex';
+                                    }
+                                },
+                                zoom: {
+                                    wheel: {
+                                        enabled: true,
+                                        speed: 0.1
+                                    },
+                                    pinch: {
+                                        enabled: true
+                                    },
+                                    mode: 'x',
+                                    onZoom: function() {
+                                        const resetBtn = document.getElementById('btn-reset-zoom');
+                                        if (resetBtn) resetBtn.style.display = 'inline-flex';
+                                    }
+                                }
                             }
                         },
                         scales: {
@@ -1769,6 +1825,9 @@
                 const timeframeGroup = document.querySelector('.timeframe-group');
                 const theme = STOCK_THEMES[currentStock] || STOCK_THEMES.tsmc;
                 
+                const resetBtn = document.getElementById('btn-reset-zoom');
+                if (resetBtn) resetBtn.style.display = 'none';
+
                 const ctx = document.getElementById('premiumChart').getContext('2d');
                 if (chartInstance) {
                     chartInstance.destroy();
@@ -2192,6 +2251,17 @@
                     renderTable();
                 }
             });
+
+            // Reset Zoom Click Event
+            const btnResetZoom = document.getElementById('btn-reset-zoom');
+            if (btnResetZoom) {
+                btnResetZoom.addEventListener('click', () => {
+                    if (chartInstance) {
+                        chartInstance.resetZoom();
+                        btnResetZoom.style.display = 'none';
+                    }
+                });
+            }
 
             // Mobile calculator collapsible toggle
             const mobileCalcToggle = document.getElementById('mobile-calc-toggle');
