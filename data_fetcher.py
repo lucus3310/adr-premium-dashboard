@@ -349,39 +349,71 @@ def fetch_data():
             }
 
     print("\n=== Step 3: Compiling Master JSON outputs ===")
-    
+
     master_output = {
         "metadata": STOCKS_CONFIG,
         "last_updated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "series": series_data
     }
-    
-    # Preserve intraday_1m from existing data.json if present
+
+    # Preserve intraday_1m AND merge history from existing data.json.
+    # Critical: if Binance API is unreachable (GitHub Actions cloud),
+    # the new history would be empty/short. We merge so no historical rows are lost.
     try:
         json_path = "data.json"
         if os.path.exists(json_path):
-            with open(json_path, "r", encoding="utf-8") as f:
-                old_data = json.load(f)
-            
+            with open(json_path, "r", encoding="utf-8") as f_old:
+                old_data = json.load(f_old)
+
             if "series" in old_data and "skhynix_binance" in old_data["series"]:
                 old_binance = old_data["series"]["skhynix_binance"]
-                if "intraday_1m" in old_binance and "skhynix_binance" in master_output["series"]:
-                    master_output["series"]["skhynix_binance"]["intraday_1m"] = old_binance["intraday_1m"]
+
+                if "skhynix_binance" in master_output["series"]:
+                    new_binance = master_output["series"]["skhynix_binance"]
+
+                    # --- Preserve intraday_1m ---
+                    if "intraday_1m" in old_binance:
+                        new_binance["intraday_1m"] = old_binance["intraday_1m"]
+
+                    # --- Merge history: old rows + new rows, new wins on same date ---
+                    old_history = old_binance.get("history", [])
+                    new_history = new_binance.get("history", [])
+
+                    if old_history:
+                        history_map = {r["date"]: r for r in old_history}
+                        for r in new_history:
+                            history_map[r["date"]] = r  # new data overwrites same date
+                        merged_history = sorted(history_map.values(), key=lambda x: x["date"])
+                        new_binance["history"] = merged_history
+
+                        # Re-compute stats from merged history
+                        prems = [r["premium"] for r in merged_history if r.get("premium") is not None]
+                        if prems:
+                            new_binance["stats"] = {
+                                "mean": round(float(np.mean(prems)), 4),
+                                "median": round(float(np.median(prems)), 4),
+                                "min": round(float(np.min(prems)), 4),
+                                "max": round(float(np.max(prems)), 4),
+                                "std": round(float(np.std(prems)), 4),
+                                "latest": round(float(prems[-1]), 4)
+                            }
+                        print(f"  skhynix_binance history merged: {len(old_history)} old + {len(new_history)} new -> {len(merged_history)} total rows")
+
     except Exception as e:
-        print(f"Error preserving intraday_1m during master compile: {e}")
-        
+        print(f"Error preserving/merging skhynix_binance data: {e}")
+
     # Save to data.json
     json_path = "data.json"
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(master_output, f, ensure_ascii=False, indent=2)
     print(f"Saved {json_path}")
-    
+
     # Save to data.js
     js_path = "data.js"
     with open(js_path, "w", encoding="utf-8") as f:
         f.write("window.HISTORICAL_DATA = " + json.dumps(master_output, ensure_ascii=False, indent=2) + ";")
     print(f"Saved {js_path}")
-    
+
     print("\nData update process complete!")
 
 if __name__ == "__main__":
