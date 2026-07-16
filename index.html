@@ -1659,19 +1659,35 @@
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',       // snap to nearest x position (touch-friendly)
+                            intersect: false     // trigger even if finger/cursor not exactly on point
+                        },
                         plugins: {
                             legend: {
                                 display: false
                             },
                             tooltip: {
-                                backgroundColor: 'rgba(11, 15, 25, 0.95)',
+                                enabled: true,
+                                backgroundColor: 'rgba(11, 15, 25, 0.96)',
                                 titleColor: '#f3f4f6',
-                                bodyColor: '#9ca3af',
-                                borderColor: 'rgba(255, 255, 255, 0.15)',
+                                bodyColor: '#d1d5db',
+                                borderColor: 'rgba(255, 255, 255, 0.18)',
                                 borderWidth: 1,
-                                padding: 12,
+                                padding: { x: 14, y: 12 },
                                 boxPadding: 6,
+                                displayColors: false,   // hide color square, cleaner look
+                                titleFont: { size: 13, weight: 'bold' },
+                                bodyFont: { size: 12 },
+                                cornerRadius: 10,
+                                caretSize: 6,
                                 callbacks: {
+                                    title: function(contexts) {
+                                        // Show date or time as the tooltip title
+                                        const idx = contexts[0].dataIndex;
+                                        const record = dataset[idx];
+                                        return record.date || record.time || contexts[0].label || '';
+                                    },
                                     label: function(context) {
                                         const idx = context.dataIndex;
                                         const record = dataset[idx];
@@ -1679,25 +1695,39 @@
                                         const drInfo = stockInfo.dr_listings[currentDr];
                                         const localCurrency = drInfo.override_local_currency || stockInfo.local_currency;
                                         const drCurrency = drInfo.currency;
-                                        
+                                        const prem = record.premium;
+                                        const sign = prem >= 0 ? '+' : '';
+                                        const arrow = prem >= 0 ? '▲' : '▼';
+
                                         if (record.fx !== undefined) {
+                                            // Daily history record
+                                            const equivSingle = record.equiv / drInfo.ratio;
                                             return [
-                                                `折溢價率: ${context.formattedValue}%`,
-                                                `原股價格: ${record.local.toLocaleString()} ${localCurrency}`,
-                                                `海外存託: ${record.adr.toLocaleString()} ${drCurrency}`,
-                                                `適用匯率: ${record.fx.toFixed(4)} (${drCurrency}➔${localCurrency})`,
-                                                `折合單股價: ${(record.equiv / drInfo.ratio).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${localCurrency}`
+                                                `${arrow} 折溢價率：${sign}${prem.toFixed(4)}%`,
+                                                `原股收盤：${record.local.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${localCurrency}`,
+                                                `海外存託：${record.adr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`,
+                                                `適用匯率：${record.fx.toFixed(4)} ${drCurrency}→${localCurrency}`,
+                                                `DR 折合單股：${equivSingle.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${localCurrency}`
                                             ];
                                         } else {
-                                            // Binance intraday item structure
+                                            // Binance intraday (15m or 1m) record
                                             const equivInDr = record.adr / drInfo.ratio;
                                             return [
-                                                `折溢價率: ${context.formattedValue}%`,
-                                                `原股合約: ${record.local.toLocaleString()} ${localCurrency}`,
-                                                `海外合約: ${record.adr.toLocaleString()} ${drCurrency}`,
-                                                `折合單股價: ${equivInDr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`
+                                                `${arrow} 折溢價率：${sign}${prem.toFixed(4)}%`,
+                                                `原股合約：${record.local.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${localCurrency}`,
+                                                `海外合約：${record.adr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`,
+                                                `DR 折合單股：${equivInDr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`
                                             ];
                                         }
+                                    },
+                                    labelTextColor: function(context) {
+                                        // Color premium line based on value
+                                        const idx = context.dataIndex;
+                                        const prem = dataset[idx]?.premium;
+                                        if (context.datasetIndex === 0) {
+                                            return prem >= 0 ? '#34d399' : '#f87171';
+                                        }
+                                        return '#d1d5db';
                                     }
                                 }
                             }
