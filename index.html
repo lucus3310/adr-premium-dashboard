@@ -1252,7 +1252,8 @@
                     </div>
                     <!-- Binance Toggle buttons -->
                     <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none; margin-left: 1rem; align-items: center; gap: 0.5rem;">
-                        <button class="chart-toggle-btn active" id="btn-chart-live">📊 15分鐘</button>
+                        <button class="chart-toggle-btn active" id="btn-chart-live-1m">📊 1分鐘即時</button>
+                        <button class="chart-toggle-btn" id="btn-chart-live">📊 15分鐘</button>
                         <button class="chart-toggle-btn" id="btn-chart-daily">📅 日線歷史</button>
                         <select id="binance-date-select" style="display: none; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--card-border); color: var(--text-primary); padding: 0.3rem 0.6rem; border-radius: 8px; font-size: 0.75rem; cursor: pointer; outline: none; font-family: 'Outfit', sans-serif; font-weight: 500;">
                         </select>
@@ -1436,7 +1437,7 @@
             const rowsPerPage = () => window.innerWidth <= 768 ? 10 : 15;
             let filteredHistory = [];
             let chartInstance = null;
-            let activeBinanceChartView = 'live';
+            let activeBinanceChartView = 'live_1m';
             let fxDirectionFlipped = false;
 
             // DOM Elements
@@ -1503,8 +1504,9 @@
                             fxDirectionFlipped = false; // Reset FX conversion direction
                             
                             // Reset Binance chart view states
-                            activeBinanceChartView = 'live';
-                            document.getElementById('btn-chart-live').classList.add('active');
+                            activeBinanceChartView = 'live_1m';
+                            document.getElementById('btn-chart-live-1m').classList.add('active');
+                            document.getElementById('btn-chart-live').classList.remove('active');
                             document.getElementById('btn-chart-daily').classList.remove('active');
                             
                             buildDRTabs();
@@ -1545,8 +1547,9 @@
                             fxDirectionFlipped = false; // Reset FX conversion direction
                             
                             // Reset Binance chart view states
-                            activeBinanceChartView = 'live';
-                            document.getElementById('btn-chart-live').classList.add('active');
+                            activeBinanceChartView = 'live_1m';
+                            document.getElementById('btn-chart-live-1m').classList.add('active');
+                            document.getElementById('btn-chart-live').classList.remove('active');
                             document.getElementById('btn-chart-daily').classList.remove('active');
                             
                             // Set active class
@@ -1615,9 +1618,26 @@
 
             // 5. Update Statistics cards
             function renderStats() {
-                if (filteredHistory.length === 0) {
+                const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                let datasetForStats = filteredHistory;
+                let latestDateText = '';
+
+                if (isBinance && activeBinanceChartView === 'live_1m') {
+                    const seriesKey = `${currentStock}_${currentDr}`;
+                    datasetForStats = data.series[seriesKey]?.intraday_1m || [];
+                    latestDateText = '即時 (1分鐘)';
+                } else if (isBinance && activeBinanceChartView === 'live') {
+                    const seriesKey = `${currentStock}_${currentDr}`;
+                    const dateSelect = document.getElementById('binance-date-select');
+                    const selectedDate = dateSelect ? dateSelect.value : '';
+                    const data15m = data.series[seriesKey]?.intraday_15m || [];
+                    datasetForStats = data15m.filter(item => item.time && item.time.startsWith(selectedDate));
+                    latestDateText = `15分鐘 (${selectedDate})`;
+                }
+
+                if (datasetForStats.length === 0) {
                     valLatest.innerText = '--';
-                    descLatest.innerText = '無收盤價數據';
+                    descLatest.innerText = '無數據';
                     valMean.innerText = '--';
                     valMedian.innerText = '--';
                     valRange.innerText = '--';
@@ -1625,16 +1645,21 @@
                     return;
                 }
 
-                const latestRecord = filteredHistory[filteredHistory.length - 1];
+                const latestRecord = datasetForStats[datasetForStats.length - 1];
                 const latestPrem = latestRecord.premium;
                 
                 // Latest close value & style
                 valLatest.innerText = (latestPrem >= 0 ? '+' : '') + latestPrem.toFixed(2) + '%';
                 valLatest.className = 'stat-value ' + (latestPrem >= 0 ? 'up' : 'down');
-                descLatest.innerText = `交易收盤日期: ${latestRecord.date}`;
+                
+                if (latestDateText) {
+                    descLatest.innerText = `交易時間: ${latestDateText} ${latestRecord.time}`;
+                } else {
+                    descLatest.innerText = `交易收盤日期: ${latestRecord.date}`;
+                }
 
                 // Calculate arrays of clean values
-                const prems = filteredHistory
+                const prems = datasetForStats
                     .map(item => item.premium)
                     .filter(v => v !== null && !isNaN(v));
 
@@ -1866,7 +1891,21 @@
 
                     const dateSelect = document.getElementById('binance-date-select');
 
-                    if (activeBinanceChartView === 'live') {
+                    if (activeBinanceChartView === 'live_1m') {
+                        // Hide date select and dim timeframe selector
+                        dateSelect.style.display = 'none';
+                        timeframeGroup.style.opacity = '0.35';
+                        timeframeGroup.style.pointerEvents = 'none';
+
+                        const data1m = seriesData.intraday_1m || [];
+                        if (data1m.length > 0) {
+                            chartInstance = createLineChart(ctx, data1m, `1 分鐘即時折溢價率 (%) (近60分鐘)`, theme);
+                        } else {
+                            chartInstance = createLineChart(ctx,
+                                [{time: '暫無數據', local: 0, adr: 0, premium: 0}],
+                                '1 分鐘即時折溢價率 (%)', theme);
+                        }
+                    } else if (activeBinanceChartView === 'live') {
                         // Dim timeframe selector (not applicable to 15m intraday)
                         timeframeGroup.style.opacity = '0.35';
                         timeframeGroup.style.pointerEvents = 'none';
@@ -1903,12 +1942,12 @@
                             const selectedDate = dateSelect.value;
                             const filtered15m = data15m.filter(item => item.time && item.time.startsWith(selectedDate));
                             
-                            chartInstance = createLineChart(ctx, filtered15m, `15 分鐘溢價率 (%) — ${selectedDate}`, theme);
+                            chartInstance = createLineChart(ctx, filtered15m, `15 分鐘折溢價率 (%) — ${selectedDate}`, theme);
                         } else {
                             dateSelect.style.display = 'none';
                             chartInstance = createLineChart(ctx,
                                 [{time: '暫無數據', local: 0, adr: 0, premium: 0}],
-                                '15 分鐘溢價率 (%)', theme);
+                                '15 分鐘折溢價率 (%)', theme);
                         }
                     } else {
                         // Daily history view
@@ -1917,7 +1956,7 @@
                         timeframeGroup.style.pointerEvents = 'auto';
 
                         if (filteredHistory.length > 0) {
-                            chartInstance = createLineChart(ctx, filteredHistory, '日線級別歷史溢價 (%)', theme);
+                            chartInstance = createLineChart(ctx, filteredHistory, '日線級別歷史折溢價 (%)', theme);
                         }
                     }
                 }
@@ -2263,11 +2302,23 @@
             });
 
             // Bind click events to Binance Chart Toggle buttons
+            document.getElementById('btn-chart-live-1m').addEventListener('click', () => {
+                if (activeBinanceChartView === 'live_1m') return;
+                activeBinanceChartView = 'live_1m';
+                document.getElementById('btn-chart-live-1m').classList.add('active');
+                document.getElementById('btn-chart-live').classList.remove('active');
+                document.getElementById('btn-chart-daily').classList.remove('active');
+                renderStats();
+                renderChart();
+            });
+
             document.getElementById('btn-chart-live').addEventListener('click', () => {
                 if (activeBinanceChartView === 'live') return;
                 activeBinanceChartView = 'live';
                 document.getElementById('btn-chart-live').classList.add('active');
+                document.getElementById('btn-chart-live-1m').classList.remove('active');
                 document.getElementById('btn-chart-daily').classList.remove('active');
+                renderStats();
                 renderChart();
             });
 
@@ -2276,6 +2327,8 @@
                 activeBinanceChartView = 'daily';
                 document.getElementById('btn-chart-daily').classList.add('active');
                 document.getElementById('btn-chart-live').classList.remove('active');
+                document.getElementById('btn-chart-live-1m').classList.remove('active');
+                renderStats();
                 renderChart();
             });
 
@@ -2460,6 +2513,70 @@
                 startBackgroundPolling();
             }
 
+            // Periodically fetch live prices from Binance API in browser
+            function startLiveBinanceUpdates() {
+                setInterval(async () => {
+                    const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                    if (!isBinance) return;
+
+                    try {
+                        const [resDr, resLocal] = await Promise.all([
+                            fetch('https://fapi.binance.com/fapi/v1/ticker/price?symbol=SKHYUSDT'),
+                            fetch('https://fapi.binance.com/fapi/v1/ticker/price?symbol=SKHYNIXUSDT')
+                        ]);
+                        
+                        if (!resDr.ok || !resLocal.ok) return;
+                        
+                        const dataDr = await resDr.json();
+                        const dataLocal = await resLocal.json();
+                        
+                        const priceDr = parseFloat(dataDr.price);
+                        const priceLocal = parseFloat(dataLocal.price);
+                        
+                        if (isNaN(priceDr) || isNaN(priceLocal)) return;
+                        
+                        const ratio = 0.1;
+                        const premium = ((priceDr / ratio) / priceLocal - 1) * 100;
+                        
+                        const now = new Date();
+                        const timeStr = now.toTimeString().split(' ')[0]; // "HH:MM:SS"
+                        
+                        const seriesKey = 'skhynix_binance';
+                        if (data.series && data.series[seriesKey]) {
+                            const binanceSeries = data.series[seriesKey];
+                            if (!binanceSeries.intraday_1m) {
+                                binanceSeries.intraday_1m = [];
+                            }
+                            
+                            // Check if the last record has the same time to avoid duplicates
+                            const lastRecord = binanceSeries.intraday_1m[binanceSeries.intraday_1m.length - 1];
+                            if (lastRecord && lastRecord.time === timeStr) {
+                                return;
+                            }
+                            
+                            binanceSeries.intraday_1m.push({
+                                "time": timeStr,
+                                "local": priceLocal,
+                                "adr": priceDr,
+                                "premium": parseFloat(premium.toFixed(4))
+                            });
+                            
+                            if (binanceSeries.intraday_1m.length > 60) {
+                                binanceSeries.intraday_1m.shift();
+                            }
+                            
+                            // Re-render chart if the active view is live_1m
+                            if (activeBinanceChartView === 'live_1m') {
+                                renderStats();
+                                renderChart();
+                            }
+                        }
+                    } catch (e) {
+                        console.error('Error fetching live Binance prices:', e);
+                    }
+                }, 60000); // every 60 seconds (1 minute)
+            }
+
             // RUN INITIALIZATION
             buildStockTabs();
             buildDRTabs();
@@ -2468,6 +2585,7 @@
             renderDashboard();
             initCalculatorOptions();
             initUpdateTimer();
+            startLiveBinanceUpdates();
             };
             if (typeof window.HISTORICAL_DATA !== 'undefined') {
                 runDashboardInit();
