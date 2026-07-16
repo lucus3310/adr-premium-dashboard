@@ -161,6 +161,49 @@ def get_binance_klines(symbol, interval="1d", limit=1000, time_format="%Y-%m-%d"
     except Exception as e:
         print(f"Error fetching Binance klines for {symbol}: {e}")
         return pd.DataFrame(columns=["Close"])
+def get_binance_15m_premium(dr_symbol, local_symbol, ratio, limit=192):
+    """
+    Fetches 15-minute klines for both dr and local Binance Futures symbols,
+    aligns them by timestamp, calculates premium, and returns a list of records.
+    limit=192 covers the last 48 hours (192 x 15min = 48h).
+    Time labels are expressed in UTC+8 for readability.
+    """
+    url_dr = f"https://fapi.binance.com/fapi/v1/klines?symbol={dr_symbol}&interval=15m&limit={limit}"
+    url_local = f"https://fapi.binance.com/fapi/v1/klines?symbol={local_symbol}&interval=15m&limit={limit}"
+    try:
+        req_dr = urllib.request.Request(url_dr, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req_dr, timeout=10) as r:
+            data_dr = json.loads(r.read().decode())
+
+        req_local = urllib.request.Request(url_local, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req_local, timeout=10) as r:
+            data_local = json.loads(r.read().decode())
+
+        # Build timestamp -> close price dicts
+        dr_prices = {item[0]: float(item[4]) for item in data_dr}
+        local_prices = {item[0]: float(item[4]) for item in data_local}
+
+        # Join on common timestamps
+        common_ts = sorted(set(dr_prices.keys()) & set(local_prices.keys()))
+        records = []
+        for ts in common_ts:
+            dt_utc = datetime.datetime.fromtimestamp(ts / 1000.0, tz=datetime.timezone.utc)
+            dt_local = dt_utc + datetime.timedelta(hours=8)  # Convert to UTC+8
+            time_str = dt_local.strftime("%m-%d %H:%M")
+            price_dr = dr_prices[ts]
+            price_local = local_prices[ts]
+            premium = ((price_dr / ratio) / price_local - 1) * 100
+            records.append({
+                "time": time_str,
+                "local": round(price_local, 4),
+                "adr": round(price_dr, 4),
+                "premium": round(premium, 4)
+            })
+        print(f"  Binance 15m premium: fetched {len(records)} candles for {dr_symbol}/{local_symbol}")
+        return records
+    except Exception as e:
+        print(f"Error fetching Binance 15m premium for {dr_symbol}/{local_symbol}: {e}")
+        return []
 
 def get_live_price(symbol, ticker_obj):
     """
@@ -347,6 +390,12 @@ def fetch_data():
                 "stats": calculate_stats(merged, "premium_pct"),
                 "history": format_history(merged)
             }
+
+    # --- Fetch Binance 15m intraday premium (48h window, auto-refreshes every run) ---
+    print("\nFetching Binance 15m intraday premium for skhynix_binance...")
+    records_15m = get_binance_15m_premium("SKHYUSDT", "SKHYNIXUSDT", ratio=0.1, limit=192)
+    if records_15m and "skhynix_binance" in series_data:
+        series_data["skhynix_binance"]["intraday_15m"] = records_15m
 
     print("\n=== Step 3: Compiling Master JSON outputs ===")
 

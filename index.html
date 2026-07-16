@@ -1219,7 +1219,7 @@
                     </div>
                     <!-- Binance Toggle buttons -->
                     <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none; margin-left: 1rem;">
-                        <button class="chart-toggle-btn active" id="btn-chart-live">⚡ 即時溢價</button>
+                        <button class="chart-toggle-btn active" id="btn-chart-live">📊 15分鐘</button>
                         <button class="chart-toggle-btn" id="btn-chart-daily">📅 日線歷史</button>
                     </div>
                     <div class="chart-legend">
@@ -1766,15 +1766,17 @@
                     if (!seriesData) return;
 
                     if (activeBinanceChartView === 'live') {
-                        // Dim timeframe selector (not applicable to live 1m)
+                        // Dim timeframe selector (not applicable to 15m intraday)
                         timeframeGroup.style.opacity = '0.35';
                         timeframeGroup.style.pointerEvents = 'none';
 
-                        const liveData = seriesData.intraday_1m || [];
-                        if (liveData.length > 0) {
-                            chartInstance = createLineChart(ctx, liveData, '即時 1 分鐘溢價 (%)', theme);
+                        const data15m = seriesData.intraday_15m || [];
+                        if (data15m.length > 0) {
+                            chartInstance = createLineChart(ctx, data15m, '15 分鐘溢價率 (%) — 近 48 小時', theme);
                         } else {
-                            chartInstance = createLineChart(ctx, [{time: '無即時數據', local: 0, adr: 0, premium: 0}], '即時 1 分鐘溢價 (%)', theme);
+                            chartInstance = createLineChart(ctx,
+                                [{time: '暫無數據', local: 0, adr: 0, premium: 0}],
+                                '15 分鐘溢價率 (%)', theme);
                         }
                     } else {
                         // Enable timeframe selector
