@@ -439,6 +439,8 @@
             flex-grow: 1;
             width: 100%;
             height: 380px;
+            overflow: hidden;
+            min-width: 0;
         }
 
         /* Calculator Styles */
@@ -963,6 +965,8 @@
             }
             .chart-wrapper {
                 height: 260px;
+                overflow: hidden;
+                min-width: 0;
             }
             .chart-toggle-group {
                 order: 3;
@@ -1246,9 +1250,11 @@
                         <span id="chart-main-title">折溢價率波動趨勢</span>
                     </div>
                     <!-- Binance Toggle buttons -->
-                    <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none; margin-left: 1rem;">
+                    <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none; margin-left: 1rem; align-items: center; gap: 0.5rem;">
                         <button class="chart-toggle-btn active" id="btn-chart-live">📊 15分鐘</button>
                         <button class="chart-toggle-btn" id="btn-chart-daily">📅 日線歷史</button>
+                        <select id="binance-date-select" style="display: none; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--card-border); color: var(--text-primary); padding: 0.3rem 0.6rem; border-radius: 8px; font-size: 0.75rem; cursor: pointer; outline: none; font-family: 'Outfit', sans-serif; font-weight: 500;">
+                        </select>
                     </div>
                     <div class="chart-legend">
                         <button id="btn-reset-zoom" class="chart-reset-btn" style="display: none; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.72rem; margin-right: 0.5rem; align-items: center; gap: 0.25rem;">
@@ -1681,8 +1687,10 @@
                             pointBorderColor: '#0b0f19',
                             pointHoverBackgroundColor: '#ffffff',
                             pointHoverBorderColor: mainColor,
-                            pointRadius: dates.length > 150 ? 0 : (dates.length > 50 ? 1 : 3),
-                            pointHoverRadius: 5,
+                            pointRadius: (labelText.includes('15 分鐘') || labelText.includes('即時') || labelText.includes('15分鐘'))
+                                ? 3
+                                : (dates.length > 150 ? 0 : (dates.length > 50 ? 1 : 3)),
+                            pointHoverRadius: (labelText.includes('15 分鐘') || labelText.includes('即時') || labelText.includes('15分鐘')) ? 7 : 5,
                             tension: 0.1,
                             fill: true,
                             backgroundColor: chartGradient
@@ -1836,6 +1844,7 @@
                 if (!isBinance) {
                     // Hide toggle, enable timeframe
                     toggleGroup.style.display = 'none';
+                    document.getElementById('binance-date-select').style.display = 'none';
                     timeframeGroup.style.opacity = '1';
                     timeframeGroup.style.pointerEvents = 'auto';
 
@@ -1854,6 +1863,8 @@
                     const seriesData = data.series[seriesKey];
                     if (!seriesData) return;
 
+                    const dateSelect = document.getElementById('binance-date-select');
+
                     if (activeBinanceChartView === 'live') {
                         // Dim timeframe selector (not applicable to 15m intraday)
                         timeframeGroup.style.opacity = '0.35';
@@ -1861,14 +1872,46 @@
 
                         const data15m = seriesData.intraday_15m || [];
                         if (data15m.length > 0) {
-                            chartInstance = createLineChart(ctx, data15m, '15 分鐘溢價率 (%) — 近 48 小時', theme);
+                            // Extract unique dates from the timestamp (e.g. "07-16 10:30" -> "07-16")
+                            const datesSet = new Set();
+                            data15m.forEach(item => {
+                                if (item.time && item.time.length >= 5) {
+                                    datesSet.add(item.time.substring(0, 5));
+                                }
+                            });
+                            const uniqueDates = Array.from(datesSet).sort();
+                            
+                            // Dynamically populate options if list changed
+                            const currentOptions = Array.from(dateSelect.options).map(o => o.value);
+                            if (JSON.stringify(currentOptions) !== JSON.stringify(uniqueDates)) {
+                                dateSelect.innerHTML = '';
+                                uniqueDates.forEach(d => {
+                                    const opt = document.createElement('option');
+                                    opt.value = d;
+                                    opt.innerText = d;
+                                    dateSelect.appendChild(opt);
+                                });
+                                if (uniqueDates.length > 0) {
+                                    dateSelect.value = uniqueDates[uniqueDates.length - 1]; // select latest
+                                }
+                            }
+                            
+                            dateSelect.style.display = 'inline-block';
+                            
+                            // Filter data to only show points matching selected date
+                            const selectedDate = dateSelect.value;
+                            const filtered15m = data15m.filter(item => item.time && item.time.startsWith(selectedDate));
+                            
+                            chartInstance = createLineChart(ctx, filtered15m, `15 分鐘溢價率 (%) — ${selectedDate}`, theme);
                         } else {
+                            dateSelect.style.display = 'none';
                             chartInstance = createLineChart(ctx,
                                 [{time: '暫無數據', local: 0, adr: 0, premium: 0}],
                                 '15 分鐘溢價率 (%)', theme);
                         }
                     } else {
-                        // Enable timeframe selector
+                        // Daily history view
+                        dateSelect.style.display = 'none';
                         timeframeGroup.style.opacity = '1';
                         timeframeGroup.style.pointerEvents = 'auto';
 
@@ -2232,6 +2275,10 @@
                 activeBinanceChartView = 'daily';
                 document.getElementById('btn-chart-daily').classList.add('active');
                 document.getElementById('btn-chart-live').classList.remove('active');
+                renderChart();
+            });
+
+            document.getElementById('binance-date-select').addEventListener('change', () => {
                 renderChart();
             });
 
