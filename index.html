@@ -1416,8 +1416,41 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             runDashboardInit = () => {
-                const data = window.HISTORICAL_DATA;
+                let data = window.HISTORICAL_DATA;
             if (!data) return;
+
+            // Clean and initialize 1-minute Binance data to filter out stale data (>1 hour)
+            const seriesKey = 'skhynix_binance';
+            if (data.series && data.series[seriesKey]) {
+                const binanceSeries = data.series[seriesKey];
+                
+                const getCleanIntraday1m = () => {
+                    const jsonPoints = binanceSeries.intraday_1m || [];
+                    let localPoints = [];
+                    try {
+                        const stored = localStorage.getItem('binance_intraday_1m');
+                        if (stored) {
+                            localPoints = JSON.parse(stored);
+                        }
+                    } catch (e) {}
+                    
+                    const oneHourAgo = Date.now() - 60 * 60 * 1000;
+                    const allPoints = [...jsonPoints, ...localPoints];
+                    
+                    const uniquePointsMap = new Map();
+                    allPoints.forEach(item => {
+                        if (item.timestamp && item.timestamp > oneHourAgo) {
+                            uniquePointsMap.set(item.timestamp, item);
+                        }
+                    });
+                    
+                    return Array.from(uniquePointsMap.values())
+                        .sort((a, b) => a.timestamp - b.timestamp)
+                        .slice(-60);
+                };
+                
+                binanceSeries.intraday_1m = getCleanIntraday1m();
+            }
 
             // Global stock styling themes map
             const STOCK_THEMES = {
@@ -2588,12 +2621,18 @@
                             "time": timeStr,
                             "local": latestPriceLocal,
                             "adr": latestPriceDr,
-                            "premium": parseFloat(premium.toFixed(4))
+                            "premium": parseFloat(premium.toFixed(4)),
+                            "timestamp": Date.now()
                         });
                         
                         if (binanceSeries.intraday_1m.length > 60) {
                             binanceSeries.intraday_1m.shift();
                         }
+                        
+                        // Save to localStorage
+                        try {
+                            localStorage.setItem('binance_intraday_1m', JSON.stringify(binanceSeries.intraday_1m));
+                        } catch (e) {}
                         
                         // Re-render chart if the active view is live_1m
                         if (activeBinanceChartView === 'live_1m') {

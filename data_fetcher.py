@@ -197,7 +197,8 @@ def get_binance_15m_premium(dr_symbol, local_symbol, ratio, limit=192):
                 "time": time_str,
                 "local": round(price_local, 4),
                 "adr": round(price_dr, 4),
-                "premium": round(premium, 4)
+                "premium": round(premium, 4),
+                "timestamp": ts
             })
         print(f"  Binance 15m premium: fetched {len(records)} candles for {dr_symbol}/{local_symbol}")
         return records
@@ -241,7 +242,8 @@ def get_binance_1m_premium(dr_symbol, local_symbol, ratio, limit=60):
                 "time": time_str,
                 "local": round(price_local, 4),
                 "adr": round(price_dr, 4),
-                "premium": round(premium, 4)
+                "premium": round(premium, 4),
+                "timestamp": ts
             })
         print(f"  Binance 1m premium: fetched {len(records)} candles for {dr_symbol}/{local_symbol}")
         return records
