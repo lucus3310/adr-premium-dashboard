@@ -794,9 +794,34 @@
         @media (max-width: 768px) {
 
             /* ① Shrink body padding & support iOS safe area */
+            html, body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
             body {
                 padding: 0.75rem 0.875rem;
                 padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+            }
+            .container,
+            .main-dashboard-wrapper {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow-x: hidden;
+            }
+
+            /* Prevent Flexbox overflow stretching on mobile */
+            .nav-section,
+            .controls-row,
+            .stock-tabs,
+            .dr-tabs,
+            .timeframe-group,
+            .stats-grid,
+            .main-grid,
+            .chart-card,
+            .table-card {
+                min-width: 0 !important;
             }
 
             /* ① Compact header */
