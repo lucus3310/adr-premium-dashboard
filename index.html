@@ -2767,6 +2767,22 @@
             initCalculatorOptions();
             initUpdateTimer();
             startLiveBinanceUpdates();
+
+            // Auto-reconnect WebSocket when user unlocks their phone or returns to the tab
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                    if (!isBinance) return;
+                    console.log("Tab became active. Re-syncing WebSocket price feed...");
+                    if (binanceWs) {
+                        try {
+                            binanceWs.onclose = null;
+                            binanceWs.close();
+                        } catch (e) {}
+                    }
+                    initBinanceWebSocket();
+                }
+            });
             };
             if (typeof window.HISTORICAL_DATA !== 'undefined') {
                 runDashboardInit();
