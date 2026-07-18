@@ -2513,68 +2513,95 @@
                 startBackgroundPolling();
             }
 
-            // Periodically fetch live prices from Binance API in browser
+            // Real-time price tracking via Binance WebSockets (bypasses CORS)
+            let latestPriceDr = null;
+            let latestPriceLocal = null;
+            let binanceWs = null;
+
+            function initBinanceWebSocket() {
+                const wsUrl = "wss://fstream.binance.com/market/stream?streams=skhyusdt@ticker/skhynixusdt@ticker";
+                
+                try {
+                    binanceWs = new WebSocket(wsUrl);
+                    
+                    binanceWs.onmessage = (event) => {
+                        try {
+                            const msg = JSON.parse(event.data);
+                            const streamName = msg.stream;
+                            const rawData = msg.data;
+                            
+                            if (streamName === "skhyusdt@ticker") {
+                                latestPriceDr = parseFloat(rawData.c);
+                            } else if (streamName === "skhynixusdt@ticker") {
+                                latestPriceLocal = parseFloat(rawData.c);
+                            }
+                        } catch (e) {
+                            console.error("Error parsing WebSocket message:", e);
+                        }
+                    };
+                    
+                    binanceWs.onclose = () => {
+                        console.warn("Binance WebSocket closed, reconnecting in 5 seconds...");
+                        setTimeout(initBinanceWebSocket, 5000);
+                    };
+                    
+                    binanceWs.onerror = (err) => {
+                        console.error("Binance WebSocket error:", err);
+                        binanceWs.close();
+                    };
+                } catch (e) {
+                    console.error("Failed to initialize Binance WebSocket:", e);
+                    setTimeout(initBinanceWebSocket, 5000);
+                }
+            }
+
             function startLiveBinanceUpdates() {
-                setInterval(async () => {
+                // Initialize WebSocket for real-time streaming
+                initBinanceWebSocket();
+
+                // Append a new 1-minute data point every 60 seconds using the latest prices received
+                setInterval(() => {
                     const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
                     if (!isBinance) return;
+                    if (latestPriceDr === null || latestPriceLocal === null) return;
 
-                    try {
-                        const [resDr, resLocal] = await Promise.all([
-                            fetch('https://fapi.binance.com/fapi/v1/ticker/price?symbol=SKHYUSDT'),
-                            fetch('https://fapi.binance.com/fapi/v1/ticker/price?symbol=SKHYNIXUSDT')
-                        ]);
-                        
-                        if (!resDr.ok || !resLocal.ok) return;
-                        
-                        const dataDr = await resDr.json();
-                        const dataLocal = await resLocal.json();
-                        
-                        const priceDr = parseFloat(dataDr.price);
-                        const priceLocal = parseFloat(dataLocal.price);
-                        
-                        if (isNaN(priceDr) || isNaN(priceLocal)) return;
-                        
-                        const ratio = 0.1;
-                        const premium = ((priceDr / ratio) / priceLocal - 1) * 100;
-                        
-                        const now = new Date();
-                        const timeStr = now.toTimeString().split(' ')[0]; // "HH:MM:SS"
-                        
-                        const seriesKey = 'skhynix_binance';
-                        if (data.series && data.series[seriesKey]) {
-                            const binanceSeries = data.series[seriesKey];
-                            if (!binanceSeries.intraday_1m) {
-                                binanceSeries.intraday_1m = [];
-                            }
-                            
-                            // Check if the last record has the same time to avoid duplicates
-                            const lastRecord = binanceSeries.intraday_1m[binanceSeries.intraday_1m.length - 1];
-                            if (lastRecord && lastRecord.time === timeStr) {
-                                return;
-                            }
-                            
-                            binanceSeries.intraday_1m.push({
-                                "time": timeStr,
-                                "local": priceLocal,
-                                "adr": priceDr,
-                                "premium": parseFloat(premium.toFixed(4))
-                            });
-                            
-                            if (binanceSeries.intraday_1m.length > 60) {
-                                binanceSeries.intraday_1m.shift();
-                            }
-                            
-                            // Re-render chart if the active view is live_1m
-                            if (activeBinanceChartView === 'live_1m') {
-                                renderStats();
-                                renderChart();
-                            }
+                    const ratio = 0.1;
+                    const premium = ((latestPriceDr / ratio) / latestPriceLocal - 1) * 100;
+                    
+                    const now = new Date();
+                    const timeStr = now.toTimeString().split(' ')[0]; // "HH:MM:SS"
+                    
+                    const seriesKey = 'skhynix_binance';
+                    if (data.series && data.series[seriesKey]) {
+                        const binanceSeries = data.series[seriesKey];
+                        if (!binanceSeries.intraday_1m) {
+                            binanceSeries.intraday_1m = [];
                         }
-                    } catch (e) {
-                        console.error('Error fetching live Binance prices:', e);
+                        
+                        // Check if the last record has the same time to avoid duplicates
+                        const lastRecord = binanceSeries.intraday_1m[binanceSeries.intraday_1m.length - 1];
+                        if (lastRecord && lastRecord.time === timeStr) {
+                            return;
+                        }
+                        
+                        binanceSeries.intraday_1m.push({
+                            "time": timeStr,
+                            "local": latestPriceLocal,
+                            "adr": latestPriceDr,
+                            "premium": parseFloat(premium.toFixed(4))
+                        });
+                        
+                        if (binanceSeries.intraday_1m.length > 60) {
+                            binanceSeries.intraday_1m.shift();
+                        }
+                        
+                        // Re-render chart if the active view is live_1m
+                        if (activeBinanceChartView === 'live_1m') {
+                            renderStats();
+                            renderChart();
+                        }
                     }
-                }, 60000); // every 60 seconds (1 minute)
+                }, 60000);
             }
 
             // RUN INITIALIZATION
