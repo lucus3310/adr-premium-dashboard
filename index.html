@@ -2551,6 +2551,37 @@
             let latestPriceLocal = null;
             let binanceWs = null;
 
+            function updateLivePremiumUI(localPrice, drPrice) {
+                const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                if (!isBinance) return;
+                if (activeBinanceChartView !== 'live_1m') return;
+
+                const ratio = 0.1;
+                const premium = ((drPrice / ratio) / localPrice - 1) * 100;
+
+                // Update the "Latest Premium" card
+                valLatest.innerText = (premium >= 0 ? '+' : '') + premium.toFixed(2) + '%';
+                valLatest.className = 'stat-value ' + (premium >= 0 ? 'up' : 'down');
+                
+                const now = new Date();
+                const timeStr = now.toTimeString().split(' ')[0];
+                descLatest.innerText = `即時成交 (WebSocket) ${timeStr}`;
+
+                // Update calculator if open and has SK Hynix select
+                const calcDrPriceInput = document.getElementById('calc-dr-price');
+                const calcLocalPriceInput = document.getElementById('calc-local-price');
+                // (Only update inputs if the user is not actively editing them)
+                if (calcDrPriceInput && document.activeElement !== calcDrPriceInput) {
+                    calcDrPriceInput.value = drPrice;
+                }
+                if (calcLocalPriceInput && document.activeElement !== calcLocalPriceInput) {
+                    calcLocalPriceInput.value = localPrice;
+                }
+                if (typeof calculatePremium === 'function') {
+                    calculatePremium();
+                }
+            }
+
             function initBinanceWebSocket() {
                 const wsUrl = "wss://fstream.binance.com/market/stream?streams=skhyusdt@ticker/skhynixusdt@ticker";
                 
@@ -2563,10 +2594,17 @@
                             const streamName = msg.stream;
                             const rawData = msg.data;
                             
+                            let priceChanged = false;
                             if (streamName === "skhyusdt@ticker") {
                                 latestPriceDr = parseFloat(rawData.c);
+                                priceChanged = true;
                             } else if (streamName === "skhynixusdt@ticker") {
                                 latestPriceLocal = parseFloat(rawData.c);
+                                priceChanged = true;
+                            }
+                            
+                            if (priceChanged && latestPriceDr !== null && latestPriceLocal !== null) {
+                                updateLivePremiumUI(latestPriceLocal, latestPriceDr);
                             }
                         } catch (e) {
                             console.error("Error parsing WebSocket message:", e);
