@@ -444,6 +444,11 @@
             min-width: 0;
         }
 
+        .chart-wrapper canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
         /* Calculator Styles */
         .calc-group {
             margin-bottom: 1.25rem;
@@ -1000,6 +1005,8 @@
 
             /* ④ Chart – taller on mobile for readability */
             .main-grid {
+                display: grid;
+                grid-template-columns: 1fr !important;
                 gap: 1rem;
                 margin-bottom: 1.25rem;
                 width: 100%;
@@ -1026,9 +1033,15 @@
                 font-size: 0.75rem;
             }
             .chart-wrapper {
-                height: 260px;
+                height: 260px !important;
+                width: 100% !important;
+                max-width: 100% !important;
                 overflow: hidden;
                 min-width: 0;
+            }
+            .chart-wrapper canvas {
+                width: 100% !important;
+                height: 100% !important;
             }
             .chart-toggle-group {
                 order: 3;
