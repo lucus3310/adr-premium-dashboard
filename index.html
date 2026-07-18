@@ -135,6 +135,12 @@
             animation: borderPulse 2s infinite;
         }
 
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
         /* Navigation Layout */
         .nav-section {
             display: flex;
@@ -1323,9 +1329,15 @@
             <!-- Chart Card -->
             <div class="chart-card">
                 <div class="chart-header">
-                    <div class="chart-title">
-                        <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="17" x2="9" y2="10"></line><line x1="15" y1="17" x2="15" y2="7"></line><line x1="12" y1="17" x2="12" y2="13"></line></svg>
-                        <span id="chart-main-title">折溢價率波動趨勢</span>
+                    <div class="chart-title" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="17" x2="9" y2="10"></line><line x1="15" y1="17" x2="15" y2="7"></line><line x1="12" y1="17" x2="12" y2="13"></line></svg>
+                            <span id="chart-main-title">折溢價率波動趨勢</span>
+                        </div>
+                        <span id="ws-status-badge" style="display: none; align-items: center; gap: 0.35rem; font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 30px; font-weight: 600; line-height: 1; transition: all 0.3s ease;">
+                            <span style="width: 7px; height: 7px; border-radius: 50%; display: inline-block;" id="ws-status-dot"></span>
+                            <span id="ws-status-text">連線中斷</span>
+                        </span>
                     </div>
                     <!-- Binance Toggle buttons -->
                     <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none; margin-left: 1rem; align-items: center; gap: 0.5rem;">
@@ -1983,6 +1995,7 @@
                     document.getElementById('binance-date-select').style.display = 'none';
                     timeframeGroup.style.opacity = '1';
                     timeframeGroup.style.pointerEvents = 'auto';
+                    updateWsStatusBadge('hidden');
 
                     if (filteredHistory.length === 0) return;
 
@@ -1994,6 +2007,7 @@
                 } else {
                     // Show toggle
                     toggleGroup.style.display = 'flex';
+                    updateWsStatusBadge(wsConnectionState);
                     
                     const seriesKey = `${currentStock}_${currentDr}`;
                     const seriesData = data.series[seriesKey];
@@ -2064,6 +2078,7 @@
                         dateSelect.style.display = 'none';
                         timeframeGroup.style.opacity = '1';
                         timeframeGroup.style.pointerEvents = 'auto';
+                        updateWsStatusBadge('hidden');
 
                         if (filteredHistory.length > 0) {
                             chartInstance = createLineChart(ctx, filteredHistory, '日線級別歷史折溢價 (%)', theme);
@@ -2659,11 +2674,68 @@
                 }
             }
 
+            const WS_DOMAINS = [
+                "fstream.binance.com",
+                "fstream.binance.me",
+                "fstream.binance.info",
+                "fstream.binance.cloud"
+            ];
+            let currentWsDomainIndex = 0;
+            let wsConnectionState = 'disconnected'; // 'connecting', 'connected', 'disconnected'
+
+            function updateWsStatusBadge(status) {
+                wsConnectionState = status;
+                const badge = document.getElementById('ws-status-badge');
+                const dot = document.getElementById('ws-status-dot');
+                const text = document.getElementById('ws-status-text');
+                if (!badge || !dot || !text) return;
+
+                const isBinanceLive = currentStock === 'skhynix' && currentDr === 'binance' && 
+                                     (activeBinanceChartView === 'live_1m' || activeBinanceChartView === 'live');
+
+                if (status === 'hidden' || !isBinanceLive) {
+                    badge.style.display = 'none';
+                    return;
+                }
+
+                badge.style.display = 'inline-flex';
+                if (status === 'connecting') {
+                    badge.style.background = 'rgba(245, 158, 11, 0.08)';
+                    badge.style.color = '#f59e0b';
+                    dot.style.background = '#f59e0b';
+                    dot.style.boxShadow = 'none';
+                    dot.style.animation = 'none';
+                    text.innerText = `報價連線中 (${WS_DOMAINS[currentWsDomainIndex]})...`;
+                } else if (status === 'connected') {
+                    badge.style.background = 'rgba(16, 185, 129, 0.08)';
+                    badge.style.color = '#10b981';
+                    dot.style.background = '#10b981';
+                    dot.style.boxShadow = '0 0 8px #10b981';
+                    dot.style.animation = 'pulse-dot 1.5s infinite';
+                    text.innerText = '即時串流中';
+                } else if (status === 'disconnected') {
+                    badge.style.background = 'rgba(239, 68, 68, 0.08)';
+                    badge.style.color = '#ef4444';
+                    dot.style.background = '#ef4444';
+                    dot.style.boxShadow = 'none';
+                    dot.style.animation = 'none';
+                    text.innerText = '連線中斷';
+                }
+            }
+
             function initBinanceWebSocket() {
-                const wsUrl = "wss://fstream.binance.com/market/stream?streams=skhyusdt@ticker/skhynixusdt@ticker";
+                const host = WS_DOMAINS[currentWsDomainIndex];
+                const wsUrl = `wss://${host}/market/stream?streams=skhyusdt@ticker/skhynixusdt@ticker`;
+                console.log(`Connecting to Binance WebSocket: ${wsUrl}`);
+                updateWsStatusBadge('connecting');
                 
                 try {
                     binanceWs = new WebSocket(wsUrl);
+                    
+                    binanceWs.onopen = () => {
+                        console.log(`WebSocket connected to ${host}`);
+                        updateWsStatusBadge('connected');
+                    };
                     
                     binanceWs.onmessage = (event) => {
                         try {
@@ -2689,16 +2761,21 @@
                     };
                     
                     binanceWs.onclose = () => {
-                        console.warn("Binance WebSocket closed, reconnecting in 5 seconds...");
+                        console.warn(`Binance WebSocket closed on ${host}, rotating server domain...`);
+                        updateWsStatusBadge('disconnected');
+                        // Rotate to the next mirror domain
+                        currentWsDomainIndex = (currentWsDomainIndex + 1) % WS_DOMAINS.length;
                         setTimeout(initBinanceWebSocket, 5000);
                     };
                     
                     binanceWs.onerror = (err) => {
-                        console.error("Binance WebSocket error:", err);
+                        console.error(`Binance WebSocket error on ${host}:`, err);
                         binanceWs.close();
                     };
                 } catch (e) {
-                    console.error("Failed to initialize Binance WebSocket:", e);
+                    console.error(`Failed to initialize Binance WebSocket on ${host}:`, e);
+                    currentWsDomainIndex = (currentWsDomainIndex + 1) % WS_DOMAINS.length;
+                    updateWsStatusBadge('disconnected');
                     setTimeout(initBinanceWebSocket, 5000);
                 }
             }
