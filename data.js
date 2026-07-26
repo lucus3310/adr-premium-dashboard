@@ -158,7 +158,7 @@ window.HISTORICAL_DATA = {
           "local": 529.6852,
           "adr": 107.5187,
           "fx": 27.845,
-          "equiv": 2993.8573,
+          "equiv": 2993.8566,
           "premium": 13.0429
         },
         {
@@ -227,7 +227,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-12",
-          "local": 535.1647,
+          "local": 535.1649,
           "adr": 106.6522,
           "fx": 27.7915,
           "equiv": 2964.0237,
@@ -259,10 +259,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-18",
-          "local": 524.2057,
+          "local": 524.2058,
           "adr": 101.8127,
           "fx": 27.8994,
-          "equiv": 2840.5139,
+          "equiv": 2840.5141,
           "premium": 8.374
         },
         {
@@ -291,7 +291,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-24",
-          "local": 522.3793,
+          "local": 522.3794,
           "adr": 103.3429,
           "fx": 27.9012,
           "equiv": 2883.3914,
@@ -302,12 +302,12 @@ window.HISTORICAL_DATA = {
           "local": 534.2515,
           "adr": 107.8782,
           "fx": 27.8931,
-          "equiv": 3009.0563,
+          "equiv": 3009.0568,
           "premium": 12.6457
         },
         {
           "date": "2021-08-26",
-          "local": 542.4708,
+          "local": 542.4707,
           "adr": 108.8645,
           "fx": 27.8849,
           "equiv": 3035.675,
@@ -350,7 +350,7 @@ window.HISTORICAL_DATA = {
           "local": 554.3431,
           "adr": 111.3441,
           "fx": 27.6716,
-          "equiv": 3081.0703,
+          "equiv": 3081.0705,
           "premium": 11.1611
         },
         {
@@ -382,8 +382,8 @@ window.HISTORICAL_DATA = {
           "local": 565.3021,
           "adr": 112.3581,
           "fx": 27.5912,
-          "equiv": 3100.0955,
-          "premium": 9.6793
+          "equiv": 3100.0948,
+          "premium": 9.6792
         },
         {
           "date": "2021-09-09",
@@ -478,7 +478,7 @@ window.HISTORICAL_DATA = {
           "local": 548.6092,
           "adr": 107.0347,
           "fx": 27.685,
-          "equiv": 2963.2556,
+          "equiv": 2963.2558,
           "premium": 8.0279
         },
         {
@@ -491,7 +491,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-09-28",
-          "local": 544.9397,
+          "local": 544.9396,
           "adr": 103.573,
           "fx": 27.6542,
           "equiv": 2864.2284,
@@ -518,7 +518,7 @@ window.HISTORICAL_DATA = {
           "local": 526.5914,
           "adr": 103.2583,
           "fx": 27.8366,
-          "equiv": 2874.3602,
+          "equiv": 2874.3606,
           "premium": 9.1685
         },
         {
@@ -587,7 +587,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-10-14",
-          "local": 525.6741,
+          "local": 525.6742,
           "adr": 104.1839,
           "fx": 27.9995,
           "equiv": 2917.0967,
@@ -603,10 +603,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-10-18",
-          "local": 541.27,
+          "local": 541.2701,
           "adr": 106.757,
           "fx": 28.0,
-          "equiv": 2989.1965,
+          "equiv": 2989.1963,
           "premium": 10.4512
         },
         {
@@ -643,7 +643,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-10-25",
-          "local": 544.0223,
+          "local": 544.0222,
           "adr": 105.1835,
           "fx": 27.837,
           "equiv": 2927.9936,
@@ -654,7 +654,7 @@ window.HISTORICAL_DATA = {
           "local": 549.5266,
           "adr": 105.6833,
           "fx": 27.8062,
-          "equiv": 2938.6521,
+          "equiv": 2938.6517,
           "premium": 6.9521
         },
         {
@@ -675,7 +675,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-10-29",
-          "local": 541.27,
+          "local": 541.2701,
           "adr": 105.2391,
           "fx": 27.7233,
           "equiv": 2917.5743,
@@ -683,10 +683,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-11-01",
-          "local": 541.27,
+          "local": 541.2701,
           "adr": 105.6278,
           "fx": 27.8167,
-          "equiv": 2938.217,
+          "equiv": 2938.2166,
           "premium": 8.5675
         },
         {
@@ -702,7 +702,7 @@ window.HISTORICAL_DATA = {
           "local": 543.1047,
           "adr": 105.526,
           "fx": 27.8585,
-          "equiv": 2939.796,
+          "equiv": 2939.7956,
           "premium": 8.2589
         },
         {
@@ -750,7 +750,7 @@ window.HISTORICAL_DATA = {
           "local": 555.9486,
           "adr": 109.3949,
           "fx": 27.759,
-          "equiv": 3036.6943,
+          "equiv": 3036.6941,
           "premium": 9.2437
         },
         {
@@ -771,15 +771,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-11-16",
-          "local": 559.6182,
+          "local": 559.6183,
           "adr": 109.2931,
           "fx": 27.7525,
-          "equiv": 3033.1574,
-          "premium": 8.401
+          "equiv": 3033.1572,
+          "premium": 8.4009
         },
         {
           "date": "2021-11-17",
-          "local": 559.6182,
+          "local": 559.6183,
           "adr": 110.2002,
           "fx": 27.8007,
           "equiv": 3063.6423,
@@ -787,7 +787,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-11-18",
-          "local": 562.3705,
+          "local": 562.3704,
           "adr": 114.208,
           "fx": 27.7407,
           "equiv": 3168.2092,
@@ -806,7 +806,7 @@ window.HISTORICAL_DATA = {
           "local": 564.2053,
           "adr": 115.4668,
           "fx": 27.793,
-          "equiv": 3209.168,
+          "equiv": 3209.1682,
           "premium": 13.7589
         },
         {
@@ -843,7 +843,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-11-29",
-          "local": 544.0223,
+          "local": 544.0222,
           "adr": 110.4038,
           "fx": 27.8539,
           "equiv": 3075.1776,
@@ -915,7 +915,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-10",
-          "local": 555.0312,
+          "local": 555.0311,
           "adr": 110.265,
           "fx": 27.6856,
           "equiv": 3052.7523,
@@ -947,7 +947,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-16",
-          "local": 557.5869,
+          "local": 557.5867,
           "adr": 108.3418,
           "fx": 27.7397,
           "equiv": 3005.3698,
@@ -958,7 +958,7 @@ window.HISTORICAL_DATA = {
           "local": 559.4301,
           "adr": 108.1095,
           "fx": 27.7577,
-          "equiv": 3000.8699,
+          "equiv": 3000.8701,
           "premium": 7.2831
         },
         {
@@ -971,10 +971,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-21",
-          "local": 550.2137,
+          "local": 550.2138,
           "adr": 109.1504,
           "fx": 27.8154,
-          "equiv": 3036.0617,
+          "equiv": 3036.0623,
           "premium": 10.3594
         },
         {
@@ -990,7 +990,7 @@ window.HISTORICAL_DATA = {
           "local": 558.5085,
           "adr": 112.1617,
           "fx": 27.711,
-          "equiv": 3108.1128,
+          "equiv": 3108.1133,
           "premium": 11.3005
         },
         {
@@ -998,7 +998,7 @@ window.HISTORICAL_DATA = {
           "local": 556.6652,
           "adr": 112.1617,
           "fx": 27.6247,
-          "equiv": 3098.4333,
+          "equiv": 3098.4337,
           "premium": 11.3213
         },
         {
@@ -1062,15 +1062,15 @@ window.HISTORICAL_DATA = {
           "local": 599.0602,
           "adr": 118.0914,
           "fx": 27.5155,
-          "equiv": 3249.343,
-          "premium": 8.4814
+          "equiv": 3249.3428,
+          "premium": 8.4813
         },
         {
           "date": "2022-01-06",
           "local": 593.5304,
           "adr": 119.4018,
           "fx": 27.5964,
-          "equiv": 3295.0611,
+          "equiv": 3295.0606,
           "premium": 11.0326
         },
         {
@@ -1118,7 +1118,7 @@ window.HISTORICAL_DATA = {
           "local": 619.3361,
           "adr": 130.7314,
           "fx": 27.566,
-          "equiv": 3603.7418,
+          "equiv": 3603.7422,
           "premium": 16.3744
         },
         {
@@ -1126,12 +1126,12 @@ window.HISTORICAL_DATA = {
           "local": 629.4741,
           "adr": 130.7314,
           "fx": 27.538,
-          "equiv": 3600.0813,
+          "equiv": 3600.0817,
           "premium": 14.3838
         },
         {
           "date": "2022-01-18",
-          "local": 610.1198,
+          "local": 610.1197,
           "adr": 124.3835,
           "fx": 27.4237,
           "equiv": 3411.0562,
@@ -1140,7 +1140,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-01-19",
           "local": 602.7467,
-          "adr": 121.7625,
+          "adr": 121.7626,
           "fx": 27.5162,
           "equiv": 3350.442,
           "premium": 11.1725
@@ -1174,7 +1174,7 @@ window.HISTORICAL_DATA = {
           "local": 590.7653,
           "adr": 113.8346,
           "fx": 27.6639,
-          "equiv": 3149.1104,
+          "equiv": 3149.1106,
           "premium": 6.6112
         },
         {
@@ -1206,7 +1206,7 @@ window.HISTORICAL_DATA = {
           "local": 586.1573,
           "adr": 113.9741,
           "fx": 27.827,
-          "equiv": 3171.5561,
+          "equiv": 3171.5559,
           "premium": 8.2152
         },
         {
@@ -1243,15 +1243,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-07",
-          "local": 585.2357,
-          "adr": 113.6766,
+          "local": 585.2358,
+          "adr": 113.6767,
           "fx": 27.8,
           "equiv": 3160.2102,
           "premium": 7.9979
         },
         {
           "date": "2022-02-08",
-          "local": 578.7843,
+          "local": 578.7842,
           "adr": 114.9778,
           "fx": 27.826,
           "equiv": 3199.3733,
@@ -1267,7 +1267,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-10",
-          "local": 598.1386,
+          "local": 598.1385,
           "adr": 115.9072,
           "fx": 27.7807,
           "equiv": 3219.9842,
@@ -1283,7 +1283,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-14",
-          "local": 587.0789,
+          "local": 587.079,
           "adr": 111.3159,
           "fx": 27.906,
           "equiv": 3106.3822,
@@ -1310,15 +1310,15 @@ window.HISTORICAL_DATA = {
           "local": 594.452,
           "adr": 111.3066,
           "fx": 27.8108,
-          "equiv": 3095.527,
+          "equiv": 3095.5268,
           "premium": 4.1472
         },
         {
           "date": "2022-02-18",
-          "local": 587.0789,
+          "local": 587.079,
           "adr": 110.8884,
           "fx": 27.8367,
-          "equiv": 3086.7671,
+          "equiv": 3086.7673,
           "premium": 5.1568
         },
         {
@@ -1326,7 +1326,7 @@ window.HISTORICAL_DATA = {
           "local": 582.4708,
           "adr": 110.8884,
           "fx": 27.87,
-          "equiv": 3090.4597,
+          "equiv": 3090.4599,
           "premium": 6.1155
         },
         {
@@ -1339,7 +1339,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-23",
-          "local": 576.0193,
+          "local": 576.0194,
           "adr": 107.7191,
           "fx": 27.8374,
           "equiv": 2998.6195,
@@ -1366,7 +1366,7 @@ window.HISTORICAL_DATA = {
           "local": 556.6652,
           "adr": 99.4566,
           "fx": 27.9628,
-          "equiv": 2781.0855,
+          "equiv": 2781.085,
           "premium": -0.0805
         },
         {
@@ -1379,7 +1379,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-02",
-          "local": 553.9003,
+          "local": 553.9002,
           "adr": 101.8731,
           "fx": 28.0468,
           "equiv": 2857.2141,
@@ -1403,7 +1403,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-07",
-          "local": 530.8595,
+          "local": 530.8594,
           "adr": 92.2815,
           "fx": 28.126,
           "equiv": 2595.5099,
@@ -1427,7 +1427,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-10",
-          "local": 540.9975,
+          "local": 540.9974,
           "adr": 96.6219,
           "fx": 28.268,
           "equiv": 2731.3077,
@@ -1478,12 +1478,12 @@ window.HISTORICAL_DATA = {
           "local": 538.1196,
           "adr": 99.6654,
           "fx": 28.178,
-          "equiv": 2808.3728,
-          "premium": 4.3773
+          "equiv": 2808.3726,
+          "premium": 4.3772
         },
         {
           "date": "2022-03-21",
-          "local": 542.7506,
+          "local": 542.7507,
           "adr": 99.8522,
           "fx": 28.356,
           "equiv": 2831.4098,
@@ -1502,7 +1502,7 @@ window.HISTORICAL_DATA = {
           "local": 546.4554,
           "adr": 98.386,
           "fx": 28.4674,
-          "equiv": 2800.7936,
+          "equiv": 2800.7938,
           "premium": 2.5077
         },
         {
@@ -1595,7 +1595,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-08",
-          "local": 525.153,
+          "local": 525.1528,
           "adr": 92.7266,
           "fx": 28.7987,
           "equiv": 2670.4056,
@@ -1619,7 +1619,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-13",
-          "local": 530.71,
+          "local": 530.7101,
           "adr": 94.7905,
           "fx": 29.038,
           "equiv": 2752.5271,
@@ -1627,10 +1627,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-14",
-          "local": 530.71,
+          "local": 530.7101,
           "adr": 91.8581,
           "fx": 28.8667,
-          "equiv": 2651.6393,
+          "equiv": 2651.6395,
           "premium": -0.072
         },
         {
@@ -1699,18 +1699,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-27",
-          "local": 487.1789,
+          "local": 487.1788,
           "adr": 84.2935,
           "fx": 29.3007,
-          "equiv": 2469.8586,
+          "equiv": 2469.8583,
           "premium": 1.3943
         },
         {
           "date": "2022-04-28",
-          "local": 491.8098,
+          "local": 491.8099,
           "adr": 88.9256,
           "fx": 29.3747,
-          "equiv": 2612.1639,
+          "equiv": 2612.1637,
           "premium": 6.2266
         },
         {
@@ -1718,7 +1718,7 @@ window.HISTORICAL_DATA = {
           "local": 498.2933,
           "adr": 86.787,
           "fx": 29.4527,
-          "equiv": 2556.1117,
+          "equiv": 2556.1113,
           "premium": 2.5947
         },
         {
@@ -1731,7 +1731,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-03",
-          "local": 491.8098,
+          "local": 491.8099,
           "adr": 87.4407,
           "fx": 29.4846,
           "equiv": 2578.1551,
@@ -1739,7 +1739,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-04",
-          "local": 494.5884,
+          "local": 494.5885,
           "adr": 89.6447,
           "fx": 29.4221,
           "equiv": 2637.5364,
@@ -1747,7 +1747,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-05",
-          "local": 501.9979,
+          "local": 501.998,
           "adr": 86.0586,
           "fx": 29.24,
           "equiv": 2516.3528,
@@ -1763,7 +1763,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-09",
-          "local": 481.6217,
+          "local": 481.6218,
           "adr": 81.5292,
           "fx": 29.65,
           "equiv": 2417.3398,
@@ -1774,12 +1774,12 @@ window.HISTORICAL_DATA = {
           "local": 479.7693,
           "adr": 82.9487,
           "fx": 29.751,
-          "equiv": 2467.8067,
+          "equiv": 2467.8065,
           "premium": 2.8747
         },
         {
           "date": "2022-05-11",
-          "local": 482.548,
+          "local": 482.5479,
           "adr": 82.0241,
           "fx": 29.6417,
           "equiv": 2431.335,
@@ -1803,7 +1803,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-16",
-          "local": 481.6217,
+          "local": 481.6218,
           "adr": 84.4336,
           "fx": 29.782,
           "equiv": 2514.6015,
@@ -1827,7 +1827,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-19",
-          "local": 483.4741,
+          "local": 483.4742,
           "adr": 84.2468,
           "fx": 29.7402,
           "equiv": 2505.5175,
@@ -1846,12 +1846,12 @@ window.HISTORICAL_DATA = {
           "local": 489.0313,
           "adr": 85.4515,
           "fx": 29.713,
-          "equiv": 2539.0215,
-          "premium": 3.8388
+          "equiv": 2539.0217,
+          "premium": 3.8389
         },
         {
           "date": "2022-05-24",
-          "local": 481.6217,
+          "local": 481.6218,
           "adr": 82.8553,
           "fx": 29.49,
           "equiv": 2443.4028,
@@ -1894,7 +1894,7 @@ window.HISTORICAL_DATA = {
           "local": 518.6696,
           "adr": 89.0003,
           "fx": 28.831,
-          "equiv": 2565.9688,
+          "equiv": 2565.9691,
           "premium": -1.0557
         },
         {
@@ -1926,7 +1926,7 @@ window.HISTORICAL_DATA = {
           "local": 500.1457,
           "adr": 86.9551,
           "fx": 29.361,
-          "equiv": 2553.089,
+          "equiv": 2553.0887,
           "premium": 2.0938
         },
         {
@@ -1979,7 +1979,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-15",
-          "local": 471.4336,
+          "local": 471.4335,
           "adr": 83.2382,
           "fx": 29.5777,
           "equiv": 2461.9944,
@@ -1991,7 +1991,7 @@ window.HISTORICAL_DATA = {
           "adr": 79.3487,
           "fx": 29.405,
           "equiv": 2333.2482,
-          "premium": -1.3558
+          "premium": -1.3557
         },
         {
           "date": "2022-06-17",
@@ -2011,7 +2011,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-21",
-          "local": 470.2695,
+          "local": 470.2696,
           "adr": 81.63,
           "fx": 29.703,
           "equiv": 2424.6562,
@@ -2062,12 +2062,12 @@ window.HISTORICAL_DATA = {
           "local": 457.2323,
           "adr": 78.5319,
           "fx": 29.671,
-          "equiv": 2330.1208,
+          "equiv": 2330.1204,
           "premium": 1.9228
         },
         {
           "date": "2022-06-30",
-          "local": 443.2639,
+          "local": 443.264,
           "adr": 76.7482,
           "fx": 29.665,
           "equiv": 2276.7343,
@@ -2147,7 +2147,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-14",
-          "local": 442.3327,
+          "local": 442.3328,
           "adr": 78.5507,
           "fx": 29.766,
           "equiv": 2338.1401,
@@ -2182,7 +2182,7 @@ window.HISTORICAL_DATA = {
           "local": 460.9572,
           "adr": 81.2639,
           "fx": 29.786,
-          "equiv": 2420.5258,
+          "equiv": 2420.5256,
           "premium": 5.0217
         },
         {
@@ -2219,7 +2219,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-27",
-          "local": 467.4758,
+          "local": 467.4759,
           "adr": 82.2684,
           "fx": 29.9203,
           "equiv": 2461.4952,
@@ -2235,7 +2235,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-29",
-          "local": 473.9944,
+          "local": 473.9945,
           "adr": 83.0664,
           "fx": 29.915,
           "equiv": 2484.9318,
@@ -2284,7 +2284,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-08-08",
           "local": 476.7881,
-          "adr": 82.5594,
+          "adr": 82.5595,
           "fx": 29.945,
           "equiv": 2472.2427,
           "premium": 3.704
@@ -2294,8 +2294,8 @@ window.HISTORICAL_DATA = {
           "local": 474.9256,
           "adr": 79.9965,
           "fx": 30.0007,
-          "equiv": 2399.9503,
-          "premium": 1.0664
+          "equiv": 2399.9496,
+          "premium": 1.0663
         },
         {
           "date": "2022-08-10",
@@ -2358,7 +2358,7 @@ window.HISTORICAL_DATA = {
           "local": 483.3066,
           "adr": 81.8647,
           "fx": 29.9737,
-          "equiv": 2453.7884,
+          "equiv": 2453.7882,
           "premium": 1.5417
         },
         {
@@ -2374,7 +2374,7 @@ window.HISTORICAL_DATA = {
           "local": 469.3383,
           "adr": 80.7663,
           "fx": 30.1317,
-          "equiv": 2433.6261,
+          "equiv": 2433.6259,
           "premium": 3.7046
         },
         {
@@ -2419,7 +2419,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-31",
-          "local": 470.2695,
+          "local": 470.2696,
           "adr": 78.2503,
           "fx": 30.4367,
           "equiv": 2381.6802,
@@ -2475,7 +2475,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-09-09",
-          "local": 442.3327,
+          "local": 442.3328,
           "adr": 76.5416,
           "fx": 30.8587,
           "equiv": 2361.9746,
@@ -2500,7 +2500,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-09-14",
           "local": 446.9889,
-          "adr": 74.7861,
+          "adr": 74.786,
           "fx": 31.1187,
           "equiv": 2327.2451,
           "premium": 4.1299
@@ -2539,10 +2539,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-09-21",
-          "local": 441.1352,
+          "local": 441.1351,
           "adr": 72.8298,
           "fx": 31.339,
-          "equiv": 2282.414,
+          "equiv": 2282.4137,
           "premium": 3.4791
         },
         {
@@ -2603,7 +2603,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-03",
-          "local": 390.5591,
+          "local": 390.5592,
           "adr": 65.3807,
           "fx": 31.803,
           "equiv": 2079.3016,
@@ -2611,31 +2611,31 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-04",
-          "local": 401.7983,
+          "local": 401.7982,
           "adr": 68.7418,
           "fx": 31.7837,
-          "equiv": 2184.8676,
+          "equiv": 2184.8673,
           "premium": 8.7545
         },
         {
           "date": "2022-10-05",
-          "local": 416.7837,
-          "adr": 70.3185,
+          "local": 416.7838,
+          "adr": 70.3184,
           "fx": 31.628,
-          "equiv": 2224.032,
-          "premium": 6.7236
+          "equiv": 2224.0313,
+          "premium": 6.7235
         },
         {
           "date": "2022-10-06",
           "local": 422.4032,
           "adr": 70.1957,
           "fx": 31.5235,
-          "equiv": 2212.8145,
+          "equiv": 2212.8142,
           "premium": 4.7726
         },
         {
           "date": "2022-10-07",
-          "local": 410.2276,
+          "local": 410.2275,
           "adr": 65.8527,
           "fx": 31.539,
           "equiv": 2076.9292,
@@ -2643,7 +2643,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-10",
-          "local": 410.2276,
+          "local": 410.2275,
           "adr": 63.6718,
           "fx": 31.711,
           "equiv": 2019.0964,
@@ -2683,7 +2683,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-17",
-          "local": 371.8272,
+          "local": 371.8273,
           "adr": 61.2643,
           "fx": 31.962,
           "equiv": 1958.129,
@@ -2755,7 +2755,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-28",
-          "local": 355.4369,
+          "local": 355.4368,
           "adr": 58.5452,
           "fx": 32.043,
           "equiv": 1875.9638,
@@ -2806,7 +2806,7 @@ window.HISTORICAL_DATA = {
           "local": 365.2711,
           "adr": 59.2533,
           "fx": 31.999,
-          "equiv": 1896.0464,
+          "equiv": 1896.0461,
           "premium": 3.8158
         },
         {
@@ -2819,7 +2819,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-09",
-          "local": 390.5591,
+          "local": 390.5592,
           "adr": 61.3681,
           "fx": 31.7898,
           "equiv": 1950.8809,
@@ -2835,7 +2835,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-11",
-          "local": 413.5056,
+          "local": 413.5057,
           "adr": 69.7048,
           "fx": 31.402,
           "equiv": 2188.8688,
@@ -2843,7 +2843,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-14",
-          "local": 416.7837,
+          "local": 416.7838,
           "adr": 68.7323,
           "fx": 31.0966,
           "equiv": 2137.3415,
@@ -2883,8 +2883,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-21",
-          "local": 451.4377,
-          "adr": 75.4639,
+          "local": 451.4376,
+          "adr": 75.464,
           "fx": 31.1113,
           "equiv": 2347.7811,
           "premium": 4.0135
@@ -2894,7 +2894,7 @@ window.HISTORICAL_DATA = {
           "local": 459.8669,
           "adr": 77.9281,
           "fx": 31.131,
-          "equiv": 2425.9795,
+          "equiv": 2425.9793,
           "premium": 5.5079
         },
         {
@@ -2926,7 +2926,7 @@ window.HISTORICAL_DATA = {
           "local": 450.0328,
           "adr": 74.7936,
           "fx": 30.9285,
-          "equiv": 2313.2536,
+          "equiv": 2313.2539,
           "premium": 2.8038
         },
         {
@@ -2979,7 +2979,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-07",
-          "local": 444.8815,
+          "local": 444.8816,
           "adr": 74.8125,
           "fx": 30.6335,
           "equiv": 2291.768,
@@ -2995,7 +2995,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-09",
-          "local": 450.9694,
+          "local": 450.9693,
           "adr": 76.1815,
           "fx": 30.463,
           "equiv": 2320.7159,
@@ -3003,7 +3003,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-12",
-          "local": 444.8815,
+          "local": 444.8816,
           "adr": 75.936,
           "fx": 30.6937,
           "equiv": 2330.7568,
@@ -3038,13 +3038,13 @@ window.HISTORICAL_DATA = {
           "local": 443.6744,
           "adr": 72.4451,
           "fx": 30.81,
-          "equiv": 2232.0325,
+          "equiv": 2232.032,
           "premium": 0.6158
         },
         {
           "date": "2022-12-19",
-          "local": 439.4355,
-          "adr": 72.2552,
+          "local": 439.4354,
+          "adr": 72.2551,
           "fx": 30.7708,
           "equiv": 2223.349,
           "premium": 1.1911
@@ -3083,7 +3083,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-26",
-          "local": 430.0156,
+          "local": 430.0157,
           "adr": 71.1063,
           "fx": 30.7451,
           "equiv": 2186.1701,
@@ -3131,19 +3131,19 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-03",
-          "local": 426.7187,
+          "local": 426.7186,
           "adr": 70.2897,
           "fx": 30.7201,
-          "equiv": 2159.3079,
+          "equiv": 2159.3082,
           "premium": 1.2052
         },
         {
           "date": "2023-01-04",
-          "local": 423.4217,
+          "local": 423.4218,
           "adr": 72.4641,
           "fx": 30.6503,
           "equiv": 2221.0448,
-          "premium": 4.9094
+          "premium": 4.9093
         },
         {
           "date": "2023-01-05",
@@ -3164,9 +3164,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-01-09",
           "local": 453.0942,
-          "adr": 76.2524,
+          "adr": 76.2525,
           "fx": 30.5615,
-          "equiv": 2330.3893,
+          "equiv": 2330.3897,
           "premium": 2.8656
         },
         {
@@ -3214,7 +3214,7 @@ window.HISTORICAL_DATA = {
           "local": 473.8179,
           "adr": 84.4939,
           "fx": 30.329,
-          "equiv": 2562.6159,
+          "equiv": 2562.6161,
           "premium": 8.1688
         },
         {
@@ -3291,7 +3291,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-31",
-          "local": 491.7155,
+          "local": 491.7156,
           "adr": 88.045,
           "fx": 30.095,
           "equiv": 2649.713,
@@ -3316,7 +3316,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-02-03",
           "local": 510.5552,
-          "adr": 89.8774,
+          "adr": 89.8775,
           "fx": 29.543,
           "equiv": 2655.2492,
           "premium": 4.0142
@@ -3388,7 +3388,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-02-16",
           "local": 497.3674,
-          "adr": 86.2315,
+          "adr": 86.2314,
           "fx": 30.302,
           "equiv": 2612.9857,
           "premium": 5.0727
@@ -3403,7 +3403,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-20",
-          "local": 487.0056,
+          "local": 487.0057,
           "adr": 85.5478,
           "fx": 30.3733,
           "equiv": 2598.3704,
@@ -3419,8 +3419,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-22",
-          "local": 477.5858,
-          "adr": 82.443,
+          "local": 477.5857,
+          "adr": 82.4431,
           "fx": 30.4845,
           "equiv": 2513.2349,
           "premium": 5.2475
@@ -3435,7 +3435,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-24",
-          "local": 481.3537,
+          "local": 481.3538,
           "adr": 83.6584,
           "fx": 30.283,
           "equiv": 2533.427,
@@ -3443,7 +3443,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-27",
-          "local": 481.3537,
+          "local": 481.3538,
           "adr": 82.8893,
           "fx": 30.6568,
           "equiv": 2541.1203,
@@ -3451,7 +3451,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-28",
-          "local": 481.3537,
+          "local": 481.3538,
           "adr": 82.6709,
           "fx": 30.5978,
           "equiv": 2529.548,
@@ -3459,7 +3459,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-03-01",
-          "local": 491.7155,
+          "local": 491.7156,
           "adr": 83.9527,
           "fx": 30.6458,
           "equiv": 2572.7976,
@@ -3491,11 +3491,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-03-07",
-          "local": 493.5994,
+          "local": 493.5995,
           "adr": 84.361,
           "fx": 30.575,
-          "equiv": 2579.3374,
-          "premium": 4.5114
+          "equiv": 2579.3369,
+          "premium": 4.5113
         },
         {
           "date": "2023-03-08",
@@ -3507,7 +3507,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-03-09",
-          "local": 491.7155,
+          "local": 491.7156,
           "adr": 84.3895,
           "fx": 30.7248,
           "equiv": 2592.8492,
@@ -3534,12 +3534,12 @@ window.HISTORICAL_DATA = {
           "local": 480.4117,
           "adr": 84.7788,
           "fx": 30.455,
-          "equiv": 2581.9372,
+          "equiv": 2581.9374,
           "premium": 7.4885
         },
         {
           "date": "2023-03-15",
-          "local": 481.3537,
+          "local": 481.3538,
           "adr": 82.3196,
           "fx": 30.379,
           "equiv": 2500.7877,
@@ -3550,7 +3550,7 @@ window.HISTORICAL_DATA = {
           "local": 478.2755,
           "adr": 85.2296,
           "fx": 30.52,
-          "equiv": 2601.2086,
+          "equiv": 2601.2083,
           "premium": 8.7745
         },
         {
@@ -3574,7 +3574,7 @@ window.HISTORICAL_DATA = {
           "local": 489.6405,
           "adr": 88.2838,
           "fx": 30.506,
-          "equiv": 2693.1851,
+          "equiv": 2693.1849,
           "premium": 10.0066
         },
         {
@@ -3606,7 +3606,7 @@ window.HISTORICAL_DATA = {
           "local": 502.8997,
           "adr": 86.5277,
           "fx": 30.321,
-          "equiv": 2623.6052,
+          "equiv": 2623.605,
           "premium": 4.3391
         },
         {
@@ -3726,7 +3726,7 @@ window.HISTORICAL_DATA = {
           "local": 492.4818,
           "adr": 83.9793,
           "fx": 30.506,
-          "equiv": 2561.8738,
+          "equiv": 2561.874,
           "premium": 4.0393
         },
         {
@@ -3763,7 +3763,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-24",
-          "local": 480.1697,
+          "local": 480.1696,
           "adr": 80.7821,
           "fx": 30.625,
           "equiv": 2473.9503,
@@ -3819,7 +3819,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-05-03",
-          "local": 469.7519,
+          "local": 469.7518,
           "adr": 78.9305,
           "fx": 30.7548,
           "equiv": 2427.4905,
@@ -3859,7 +3859,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-05-10",
-          "local": 476.3814,
+          "local": 476.3813,
           "adr": 81.0302,
           "fx": 30.6498,
           "equiv": 2483.5593,
@@ -3875,7 +3875,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-05-12",
-          "local": 469.7519,
+          "local": 469.7518,
           "adr": 79.6272,
           "fx": 30.6979,
           "equiv": 2444.3876,
@@ -3942,7 +3942,7 @@ window.HISTORICAL_DATA = {
           "local": 497.2171,
           "adr": 86.0218,
           "fx": 30.8054,
-          "equiv": 2649.9362,
+          "equiv": 2649.9357,
           "premium": 6.5907
         },
         {
@@ -4062,8 +4062,8 @@ window.HISTORICAL_DATA = {
           "local": 558.7773,
           "adr": 102.5142,
           "fx": 30.578,
-          "equiv": 3134.6781,
-          "premium": 12.1978
+          "equiv": 3134.6777,
+          "premium": 12.1977
         },
         {
           "date": "2023-06-15",
@@ -4094,12 +4094,12 @@ window.HISTORICAL_DATA = {
           "local": 554.7332,
           "adr": 99.6562,
           "fx": 30.7918,
-          "equiv": 3068.5927,
+          "equiv": 3068.5932,
           "premium": 10.6331
         },
         {
           "date": "2023-06-21",
-          "local": 552.8302,
+          "local": 552.8301,
           "adr": 97.4135,
           "fx": 30.9533,
           "equiv": 3015.2686,
@@ -4107,7 +4107,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-22",
-          "local": 552.8302,
+          "local": 552.8301,
           "adr": 98.8415,
           "fx": 30.923,
           "equiv": 3056.4762,
@@ -4115,15 +4115,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-23",
-          "local": 552.8302,
-          "adr": 97.6722,
+          "local": 552.8301,
+          "adr": 97.6723,
           "fx": 30.9938,
-          "equiv": 3027.2341,
+          "equiv": 3027.2343,
           "premium": 9.5177
         },
         {
           "date": "2023-06-26",
-          "local": 546.1696,
+          "local": 546.1695,
           "adr": 95.9471,
           "fx": 30.997,
           "equiv": 2974.0724,
@@ -4139,15 +4139,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-28",
-          "local": 546.1696,
+          "local": 546.1695,
           "adr": 96.7234,
           "fx": 30.9935,
           "equiv": 2997.7975,
-          "premium": 9.7753
+          "premium": 9.7754
         },
         {
           "date": "2023-06-29",
-          "local": 545.2181,
+          "local": 545.218,
           "adr": 96.4551,
           "fx": 31.0565,
           "equiv": 2995.5564,
@@ -4155,7 +4155,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-30",
-          "local": 548.0726,
+          "local": 548.0728,
           "adr": 96.7234,
           "fx": 31.1173,
           "equiv": 3009.7719,
@@ -4182,8 +4182,8 @@ window.HISTORICAL_DATA = {
           "local": 553.7818,
           "adr": 96.7905,
           "fx": 31.078,
-          "equiv": 3008.055,
-          "premium": 8.6368
+          "equiv": 3008.0552,
+          "premium": 8.6369
         },
         {
           "date": "2023-07-06",
@@ -4251,7 +4251,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-18",
-          "local": 552.8302,
+          "local": 552.8301,
           "adr": 98.8607,
           "fx": 30.95,
           "equiv": 3059.7383,
@@ -4259,7 +4259,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-19",
-          "local": 552.8302,
+          "local": 552.8301,
           "adr": 98.7744,
           "fx": 30.903,
           "equiv": 3052.4257,
@@ -4283,11 +4283,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-24",
-          "local": 530.9453,
+          "local": 530.9454,
           "adr": 94.1644,
           "fx": 31.322,
           "equiv": 2949.4188,
-          "premium": 11.1007
+          "premium": 11.1006
         },
         {
           "date": "2023-07-25",
@@ -4315,7 +4315,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-28",
-          "local": 539.509,
+          "local": 539.5091,
           "adr": 96.6659,
           "fx": 31.2963,
           "equiv": 3025.2858,
@@ -4331,7 +4331,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-08-01",
-          "local": 539.509,
+          "local": 539.5091,
           "adr": 94.3082,
           "fx": 31.3989,
           "equiv": 2961.174,
@@ -4350,7 +4350,7 @@ window.HISTORICAL_DATA = {
           "local": 533.7999,
           "adr": 91.0304,
           "fx": 31.6301,
-          "equiv": 2879.3015,
+          "equiv": 2879.3017,
           "premium": 7.8794
         },
         {
@@ -4435,10 +4435,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-08-18",
-          "local": 512.8666,
-          "adr": 87.3118,
+          "local": 512.8665,
+          "adr": 87.3117,
           "fx": 31.8964,
-          "equiv": 2784.9309,
+          "equiv": 2784.9304,
           "premium": 8.6025
         },
         {
@@ -4516,17 +4516,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-09-01",
           "local": 521.4302,
-          "adr": 89.3149,
+          "adr": 89.3148,
           "fx": 31.8078,
-          "equiv": 2840.9092,
+          "equiv": 2840.9087,
           "premium": 8.966
         },
         {
           "date": "2023-09-04",
           "local": 529.9938,
-          "adr": 89.3149,
+          "adr": 89.3148,
           "fx": 31.863,
-          "equiv": 2845.8394,
+          "equiv": 2845.8389,
           "premium": 7.3914
         },
         {
@@ -4555,7 +4555,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-08",
-          "local": 512.8666,
+          "local": 512.8665,
           "adr": 85.9125,
           "fx": 32.0314,
           "equiv": 2751.8968,
@@ -4572,7 +4572,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-09-12",
           "local": 517.6242,
-          "adr": 86.7176,
+          "adr": 86.7175,
           "fx": 31.9065,
           "equiv": 2766.8536,
           "premium": 6.9059
@@ -4590,12 +4590,12 @@ window.HISTORICAL_DATA = {
           "local": 526.2515,
           "adr": 88.1214,
           "fx": 31.8949,
-          "equiv": 2810.6224,
+          "equiv": 2810.6227,
           "premium": 6.8167
         },
         {
           "date": "2023-09-15",
-          "local": 533.9059,
+          "local": 533.9061,
           "adr": 85.9827,
           "fx": 31.8689,
           "equiv": 2740.1725,
@@ -4619,7 +4619,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-20",
-          "local": 511.8992,
+          "local": 511.8991,
           "adr": 84.0944,
           "fx": 31.98,
           "equiv": 2689.3393,
@@ -4627,7 +4627,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-21",
-          "local": 504.2446,
+          "local": 504.2445,
           "adr": 82.2351,
           "fx": 32.0089,
           "equiv": 2632.2538,
@@ -4651,7 +4651,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-26",
-          "local": 496.5901,
+          "local": 496.59,
           "adr": 81.2042,
           "fx": 32.1028,
           "equiv": 2606.8828,
@@ -4662,7 +4662,7 @@ window.HISTORICAL_DATA = {
           "local": 499.4604,
           "adr": 82.3121,
           "fx": 32.1898,
-          "equiv": 2649.6111,
+          "equiv": 2649.6107,
           "premium": 6.0989
         },
         {
@@ -4691,7 +4691,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-03",
-          "local": 506.1582,
+          "local": 506.1583,
           "adr": 82.2832,
           "fx": 32.3068,
           "equiv": 2658.308,
@@ -4739,7 +4739,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-11",
-          "local": 520.5105,
+          "local": 520.5106,
           "adr": 88.632,
           "fx": 32.0165,
           "equiv": 2837.685,
@@ -4787,7 +4787,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-19",
-          "local": 522.4241,
+          "local": 522.4242,
           "adr": 89.5087,
           "fx": 32.3953,
           "equiv": 2899.6603,
@@ -4803,7 +4803,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-23",
-          "local": 520.5105,
+          "local": 520.5106,
           "adr": 87.7746,
           "fx": 32.332,
           "equiv": 2837.9274,
@@ -4811,15 +4811,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-24",
-          "local": 520.5105,
-          "adr": 88.2852,
+          "local": 520.5106,
+          "adr": 88.2851,
           "fx": 32.236,
-          "equiv": 2845.9603,
-          "premium": 9.3527
+          "equiv": 2845.9601,
+          "premium": 9.3526
         },
         {
           "date": "2023-10-25",
-          "local": 520.5105,
+          "local": 520.5106,
           "adr": 84.4316,
           "fx": 32.204,
           "equiv": 2719.0347,
@@ -4828,7 +4828,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-10-26",
           "local": 508.0718,
-          "adr": 84.2486,
+          "adr": 84.2485,
           "fx": 32.3803,
           "equiv": 2727.9932,
           "premium": 7.3861
@@ -4838,7 +4838,7 @@ window.HISTORICAL_DATA = {
           "local": 509.9856,
           "adr": 82.842,
           "fx": 32.3589,
-          "equiv": 2680.6757,
+          "equiv": 2680.6754,
           "premium": 5.1275
         },
         {
@@ -4851,7 +4851,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-31",
-          "local": 506.1582,
+          "local": 506.1583,
           "adr": 83.1503,
           "fx": 32.2475,
           "equiv": 2681.3889,
@@ -4879,7 +4879,7 @@ window.HISTORICAL_DATA = {
           "adr": 88.4297,
           "fx": 32.159,
           "equiv": 2843.8096,
-          "premium": 8.2748
+          "premium": 8.2749
         },
         {
           "date": "2023-11-06",
@@ -4955,7 +4955,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-17",
-          "local": 554.956,
+          "local": 554.9561,
           "adr": 95.9345,
           "fx": 31.837,
           "equiv": 3054.2662,
@@ -4966,7 +4966,7 @@ window.HISTORICAL_DATA = {
           "local": 552.0854,
           "adr": 96.3006,
           "fx": 31.7347,
-          "equiv": 3056.0693,
+          "equiv": 3056.0696,
           "premium": 10.71
         },
         {
@@ -5006,12 +5006,12 @@ window.HISTORICAL_DATA = {
           "local": 543.4742,
           "adr": 93.6512,
           "fx": 31.636,
-          "equiv": 2962.7508,
+          "equiv": 2962.7505,
           "premium": 9.03
         },
         {
           "date": "2023-11-28",
-          "local": 550.1719,
+          "local": 550.172,
           "adr": 94.3931,
           "fx": 31.525,
           "equiv": 2975.7409,
@@ -5062,12 +5062,12 @@ window.HISTORICAL_DATA = {
           "local": 545.3878,
           "adr": 94.2678,
           "fx": 31.516,
-          "equiv": 2970.944,
-          "premium": 8.9479
+          "equiv": 2970.9448,
+          "premium": 8.948
         },
         {
           "date": "2023-12-07",
-          "local": 541.5605,
+          "local": 541.5606,
           "adr": 95.6551,
           "fx": 31.4891,
           "equiv": 3012.0927,
@@ -5110,20 +5110,20 @@ window.HISTORICAL_DATA = {
           "local": 559.7802,
           "adr": 100.1325,
           "fx": 31.157,
-          "equiv": 3119.8275,
+          "equiv": 3119.8278,
           "premium": 11.4662
         },
         {
           "date": "2023-12-15",
-          "local": 562.6657,
+          "local": 562.6656,
           "adr": 99.2517,
           "fx": 31.1843,
-          "equiv": 3095.0941,
+          "equiv": 3095.0936,
           "premium": 10.0154
         },
         {
           "date": "2023-12-18",
-          "local": 562.6657,
+          "local": 562.6656,
           "adr": 99.6292,
           "fx": 31.3478,
           "equiv": 3123.1546,
@@ -5131,7 +5131,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-19",
-          "local": 562.6657,
+          "local": 562.6656,
           "adr": 100.539,
           "fx": 31.375,
           "equiv": 3154.4119,
@@ -5139,7 +5139,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-20",
-          "local": 562.6657,
+          "local": 562.6656,
           "adr": 96.8318,
           "fx": 31.27,
           "equiv": 3027.9315,
@@ -5158,15 +5158,15 @@ window.HISTORICAL_DATA = {
           "local": 559.7802,
           "adr": 99.8421,
           "fx": 31.193,
-          "equiv": 3114.3745,
-          "premium": 11.2713
+          "equiv": 3114.375,
+          "premium": 11.2714
         },
         {
           "date": "2023-12-25",
           "local": 558.8184,
           "adr": 99.8421,
           "fx": 31.08,
-          "equiv": 3103.0923,
+          "equiv": 3103.0928,
           "premium": 11.0591
         },
         {
@@ -5190,7 +5190,7 @@ window.HISTORICAL_DATA = {
           "local": 570.3602,
           "adr": 101.3424,
           "fx": 30.8457,
-          "equiv": 3125.9772,
+          "equiv": 3125.977,
           "premium": 9.6141
         },
         {
@@ -5222,23 +5222,23 @@ window.HISTORICAL_DATA = {
           "local": 555.9329,
           "adr": 96.9577,
           "fx": 30.879,
-          "equiv": 2993.9559,
-          "premium": 7.7093
+          "equiv": 2993.9555,
+          "premium": 7.7092
         },
         {
           "date": "2024-01-04",
           "local": 557.8564,
           "adr": 95.951,
           "fx": 31.0419,
-          "equiv": 2978.502,
+          "equiv": 2978.5022,
           "premium": 6.7838
         },
         {
           "date": "2024-01-05",
-          "local": 554.0092,
+          "local": 554.0093,
           "adr": 96.4156,
           "fx": 31.054,
-          "equiv": 2994.0909,
+          "equiv": 2994.0912,
           "premium": 8.0881
         },
         {
@@ -5326,7 +5326,7 @@ window.HISTORICAL_DATA = {
           "local": 602.1003,
           "adr": 109.4053,
           "fx": 31.3838,
-          "equiv": 3433.553,
+          "equiv": 3433.5528,
           "premium": 14.0525
         },
         {
@@ -5430,8 +5430,8 @@ window.HISTORICAL_DATA = {
           "local": 621.3367,
           "adr": 129.4415,
           "fx": 31.3668,
-          "equiv": 4060.1642,
-          "premium": 30.6913
+          "equiv": 4060.1632,
+          "premium": 30.6912
         },
         {
           "date": "2024-02-09",
@@ -5507,7 +5507,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-22",
-          "local": 665.5805,
+          "local": 665.5806,
           "adr": 124.9309,
           "fx": 31.4263,
           "equiv": 3926.1157,
@@ -5582,7 +5582,7 @@ window.HISTORICAL_DATA = {
           "local": 706.9389,
           "adr": 137.03,
           "fx": 31.5405,
-          "equiv": 4321.9952,
+          "equiv": 4321.9957,
           "premium": 22.2735
         },
         {
@@ -5598,7 +5598,7 @@ window.HISTORICAL_DATA = {
           "local": 754.0682,
           "adr": 141.6761,
           "fx": 31.4348,
-          "equiv": 4453.5593,
+          "equiv": 4453.5598,
           "premium": 18.1209
         },
         {
@@ -5606,7 +5606,7 @@ window.HISTORICAL_DATA = {
           "local": 736.7553,
           "adr": 134.5618,
           "fx": 31.453,
-          "equiv": 4232.3721,
+          "equiv": 4232.3726,
           "premium": 14.8922
         },
         {
@@ -5619,8 +5619,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-13",
-          "local": 749.259,
-          "adr": 137.5817,
+          "local": 749.2589,
+          "adr": 137.5818,
           "fx": 31.3988,
           "equiv": 4319.9011,
           "premium": 15.3113
@@ -5638,8 +5638,8 @@ window.HISTORICAL_DATA = {
           "local": 724.2518,
           "adr": 132.5872,
           "fx": 31.526,
-          "equiv": 4179.9441,
-          "premium": 15.4279
+          "equiv": 4179.9446,
+          "premium": 15.428
         },
         {
           "date": "2024-03-18",
@@ -5667,7 +5667,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-21",
-          "local": 757.5893,
+          "local": 757.5892,
           "adr": 135.5261,
           "fx": 31.7622,
           "equiv": 4304.6082,
@@ -5678,12 +5678,12 @@ window.HISTORICAL_DATA = {
           "local": 758.5555,
           "adr": 136.5854,
           "fx": 31.883,
-          "equiv": 4354.7533,
+          "equiv": 4354.7543,
           "premium": 14.817
         },
         {
           "date": "2024-03-25",
-          "local": 753.7241,
+          "local": 753.7239,
           "adr": 136.2842,
           "fx": 31.935,
           "equiv": 4352.2352,
@@ -5694,7 +5694,7 @@ window.HISTORICAL_DATA = {
           "local": 755.6566,
           "adr": 134.9333,
           "fx": 31.734,
-          "equiv": 4281.9729,
+          "equiv": 4281.9724,
           "premium": 13.3312
         },
         {
@@ -5747,7 +5747,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-04-04",
-          "local": 753.7241,
+          "local": 753.7239,
           "adr": 135.7302,
           "fx": 31.9687,
           "equiv": 4339.1194,
@@ -5755,7 +5755,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-04-05",
-          "local": 753.7241,
+          "local": 753.7239,
           "adr": 137.3824,
           "fx": 32.048,
           "equiv": 4402.8312,
@@ -5779,7 +5779,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-04-10",
-          "local": 787.5449,
+          "local": 787.545,
           "adr": 142.1056,
           "fx": 31.9662,
           "equiv": 4542.5772,
@@ -5798,12 +5798,12 @@ window.HISTORICAL_DATA = {
           "local": 790.4439,
           "adr": 138.5097,
           "fx": 32.2245,
-          "equiv": 4463.4068,
+          "equiv": 4463.4073,
           "premium": 12.9342
         },
         {
           "date": "2024-04-15",
-          "local": 778.8481,
+          "local": 778.8482,
           "adr": 136.1967,
           "fx": 32.254,
           "equiv": 4392.8886,
@@ -5811,18 +5811,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-04-16",
-          "local": 761.4545,
+          "local": 761.4544,
           "adr": 135.8663,
           "fx": 32.3888,
           "equiv": 4400.5462,
-          "premium": 15.5826
+          "premium": 15.5827
         },
         {
           "date": "2024-04-17",
           "local": 776.9155,
-          "adr": 135.118,
+          "adr": 135.1179,
           "fx": 32.4979,
-          "equiv": 4391.0494,
+          "equiv": 4391.0489,
           "premium": 13.038
         },
         {
@@ -5838,12 +5838,12 @@ window.HISTORICAL_DATA = {
           "local": 724.7346,
           "adr": 124.1068,
           "fx": 32.4159,
-          "equiv": 4023.0322,
+          "equiv": 4023.0324,
           "premium": 11.0208
         },
         {
           "date": "2024-04-22",
-          "local": 717.0042,
+          "local": 717.004,
           "adr": 126.0991,
           "fx": 32.504,
           "equiv": 4098.7243,
@@ -5886,7 +5886,7 @@ window.HISTORICAL_DATA = {
           "local": 768.2188,
           "adr": 134.6029,
           "fx": 32.559,
-          "equiv": 4382.5342,
+          "equiv": 4382.5333,
           "premium": 14.096
         },
         {
@@ -5934,12 +5934,12 @@ window.HISTORICAL_DATA = {
           "local": 773.0503,
           "adr": 137.1394,
           "fx": 32.263,
-          "equiv": 4424.5292,
+          "equiv": 4424.5287,
           "premium": 14.4694
         },
         {
           "date": "2024-05-08",
-          "local": 774.9829,
+          "local": 774.9828,
           "adr": 139.5594,
           "fx": 32.3638,
           "equiv": 4516.6716,
@@ -5955,7 +5955,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-10",
-          "local": 774.9829,
+          "local": 774.9828,
           "adr": 145.0601,
           "fx": 32.3388,
           "equiv": 4691.0695,
@@ -5971,7 +5971,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-14",
-          "local": 797.2081,
+          "local": 797.208,
           "adr": 147.6744,
           "fx": 32.3715,
           "equiv": 4780.4403,
@@ -5982,8 +5982,8 @@ window.HISTORICAL_DATA = {
           "local": 810.7366,
           "adr": 151.2023,
           "fx": 32.3137,
-          "equiv": 4885.9046,
-          "premium": 20.53
+          "equiv": 4885.9055,
+          "premium": 20.5301
         },
         {
           "date": "2024-05-16",
@@ -5991,7 +5991,7 @@ window.HISTORICAL_DATA = {
           "adr": 147.9465,
           "fx": 32.0313,
           "equiv": 4738.9192,
-          "premium": 16.626
+          "premium": 16.6261
         },
         {
           "date": "2024-05-17",
@@ -6006,7 +6006,7 @@ window.HISTORICAL_DATA = {
           "local": 806.8713,
           "adr": 149.2294,
           "fx": 32.164,
-          "equiv": 4799.8142,
+          "equiv": 4799.8137,
           "premium": 18.9735
         },
         {
@@ -6014,7 +6014,7 @@ window.HISTORICAL_DATA = {
           "local": 812.6691,
           "adr": 149.346,
           "fx": 32.2058,
-          "equiv": 4809.807,
+          "equiv": 4809.8075,
           "premium": 18.3706
         },
         {
@@ -6070,7 +6070,7 @@ window.HISTORICAL_DATA = {
           "local": 809.7701,
           "adr": 148.656,
           "fx": 32.377,
-          "equiv": 4813.0348,
+          "equiv": 4813.0344,
           "premium": 18.8741
         },
         {
@@ -6094,12 +6094,12 @@ window.HISTORICAL_DATA = {
           "local": 810.7366,
           "adr": 148.1798,
           "fx": 32.3143,
-          "equiv": 4788.3259,
-          "premium": 18.1229
+          "equiv": 4788.3249,
+          "premium": 18.1228
         },
         {
           "date": "2024-06-05",
-          "local": 825.2311,
+          "local": 825.2312,
           "adr": 158.3357,
           "fx": 32.3288,
           "equiv": 5118.8035,
@@ -6115,15 +6115,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-06-07",
-          "local": 849.389,
+          "local": 849.3889,
           "adr": 159.7644,
           "fx": 32.2089,
-          "equiv": 5145.8343,
-          "premium": 21.1655
+          "equiv": 5145.8348,
+          "premium": 21.1656
         },
         {
           "date": "2024-06-10",
-          "local": 849.389,
+          "local": 849.3889,
           "adr": 163.4283,
           "fx": 32.405,
           "equiv": 5295.8928,
@@ -6150,7 +6150,7 @@ window.HISTORICAL_DATA = {
           "local": 891.4739,
           "adr": 168.5748,
           "fx": 32.201,
-          "equiv": 5428.2766,
+          "equiv": 5428.2761,
           "premium": 21.7821
         },
         {
@@ -6163,7 +6163,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-06-17",
-          "local": 893.4139,
+          "local": 893.4138,
           "adr": 172.7962,
           "fx": 32.349,
           "equiv": 5589.7837,
@@ -6171,7 +6171,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-06-18",
-          "local": 914.7549,
+          "local": 914.755,
           "adr": 175.1848,
           "fx": 32.301,
           "equiv": 5658.644,
@@ -6203,7 +6203,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-06-24",
-          "local": 911.8447,
+          "local": 911.8448,
           "adr": 163.6026,
           "fx": 32.363,
           "equiv": 5294.6713,
@@ -6222,7 +6222,7 @@ window.HISTORICAL_DATA = {
           "local": 931.2457,
           "adr": 167.7558,
           "fx": 32.4735,
-          "equiv": 5447.6193,
+          "equiv": 5447.6188,
           "premium": 16.9964
         },
         {
@@ -6318,7 +6318,7 @@ window.HISTORICAL_DATA = {
           "local": 1008.8497,
           "adr": 182.6527,
           "fx": 32.3868,
-          "equiv": 5915.5371,
+          "equiv": 5915.5376,
           "premium": 17.2729
         },
         {
@@ -6390,7 +6390,7 @@ window.HISTORICAL_DATA = {
           "local": 949.6766,
           "adr": 156.2614,
           "fx": 32.7148,
-          "equiv": 5112.0617,
+          "equiv": 5112.0612,
           "premium": 7.659
         },
         {
@@ -6398,7 +6398,7 @@ window.HISTORICAL_DATA = {
           "local": 896.3241,
           "adr": 157.8798,
           "fx": 32.643,
-          "equiv": 5153.6708,
+          "equiv": 5153.6713,
           "premium": 14.9957
         },
         {
@@ -6411,7 +6411,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-07-30",
-          "local": 911.8447,
+          "local": 911.8448,
           "adr": 150.6653,
           "fx": 32.8493,
           "equiv": 4949.2512,
@@ -6478,15 +6478,15 @@ window.HISTORICAL_DATA = {
           "local": 906.0246,
           "adr": 162.9299,
           "fx": 32.4102,
-          "equiv": 5280.5914,
+          "equiv": 5280.5909,
           "premium": 16.5662
         },
         {
           "date": "2024-08-12",
-          "local": 911.8447,
-          "adr": 163.4272,
+          "local": 911.8448,
+          "adr": 163.4271,
           "fx": 32.435,
-          "equiv": 5300.76,
+          "equiv": 5300.7595,
           "premium": 16.2645
         },
         {
@@ -6526,7 +6526,7 @@ window.HISTORICAL_DATA = {
           "local": 943.8564,
           "adr": 171.0511,
           "fx": 32.1355,
-          "equiv": 5496.813,
+          "equiv": 5496.812,
           "premium": 16.4756
         },
         {
@@ -6547,7 +6547,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-22",
-          "local": 922.5154,
+          "local": 922.5153,
           "adr": 162.267,
           "fx": 31.695,
           "equiv": 5143.0525,
@@ -6558,7 +6558,7 @@ window.HISTORICAL_DATA = {
           "local": 920.5752,
           "adr": 166.9856,
           "fx": 32.035,
-          "equiv": 5349.385,
+          "equiv": 5349.3845,
           "premium": 16.2183
         },
         {
@@ -6571,7 +6571,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-27",
-          "local": 913.7849,
+          "local": 913.785,
           "adr": 166.2739,
           "fx": 31.809,
           "equiv": 5289.0073,
@@ -6582,15 +6582,15 @@ window.HISTORICAL_DATA = {
           "local": 935.126,
           "adr": 164.9578,
           "fx": 31.695,
-          "equiv": 5228.3372,
+          "equiv": 5228.3363,
           "premium": 11.821
         },
         {
           "date": "2024-08-29",
-          "local": 914.7549,
+          "local": 914.755,
           "adr": 164.909,
           "fx": 31.983,
-          "equiv": 5274.2854,
+          "equiv": 5274.2859,
           "premium": 15.3158
         },
         {
@@ -6611,10 +6611,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-03",
-          "local": 911.8447,
+          "local": 911.8448,
           "adr": 156.4662,
           "fx": 31.931,
-          "equiv": 4996.1208,
+          "equiv": 4996.1213,
           "premium": 9.5827
         },
         {
@@ -6635,7 +6635,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-06",
-          "local": 890.5038,
+          "local": 890.5037,
           "adr": 152.8882,
           "fx": 32.007,
           "equiv": 4893.4926,
@@ -6651,7 +6651,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-10",
-          "local": 876.9232,
+          "local": 876.923,
           "adr": 158.3575,
           "fx": 32.108,
           "equiv": 5084.5443,
@@ -6675,23 +6675,23 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-13",
-          "local": 922.7318,
-          "adr": 168.7958,
+          "local": 922.7319,
+          "adr": 168.7957,
           "fx": 31.923,
           "equiv": 5388.4671,
           "premium": 16.7938
         },
         {
           "date": "2024-09-16",
-          "local": 922.7318,
+          "local": 922.7319,
           "adr": 165.4492,
           "fx": 31.938,
-          "equiv": 5284.1171,
+          "equiv": 5284.1176,
           "premium": 14.532
         },
         {
           "date": "2024-09-17",
-          "local": 922.7318,
+          "local": 922.7319,
           "adr": 163.7564,
           "fx": 31.863,
           "equiv": 5217.7696,
@@ -6710,7 +6710,7 @@ window.HISTORICAL_DATA = {
           "local": 935.3986,
           "adr": 172.4359,
           "fx": 31.779,
-          "equiv": 5479.8398,
+          "equiv": 5479.8403,
           "premium": 17.1659
         },
         {
@@ -6723,7 +6723,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-23",
-          "local": 951.963,
+          "local": 951.9629,
           "adr": 171.0072,
           "fx": 31.989,
           "equiv": 5470.3504,
@@ -6758,13 +6758,13 @@ window.HISTORICAL_DATA = {
           "local": 974.3735,
           "adr": 174.1483,
           "fx": 31.46,
-          "equiv": 5478.7054,
+          "equiv": 5478.7058,
           "premium": 12.456
         },
         {
           "date": "2024-09-30",
           "local": 932.4755,
-          "adr": 169.9407,
+          "adr": 169.9406,
           "fx": 31.575,
           "equiv": 5365.8769,
           "premium": 15.0889
@@ -6795,7 +6795,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-04",
-          "local": 951.963,
+          "local": 951.9629,
           "adr": 177.2698,
           "fx": 32.018,
           "equiv": 5675.8254,
@@ -6854,7 +6854,7 @@ window.HISTORICAL_DATA = {
           "local": 1042.5796,
           "adr": 183.1116,
           "fx": 32.152,
-          "equiv": 5887.4048,
+          "equiv": 5887.4053,
           "premium": 12.9392
         },
         {
@@ -6870,12 +6870,12 @@ window.HISTORICAL_DATA = {
           "local": 1008.4766,
           "adr": 201.4198,
           "fx": 32.135,
-          "equiv": 6472.6259,
+          "equiv": 6472.6254,
           "premium": 28.3644
         },
         {
           "date": "2024-10-18",
-          "local": 1057.1954,
+          "local": 1057.1953,
           "adr": 196.4685,
           "fx": 32.068,
           "equiv": 6300.3517,
@@ -6883,7 +6883,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-21",
-          "local": 1057.1954,
+          "local": 1057.1953,
           "adr": 197.6134,
           "fx": 32.042,
           "equiv": 6331.9272,
@@ -6891,7 +6891,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-22",
-          "local": 1047.4515,
+          "local": 1047.4514,
           "adr": 194.2179,
           "fx": 32.051,
           "equiv": 6224.8765,
@@ -6899,7 +6899,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-23",
-          "local": 1032.8359,
+          "local": 1032.8358,
           "adr": 196.5468,
           "fx": 32.014,
           "equiv": 6292.2482,
@@ -6907,7 +6907,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-24",
-          "local": 1032.8359,
+          "local": 1032.8358,
           "adr": 193.6797,
           "fx": 32.004,
           "equiv": 6198.5245,
@@ -6915,10 +6915,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-25",
-          "local": 1037.7078,
+          "local": 1037.7079,
           "adr": 199.0714,
           "fx": 31.9838,
-          "equiv": 6367.0594,
+          "equiv": 6367.0599,
           "premium": 22.7139
         },
         {
@@ -6926,7 +6926,7 @@ window.HISTORICAL_DATA = {
           "local": 1023.0922,
           "adr": 190.4995,
           "fx": 32.0638,
-          "equiv": 6108.1374,
+          "equiv": 6108.1369,
           "premium": 19.4054
         },
         {
@@ -6934,7 +6934,7 @@ window.HISTORICAL_DATA = {
           "local": 1013.3486,
           "adr": 192.711,
           "fx": 32.0138,
-          "equiv": 6169.4107,
+          "equiv": 6169.4102,
           "premium": 21.7629
         },
         {
@@ -6979,7 +6979,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-11-06",
-          "local": 1032.8359,
+          "local": 1032.8358,
           "adr": 189.0708,
           "fx": 31.8223,
           "equiv": 6016.6692,
@@ -6987,7 +6987,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-11-07",
-          "local": 1037.7078,
+          "local": 1037.7079,
           "adr": 196.8697,
           "fx": 32.3346,
           "equiv": 6365.7024,
@@ -6998,12 +6998,12 @@ window.HISTORICAL_DATA = {
           "local": 1062.0671,
           "adr": 196.8795,
           "fx": 32.034,
-          "equiv": 6306.837,
+          "equiv": 6306.8366,
           "premium": 18.7653
         },
         {
           "date": "2024-11-11",
-          "local": 1057.1954,
+          "local": 1057.1953,
           "adr": 189.883,
           "fx": 32.235,
           "equiv": 6120.8795,
@@ -7070,7 +7070,7 @@ window.HISTORICAL_DATA = {
           "local": 984.1173,
           "adr": 187.1334,
           "fx": 32.4715,
-          "equiv": 6076.501,
+          "equiv": 6076.5015,
           "premium": 23.4914
         },
         {
@@ -7147,7 +7147,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-05",
-          "local": 1047.4515,
+          "local": 1047.4514,
           "adr": 199.9129,
           "fx": 32.313,
           "equiv": 6459.7861,
@@ -7155,7 +7155,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-06",
-          "local": 1037.7078,
+          "local": 1037.7079,
           "adr": 198.6604,
           "fx": 32.3228,
           "equiv": 6421.2603,
@@ -7163,7 +7163,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-09",
-          "local": 1047.4515,
+          "local": 1047.4514,
           "adr": 194.8931,
           "fx": 32.388,
           "equiv": 6312.1967,
@@ -7171,10 +7171,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-10",
-          "local": 1037.7078,
+          "local": 1037.7079,
           "adr": 187.8183,
           "fx": 32.3708,
-          "equiv": 6079.8291,
+          "equiv": 6079.8296,
           "premium": 17.1781
         },
         {
@@ -7204,7 +7204,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-12-16",
           "local": 1061.2571,
-          "adr": 198.5059,
+          "adr": 198.506,
           "fx": 32.4983,
           "equiv": 6451.1052,
           "premium": 21.5748
@@ -7220,14 +7220,14 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-12-18",
           "local": 1061.2571,
-          "adr": 191.9683,
+          "adr": 191.9682,
           "fx": 32.4298,
-          "equiv": 6225.492,
+          "equiv": 6225.4915,
           "premium": 17.323
         },
         {
           "date": "2024-12-19",
-          "local": 1046.5854,
+          "local": 1046.5853,
           "adr": 191.0652,
           "fx": 32.678,
           "equiv": 6243.6279,
@@ -7246,7 +7246,7 @@ window.HISTORICAL_DATA = {
           "local": 1056.3666,
           "adr": 203.5515,
           "fx": 32.616,
-          "equiv": 6639.0374,
+          "equiv": 6639.0369,
           "premium": 25.6957
         },
         {
@@ -7339,7 +7339,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-09",
-          "local": 1075.929,
+          "local": 1075.9287,
           "adr": 203.3159,
           "fx": 32.9203,
           "equiv": 6693.2214,
@@ -7347,10 +7347,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-10",
-          "local": 1075.929,
+          "local": 1075.9287,
           "adr": 204.543,
           "fx": 32.831,
-          "equiv": 6715.351,
+          "equiv": 6715.3505,
           "premium": 24.8289
         },
         {
@@ -7383,7 +7383,7 @@ window.HISTORICAL_DATA = {
           "adr": 210.8451,
           "fx": 32.796,
           "equiv": 6914.875,
-          "premium": 27.9561
+          "premium": 27.9562
         },
         {
           "date": "2025-01-17",
@@ -7404,9 +7404,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-01-21",
           "local": 1095.4912,
-          "adr": 214.6833,
+          "adr": 214.6832,
           "fx": 32.316,
-          "equiv": 6937.7046,
+          "equiv": 6937.7041,
           "premium": 26.6592
         },
         {
@@ -7475,7 +7475,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-03",
-          "local": 1046.5854,
+          "local": 1046.5853,
           "adr": 196.1304,
           "fx": 32.828,
           "equiv": 6438.5687,
@@ -7491,7 +7491,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-05",
-          "local": 1085.7101,
+          "local": 1085.71,
           "adr": 204.7393,
           "fx": 32.8916,
           "equiv": 6734.2041,
@@ -7499,10 +7499,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-06",
-          "local": 1090.6007,
+          "local": 1090.6006,
           "adr": 206.6339,
           "fx": 32.8218,
-          "equiv": 6782.0949,
+          "equiv": 6782.096,
           "premium": 24.3736
         },
         {
@@ -7523,7 +7523,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-11",
-          "local": 1085.7101,
+          "local": 1085.71,
           "adr": 204.9062,
           "fx": 32.8654,
           "equiv": 6734.3235,
@@ -7531,18 +7531,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-12",
-          "local": 1075.929,
-          "adr": 202.5895,
+          "local": 1075.9287,
+          "adr": 202.5896,
           "fx": 32.8033,
-          "equiv": 6645.6052,
-          "premium": 23.5324
+          "equiv": 6645.6057,
+          "premium": 23.5325
         },
         {
           "date": "2025-02-13",
           "local": 1066.1477,
           "adr": 198.1231,
           "fx": 32.8558,
-          "equiv": 6509.4928,
+          "equiv": 6509.4938,
           "premium": 22.1124
         },
         {
@@ -7563,7 +7563,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-18",
-          "local": 1075.929,
+          "local": 1075.9287,
           "adr": 199.0164,
           "fx": 32.7066,
           "equiv": 6509.1499,
@@ -7598,7 +7598,7 @@ window.HISTORICAL_DATA = {
           "local": 1051.476,
           "adr": 188.1301,
           "fx": 32.773,
-          "equiv": 6165.5869,
+          "equiv": 6165.5859,
           "premium": 17.2749
         },
         {
@@ -7635,7 +7635,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-03",
-          "local": 997.6796,
+          "local": 997.6795,
           "adr": 169.7932,
           "fx": 32.905,
           "equiv": 5587.044,
@@ -7651,18 +7651,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-05",
-          "local": 997.6796,
+          "local": 997.6795,
           "adr": 180.8954,
           "fx": 32.7948,
-          "equiv": 5932.4295,
-          "premium": 18.9245
+          "equiv": 5932.43,
+          "premium": 18.9246
         },
         {
           "date": "2025-03-06",
           "local": 983.0078,
           "adr": 172.6203,
           "fx": 32.8011,
-          "equiv": 5662.135,
+          "equiv": 5662.1345,
           "premium": 15.2002
         },
         {
@@ -7710,7 +7710,7 @@ window.HISTORICAL_DATA = {
           "local": 938.0143,
           "adr": 170.8926,
           "fx": 32.9684,
-          "equiv": 5634.0547,
+          "equiv": 5634.0552,
           "premium": 20.1273
         },
         {
@@ -7726,7 +7726,7 @@ window.HISTORICAL_DATA = {
           "local": 954.1785,
           "adr": 170.6124,
           "fx": 32.9564,
-          "equiv": 5622.7702,
+          "equiv": 5622.7697,
           "premium": 17.8557
         },
         {
@@ -7798,8 +7798,8 @@ window.HISTORICAL_DATA = {
           "local": 894.2352,
           "adr": 163.5861,
           "fx": 33.1858,
-          "equiv": 5428.7345,
-          "premium": 21.4163
+          "equiv": 5428.734,
+          "premium": 21.4162
         },
         {
           "date": "2025-04-01",
@@ -7811,7 +7811,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-02",
-          "local": 925.6808,
+          "local": 925.6809,
           "adr": 167.9122,
           "fx": 33.2035,
           "equiv": 5575.2731,
@@ -7819,7 +7819,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-03",
-          "local": 925.6808,
+          "local": 925.6809,
           "adr": 155.0914,
           "fx": 33.2625,
           "equiv": 5158.7283,
@@ -7827,7 +7827,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-04",
-          "local": 925.6808,
+          "local": 925.6809,
           "adr": 144.6653,
           "fx": 33.0311,
           "equiv": 4778.4531,
@@ -7835,7 +7835,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-07",
-          "local": 833.3093,
+          "local": 833.3092,
           "adr": 144.0444,
           "fx": 33.1625,
           "equiv": 4776.8733,
@@ -7843,7 +7843,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-08",
-          "local": 801.8636,
+          "local": 801.8637,
           "adr": 139.3142,
           "fx": 32.9801,
           "equiv": 4594.5964,
@@ -7859,7 +7859,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-10",
-          "local": 848.0494,
+          "local": 848.0495,
           "adr": 148.9323,
           "fx": 32.5881,
           "equiv": 4853.4211,
@@ -7870,12 +7870,12 @@ window.HISTORICAL_DATA = {
           "local": 873.599,
           "adr": 154.7958,
           "fx": 32.7863,
-          "equiv": 5075.1814,
+          "equiv": 5075.1809,
           "premium": 16.1902
         },
         {
           "date": "2025-04-14",
-          "local": 850.0148,
+          "local": 850.0147,
           "adr": 153.5738,
           "fx": 32.362,
           "equiv": 4969.9555,
@@ -7907,7 +7907,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-18",
-          "local": 835.2746,
+          "local": 835.2747,
           "adr": 149.5334,
           "fx": 32.3788,
           "equiv": 4841.7135,
@@ -7923,7 +7923,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-22",
-          "local": 801.8636,
+          "local": 801.8637,
           "adr": 149.1984,
           "fx": 32.4406,
           "equiv": 4840.0847,
@@ -7947,7 +7947,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-25",
-          "local": 872.6163,
+          "local": 872.6164,
           "adr": 162.6992,
           "fx": 32.4356,
           "equiv": 5277.2448,
@@ -7963,7 +7963,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-29",
-          "local": 886.3738,
+          "local": 886.3737,
           "adr": 162.0882,
           "fx": 32.4259,
           "equiv": 5255.8546,
@@ -8030,7 +8030,7 @@ window.HISTORICAL_DATA = {
           "local": 932.5596,
           "adr": 173.9531,
           "fx": 30.269,
-          "equiv": 5265.3861,
+          "equiv": 5265.3865,
           "premium": 12.9233
         },
         {
@@ -8038,7 +8038,7 @@ window.HISTORICAL_DATA = {
           "local": 940.421,
           "adr": 184.261,
           "fx": 30.2464,
-          "equiv": 5573.2312,
+          "equiv": 5573.2307,
           "premium": 18.5263
         },
         {
@@ -8067,7 +8067,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-05-16",
-          "local": 980.7106,
+          "local": 980.7107,
           "adr": 191.3957,
           "fx": 30.167,
           "equiv": 5773.8338,
@@ -8086,7 +8086,7 @@ window.HISTORICAL_DATA = {
           "local": 961.0572,
           "adr": 190.6369,
           "fx": 30.1458,
-          "equiv": 5746.9018,
+          "equiv": 5746.9014,
           "premium": 19.5954
         },
         {
@@ -8142,7 +8142,7 @@ window.HISTORICAL_DATA = {
           "local": 950.2478,
           "adr": 194.2831,
           "fx": 29.95,
-          "equiv": 5818.7784,
+          "equiv": 5818.778,
           "premium": 22.4687
         },
         {
@@ -8155,10 +8155,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-02",
-          "local": 929.6116,
+          "local": 929.6115,
           "adr": 192.0067,
           "fx": 29.871,
-          "equiv": 5735.4317,
+          "equiv": 5735.4312,
           "premium": 23.3942
         },
         {
@@ -8174,12 +8174,12 @@ window.HISTORICAL_DATA = {
           "local": 972.8494,
           "adr": 199.4567,
           "fx": 29.9659,
-          "equiv": 5976.9004,
+          "equiv": 5976.9008,
           "premium": 22.8741
         },
         {
           "date": "2025-06-05",
-          "local": 980.7106,
+          "local": 980.7107,
           "adr": 200.3831,
           "fx": 29.942,
           "equiv": 5999.8698,
@@ -8187,7 +8187,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-06",
-          "local": 977.7627,
+          "local": 977.7626,
           "adr": 202.1963,
           "fx": 29.9453,
           "equiv": 6054.8288,
@@ -8195,7 +8195,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-09",
-          "local": 987.5894,
+          "local": 987.5895,
           "adr": 203.9899,
           "fx": 29.9177,
           "equiv": 6102.9072,
@@ -8227,10 +8227,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-13",
-          "local": 1016.4512,
+          "local": 1016.4511,
           "adr": 208.7909,
           "fx": 29.5252,
-          "equiv": 6164.5929,
+          "equiv": 6164.5924,
           "premium": 21.2964
         },
         {
@@ -8246,12 +8246,12 @@ window.HISTORICAL_DATA = {
           "local": 1031.254,
           "adr": 211.5603,
           "fx": 29.005,
-          "equiv": 6136.3051,
+          "equiv": 6136.3046,
           "premium": 19.0067
         },
         {
           "date": "2025-06-18",
-          "local": 1041.1223,
+          "local": 1041.1224,
           "adr": 211.1646,
           "fx": 29.6471,
           "equiv": 6260.4189,
@@ -8267,15 +8267,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-20",
-          "local": 1041.1223,
+          "local": 1041.1224,
           "adr": 207.2183,
           "fx": 29.5713,
-          "equiv": 6127.7139,
+          "equiv": 6127.7144,
           "premium": 17.7136
         },
         {
           "date": "2025-06-23",
-          "local": 1006.5828,
+          "local": 1006.5827,
           "adr": 208.0194,
           "fx": 29.533,
           "equiv": 6143.4383,
@@ -8291,7 +8291,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-25",
-          "local": 1055.925,
+          "local": 1055.9249,
           "adr": 220.3036,
           "fx": 29.4581,
           "equiv": 6489.7241,
@@ -8315,7 +8315,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-30",
-          "local": 1046.0566,
+          "local": 1046.0565,
           "adr": 224.0126,
           "fx": 29.095,
           "equiv": 6517.6452,
@@ -8395,19 +8395,19 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-14",
-          "local": 1080.5963,
+          "local": 1080.5962,
           "adr": 226.1687,
           "fx": 29.213,
-          "equiv": 6607.0661,
+          "equiv": 6607.0657,
           "premium": 22.2856
         },
         {
           "date": "2025-07-15",
-          "local": 1095.3989,
+          "local": 1095.3988,
           "adr": 234.3581,
           "fx": 29.3461,
-          "equiv": 6877.4969,
-          "premium": 25.5706
+          "equiv": 6877.4973,
+          "premium": 25.5707
         },
         {
           "date": "2025-07-16",
@@ -8419,7 +8419,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-17",
-          "local": 1115.1357,
+          "local": 1115.1359,
           "adr": 242.9135,
           "fx": 29.401,
           "equiv": 7141.9,
@@ -8435,7 +8435,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-21",
-          "local": 1134.8727,
+          "local": 1134.8728,
           "adr": 236.2374,
           "fx": 29.378,
           "equiv": 6940.1814,
@@ -8443,10 +8443,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-22",
-          "local": 1115.1357,
+          "local": 1115.1359,
           "adr": 232.0338,
           "fx": 29.3336,
-          "equiv": 6806.3878,
+          "equiv": 6806.3873,
           "premium": 22.0728
         },
         {
@@ -8462,7 +8462,7 @@ window.HISTORICAL_DATA = {
           "local": 1129.9384,
           "adr": 238.9573,
           "fx": 29.2342,
-          "equiv": 6985.7247,
+          "equiv": 6985.7242,
           "premium": 23.6479
         },
         {
@@ -8539,10 +8539,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-07",
-          "local": 1164.478,
+          "local": 1164.4781,
           "adr": 239.9661,
           "fx": 29.9147,
-          "equiv": 7178.5136,
+          "equiv": 7178.5141,
           "premium": 23.2915
         },
         {
@@ -8555,7 +8555,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-11",
-          "local": 1164.478,
+          "local": 1164.4781,
           "adr": 239.4419,
           "fx": 29.851,
           "equiv": 7147.5804,
@@ -8563,7 +8563,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-12",
-          "local": 1164.478,
+          "local": 1164.4781,
           "adr": 241.6178,
           "fx": 29.948,
           "equiv": 7235.9707,
@@ -8587,7 +8587,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-15",
-          "local": 1164.478,
+          "local": 1164.4781,
           "adr": 236.267,
           "fx": 30.079,
           "equiv": 7106.6756,
@@ -8595,7 +8595,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-18",
-          "local": 1164.478,
+          "local": 1164.4781,
           "adr": 238.7693,
           "fx": 29.989,
           "equiv": 7160.4536,
@@ -8603,10 +8603,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-19",
-          "local": 1169.4122,
+          "local": 1169.4124,
           "adr": 230.1546,
           "fx": 30.0251,
-          "equiv": 6910.4151,
+          "equiv": 6910.4156,
           "premium": 18.1861
         },
         {
@@ -8619,7 +8619,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-21",
-          "local": 1134.8727,
+          "local": 1134.8728,
           "adr": 224.8434,
           "fx": 30.2801,
           "equiv": 6808.2797,
@@ -8635,7 +8635,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-25",
-          "local": 1154.6095,
+          "local": 1154.6096,
           "adr": 233.013,
           "fx": 30.3673,
           "equiv": 7075.9757,
@@ -8707,7 +8707,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-05",
-          "local": 1164.478,
+          "local": 1164.4781,
           "adr": 240.7475,
           "fx": 30.694,
           "equiv": 7389.5033,
@@ -8715,7 +8715,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-08",
-          "local": 1164.478,
+          "local": 1164.4781,
           "adr": 244.4861,
           "fx": 30.479,
           "equiv": 7451.6928,
@@ -8787,7 +8787,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-19",
-          "local": 1253.3535,
+          "local": 1253.3534,
           "adr": 262.7992,
           "fx": 30.1105,
           "equiv": 7913.0152,
@@ -8867,7 +8867,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-03",
-          "local": 1387.1106,
+          "local": 1387.1105,
           "adr": 289.9056,
           "fx": 30.4638,
           "equiv": 8831.6266,
@@ -8875,7 +8875,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-06",
-          "local": 1387.1106,
+          "local": 1387.1105,
           "adr": 300.0358,
           "fx": 30.42,
           "equiv": 9127.088,
@@ -8891,7 +8891,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-08",
-          "local": 1401.9725,
+          "local": 1401.9724,
           "adr": 302.1392,
           "fx": 30.5367,
           "equiv": 9226.3327,
@@ -8915,7 +8915,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-13",
-          "local": 1401.9725,
+          "local": 1401.9724,
           "adr": 300.522,
           "fx": 30.665,
           "equiv": 9215.5066,
@@ -8923,7 +8923,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-14",
-          "local": 1411.8804,
+          "local": 1411.8802,
           "adr": 293.6263,
           "fx": 30.691,
           "equiv": 9011.6833,
@@ -8971,7 +8971,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-22",
-          "local": 1446.5581,
+          "local": 1446.5582,
           "adr": 286.6215,
           "fx": 30.6773,
           "equiv": 8792.7724,
@@ -9011,7 +9011,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-29",
-          "local": 1491.1438,
+          "local": 1491.1439,
           "adr": 302.7047,
           "fx": 30.5431,
           "equiv": 9245.5413,
@@ -9019,7 +9019,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-30",
-          "local": 1491.1438,
+          "local": 1491.1439,
           "adr": 300.8493,
           "fx": 30.6652,
           "equiv": 9225.6048,
@@ -9051,7 +9051,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-05",
-          "local": 1446.5581,
+          "local": 1446.5582,
           "adr": 291.3443,
           "fx": 30.919,
           "equiv": 9008.0736,
@@ -9067,7 +9067,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-07",
-          "local": 1446.5581,
+          "local": 1446.5582,
           "adr": 284.2601,
           "fx": 30.9788,
           "equiv": 8806.0358,
@@ -9075,7 +9075,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-10",
-          "local": 1461.42,
+          "local": 1461.4202,
           "adr": 292.9615,
           "fx": 30.9668,
           "equiv": 9072.08,
@@ -9091,7 +9091,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-12",
-          "local": 1461.42,
+          "local": 1461.4202,
           "adr": 288.3479,
           "fx": 30.9643,
           "equiv": 8928.49,
@@ -9099,7 +9099,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-13",
-          "local": 1446.5581,
+          "local": 1446.5582,
           "adr": 279.9937,
           "fx": 31.0641,
           "equiv": 8697.7528,
@@ -9115,7 +9115,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-17",
-          "local": 1431.6962,
+          "local": 1431.6963,
           "adr": 279.8052,
           "fx": 30.5545,
           "equiv": 8549.3083,
@@ -9163,7 +9163,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-25",
-          "local": 1401.9725,
+          "local": 1401.9724,
           "adr": 282.4543,
           "fx": 31.4261,
           "equiv": 8876.4375,
@@ -9219,7 +9219,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-12-04",
-          "local": 1431.6962,
+          "local": 1431.6963,
           "adr": 290.6398,
           "fx": 31.3147,
           "equiv": 9101.2979,
@@ -9227,7 +9227,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-12-05",
-          "local": 1446.5581,
+          "local": 1446.5582,
           "adr": 292.4158,
           "fx": 31.365,
           "equiv": 9171.6216,
@@ -9251,7 +9251,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-12-10",
-          "local": 1491.1438,
+          "local": 1491.1439,
           "adr": 307.7153,
           "fx": 31.151,
           "equiv": 9585.6391,
@@ -10750,7 +10750,7 @@ window.HISTORICAL_DATA = {
           "local": 111886.3828,
           "adr": 87.7913,
           "fx": 1351.05,
-          "equiv": 118610.427,
+          "equiv": 118610.4167,
           "premium": 6.0097
         },
         {
@@ -10771,7 +10771,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-11",
-          "local": 100034.0078,
+          "local": 100034.0234,
           "adr": 81.6553,
           "fx": 1350.75,
           "equiv": 110295.9327,
@@ -10811,7 +10811,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-18",
-          "local": 98611.7188,
+          "local": 98611.7422,
           "adr": 73.6314,
           "fx": 1377.5601,
           "equiv": 101431.6667,
@@ -10859,7 +10859,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-26",
-          "local": 98611.7188,
+          "local": 98611.7422,
           "adr": 76.4634,
           "fx": 1368.9301,
           "equiv": 104673.0174,
@@ -10910,7 +10910,7 @@ window.HISTORICAL_DATA = {
           "local": 101456.2969,
           "adr": 79.7674,
           "fx": 1373.79,
-          "equiv": 109583.6003,
+          "equiv": 109583.5898,
           "premium": 8.0106
         },
         {
@@ -10923,7 +10923,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-09-07",
-          "local": 99085.8203,
+          "local": 99085.8125,
           "adr": 75.5194,
           "fx": 1371.71,
           "equiv": 103590.663,
@@ -10979,7 +10979,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-09-16",
-          "local": 98611.7188,
+          "local": 98611.7422,
           "adr": 73.1594,
           "fx": 1377.4399,
           "equiv": 100772.6915,
@@ -10998,7 +10998,7 @@ window.HISTORICAL_DATA = {
           "local": 101456.2969,
           "adr": 75.0474,
           "fx": 1384.7,
-          "equiv": 103918.1225,
+          "equiv": 103918.1331,
           "premium": 2.4265
         },
         {
@@ -11014,12 +11014,12 @@ window.HISTORICAL_DATA = {
           "local": 101456.2969,
           "adr": 75.0474,
           "fx": 1387.24,
-          "equiv": 104108.7458,
+          "equiv": 104108.7564,
           "premium": 2.6144
         },
         {
           "date": "2021-09-23",
-          "local": 100034.0078,
+          "local": 100034.0234,
           "adr": 74.1034,
           "fx": 1380.72,
           "equiv": 102316.0354,
@@ -11027,15 +11027,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-09-24",
-          "local": 98611.7188,
+          "local": 98611.7422,
           "adr": 75.0474,
           "fx": 1377.86,
-          "equiv": 103404.8009,
-          "premium": 4.8606
+          "equiv": 103404.8114,
+          "premium": 4.8605
         },
         {
           "date": "2021-09-27",
-          "local": 99085.8203,
+          "local": 99085.8125,
           "adr": 75.5194,
           "fx": 1381.3,
           "equiv": 104314.9004,
@@ -11158,7 +11158,7 @@ window.HISTORICAL_DATA = {
           "local": 92069.2109,
           "adr": 66.5515,
           "fx": 1370.48,
-          "equiv": 91207.444,
+          "equiv": 91207.4335,
           "premium": -0.936
         },
         {
@@ -11190,20 +11190,20 @@ window.HISTORICAL_DATA = {
           "local": 93396.6875,
           "adr": 69.3834,
           "fx": 1368.4301,
-          "equiv": 94946.3715,
-          "premium": 1.6592
+          "equiv": 94946.3924,
+          "premium": 1.6593
         },
         {
           "date": "2021-10-25",
           "local": 94818.9609,
           "adr": 70.7994,
           "fx": 1370.5601,
-          "equiv": 97034.8616,
+          "equiv": 97034.8825,
           "premium": 2.337
         },
         {
           "date": "2021-10-26",
-          "local": 96715.3516,
+          "local": 96715.3438,
           "adr": 78.8234,
           "fx": 1354.53,
           "equiv": 106768.6346,
@@ -11251,7 +11251,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-11-03",
-          "local": 100034.0078,
+          "local": 100034.0234,
           "adr": 77.8794,
           "fx": 1364.0601,
           "equiv": 106232.1402,
@@ -11358,8 +11358,8 @@ window.HISTORICAL_DATA = {
           "local": 113308.6719,
           "adr": 82.5993,
           "fx": 1338.7,
-          "equiv": 110575.7151,
-          "premium": -2.412
+          "equiv": 110575.7254,
+          "premium": -2.4119
         },
         {
           "date": "2021-11-23",
@@ -11411,7 +11411,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-01",
-          "local": 110464.1016,
+          "local": 110464.0859,
           "adr": 81.6553,
           "fx": 1339.63,
           "equiv": 109387.9259,
@@ -11446,7 +11446,7 @@ window.HISTORICAL_DATA = {
           "local": 115205.0469,
           "adr": 84.9593,
           "fx": 1330.97,
-          "equiv": 113078.3037,
+          "equiv": 113078.2834,
           "premium": -1.8461
         },
         {
@@ -11459,7 +11459,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-09",
-          "local": 117101.4219,
+          "local": 117101.4141,
           "adr": 83.5433,
           "fx": 1332.01,
           "equiv": 111280.5483,
@@ -11478,12 +11478,12 @@ window.HISTORICAL_DATA = {
           "local": 115205.0469,
           "adr": 82.5993,
           "fx": 1300.772,
-          "equiv": 107442.8896,
+          "equiv": 107442.8996,
           "premium": -6.7377
         },
         {
           "date": "2021-12-14",
-          "local": 114730.9609,
+          "local": 114730.9531,
           "adr": 83.0713,
           "fx": 1335.65,
           "equiv": 110954.2202,
@@ -11491,10 +11491,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-15",
-          "local": 117101.4219,
+          "local": 117101.4141,
           "adr": 84.4873,
           "fx": 1332.8101,
-          "equiv": 112605.5397,
+          "equiv": 112605.56,
           "premium": -3.8393
         },
         {
@@ -11510,7 +11510,7 @@ window.HISTORICAL_DATA = {
           "local": 115679.1484,
           "adr": 84.4873,
           "fx": 1342.6899,
-          "equiv": 113440.2644,
+          "equiv": 113440.2849,
           "premium": -1.9354
         },
         {
@@ -11531,10 +11531,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-22",
-          "local": 120420.0859,
+          "local": 120420.0938,
           "adr": 84.9593,
           "fx": 1341.87,
-          "equiv": 114004.3624,
+          "equiv": 114004.3419,
           "premium": -5.3278
         },
         {
@@ -11542,15 +11542,15 @@ window.HISTORICAL_DATA = {
           "local": 120894.1719,
           "adr": 87.7913,
           "fx": 1346.08,
-          "equiv": 118174.0962,
+          "equiv": 118174.0859,
           "premium": -2.25
         },
         {
           "date": "2021-12-24",
-          "local": 121368.2812,
+          "local": 121368.2734,
           "adr": 87.7913,
           "fx": 1341.52,
-          "equiv": 117773.7735,
+          "equiv": 117773.7632,
           "premium": -2.9617
         },
         {
@@ -11566,7 +11566,7 @@ window.HISTORICAL_DATA = {
           "local": 120894.1719,
           "adr": 87.7913,
           "fx": 1342.53,
-          "equiv": 117862.4435,
+          "equiv": 117862.4333,
           "premium": -2.5078
         },
         {
@@ -11574,12 +11574,12 @@ window.HISTORICAL_DATA = {
           "local": 121892.3438,
           "adr": 87.7913,
           "fx": 1342.76,
-          "equiv": 117882.6338,
+          "equiv": 117882.6236,
           "premium": -3.2896
         },
         {
           "date": "2021-12-30",
-          "local": 125731.4844,
+          "local": 125731.5,
           "adr": 93.2998,
           "fx": 1344.61,
           "equiv": 125451.8182,
@@ -11587,7 +11587,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-31",
-          "local": 125731.4844,
+          "local": 125731.5,
           "adr": 93.2998,
           "fx": 1346.13,
           "equiv": 125593.6357,
@@ -11595,7 +11595,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-03",
-          "local": 125731.4844,
+          "local": 125731.5,
           "adr": 90.9075,
           "fx": 1351.3,
           "equiv": 122843.3108,
@@ -11603,7 +11603,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-04",
-          "local": 123332.0312,
+          "local": 123332.0469,
           "adr": 91.8644,
           "fx": 1347.39,
           "equiv": 123777.1893,
@@ -11622,7 +11622,7 @@ window.HISTORICAL_DATA = {
           "local": 119972.7969,
           "adr": 90.429,
           "fx": 1355.36,
-          "equiv": 122563.901,
+          "equiv": 122563.8803,
           "premium": 2.1597
         },
         {
@@ -11638,7 +11638,7 @@ window.HISTORICAL_DATA = {
           "local": 119492.8984,
           "adr": 90.429,
           "fx": 1358.9,
-          "equiv": 122884.0233,
+          "equiv": 122884.0026,
           "premium": 2.8379
         },
         {
@@ -11651,7 +11651,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-12",
-          "local": 123332.0312,
+          "local": 123332.0469,
           "adr": 89.4721,
           "fx": 1354.16,
           "equiv": 121159.572,
@@ -11667,7 +11667,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-14",
-          "local": 123332.0312,
+          "local": 123332.0469,
           "adr": 89.4721,
           "fx": 1358.0,
           "equiv": 121503.1419,
@@ -11686,7 +11686,7 @@ window.HISTORICAL_DATA = {
           "local": 121412.4688,
           "adr": 89.9506,
           "fx": 1357.2,
-          "equiv": 122080.9184,
+          "equiv": 122080.9391,
           "premium": 0.5506
         },
         {
@@ -11702,12 +11702,12 @@ window.HISTORICAL_DATA = {
           "local": 119972.7969,
           "adr": 89.9506,
           "fx": 1346.03,
-          "equiv": 121076.1775,
+          "equiv": 121076.198,
           "premium": 0.9197
         },
         {
           "date": "2022-01-21",
-          "local": 114214.0938,
+          "local": 114214.1094,
           "adr": 86.1229,
           "fx": 1347.52,
           "equiv": 116052.3345,
@@ -11715,7 +11715,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-24",
-          "local": 114214.0938,
+          "local": 114214.1094,
           "adr": 79.9029,
           "fx": 1351.83,
           "equiv": 108015.1554,
@@ -11723,7 +11723,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-25",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 80.8598,
           "fx": 1353.01,
           "equiv": 109404.1425,
@@ -11731,7 +11731,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-26",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 81.8167,
           "fx": 1350.85,
           "equiv": 110522.1439,
@@ -11739,7 +11739,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-27",
-          "local": 108935.2969,
+          "local": 108935.2891,
           "adr": 78.946,
           "fx": 1344.75,
           "equiv": 106162.6221,
@@ -11790,7 +11790,7 @@ window.HISTORICAL_DATA = {
           "local": 119492.8984,
           "adr": 84.6875,
           "fx": 1372.1801,
-          "equiv": 116206.5088,
+          "equiv": 116206.5192,
           "premium": -2.7503
         },
         {
@@ -11822,7 +11822,7 @@ window.HISTORICAL_DATA = {
           "local": 124291.8047,
           "adr": 89.9506,
           "fx": 1362.67,
-          "equiv": 122572.9564,
+          "equiv": 122572.9772,
           "premium": -1.3829
         },
         {
@@ -11870,7 +11870,7 @@ window.HISTORICAL_DATA = {
           "local": 126211.3828,
           "adr": 90.429,
           "fx": 1360.1,
-          "equiv": 122992.5337,
+          "equiv": 122992.513,
           "premium": -2.5504
         },
         {
@@ -11899,7 +11899,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-24",
-          "local": 117573.3359,
+          "local": 117573.3281,
           "adr": 84.209,
           "fx": 1347.04,
           "equiv": 113432.9558,
@@ -11963,7 +11963,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-08",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 84.209,
           "fx": 1336.3,
           "equiv": 112528.5515,
@@ -11971,7 +11971,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-09",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 84.209,
           "fx": 1342.8199,
           "equiv": 113077.5858,
@@ -11979,7 +11979,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-10",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 82.2952,
           "fx": 1352.95,
           "equiv": 111341.2925,
@@ -11987,11 +11987,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-11",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 79.4244,
           "fx": 1351.71,
-          "equiv": 107358.7943,
-          "premium": -5.2056
+          "equiv": 107358.8046,
+          "premium": -5.2055
         },
         {
           "date": "2022-03-14",
@@ -12062,12 +12062,12 @@ window.HISTORICAL_DATA = {
           "local": 115653.7734,
           "adr": 84.6875,
           "fx": 1340.58,
-          "equiv": 113530.3753,
+          "equiv": 113530.3855,
           "premium": -1.836
         },
         {
           "date": "2022-03-25",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 82.7737,
           "fx": 1342.84,
           "equiv": 111151.7668,
@@ -12075,7 +12075,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-28",
-          "local": 113254.3281,
+          "local": 113254.3125,
           "adr": 82.2952,
           "fx": 1344.22,
           "equiv": 110622.8569,
@@ -12083,7 +12083,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-29",
-          "local": 115173.8828,
+          "local": 115173.875,
           "adr": 82.7737,
           "fx": 1344.1,
           "equiv": 111256.0625,
@@ -12123,7 +12123,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-05",
-          "local": 112094.8828,
+          "local": 112094.875,
           "adr": 82.5189,
           "fx": 1331.3101,
           "equiv": 109858.2288,
@@ -12155,7 +12155,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-11",
-          "local": 107283.9453,
+          "local": 107283.9375,
           "adr": 79.6403,
           "fx": 1335.23,
           "equiv": 106338.1529,
@@ -12163,8 +12163,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-12",
-          "local": 106802.8594,
-          "adr": 78.201,
+          "local": 106802.8516,
+          "adr": 78.2011,
           "fx": 1342.98,
           "equiv": 105022.4443,
           "premium": -1.667
@@ -12243,7 +12243,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-26",
-          "local": 106802.8594,
+          "local": 106802.8516,
           "adr": 77.2415,
           "fx": 1337.65,
           "equiv": 103322.1159,
@@ -12254,7 +12254,7 @@ window.HISTORICAL_DATA = {
           "local": 104397.375,
           "adr": 76.282,
           "fx": 1340.55,
-          "equiv": 102259.8459,
+          "equiv": 102259.8153,
           "premium": -2.0475
         },
         {
@@ -12310,7 +12310,7 @@ window.HISTORICAL_DATA = {
           "local": 103435.1797,
           "adr": 77.7213,
           "fx": 1337.22,
-          "equiv": 103930.4415,
+          "equiv": 103930.4619,
           "premium": 0.4788
         },
         {
@@ -12379,10 +12379,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-19",
-          "local": 106802.8594,
+          "local": 106802.8516,
           "adr": 76.282,
           "fx": 1334.01,
-          "equiv": 101760.9586,
+          "equiv": 101760.9281,
           "premium": -4.7208
         },
         {
@@ -12515,7 +12515,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-13",
-          "local": 95256.5938,
+          "local": 95256.6016,
           "adr": 71.0046,
           "fx": 1343.01,
           "equiv": 95359.9405,
@@ -12587,7 +12587,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-24",
-          "local": 88136.4062,
+          "local": 88136.3828,
           "adr": 62.3689,
           "fx": 1366.34,
           "equiv": 85217.1628,
@@ -12638,7 +12638,7 @@ window.HISTORICAL_DATA = {
           "local": 86001.6797,
           "adr": 65.9352,
           "fx": 1352.9,
-          "equiv": 89203.7179,
+          "equiv": 89203.7075,
           "premium": 3.7232
         },
         {
@@ -12670,7 +12670,7 @@ window.HISTORICAL_DATA = {
           "local": 91503.4453,
           "adr": 66.4165,
           "fx": 1317.4301,
-          "equiv": 87499.0481,
+          "equiv": 87499.0581,
           "premium": -4.3762
         },
         {
@@ -12694,15 +12694,15 @@ window.HISTORICAL_DATA = {
           "local": 90731.2812,
           "adr": 65.9352,
           "fx": 1308.37,
-          "equiv": 86267.622,
-          "premium": -4.9196
+          "equiv": 86267.612,
+          "premium": -4.9197
         },
         {
           "date": "2022-07-14",
           "local": 90731.2812,
           "adr": 66.4165,
           "fx": 1309.4301,
-          "equiv": 86967.7163,
+          "equiv": 86967.7263,
           "premium": -4.148
         },
         {
@@ -12747,7 +12747,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-22",
-          "local": 96522.6328,
+          "local": 96522.625,
           "adr": 74.5982,
           "fx": 1334.9399,
           "equiv": 99584.1242,
@@ -12755,7 +12755,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-25",
-          "local": 96522.6328,
+          "local": 96522.625,
           "adr": 68.3416,
           "fx": 1337.0601,
           "equiv": 91376.7911,
@@ -12766,12 +12766,12 @@ window.HISTORICAL_DATA = {
           "local": 97005.2422,
           "adr": 68.8229,
           "fx": 1338.59,
-          "equiv": 92125.601,
+          "equiv": 92125.6112,
           "premium": -5.0303
         },
         {
           "date": "2022-07-27",
-          "local": 96522.6328,
+          "local": 96522.625,
           "adr": 68.3416,
           "fx": 1326.67,
           "equiv": 90666.7211,
@@ -12803,10 +12803,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-02",
-          "local": 93144.3359,
+          "local": 93144.3594,
           "adr": 66.4165,
           "fx": 1340.17,
-          "equiv": 89009.3578,
+          "equiv": 89009.3681,
           "premium": -4.4393
         },
         {
@@ -12835,10 +12835,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-08",
-          "local": 92951.2891,
+          "local": 92951.2969,
           "adr": 66.4165,
           "fx": 1325.86,
-          "equiv": 88058.9343,
+          "equiv": 88058.9444,
           "premium": -5.2634
         },
         {
@@ -12846,7 +12846,7 @@ window.HISTORICAL_DATA = {
           "local": 91793.0234,
           "adr": 66.4165,
           "fx": 1323.98,
-          "equiv": 87934.071,
+          "equiv": 87934.0811,
           "premium": -4.204
         },
         {
@@ -12915,7 +12915,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-22",
-          "local": 91889.5469,
+          "local": 91889.5391,
           "adr": 70.2667,
           "fx": 1339.1899,
           "equiv": 94100.4691,
@@ -12923,7 +12923,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-23",
-          "local": 90345.1953,
+          "local": 90345.1719,
           "adr": 67.379,
           "fx": 1333.3,
           "equiv": 89836.4516,
@@ -12971,7 +12971,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-31",
-          "local": 91889.5469,
+          "local": 91889.5391,
           "adr": 70.748,
           "fx": 1351.25,
           "equiv": 95598.1952,
@@ -13014,7 +13014,7 @@ window.HISTORICAL_DATA = {
           "local": 87256.4531,
           "adr": 64.0101,
           "fx": 1363.3199,
-          "equiv": 87266.2167,
+          "equiv": 87266.1959,
           "premium": 0.0112
         },
         {
@@ -13046,7 +13046,7 @@ window.HISTORICAL_DATA = {
           "local": 91503.4453,
           "adr": 66.4165,
           "fx": 1390.88,
-          "equiv": 92377.3342,
+          "equiv": 92377.3448,
           "premium": 0.955
         },
         {
@@ -13054,15 +13054,15 @@ window.HISTORICAL_DATA = {
           "local": 89766.0469,
           "adr": 66.4165,
           "fx": 1386.28,
-          "equiv": 92071.8201,
-          "premium": 2.5686
+          "equiv": 92071.8307,
+          "premium": 2.5687
         },
         {
           "date": "2022-09-15",
           "local": 88800.8047,
           "adr": 65.9352,
           "fx": 1386.5,
-          "equiv": 91419.1386,
+          "equiv": 91419.128,
           "premium": 2.9485
         },
         {
@@ -13070,8 +13070,8 @@ window.HISTORICAL_DATA = {
           "local": 88028.6328,
           "adr": 65.9352,
           "fx": 1396.14,
-          "equiv": 92054.7547,
-          "premium": 4.5737
+          "equiv": 92054.7441,
+          "premium": 4.5736
         },
         {
           "date": "2022-09-19",
@@ -13227,7 +13227,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-14",
-          "local": 92520.9453,
+          "local": 92520.9375,
           "adr": 62.8198,
           "fx": 1397.8199,
           "equiv": 87810.7767,
@@ -13262,7 +13262,7 @@ window.HISTORICAL_DATA = {
           "local": 87386.2812,
           "adr": 59.4372,
           "fx": 1399.08,
-          "equiv": 83157.3879,
+          "equiv": 83157.3933,
           "premium": -4.8393
         },
         {
@@ -13299,7 +13299,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-27",
-          "local": 87192.5156,
+          "local": 87192.5,
           "adr": 56.5378,
           "fx": 1423.55,
           "equiv": 80484.4094,
@@ -13307,7 +13307,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-28",
-          "local": 80798.3906,
+          "local": 80798.3984,
           "adr": 53.1552,
           "fx": 1415.59,
           "equiv": 75245.9853,
@@ -13379,7 +13379,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-10",
-          "local": 86320.5938,
+          "local": 86320.5781,
           "adr": 59.9204,
           "fx": 1371.38,
           "equiv": 82173.6733,
@@ -13406,7 +13406,7 @@ window.HISTORICAL_DATA = {
           "local": 88742.6016,
           "adr": 62.3366,
           "fx": 1364.91,
-          "equiv": 85083.8161,
+          "equiv": 85083.8109,
           "premium": -4.1229
         },
         {
@@ -13435,7 +13435,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-21",
-          "local": 83607.9219,
+          "local": 83607.9297,
           "adr": 63.7863,
           "fx": 1382.41,
           "equiv": 88178.7799,
@@ -13454,7 +13454,7 @@ window.HISTORICAL_DATA = {
           "local": 82542.2422,
           "adr": 59.4372,
           "fx": 1392.77,
-          "equiv": 82782.343,
+          "equiv": 82782.3483,
           "premium": 0.2909
         },
         {
@@ -13483,7 +13483,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-29",
-          "local": 81089.0391,
+          "local": 81089.0234,
           "adr": 61.3701,
           "fx": 1386.41,
           "equiv": 85084.141,
@@ -13515,7 +13515,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-05",
-          "local": 78473.2656,
+          "local": 78473.2578,
           "adr": 57.9875,
           "fx": 1367.62,
           "equiv": 79304.8686,
@@ -13523,7 +13523,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-06",
-          "local": 78473.2656,
+          "local": 78473.2578,
           "adr": 58.954,
           "fx": 1368.72,
           "equiv": 80691.463,
@@ -13542,7 +13542,7 @@ window.HISTORICAL_DATA = {
           "local": 76341.8828,
           "adr": 55.0881,
           "fx": 1380.58,
-          "equiv": 76053.5694,
+          "equiv": 76053.5641,
           "premium": -0.3777
         },
         {
@@ -13563,10 +13563,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-13",
-          "local": 79732.7031,
+          "local": 79732.6953,
           "adr": 55.0881,
           "fx": 1375.65,
-          "equiv": 75781.9887,
+          "equiv": 75781.9834,
           "premium": -4.9549
         },
         {
@@ -13598,15 +13598,15 @@ window.HISTORICAL_DATA = {
           "local": 76535.6484,
           "adr": 55.0881,
           "fx": 1384.59,
-          "equiv": 76274.4734,
-          "premium": -0.3412
+          "equiv": 76274.4681,
+          "premium": -0.3413
         },
         {
           "date": "2022-12-20",
           "local": 75857.4766,
           "adr": 55.0881,
           "fx": 1379.9399,
-          "equiv": 76018.3122,
+          "equiv": 76018.3069,
           "premium": 0.212
         },
         {
@@ -13635,7 +13635,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-26",
-          "local": 74598.0391,
+          "local": 74598.0234,
           "adr": 57.5043,
           "fx": 1359.13,
           "equiv": 78155.7873,
@@ -13643,10 +13643,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-27",
-          "local": 74598.0391,
+          "local": 74598.0234,
           "adr": 55.0881,
           "fx": 1358.22,
-          "equiv": 74821.7996,
+          "equiv": 74821.7944,
           "premium": 0.3
         },
         {
@@ -13659,7 +13659,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-29",
-          "local": 72944.6328,
+          "local": 72944.6172,
           "adr": 55.8021,
           "fx": 1351.28,
           "equiv": 75404.3061,
@@ -13667,7 +13667,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-30",
-          "local": 72944.6328,
+          "local": 72944.6172,
           "adr": 52.4055,
           "fx": 1343.4301,
           "equiv": 70403.0858,
@@ -13675,7 +13675,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-02",
-          "local": 73625.4453,
+          "local": 73625.4375,
           "adr": 52.4055,
           "fx": 1346.35,
           "equiv": 70556.1057,
@@ -13710,7 +13710,7 @@ window.HISTORICAL_DATA = {
           "local": 80822.6406,
           "adr": 57.7431,
           "fx": 1339.42,
-          "equiv": 77342.2287,
+          "equiv": 77342.2185,
           "premium": -4.3062
         },
         {
@@ -13742,12 +13742,12 @@ window.HISTORICAL_DATA = {
           "local": 84421.2344,
           "adr": 60.1693,
           "fx": 1335.41,
-          "equiv": 80350.6259,
+          "equiv": 80350.6209,
           "premium": -4.8218
         },
         {
           "date": "2023-01-13",
-          "local": 83351.3906,
+          "local": 83351.3828,
           "adr": 59.1988,
           "fx": 1343.35,
           "equiv": 79524.6797,
@@ -13755,7 +13755,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-16",
-          "local": 83448.6562,
+          "local": 83448.6641,
           "adr": 59.1988,
           "fx": 1339.35,
           "equiv": 79287.8846,
@@ -13774,12 +13774,12 @@ window.HISTORICAL_DATA = {
           "local": 82767.8281,
           "adr": 58.7135,
           "fx": 1333.38,
-          "equiv": 78287.4693,
+          "equiv": 78287.4743,
           "premium": -5.4132
         },
         {
           "date": "2023-01-19",
-          "local": 83156.8672,
+          "local": 83156.8828,
           "adr": 58.2283,
           "fx": 1335.45,
           "equiv": 77760.9983,
@@ -13790,7 +13790,7 @@ window.HISTORICAL_DATA = {
           "local": 85199.3203,
           "adr": 60.6545,
           "fx": 1333.53,
-          "equiv": 80884.5908,
+          "equiv": 80884.5756,
           "premium": -5.0643
         },
         {
@@ -13806,12 +13806,12 @@ window.HISTORICAL_DATA = {
           "local": 85199.3203,
           "adr": 60.6545,
           "fx": 1335.96,
-          "equiv": 81031.9771,
+          "equiv": 81031.9618,
           "premium": -4.8913
         },
         {
           "date": "2023-01-25",
-          "local": 88895.1797,
+          "local": 88895.1875,
           "adr": 63.5659,
           "fx": 1340.84,
           "equiv": 85231.713,
@@ -13819,7 +13819,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-26",
-          "local": 88895.1797,
+          "local": 88895.1875,
           "adr": 63.5659,
           "fx": 1344.34,
           "equiv": 85454.1937,
@@ -13851,7 +13851,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-01",
-          "local": 88895.1797,
+          "local": 88895.1875,
           "adr": 63.0807,
           "fx": 1338.49,
           "equiv": 84432.8548,
@@ -13859,10 +13859,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-02",
-          "local": 88895.1797,
+          "local": 88895.1875,
           "adr": 67.4478,
           "fx": 1344.47,
-          "equiv": 90681.531,
+          "equiv": 90681.5207,
           "premium": 2.0095
         },
         {
@@ -13886,7 +13886,7 @@ window.HISTORICAL_DATA = {
           "local": 88311.625,
           "adr": 62.5954,
           "fx": 1351.46,
-          "equiv": 84595.2256,
+          "equiv": 84595.2205,
           "premium": -4.2083
         },
         {
@@ -13918,7 +13918,7 @@ window.HISTORICAL_DATA = {
           "local": 88117.0938,
           "adr": 61.625,
           "fx": 1352.13,
-          "equiv": 83324.96,
+          "equiv": 83324.9548,
           "premium": -5.4384
         },
         {
@@ -13934,7 +13934,7 @@ window.HISTORICAL_DATA = {
           "local": 89186.9531,
           "adr": 61.625,
           "fx": 1364.73,
-          "equiv": 84101.433,
+          "equiv": 84101.4278,
           "premium": -5.7021
         },
         {
@@ -13942,7 +13942,7 @@ window.HISTORICAL_DATA = {
           "local": 90354.0781,
           "adr": 62.5954,
           "fx": 1371.28,
-          "equiv": 85835.8714,
+          "equiv": 85835.8662,
           "premium": -5.0006
         },
         {
@@ -14006,7 +14006,7 @@ window.HISTORICAL_DATA = {
           "local": 86949.9922,
           "adr": 60.1693,
           "fx": 1397.05,
-          "equiv": 84059.4597,
+          "equiv": 84059.4543,
           "premium": -3.3244
         },
         {
@@ -14030,7 +14030,7 @@ window.HISTORICAL_DATA = {
           "local": 84907.5234,
           "adr": 60.1693,
           "fx": 1388.3199,
-          "equiv": 83534.1759,
+          "equiv": 83534.1706,
           "premium": -1.6175
         },
         {
@@ -14038,15 +14038,15 @@ window.HISTORICAL_DATA = {
           "local": 87241.7734,
           "adr": 60.6545,
           "fx": 1376.03,
-          "equiv": 83462.4069,
+          "equiv": 83462.3911,
           "premium": -4.3321
         },
         {
           "date": "2023-03-07",
-          "local": 86463.6875,
+          "local": 86463.7031,
           "adr": 60.1693,
           "fx": 1384.73,
-          "equiv": 83318.1703,
+          "equiv": 83318.1651,
           "premium": -3.638
         },
         {
@@ -14060,9 +14060,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-03-09",
           "local": 83254.125,
-          "adr": 58.7135,
+          "adr": 58.7136,
           "fx": 1386.99,
-          "equiv": 81435.1016,
+          "equiv": 81435.1069,
           "premium": -2.1849
         },
         {
@@ -14115,7 +14115,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-03-20",
-          "local": 81406.2031,
+          "local": 81406.1875,
           "adr": 55.3169,
           "fx": 1394.9399,
           "equiv": 77163.7509,
@@ -14142,7 +14142,7 @@ window.HISTORICAL_DATA = {
           "local": 86074.6562,
           "adr": 60.6545,
           "fx": 1407.23,
-          "equiv": 85354.8242,
+          "equiv": 85354.808,
           "premium": -0.8363
         },
         {
@@ -14155,11 +14155,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-03-27",
-          "local": 83156.8672,
+          "local": 83156.8828,
           "adr": 56.7726,
           "fx": 1392.95,
-          "equiv": 79081.3933,
-          "premium": -4.9009
+          "equiv": 79081.3774,
+          "premium": -4.901
         },
         {
           "date": "2023-03-28",
@@ -14174,15 +14174,15 @@ window.HISTORICAL_DATA = {
           "local": 84518.5,
           "adr": 56.7726,
           "fx": 1404.9399,
-          "equiv": 79762.0962,
-          "premium": -5.6276
+          "equiv": 79762.0802,
+          "premium": -5.6277
         },
         {
           "date": "2023-03-30",
           "local": 86665.6328,
           "adr": 58.4545,
           "fx": 1415.4,
-          "equiv": 82736.5253,
+          "equiv": 82736.5145,
           "premium": -4.5336
         },
         {
@@ -14190,7 +14190,7 @@ window.HISTORICAL_DATA = {
           "local": 86470.4375,
           "adr": 58.4545,
           "fx": 1412.74,
-          "equiv": 82581.0343,
+          "equiv": 82581.0235,
           "premium": -4.498
         },
         {
@@ -14214,7 +14214,7 @@ window.HISTORICAL_DATA = {
           "local": 82566.5625,
           "adr": 54.5576,
           "fx": 1434.78,
-          "equiv": 78278.0865,
+          "equiv": 78278.0756,
           "premium": -5.194
         },
         {
@@ -14243,7 +14243,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-11",
-          "local": 89593.5156,
+          "local": 89593.5234,
           "adr": 59.4288,
           "fx": 1439.0699,
           "equiv": 85522.1377,
@@ -14259,8 +14259,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-13",
-          "local": 86568.0312,
-          "adr": 56.9932,
+          "local": 86568.0469,
+          "adr": 56.9931,
           "fx": 1452.79,
           "equiv": 82799.09,
           "premium": -4.3537
@@ -14278,7 +14278,7 @@ window.HISTORICAL_DATA = {
           "local": 86372.8281,
           "adr": 58.4545,
           "fx": 1432.66,
-          "equiv": 83745.4508,
+          "equiv": 83745.4399,
           "premium": -3.0419
         },
         {
@@ -14286,7 +14286,7 @@ window.HISTORICAL_DATA = {
           "local": 85494.4766,
           "adr": 58.4545,
           "fx": 1439.75,
-          "equiv": 84159.8914,
+          "equiv": 84159.8804,
           "premium": -1.561
         },
         {
@@ -14347,18 +14347,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-28",
-          "local": 87348.8047,
+          "local": 87348.7969,
           "adr": 60.8901,
           "fx": 1474.75,
-          "equiv": 89797.7122,
+          "equiv": 89797.7179,
           "premium": 2.8036
         },
         {
           "date": "2023-05-01",
-          "local": 87348.8047,
+          "local": 87348.7969,
           "adr": 60.8901,
           "fx": 1472.63,
-          "equiv": 89668.6255,
+          "equiv": 89668.6311,
           "premium": 2.6558
         },
         {
@@ -14372,14 +14372,14 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-05-03",
           "local": 87641.5859,
-          "adr": 56.9932,
+          "adr": 56.9931,
           "fx": 1474.38,
           "equiv": 84029.5703,
           "premium": -4.1213
         },
         {
           "date": "2023-05-04",
-          "local": 86568.0312,
+          "local": 86568.0469,
           "adr": 61.8644,
           "fx": 1474.26,
           "equiv": 91204.1588,
@@ -14387,18 +14387,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-05-05",
-          "local": 86568.0312,
+          "local": 86568.0469,
           "adr": 56.506,
           "fx": 1454.41,
-          "equiv": 82182.9385,
+          "equiv": 82182.9552,
           "premium": -5.0655
         },
         {
           "date": "2023-05-08",
-          "local": 86568.0312,
+          "local": 86568.0469,
           "adr": 56.506,
           "fx": 1450.6801,
-          "equiv": 81972.1721,
+          "equiv": 81972.1887,
           "premium": -5.309
         },
         {
@@ -14414,8 +14414,8 @@ window.HISTORICAL_DATA = {
           "local": 84811.3125,
           "adr": 56.506,
           "fx": 1451.12,
-          "equiv": 81997.0315,
-          "premium": -3.3183
+          "equiv": 81997.0481,
+          "premium": -3.3182
         },
         {
           "date": "2023-05-11",
@@ -14451,11 +14451,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-05-17",
-          "local": 89691.1094,
+          "local": 89691.125,
           "adr": 59.9159,
           "fx": 1456.55,
           "equiv": 87270.481,
-          "premium": -2.6988
+          "premium": -2.6989
         },
         {
           "date": "2023-05-18",
@@ -14587,7 +14587,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-09",
-          "local": 112626.2734,
+          "local": 112626.2656,
           "adr": 78.9136,
           "fx": 1396.11,
           "equiv": 110172.0609,
@@ -14627,7 +14627,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-16",
-          "local": 116042.1406,
+          "local": 116042.1562,
           "adr": 84.2719,
           "fx": 1387.34,
           "equiv": 116913.8122,
@@ -14654,7 +14654,7 @@ window.HISTORICAL_DATA = {
           "local": 112333.4766,
           "adr": 76.9651,
           "fx": 1403.8101,
-          "equiv": 108044.4074,
+          "equiv": 108044.3967,
           "premium": -3.8182
         },
         {
@@ -14702,7 +14702,7 @@ window.HISTORICAL_DATA = {
           "local": 113705.4844,
           "adr": 77.684,
           "fx": 1427.62,
-          "equiv": 110903.1636,
+          "equiv": 110903.1854,
           "premium": -2.4645
         },
         {
@@ -14726,7 +14726,7 @@ window.HISTORICAL_DATA = {
           "local": 115368.9922,
           "adr": 77.684,
           "fx": 1422.29,
-          "equiv": 110489.1116,
+          "equiv": 110489.1333,
           "premium": -4.2298
         },
         {
@@ -14755,8 +14755,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-10",
-          "local": 107932.1406,
-          "adr": 73.2867,
+          "local": 107932.1641,
+          "adr": 73.2868,
           "fx": 1422.6801,
           "equiv": 104263.5877,
           "premium": -3.3989
@@ -14771,7 +14771,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-12",
-          "local": 112922.6641,
+          "local": 112922.6562,
           "adr": 79.1497,
           "fx": 1419.03,
           "equiv": 112315.7851,
@@ -14782,7 +14782,7 @@ window.HISTORICAL_DATA = {
           "local": 111650.5781,
           "adr": 75.7296,
           "fx": 1416.08,
-          "equiv": 107239.232,
+          "equiv": 107239.2212,
           "premium": -3.951
         },
         {
@@ -14795,7 +14795,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-17",
-          "local": 114684.0234,
+          "local": 114684.0156,
           "adr": 78.1725,
           "fx": 1423.47,
           "equiv": 111276.2506,
@@ -14819,7 +14819,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-20",
-          "local": 114390.4609,
+          "local": 114390.4688,
           "adr": 76.7068,
           "fx": 1416.65,
           "equiv": 108666.6826,
@@ -14827,7 +14827,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-21",
-          "local": 112629.0938,
+          "local": 112629.0859,
           "adr": 74.7525,
           "fx": 1420.13,
           "equiv": 106158.2392,
@@ -14862,7 +14862,7 @@ window.HISTORICAL_DATA = {
           "local": 121338.0547,
           "adr": 83.0583,
           "fx": 1408.74,
-          "equiv": 117007.5756,
+          "equiv": 117007.5649,
           "premium": -3.5689
         },
         {
@@ -14870,7 +14870,7 @@ window.HISTORICAL_DATA = {
           "local": 125252.1719,
           "adr": 90.387,
           "fx": 1406.5601,
-          "equiv": 127134.7133,
+          "equiv": 127134.7347,
           "premium": 1.503
         },
         {
@@ -14942,7 +14942,7 @@ window.HISTORICAL_DATA = {
           "local": 115956.1094,
           "adr": 81.104,
           "fx": 1441.04,
-          "equiv": 116874.117,
+          "equiv": 116874.128,
           "premium": 0.7917
         },
         {
@@ -14966,7 +14966,7 @@ window.HISTORICAL_DATA = {
           "local": 112433.3906,
           "adr": 79.6383,
           "fx": 1458.41,
-          "equiv": 116145.2373,
+          "equiv": 116145.2485,
           "premium": 3.3014
         },
         {
@@ -14974,7 +14974,7 @@ window.HISTORICAL_DATA = {
           "local": 113314.0703,
           "adr": 81.104,
           "fx": 1453.88,
-          "equiv": 117915.4896,
+          "equiv": 117915.5007,
           "premium": 4.0608
         },
         {
@@ -14987,7 +14987,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-08-18",
-          "local": 114684.0234,
+          "local": 114684.0156,
           "adr": 75.2411,
           "fx": 1455.29,
           "equiv": 109497.5516,
@@ -15030,7 +15030,7 @@ window.HISTORICAL_DATA = {
           "local": 113999.0312,
           "adr": 83.0583,
           "fx": 1431.62,
-          "equiv": 118907.9504,
+          "equiv": 118907.9395,
           "premium": 4.3061
         },
         {
@@ -15110,7 +15110,7 @@ window.HISTORICAL_DATA = {
           "local": 111259.1641,
           "adr": 73.7753,
           "fx": 1427.83,
-          "equiv": 105338.6256,
+          "equiv": 105338.6038,
           "premium": -5.3214
         },
         {
@@ -15139,7 +15139,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-14",
-          "local": 119576.6797,
+          "local": 119576.6719,
           "adr": 80.1268,
           "fx": 1424.05,
           "equiv": 114104.6394,
@@ -15164,9 +15164,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-09-19",
           "local": 116641.0781,
-          "adr": 84.5241,
+          "adr": 84.524,
           "fx": 1422.34,
-          "equiv": 120221.9422,
+          "equiv": 120221.9313,
           "premium": 3.07
         },
         {
@@ -15174,7 +15174,7 @@ window.HISTORICAL_DATA = {
           "local": 115466.8516,
           "adr": 77.684,
           "fx": 1416.4,
-          "equiv": 110031.552,
+          "equiv": 110031.5736,
           "premium": -4.7072
         },
         {
@@ -15182,7 +15182,7 @@ window.HISTORICAL_DATA = {
           "local": 113999.0312,
           "adr": 83.0583,
           "fx": 1419.3101,
-          "equiv": 117885.5077,
+          "equiv": 117885.4969,
           "premium": 3.4092
         },
         {
@@ -15198,15 +15198,15 @@ window.HISTORICAL_DATA = {
           "local": 114488.3125,
           "adr": 84.5241,
           "fx": 1420.0699,
-          "equiv": 120030.0709,
-          "premium": 4.8405
+          "equiv": 120030.0601,
+          "premium": 4.8404
         },
         {
           "date": "2023-09-26",
           "local": 112820.5156,
           "adr": 75.7296,
           "fx": 1393.9399,
-          "equiv": 105562.5766,
+          "equiv": 105562.566,
           "premium": -6.4332
         },
         {
@@ -15251,7 +15251,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-04",
-          "local": 113212.9531,
+          "local": 113212.9453,
           "adr": 77.894,
           "fx": 1425.38,
           "equiv": 111028.5896,
@@ -15262,7 +15262,7 @@ window.HISTORICAL_DATA = {
           "local": 117921.9922,
           "adr": 79.8536,
           "fx": 1408.38,
-          "equiv": 112464.2344,
+          "equiv": 112464.2559,
           "premium": -4.6283
         },
         {
@@ -15302,7 +15302,7 @@ window.HISTORICAL_DATA = {
           "local": 121846.1797,
           "adr": 81.3233,
           "fx": 1421.3199,
-          "equiv": 115586.4547,
+          "equiv": 115586.4655,
           "premium": -5.1374
         },
         {
@@ -15315,7 +15315,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-16",
-          "local": 121748.0781,
+          "local": 121748.0703,
           "adr": 81.8132,
           "fx": 1420.49,
           "equiv": 116214.8669,
@@ -15342,7 +15342,7 @@ window.HISTORICAL_DATA = {
           "local": 123317.7422,
           "adr": 81.3233,
           "fx": 1425.51,
-          "equiv": 115927.2045,
+          "equiv": 115927.2154,
           "premium": -5.9931
         },
         {
@@ -15355,7 +15355,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-23",
-          "local": 121649.9766,
+          "local": 121649.9609,
           "adr": 82.793,
           "fx": 1429.58,
           "equiv": 118359.245,
@@ -15371,7 +15371,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-25",
-          "local": 125083.6328,
+          "local": 125083.6406,
           "adr": 83.7728,
           "fx": 1413.42,
           "equiv": 118406.1715,
@@ -15419,7 +15419,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-02",
-          "local": 122925.3281,
+          "local": 122925.3203,
           "adr": 82.793,
           "fx": 1424.22,
           "equiv": 117915.4756,
@@ -15451,7 +15451,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-08",
-          "local": 125181.7422,
+          "local": 125181.75,
           "adr": 89.6516,
           "fx": 1395.11,
           "equiv": 125073.8475,
@@ -15459,7 +15459,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-09",
-          "local": 125574.1641,
+          "local": 125574.1484,
           "adr": 87.2021,
           "fx": 1400.23,
           "equiv": 122103.0092,
@@ -15486,7 +15486,7 @@ window.HISTORICAL_DATA = {
           "local": 127536.25,
           "adr": 89.1617,
           "fx": 1414.22,
-          "equiv": 126094.2746,
+          "equiv": 126094.2639,
           "premium": -1.1306
         },
         {
@@ -15515,7 +15515,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-20",
-          "local": 128909.7188,
+          "local": 128909.7344,
           "adr": 88.1819,
           "fx": 1379.025,
           "equiv": 121605.0679,
@@ -15539,7 +15539,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-23",
-          "local": 127634.3672,
+          "local": 127634.3594,
           "adr": 88.1819,
           "fx": 1411.3199,
           "equiv": 124452.8959,
@@ -15547,10 +15547,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-24",
-          "local": 125574.1641,
+          "local": 125574.1484,
           "adr": 91.6112,
           "fx": 1415.13,
-          "equiv": 129641.7773,
+          "equiv": 129641.7665,
           "premium": 3.2392
         },
         {
@@ -15563,7 +15563,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-28",
-          "local": 128909.7188,
+          "local": 128909.7344,
           "adr": 91.1213,
           "fx": 1428.0,
           "equiv": 130121.216,
@@ -15627,7 +15627,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-08",
-          "local": 125083.6328,
+          "local": 125083.6406,
           "adr": 90.1415,
           "fx": 1416.38,
           "equiv": 127674.6432,
@@ -15638,8 +15638,8 @@ window.HISTORICAL_DATA = {
           "local": 126457.1094,
           "adr": 89.1617,
           "fx": 1381.0699,
-          "equiv": 123138.5617,
-          "premium": -2.6242
+          "equiv": 123138.5512,
+          "premium": -2.6243
         },
         {
           "date": "2023-12-12",
@@ -15731,7 +15731,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-27",
-          "local": 138033.0469,
+          "local": 138033.0781,
           "adr": 93.0809,
           "fx": 1429.17,
           "equiv": 133028.4478,
@@ -15750,7 +15750,7 @@ window.HISTORICAL_DATA = {
           "local": 139114.5,
           "adr": 88.8765,
           "fx": 1425.45,
-          "equiv": 126689.0503,
+          "equiv": 126689.0395,
           "premium": -8.9318
         },
         {
@@ -15763,7 +15763,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-02",
-          "local": 139999.3281,
+          "local": 139999.3438,
           "adr": 94.2779,
           "fx": 1400.187,
           "equiv": 132006.6707,
@@ -15771,7 +15771,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-03",
-          "local": 134493.75,
+          "local": 134493.7344,
           "adr": 96.242,
           "fx": 1433.34,
           "equiv": 137947.4894,
@@ -15787,7 +15787,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-05",
-          "local": 135181.9688,
+          "local": 135181.9531,
           "adr": 91.8227,
           "fx": 1437.3101,
           "equiv": 131977.7349,
@@ -15795,7 +15795,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-08",
-          "local": 133707.2344,
+          "local": 133707.25,
           "adr": 89.3676,
           "fx": 1403.048,
           "equiv": 125386.9973,
@@ -15819,7 +15819,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-11",
-          "local": 133707.2344,
+          "local": 133707.25,
           "adr": 96.242,
           "fx": 1445.51,
           "equiv": 139118.7587,
@@ -15827,18 +15827,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-12",
-          "local": 131839.2656,
+          "local": 131839.2812,
           "adr": 93.2958,
           "fx": 1440.46,
-          "equiv": 134388.8853,
+          "equiv": 134388.8743,
           "premium": 1.9339
         },
         {
           "date": "2024-01-15",
-          "local": 131839.2656,
+          "local": 131839.2812,
           "adr": 95.2599,
           "fx": 1436.95,
-          "equiv": 136883.7568,
+          "equiv": 136883.7458,
           "premium": 3.8262
         },
         {
@@ -15846,7 +15846,7 @@ window.HISTORICAL_DATA = {
           "local": 129872.9844,
           "adr": 90.8407,
           "fx": 1444.1899,
-          "equiv": 131191.1676,
+          "equiv": 131191.1455,
           "premium": 1.015
         },
         {
@@ -15859,10 +15859,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-18",
-          "local": 133903.8594,
-          "adr": 90.8407,
+          "local": 133903.8906,
+          "adr": 90.8406,
           "fx": 1462.25,
-          "equiv": 132831.7552,
+          "equiv": 132831.7329,
           "premium": -0.8007
         },
         {
@@ -15870,16 +15870,16 @@ window.HISTORICAL_DATA = {
           "local": 138917.875,
           "adr": 97.2241,
           "fx": 1454.6899,
-          "equiv": 141430.8622,
-          "premium": 1.809
+          "equiv": 141430.8511,
+          "premium": 1.8089
         },
         {
           "date": "2024-01-22",
           "local": 140195.9375,
           "adr": 97.7151,
           "fx": 1424.255,
-          "equiv": 139171.203,
-          "premium": -0.7309
+          "equiv": 139171.1921,
+          "premium": -0.731
         },
         {
           "date": "2024-01-23",
@@ -15894,7 +15894,7 @@ window.HISTORICAL_DATA = {
           "local": 139114.5,
           "adr": 97.2241,
           "fx": 1452.73,
-          "equiv": 141240.3069,
+          "equiv": 141240.2958,
           "premium": 1.5281
         },
         {
@@ -15902,12 +15902,12 @@ window.HISTORICAL_DATA = {
           "local": 135083.6562,
           "adr": 95.2599,
           "fx": 1449.47,
-          "equiv": 138076.413,
+          "equiv": 138076.4019,
           "premium": 2.2155
         },
         {
           "date": "2024-01-26",
-          "local": 133707.2344,
+          "local": 133707.25,
           "adr": 94.2779,
           "fx": 1447.42,
           "equiv": 136459.7011,
@@ -15955,7 +15955,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-05",
-          "local": 130069.6094,
+          "local": 130069.6172,
           "adr": 91.8227,
           "fx": 1409.292,
           "equiv": 129405.0395,
@@ -16003,7 +16003,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-13",
-          "local": 147471.2344,
+          "local": 147471.2188,
           "adr": 103.1164,
           "fx": 1430.08,
           "equiv": 147464.7428,
@@ -16011,7 +16011,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-14",
-          "local": 146193.1406,
+          "local": 146193.125,
           "adr": 103.1164,
           "fx": 1434.87,
           "equiv": 147958.6746,
@@ -16051,7 +16051,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-21",
-          "local": 146488.0625,
+          "local": 146488.0781,
           "adr": 103.1164,
           "fx": 1440.4,
           "equiv": 148528.9114,
@@ -16075,8 +16075,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-26",
-          "local": 159072.2812,
-          "adr": 109.9909,
+          "local": 159072.2969,
+          "adr": 109.9908,
           "fx": 1438.8101,
           "equiv": 158255.9557,
           "premium": -0.5132
@@ -16099,7 +16099,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-29",
-          "local": 153566.6875,
+          "local": 153566.7031,
           "adr": 108.0267,
           "fx": 1446.13,
           "equiv": 156220.6784,
@@ -16107,7 +16107,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-01",
-          "local": 153566.6875,
+          "local": 153566.7031,
           "adr": 109.0088,
           "fx": 1441.0,
           "equiv": 157081.676,
@@ -16139,7 +16139,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-07",
-          "local": 162120.0156,
+          "local": 162120.0312,
           "adr": 113.9191,
           "fx": 1448.63,
           "equiv": 165026.6233,
@@ -16147,7 +16147,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-08",
-          "local": 169002.0156,
+          "local": 169002.0,
           "adr": 117.8473,
           "fx": 1448.84,
           "equiv": 170741.93,
@@ -16195,15 +16195,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-18",
-          "local": 161530.1406,
-          "adr": 109.9909,
+          "local": 161530.125,
+          "adr": 109.9908,
           "fx": 1418.594,
           "equiv": 156032.3734,
           "premium": -3.4036
         },
         {
           "date": "2024-03-19",
-          "local": 157499.2656,
+          "local": 157499.2812,
           "adr": 113.9191,
           "fx": 1451.99,
           "equiv": 165409.3898,
@@ -16262,15 +16262,15 @@ window.HISTORICAL_DATA = {
           "local": 175486.3594,
           "adr": 122.9678,
           "fx": 1461.0699,
-          "equiv": 179664.6185,
+          "equiv": 179664.6073,
           "premium": 2.381
         },
         {
           "date": "2024-03-29",
-          "local": 180213.25,
+          "local": 180213.2656,
           "adr": 122.9678,
           "fx": 1454.52,
-          "equiv": 178859.1881,
+          "equiv": 178859.177,
           "premium": -0.7514
         },
         {
@@ -16278,7 +16278,7 @@ window.HISTORICAL_DATA = {
           "local": 182675.1562,
           "adr": 122.9678,
           "fx": 1454.63,
-          "equiv": 178872.7128,
+          "equiv": 178872.7017,
           "premium": -2.0815
         },
         {
@@ -16286,15 +16286,15 @@ window.HISTORICAL_DATA = {
           "local": 183463.0156,
           "adr": 130.8378,
           "fx": 1424.627,
-          "equiv": 186395.0333,
-          "premium": 1.5982
+          "equiv": 186395.0116,
+          "premium": 1.5981
         },
         {
           "date": "2024-04-03",
           "local": 176471.125,
           "adr": 125.9191,
           "fx": 1455.02,
-          "equiv": 183214.7528,
+          "equiv": 183214.7639,
           "premium": 3.8214
         },
         {
@@ -16310,7 +16310,7 @@ window.HISTORICAL_DATA = {
           "local": 180016.3281,
           "adr": 125.9191,
           "fx": 1463.64,
-          "equiv": 184300.1745,
+          "equiv": 184300.1856,
           "premium": 2.3797
         },
         {
@@ -16318,7 +16318,7 @@ window.HISTORICAL_DATA = {
           "local": 178440.6719,
           "adr": 125.9191,
           "fx": 1435.433,
-          "equiv": 180748.3716,
+          "equiv": 180748.3826,
           "premium": 1.2933
         },
         {
@@ -16326,7 +16326,7 @@ window.HISTORICAL_DATA = {
           "local": 180114.75,
           "adr": 125.9191,
           "fx": 1466.83,
-          "equiv": 184701.8489,
+          "equiv": 184701.8601,
           "premium": 2.5468
         },
         {
@@ -16334,15 +16334,15 @@ window.HISTORICAL_DATA = {
           "local": 180114.75,
           "adr": 124.9353,
           "fx": 1468.92,
-          "equiv": 183520.004,
+          "equiv": 183519.9928,
           "premium": 1.8906
         },
         {
           "date": "2024-04-11",
-          "local": 185531.0156,
+          "local": 185531.0312,
           "adr": 130.8378,
           "fx": 1463.79,
-          "equiv": 191519.0447,
+          "equiv": 191519.0223,
           "premium": 3.2275
         },
         {
@@ -16350,7 +16350,7 @@ window.HISTORICAL_DATA = {
           "local": 184546.2656,
           "adr": 125.9191,
           "fx": 1467.29,
-          "equiv": 184759.7821,
+          "equiv": 184759.7933,
           "premium": 0.1157
         },
         {
@@ -16366,7 +16366,7 @@ window.HISTORICAL_DATA = {
           "local": 176372.6562,
           "adr": 122.9678,
           "fx": 1474.95,
-          "equiv": 181371.4127,
+          "equiv": 181371.4015,
           "premium": 2.8342
         },
         {
@@ -16374,7 +16374,7 @@ window.HISTORICAL_DATA = {
           "local": 175978.7344,
           "adr": 122.9678,
           "fx": 1477.37,
-          "equiv": 181669.0003,
+          "equiv": 181668.989,
           "premium": 3.2335
         },
         {
@@ -16382,7 +16382,7 @@ window.HISTORICAL_DATA = {
           "local": 179523.9062,
           "adr": 125.9191,
           "fx": 1468.5,
-          "equiv": 184912.1392,
+          "equiv": 184912.1505,
           "premium": 3.0014
         },
         {
@@ -16390,7 +16390,7 @@ window.HISTORICAL_DATA = {
           "local": 170660.9688,
           "adr": 117.0654,
           "fx": 1465.3,
-          "equiv": 171535.9128,
+          "equiv": 171535.8904,
           "premium": 0.5127
         },
         {
@@ -16398,7 +16398,7 @@ window.HISTORICAL_DATA = {
           "local": 168986.8438,
           "adr": 117.0654,
           "fx": 1439.12,
-          "equiv": 168471.1347,
+          "equiv": 168471.1128,
           "premium": -0.3052
         },
         {
@@ -16407,30 +16407,30 @@ window.HISTORICAL_DATA = {
           "adr": 120.0166,
           "fx": 1464.23,
           "equiv": 175731.9173,
-          "premium": 4.3564
+          "premium": 4.3563
         },
         {
           "date": "2024-04-24",
-          "local": 177061.9844,
+          "local": 177062.0,
           "adr": 122.9678,
           "fx": 1468.55,
-          "equiv": 180584.4305,
+          "equiv": 180584.4193,
           "premium": 1.9894
         },
         {
           "date": "2024-04-25",
-          "local": 168002.0938,
+          "local": 168002.0625,
           "adr": 118.0491,
           "fx": 1470.46,
-          "equiv": 173586.5015,
+          "equiv": 173586.5127,
           "premium": 3.324
         },
         {
           "date": "2024-04-26",
-          "local": 175092.4375,
+          "local": 175092.4219,
           "adr": 121.0004,
           "fx": 1471.38,
-          "equiv": 178037.5082,
+          "equiv": 178037.497,
           "premium": 1.682
         },
         {
@@ -16446,7 +16446,7 @@ window.HISTORICAL_DATA = {
           "local": 171547.2344,
           "adr": 118.0491,
           "fx": 1472.54,
-          "equiv": 173832.0529,
+          "equiv": 173832.0641,
           "premium": 1.3319
         },
         {
@@ -16454,7 +16454,7 @@ window.HISTORICAL_DATA = {
           "local": 171547.2344,
           "adr": 118.0491,
           "fx": 1477.38,
-          "equiv": 174403.4066,
+          "equiv": 174403.4179,
           "premium": 1.6649
         },
         {
@@ -16462,7 +16462,7 @@ window.HISTORICAL_DATA = {
           "local": 170956.4062,
           "adr": 118.0491,
           "fx": 1477.01,
-          "equiv": 174359.729,
+          "equiv": 174359.7403,
           "premium": 1.9908
         },
         {
@@ -16478,7 +16478,7 @@ window.HISTORICAL_DATA = {
           "local": 170562.4844,
           "adr": 126.9028,
           "fx": 1432.9399,
-          "equiv": 181844.1039,
+          "equiv": 181844.1148,
           "premium": 6.6144
         },
         {
@@ -16486,7 +16486,7 @@ window.HISTORICAL_DATA = {
           "local": 176865.0,
           "adr": 124.9353,
           "fx": 1460.4,
-          "equiv": 182455.5526,
+          "equiv": 182455.5414,
           "premium": 3.1609
         },
         {
@@ -16502,7 +16502,7 @@ window.HISTORICAL_DATA = {
           "local": 172728.9844,
           "adr": 121.0004,
           "fx": 1465.37,
-          "equiv": 177310.2949,
+          "equiv": 177310.2837,
           "premium": 2.6523
         },
         {
@@ -16510,7 +16510,7 @@ window.HISTORICAL_DATA = {
           "local": 177160.4688,
           "adr": 122.9678,
           "fx": 1469.87,
-          "equiv": 180746.7415,
+          "equiv": 180746.7303,
           "premium": 2.0243
         },
         {
@@ -16518,7 +16518,7 @@ window.HISTORICAL_DATA = {
           "local": 181001.0781,
           "adr": 125.9191,
           "fx": 1443.36,
-          "equiv": 181746.5322,
+          "equiv": 181746.5433,
           "premium": 0.4119
         },
         {
@@ -16526,7 +16526,7 @@ window.HISTORICAL_DATA = {
           "local": 182478.25,
           "adr": 122.9678,
           "fx": 1473.78,
-          "equiv": 181227.5499,
+          "equiv": 181227.5387,
           "premium": -0.6854
         },
         {
@@ -16542,7 +16542,7 @@ window.HISTORICAL_DATA = {
           "local": 190060.9688,
           "adr": 131.8215,
           "fx": 1473.6,
-          "equiv": 194252.1631,
+          "equiv": 194252.2081,
           "premium": 2.2052
         },
         {
@@ -16563,7 +16563,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-21",
-          "local": 189076.2031,
+          "local": 189076.2188,
           "adr": 129.854,
           "fx": 1476.92,
           "equiv": 191784.0262,
@@ -16571,7 +16571,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-22",
-          "local": 194689.4062,
+          "local": 194689.3906,
           "adr": 134.7727,
           "fx": 1479.28,
           "equiv": 199366.5937,
@@ -16579,7 +16579,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-23",
-          "local": 196954.375,
+          "local": 196954.3594,
           "adr": 134.7727,
           "fx": 1476.1899,
           "equiv": 198950.1341,
@@ -16603,7 +16603,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-28",
-          "local": 199416.2969,
+          "local": 199416.3125,
           "adr": 135.7565,
           "fx": 1476.47,
           "equiv": 200440.3509,
@@ -16611,7 +16611,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-29",
-          "local": 199416.2969,
+          "local": 199416.3125,
           "adr": 135.7565,
           "fx": 1478.66,
           "equiv": 200737.6662,
@@ -16630,12 +16630,12 @@ window.HISTORICAL_DATA = {
           "local": 186318.8438,
           "adr": 122.9678,
           "fx": 1489.3101,
-          "equiv": 183137.2441,
+          "equiv": 183137.2328,
           "premium": -1.7076
         },
         {
           "date": "2024-06-03",
-          "local": 191242.7031,
+          "local": 191242.6719,
           "adr": 132.8053,
           "fx": 1499.34,
           "equiv": 199120.2221,
@@ -16646,7 +16646,7 @@ window.HISTORICAL_DATA = {
           "local": 190356.4062,
           "adr": 131.8215,
           "fx": 1494.4,
-          "equiv": 196994.0568,
+          "equiv": 196994.1024,
           "premium": 3.487
         },
         {
@@ -16654,7 +16654,7 @@ window.HISTORICAL_DATA = {
           "local": 190750.2969,
           "adr": 133.789,
           "fx": 1494.0699,
-          "equiv": 199890.149,
+          "equiv": 199890.1034,
           "premium": 4.7915
         },
         {
@@ -16662,12 +16662,12 @@ window.HISTORICAL_DATA = {
           "local": 190750.2969,
           "adr": 131.8215,
           "fx": 1488.97,
-          "equiv": 196278.259,
+          "equiv": 196278.3044,
           "premium": 2.898
         },
         {
           "date": "2024-06-07",
-          "local": 204340.1719,
+          "local": 204340.1562,
           "adr": 137.724,
           "fx": 1486.63,
           "equiv": 204744.5613,
@@ -16676,9 +16676,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-06-10",
           "local": 204832.5469,
-          "adr": 141.659,
+          "adr": 141.6589,
           "fx": 1489.26,
-          "equiv": 210967.0105,
+          "equiv": 210966.9877,
           "premium": 2.9949
         },
         {
@@ -16694,7 +16694,7 @@ window.HISTORICAL_DATA = {
           "local": 211725.9531,
           "adr": 155.4314,
           "fx": 1480.0,
-          "equiv": 230038.399,
+          "equiv": 230038.3765,
           "premium": 8.6491
         },
         {
@@ -16715,7 +16715,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-06-17",
-          "local": 219604.1406,
+          "local": 219604.125,
           "adr": 160.3501,
           "fx": 1449.8456,
           "equiv": 232482.8141,
@@ -16723,10 +16723,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-06-18",
-          "local": 230929.0,
+          "local": 230929.0156,
           "adr": 166.2525,
           "fx": 1481.33,
-          "equiv": 246274.8347,
+          "equiv": 246274.8573,
           "premium": 6.6453
         },
         {
@@ -16742,20 +16742,20 @@ window.HISTORICAL_DATA = {
           "local": 233883.3125,
           "adr": 155.4314,
           "fx": 1483.86,
-          "equiv": 230638.3618,
+          "equiv": 230638.3391,
           "premium": -1.3874
         },
         {
           "date": "2024-06-21",
           "local": 230436.6094,
-          "adr": 155.4314,
+          "adr": 155.4313,
           "fx": 1491.5601,
-          "equiv": 231835.1946,
+          "equiv": 231835.1718,
           "premium": 0.6069
         },
         {
           "date": "2024-06-24",
-          "local": 219604.1406,
+          "local": 219604.125,
           "adr": 150.5126,
           "fx": 1453.3131,
           "equiv": 218741.9625,
@@ -16819,7 +16819,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-07-04",
-          "local": 226784.6094,
+          "local": 226784.5938,
           "adr": 152.6865,
           "fx": 1496.03,
           "equiv": 228423.6013,
@@ -16830,12 +16830,12 @@ window.HISTORICAL_DATA = {
           "local": 232700.7188,
           "adr": 157.6119,
           "fx": 1491.78,
-          "equiv": 235122.2511,
+          "equiv": 235122.2967,
           "premium": 1.0406
         },
         {
           "date": "2024-07-08",
-          "local": 230235.6719,
+          "local": 230235.6406,
           "adr": 156.6268,
           "fx": 1465.16,
           "equiv": 229483.3508,
@@ -16846,7 +16846,7 @@ window.HISTORICAL_DATA = {
           "local": 235165.7656,
           "adr": 157.6119,
           "fx": 1494.64,
-          "equiv": 235573.0188,
+          "equiv": 235573.0644,
           "premium": 0.1732
         },
         {
@@ -16862,15 +16862,15 @@ window.HISTORICAL_DATA = {
           "local": 237630.8281,
           "adr": 157.6119,
           "fx": 1500.3,
-          "equiv": 236465.1074,
-          "premium": -0.4906
+          "equiv": 236465.1532,
+          "premium": -0.4905
         },
         {
           "date": "2024-07-12",
-          "local": 229742.6406,
+          "local": 229742.6562,
           "adr": 151.7014,
           "fx": 1488.26,
-          "equiv": 225771.1736,
+          "equiv": 225771.1509,
           "premium": -1.7287
         },
         {
@@ -16883,10 +16883,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-07-16",
-          "local": 229742.6406,
+          "local": 229742.6562,
           "adr": 151.7014,
           "fx": 1507.61,
-          "equiv": 228706.5926,
+          "equiv": 228706.5696,
           "premium": -0.451
         },
         {
@@ -16894,7 +16894,7 @@ window.HISTORICAL_DATA = {
           "local": 217417.4062,
           "adr": 136.9253,
           "fx": 1506.3101,
-          "equiv": 206251.9691,
+          "equiv": 206251.992,
           "premium": -5.1355
         },
         {
@@ -16902,7 +16902,7 @@ window.HISTORICAL_DATA = {
           "local": 209529.25,
           "adr": 136.9253,
           "fx": 1510.63,
-          "equiv": 206843.479,
+          "equiv": 206843.5021,
           "premium": -1.2818
         },
         {
@@ -16910,7 +16910,7 @@ window.HISTORICAL_DATA = {
           "local": 206571.1875,
           "adr": 136.9253,
           "fx": 1508.6801,
-          "equiv": 206576.4814,
+          "equiv": 206576.5044,
           "premium": 0.0026
         },
         {
@@ -16918,7 +16918,7 @@ window.HISTORICAL_DATA = {
           "local": 202134.0938,
           "adr": 136.9253,
           "fx": 1478.9382,
-          "equiv": 202504.0733,
+          "equiv": 202504.0959,
           "premium": 0.183
         },
         {
@@ -16926,7 +16926,7 @@ window.HISTORICAL_DATA = {
           "local": 202134.0938,
           "adr": 131.0149,
           "fx": 1508.11,
-          "equiv": 197584.8447,
+          "equiv": 197584.8217,
           "premium": -2.2506
         },
         {
@@ -16995,7 +16995,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-05",
-          "local": 153917.7344,
+          "local": 153917.7188,
           "adr": 106.388,
           "fx": 1481.02,
           "equiv": 157562.7812,
@@ -17006,15 +17006,15 @@ window.HISTORICAL_DATA = {
           "local": 161411.4688,
           "adr": 111.3134,
           "fx": 1493.77,
-          "equiv": 166276.6087,
+          "equiv": 166276.6315,
           "premium": 3.0141
         },
         {
           "date": "2024-08-07",
-          "local": 166933.1719,
+          "local": 166933.2031,
           "adr": 111.3134,
           "fx": 1493.2,
-          "equiv": 166213.1525,
+          "equiv": 166213.1752,
           "premium": -0.4313
         },
         {
@@ -17035,7 +17035,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-12",
-          "local": 174525.5312,
+          "local": 174525.5469,
           "adr": 117.2238,
           "fx": 1489.1801,
           "equiv": 174567.4026,
@@ -17067,23 +17067,23 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-16",
-          "local": 196908.1875,
-          "adr": 131.9999,
+          "local": 196908.1719,
+          "adr": 132.0,
           "fx": 1498.11,
-          "equiv": 197750.4266,
-          "premium": 0.4277
+          "equiv": 197750.4952,
+          "premium": 0.4278
         },
         {
           "date": "2024-08-19",
           "local": 191189.2812,
           "adr": 131.0149,
           "fx": 1487.22,
-          "equiv": 194847.942,
+          "equiv": 194847.9193,
           "premium": 1.9136
         },
         {
           "date": "2024-08-20",
-          "local": 196908.1875,
+          "local": 196908.1719,
           "adr": 132.985,
           "fx": 1477.12,
           "equiv": 196434.8485,
@@ -17118,12 +17118,12 @@ window.HISTORICAL_DATA = {
           "local": 177089.1875,
           "adr": 116.2388,
           "fx": 1459.6,
-          "equiv": 169662.094,
+          "equiv": 169662.1052,
           "premium": -4.194
         },
         {
           "date": "2024-08-27",
-          "local": 172553.4844,
+          "local": 172553.4688,
           "adr": 114.2686,
           "fx": 1472.76,
           "equiv": 168290.2476,
@@ -17139,10 +17139,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-29",
-          "local": 167327.5938,
+          "local": 167327.5781,
           "adr": 116.2388,
           "fx": 1485.6899,
-          "equiv": 172694.7594,
+          "equiv": 172694.7707,
           "premium": 3.2076
         },
         {
@@ -17163,11 +17163,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-03",
-          "local": 165947.1562,
+          "local": 165947.1406,
           "adr": 109.3432,
           "fx": 1479.72,
-          "equiv": 161797.3742,
-          "premium": -2.5007
+          "equiv": 161797.3854,
+          "premium": -2.5006
         },
         {
           "date": "2024-09-04",
@@ -17190,12 +17190,12 @@ window.HISTORICAL_DATA = {
           "local": 154213.5156,
           "adr": 102.4477,
           "fx": 1480.02,
-          "equiv": 151624.6703,
+          "equiv": 151624.6816,
           "premium": -1.6787
         },
         {
           "date": "2024-09-09",
-          "local": 154805.1406,
+          "local": 154805.125,
           "adr": 105.4029,
           "fx": 1482.3199,
           "equiv": 156240.89,
@@ -17211,7 +17211,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-11",
-          "local": 155002.3281,
+          "local": 155002.3438,
           "adr": 108.3582,
           "fx": 1479.63,
           "equiv": 160329.9877,
@@ -17222,7 +17222,7 @@ window.HISTORICAL_DATA = {
           "local": 166440.1562,
           "adr": 116.2388,
           "fx": 1473.87,
-          "equiv": 171320.8234,
+          "equiv": 171320.8347,
           "premium": 2.9324
         },
         {
@@ -17246,7 +17246,7 @@ window.HISTORICAL_DATA = {
           "local": 160524.0625,
           "adr": 109.3432,
           "fx": 1475.59,
-          "equiv": 161345.786,
+          "equiv": 161345.7973,
           "premium": 0.5119
         },
         {
@@ -17267,7 +17267,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-20",
-          "local": 154903.75,
+          "local": 154903.7344,
           "adr": 104.4179,
           "fx": 1481.5699,
           "equiv": 154702.4,
@@ -17278,7 +17278,7 @@ window.HISTORICAL_DATA = {
           "local": 159735.25,
           "adr": 109.3432,
           "fx": 1485.51,
-          "equiv": 162430.4758,
+          "equiv": 162430.4871,
           "premium": 1.6873
         },
         {
@@ -17291,10 +17291,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-25",
-          "local": 162989.1094,
+          "local": 162989.125,
           "adr": 109.3432,
           "fx": 1480.67,
-          "equiv": 161901.2582,
+          "equiv": 161901.2695,
           "premium": -0.6674
         },
         {
@@ -17379,7 +17379,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-10",
-          "local": 184395.7344,
+          "local": 184395.7188,
           "adr": 126.3074,
           "fx": 1472.28,
           "equiv": 185959.8117,
@@ -17398,7 +17398,7 @@ window.HISTORICAL_DATA = {
           "local": 183704.375,
           "adr": 127.2941,
           "fx": 1474.38,
-          "equiv": 187679.9402,
+          "equiv": 187679.9514,
           "premium": 2.1641
         },
         {
@@ -17419,10 +17419,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-17",
-          "local": 193580.9531,
+          "local": 193580.9688,
           "adr": 129.2677,
           "fx": 1480.97,
-          "equiv": 191441.5822,
+          "equiv": 191441.6048,
           "premium": -1.1052
         },
         {
@@ -17436,9 +17436,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-10-21",
           "local": 188543.8906,
-          "adr": 127.2941,
+          "adr": 127.2942,
           "fx": 1456.25,
-          "equiv": 185372.0967,
+          "equiv": 185372.1078,
           "premium": -1.6823
         },
         {
@@ -17451,10 +17451,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-23",
-          "local": 193580.9531,
+          "local": 193580.9688,
           "adr": 128.2809,
           "fx": 1488.47,
-          "equiv": 190942.2888,
+          "equiv": 190942.3115,
           "premium": -1.3631
         },
         {
@@ -17470,12 +17470,12 @@ window.HISTORICAL_DATA = {
           "local": 198519.25,
           "adr": 133.2148,
           "fx": 1491.92,
-          "equiv": 198745.8045,
+          "equiv": 198745.85,
           "premium": 0.1141
         },
         {
           "date": "2024-10-28",
-          "local": 193580.9531,
+          "local": 193580.9688,
           "adr": 130.2545,
           "fx": 1497.54,
           "equiv": 195061.2625,
@@ -17491,7 +17491,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-30",
-          "local": 192593.2969,
+          "local": 192593.2812,
           "adr": 130.2545,
           "fx": 1496.11,
           "equiv": 194874.9916,
@@ -17499,7 +17499,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-31",
-          "local": 184000.6719,
+          "local": 184000.6562,
           "adr": 122.3603,
           "fx": 1494.48,
           "equiv": 182864.959,
@@ -17510,7 +17510,7 @@ window.HISTORICAL_DATA = {
           "local": 179951.2812,
           "adr": 120.3867,
           "fx": 1496.15,
-          "equiv": 180116.5694,
+          "equiv": 180116.5808,
           "premium": 0.0919
         },
         {
@@ -17550,7 +17550,7 @@ window.HISTORICAL_DATA = {
           "local": 198025.4219,
           "adr": 133.2148,
           "fx": 1494.34,
-          "equiv": 199068.1738,
+          "equiv": 199068.2195,
           "premium": 0.5266
         },
         {
@@ -17558,12 +17558,12 @@ window.HISTORICAL_DATA = {
           "local": 190222.9219,
           "adr": 129.2677,
           "fx": 1495.87,
-          "equiv": 193367.6741,
+          "equiv": 193367.6969,
           "premium": 1.6532
         },
         {
           "date": "2024-11-12",
-          "local": 183506.8438,
+          "local": 183506.8281,
           "adr": 124.3338,
           "fx": 1490.85,
           "equiv": 185363.0673,
@@ -17579,7 +17579,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-11-14",
-          "local": 170864.8281,
+          "local": 170864.8125,
           "adr": 113.4793,
           "fx": 1483.86,
           "equiv": 168387.3493,
@@ -17630,7 +17630,7 @@ window.HISTORICAL_DATA = {
           "local": 174519.1719,
           "adr": 120.3867,
           "fx": 1464.36,
-          "equiv": 176289.4714,
+          "equiv": 176289.4825,
           "premium": 1.0144
         },
         {
@@ -17638,12 +17638,12 @@ window.HISTORICAL_DATA = {
           "local": 174815.4375,
           "adr": 120.3867,
           "fx": 1463.05,
-          "equiv": 176131.7724,
+          "equiv": 176131.7836,
           "premium": 0.753
         },
         {
           "date": "2024-11-26",
-          "local": 174914.2188,
+          "local": 174914.2031,
           "adr": 119.3999,
           "fx": 1468.1,
           "equiv": 175291.0385,
@@ -17662,7 +17662,7 @@ window.HISTORICAL_DATA = {
           "local": 159111.7031,
           "adr": 111.5057,
           "fx": 1468.75,
-          "equiv": 163774.0293,
+          "equiv": 163774.0405,
           "premium": 2.9302
         },
         {
@@ -17670,7 +17670,7 @@ window.HISTORICAL_DATA = {
           "local": 157926.5156,
           "adr": 107.5586,
           "fx": 1462.36,
-          "equiv": 157289.4171,
+          "equiv": 157289.4282,
           "premium": -0.4034
         },
         {
@@ -17699,7 +17699,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-05",
-          "local": 170864.8281,
+          "local": 170864.8125,
           "adr": 115.4528,
           "fx": 1484.23,
           "equiv": 171358.5478,
@@ -17710,15 +17710,15 @@ window.HISTORICAL_DATA = {
           "local": 165037.625,
           "adr": 111.5057,
           "fx": 1507.7,
-          "equiv": 168117.1717,
+          "equiv": 168117.1832,
           "premium": 1.866
         },
         {
           "date": "2024-12-09",
-          "local": 166815.4219,
+          "local": 166815.4375,
           "adr": 111.5057,
           "fx": 1471.97,
-          "equiv": 164133.0744,
+          "equiv": 164133.0856,
           "premium": -1.608
         },
         {
@@ -17755,7 +17755,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-16",
-          "local": 177087.0625,
+          "local": 177087.0781,
           "adr": 118.4132,
           "fx": 1471.1112,
           "equiv": 174198.9187,
@@ -17771,7 +17771,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-18",
-          "local": 181235.2188,
+          "local": 181235.2344,
           "adr": 117.4264,
           "fx": 1505.21,
           "equiv": 176751.3628,
@@ -17779,7 +17779,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-19",
-          "local": 172840.125,
+          "local": 172840.1094,
           "adr": 114.4661,
           "fx": 1503.26,
           "equiv": 172072.2457,
@@ -17798,7 +17798,7 @@ window.HISTORICAL_DATA = {
           "local": 167506.7812,
           "adr": 111.5057,
           "fx": 1505.37,
-          "equiv": 167857.3683,
+          "equiv": 167857.3797,
           "premium": 0.2093
         },
         {
@@ -17806,7 +17806,7 @@ window.HISTORICAL_DATA = {
           "local": 166420.3594,
           "adr": 111.5057,
           "fx": 1510.83,
-          "equiv": 168466.1851,
+          "equiv": 168466.1967,
           "premium": 1.2293
         },
         {
@@ -17814,7 +17814,7 @@ window.HISTORICAL_DATA = {
           "local": 166420.3594,
           "adr": 111.5057,
           "fx": 1514.36,
-          "equiv": 168859.8036,
+          "equiv": 168859.8152,
           "premium": 1.4658
         },
         {
@@ -17827,10 +17827,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-27",
-          "local": 172346.3125,
+          "local": 172346.2812,
           "adr": 111.5057,
           "fx": 1506.6899,
-          "equiv": 168004.5498,
+          "equiv": 168004.5613,
           "premium": -2.5192
         },
         {
@@ -17862,7 +17862,7 @@ window.HISTORICAL_DATA = {
           "local": 179654.9688,
           "adr": 120.3867,
           "fx": 1509.48,
-          "equiv": 181721.3188,
+          "equiv": 181721.3304,
           "premium": 1.1502
         },
         {
@@ -17875,18 +17875,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-07",
-          "local": 192593.2969,
+          "local": 192593.2812,
           "adr": 129.2677,
           "fx": 1517.9301,
-          "equiv": 196219.3271,
-          "premium": 1.8827
+          "equiv": 196219.3503,
+          "premium": 1.8828
         },
         {
           "date": "2025-01-08",
           "local": 192297.0156,
           "adr": 127.2941,
           "fx": 1501.27,
-          "equiv": 191102.8816,
+          "equiv": 191102.893,
           "premium": -0.621
         },
         {
@@ -17902,7 +17902,7 @@ window.HISTORICAL_DATA = {
           "local": 200988.4062,
           "adr": 129.2677,
           "fx": 1500.34,
-          "equiv": 193945.4969,
+          "equiv": 193945.5198,
           "premium": -3.5041
         },
         {
@@ -17910,12 +17910,12 @@ window.HISTORICAL_DATA = {
           "local": 191901.9375,
           "adr": 128.2809,
           "fx": 1509.76,
-          "equiv": 193673.3944,
+          "equiv": 193673.4175,
           "premium": 0.9231
         },
         {
           "date": "2025-01-14",
-          "local": 192593.2969,
+          "local": 192593.2812,
           "adr": 131.2412,
           "fx": 1505.65,
           "equiv": 197603.3784,
@@ -17926,12 +17926,12 @@ window.HISTORICAL_DATA = {
           "local": 195753.7969,
           "adr": 133.2148,
           "fx": 1505.08,
-          "equiv": 200498.8993,
+          "equiv": 200498.9452,
           "premium": 2.424
         },
         {
           "date": "2025-01-16",
-          "local": 207408.1719,
+          "local": 207408.1406,
           "adr": 138.1487,
           "fx": 1498.28,
           "equiv": 206985.3879,
@@ -17974,28 +17974,28 @@ window.HISTORICAL_DATA = {
           "local": 216790.9062,
           "adr": 147.0297,
           "fx": 1491.92,
-          "equiv": 219356.5014,
-          "premium": 1.1834
+          "equiv": 219356.5242,
+          "premium": 1.1835
         },
         {
           "date": "2025-01-24",
-          "local": 218272.3906,
+          "local": 218272.4219,
           "adr": 145.0561,
           "fx": 1491.55,
-          "equiv": 216358.4428,
+          "equiv": 216358.4656,
           "premium": -0.8769
         },
         {
           "date": "2025-01-27",
-          "local": 218272.3906,
-          "adr": 127.2941,
+          "local": 218272.4219,
+          "adr": 127.2942,
           "fx": 1499.03,
-          "equiv": 190817.7439,
+          "equiv": 190817.7554,
           "premium": -12.5782
         },
         {
           "date": "2025-01-28",
-          "local": 218272.3906,
+          "local": 218272.4219,
           "adr": 131.2412,
           "fx": 1501.23,
           "equiv": 197023.2863,
@@ -18003,15 +18003,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-29",
-          "local": 218272.3906,
+          "local": 218272.4219,
           "adr": 132.228,
           "fx": 1506.6899,
-          "equiv": 199226.6158,
+          "equiv": 199226.6618,
           "premium": -8.7257
         },
         {
           "date": "2025-01-30",
-          "local": 218272.3906,
+          "local": 218272.4219,
           "adr": 134.2016,
           "fx": 1504.02,
           "equiv": 201841.8458,
@@ -18035,15 +18035,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-04",
-          "local": 188741.4219,
+          "local": 188741.4375,
           "adr": 128.2809,
           "fx": 1506.05,
-          "equiv": 193197.4773,
+          "equiv": 193197.5002,
           "premium": 2.3609
         },
         {
           "date": "2025-02-05",
-          "local": 196346.3906,
+          "local": 196346.375,
           "adr": 136.1751,
           "fx": 1503.84,
           "equiv": 204785.5955,
@@ -18059,7 +18059,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-07",
-          "local": 200494.5625,
+          "local": 200494.5469,
           "adr": 131.2412,
           "fx": 1498.29,
           "equiv": 196637.4448,
@@ -18070,20 +18070,20 @@ window.HISTORICAL_DATA = {
           "local": 195655.0312,
           "adr": 132.228,
           "fx": 1501.5,
-          "equiv": 198540.3601,
+          "equiv": 198540.406,
           "premium": 1.4747
         },
         {
           "date": "2025-02-11",
-          "local": 197235.2812,
+          "local": 197235.2656,
           "adr": 129.2677,
           "fx": 1496.4399,
-          "equiv": 193441.3497,
-          "premium": -1.9236
+          "equiv": 193441.3725,
+          "premium": -1.9235
         },
         {
           "date": "2025-02-12",
-          "local": 196445.1562,
+          "local": 196445.1719,
           "adr": 126.3074,
           "fx": 1503.35,
           "equiv": 189884.1747,
@@ -18099,7 +18099,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-14",
-          "local": 207408.1719,
+          "local": 207408.1406,
           "adr": 138.1487,
           "fx": 1505.5601,
           "equiv": 207991.1143,
@@ -18110,15 +18110,15 @@ window.HISTORICAL_DATA = {
           "local": 209383.4688,
           "adr": 140.1222,
           "fx": 1510.55,
-          "equiv": 211661.6537,
+          "equiv": 211661.6306,
           "premium": 1.088
         },
         {
           "date": "2025-02-18",
-          "local": 207408.1719,
+          "local": 207408.1406,
           "adr": 139.1355,
           "fx": 1510.4399,
-          "equiv": 210155.7444,
+          "equiv": 210155.7674,
           "premium": 1.3247
         },
         {
@@ -18142,7 +18142,7 @@ window.HISTORICAL_DATA = {
           "local": 206914.3125,
           "adr": 133.2148,
           "fx": 1502.8,
-          "equiv": 200195.182,
+          "equiv": 200195.2278,
           "premium": -3.2473
         },
         {
@@ -18158,12 +18158,12 @@ window.HISTORICAL_DATA = {
           "local": 198025.4219,
           "adr": 128.2809,
           "fx": 1495.11,
-          "equiv": 191794.0759,
+          "equiv": 191794.0987,
           "premium": -3.1467
         },
         {
           "date": "2025-02-26",
-          "local": 200494.5625,
+          "local": 200494.5469,
           "adr": 136.1751,
           "fx": 1506.3199,
           "equiv": 205123.3072,
@@ -18171,7 +18171,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-27",
-          "local": 198013.4219,
+          "local": 198013.4062,
           "adr": 136.1751,
           "fx": 1501.71,
           "equiv": 204495.5418,
@@ -18190,7 +18190,7 @@ window.HISTORICAL_DATA = {
           "local": 189067.0312,
           "adr": 118.2021,
           "fx": 1515.1801,
-          "equiv": 179097.4105,
+          "equiv": 179097.3989,
           "premium": -5.2731
         },
         {
@@ -18203,7 +18203,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-05",
-          "local": 191949.7656,
+          "local": 191949.75,
           "adr": 126.1484,
           "fx": 1543.33,
           "equiv": 194688.6272,
@@ -18230,7 +18230,7 @@ window.HISTORICAL_DATA = {
           "local": 186780.75,
           "adr": 113.2356,
           "fx": 1569.76,
-          "equiv": 177752.6859,
+          "equiv": 177752.6978,
           "premium": -4.8335
         },
         {
@@ -18246,7 +18246,7 @@ window.HISTORICAL_DATA = {
           "local": 197715.2188,
           "adr": 128.135,
           "fx": 1583.4301,
-          "equiv": 202892.8254,
+          "equiv": 202892.8496,
           "premium": 2.6187
         },
         {
@@ -18262,8 +18262,8 @@ window.HISTORICAL_DATA = {
           "local": 203281.8438,
           "adr": 128.135,
           "fx": 1576.05,
-          "equiv": 201947.1884,
-          "premium": -0.6566
+          "equiv": 201947.2124,
+          "premium": -0.6565
         },
         {
           "date": "2025-03-17",
@@ -18278,7 +18278,7 @@ window.HISTORICAL_DATA = {
           "local": 201790.7812,
           "adr": 125.1551,
           "fx": 1575.24,
-          "equiv": 197149.3634,
+          "equiv": 197149.3393,
           "premium": -2.3001
         },
         {
@@ -18286,7 +18286,7 @@ window.HISTORICAL_DATA = {
           "local": 204275.9062,
           "adr": 125.1551,
           "fx": 1585.0601,
-          "equiv": 198378.3953,
+          "equiv": 198378.3711,
           "premium": -2.887
         },
         {
@@ -18303,11 +18303,11 @@ window.HISTORICAL_DATA = {
           "adr": 133.1015,
           "fx": 1591.25,
           "equiv": 211797.7156,
-          "premium": -1.1291
+          "premium": -1.129
         },
         {
           "date": "2025-03-24",
-          "local": 210240.1562,
+          "local": 210240.1719,
           "adr": 133.1015,
           "fx": 1581.4399,
           "equiv": 210491.9824,
@@ -18326,7 +18326,7 @@ window.HISTORICAL_DATA = {
           "local": 212725.2812,
           "adr": 131.1149,
           "fx": 1576.98,
-          "equiv": 206765.5222,
+          "equiv": 206765.5704,
           "premium": -2.8016
         },
         {
@@ -18350,7 +18350,7 @@ window.HISTORICAL_DATA = {
           "local": 189564.0469,
           "adr": 118.2021,
           "fx": 1591.1,
-          "equiv": 188071.302,
+          "equiv": 188071.2898,
           "premium": -0.7875
         },
         {
@@ -18374,7 +18374,7 @@ window.HISTORICAL_DATA = {
           "local": 193440.8125,
           "adr": 116.2155,
           "fx": 1598.64,
-          "equiv": 185786.6996,
+          "equiv": 185786.6874,
           "premium": -3.9568
         },
         {
@@ -18382,7 +18382,7 @@ window.HISTORICAL_DATA = {
           "local": 181114.6875,
           "adr": 105.2892,
           "fx": 1601.5601,
-          "equiv": 168627.0259,
+          "equiv": 168627.0137,
           "premium": -6.8949
         },
         {
@@ -18398,7 +18398,7 @@ window.HISTORICAL_DATA = {
           "local": 168490.3438,
           "adr": 103.7993,
           "fx": 1603.96,
-          "equiv": 166489.9108,
+          "equiv": 166489.8985,
           "premium": -1.1873
         },
         {
@@ -18414,7 +18414,7 @@ window.HISTORICAL_DATA = {
           "local": 182108.7344,
           "adr": 107.2758,
           "fx": 1583.05,
-          "equiv": 169822.9766,
+          "equiv": 169822.9887,
           "premium": -6.7464
         },
         {
@@ -18451,18 +18451,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-17",
-          "local": 173957.5781,
+          "local": 173957.5625,
           "adr": 105.7859,
           "fx": 1611.72,
-          "equiv": 170497.2048,
+          "equiv": 170497.1925,
           "premium": -1.9892
         },
         {
           "date": "2025-04-18",
-          "local": 173957.5781,
+          "local": 173957.5625,
           "adr": 105.7859,
           "fx": 1611.72,
-          "equiv": 170497.2048,
+          "equiv": 170497.1925,
           "premium": -1.9892
         },
         {
@@ -18470,7 +18470,7 @@ window.HISTORICAL_DATA = {
           "local": 175548.0469,
           "adr": 105.7859,
           "fx": 1611.72,
-          "equiv": 170497.2048,
+          "equiv": 170497.1925,
           "premium": -2.8772
         },
         {
@@ -18478,15 +18478,15 @@ window.HISTORICAL_DATA = {
           "local": 172764.7188,
           "adr": 107.2758,
           "fx": 1611.25,
-          "equiv": 172848.1493,
+          "equiv": 172848.1615,
           "premium": 0.0483
         },
         {
           "date": "2025-04-23",
-          "local": 179921.8438,
+          "local": 179921.8594,
           "adr": 113.2356,
           "fx": 1621.89,
-          "equiv": 183655.6572,
+          "equiv": 183655.6696,
           "premium": 2.0752
         },
         {
@@ -18566,7 +18566,7 @@ window.HISTORICAL_DATA = {
           "local": 189663.4688,
           "adr": 116.2155,
           "fx": 1558.8101,
-          "equiv": 181157.8426,
+          "equiv": 181157.8307,
           "premium": -4.4846
         },
         {
@@ -18614,7 +18614,7 @@ window.HISTORICAL_DATA = {
           "local": 199305.7031,
           "adr": 129.1283,
           "fx": 1573.13,
-          "equiv": 203135.5968,
+          "equiv": 203135.5728,
           "premium": 1.9216
         },
         {
@@ -18630,7 +18630,7 @@ window.HISTORICAL_DATA = {
           "local": 198212.2344,
           "adr": 127.6384,
           "fx": 1559.49,
-          "equiv": 199050.7314,
+          "equiv": 199050.7195,
           "premium": 0.423
         },
         {
@@ -18651,10 +18651,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-05-22",
-          "local": 195727.125,
+          "local": 195727.1406,
           "adr": 125.1551,
           "fx": 1553.65,
-          "equiv": 194447.2684,
+          "equiv": 194447.2447,
           "premium": -0.6539
         },
         {
@@ -18678,7 +18678,7 @@ window.HISTORICAL_DATA = {
           "local": 201293.75,
           "adr": 131.1149,
           "fx": 1557.96,
-          "equiv": 204271.7149,
+          "equiv": 204271.7624,
           "premium": 1.4794
         },
         {
@@ -18734,15 +18734,15 @@ window.HISTORICAL_DATA = {
           "local": 223565.7812,
           "adr": 146.8165,
           "fx": 1555.08,
-          "equiv": 228311.393,
+          "equiv": 228311.4167,
           "premium": 2.1227
         },
         {
           "date": "2025-06-06",
           "local": 223565.7812,
-          "adr": 145.8211,
+          "adr": 145.8212,
           "fx": 1550.76,
-          "equiv": 226133.587,
+          "equiv": 226133.6107,
           "premium": 1.1486
         },
         {
@@ -18780,9 +18780,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-06-13",
           "local": 234520.0,
-          "adr": 145.8211,
+          "adr": 145.8212,
           "fx": 1575.88,
-          "equiv": 229796.6133,
+          "equiv": 229796.6373,
           "premium": -2.0141
         },
         {
@@ -18798,7 +18798,7 @@ window.HISTORICAL_DATA = {
           "local": 247963.8125,
           "adr": 155.7748,
           "fx": 1563.1899,
-          "equiv": 243505.6174,
+          "equiv": 243505.5935,
           "premium": -1.7979
         },
         {
@@ -18811,10 +18811,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-19",
-          "local": 244976.3125,
+          "local": 244976.2969,
           "adr": 153.7841,
           "fx": 1576.53,
-          "equiv": 242445.1849,
+          "equiv": 242445.2089,
           "premium": -1.0332
         },
         {
@@ -18838,7 +18838,7 @@ window.HISTORICAL_DATA = {
           "local": 277341.0625,
           "adr": 172.696,
           "fx": 1588.79,
-          "equiv": 274377.7075,
+          "equiv": 274377.7317,
           "premium": -1.0685
         },
         {
@@ -18854,7 +18854,7 @@ window.HISTORICAL_DATA = {
           "local": 291780.75,
           "adr": 183.6451,
           "fx": 1584.7,
-          "equiv": 291022.326,
+          "equiv": 291022.3018,
           "premium": -0.2599
         },
         {
@@ -18862,7 +18862,7 @@ window.HISTORICAL_DATA = {
           "local": 282818.1562,
           "adr": 176.6775,
           "fx": 1583.0,
-          "equiv": 279680.467,
+          "equiv": 279680.4912,
           "premium": -1.1094
         },
         {
@@ -18878,12 +18878,12 @@ window.HISTORICAL_DATA = {
           "local": 284311.9375,
           "adr": 178.1705,
           "fx": 1591.8199,
-          "equiv": 283615.4313,
+          "equiv": 283615.407,
           "premium": -0.245
         },
         {
           "date": "2025-07-02",
-          "local": 277838.9688,
+          "local": 277838.9375,
           "adr": 174.1891,
           "fx": 1595.05,
           "equiv": 277840.2872,
@@ -18963,7 +18963,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-16",
-          "local": 294768.25,
+          "local": 294768.2188,
           "adr": 181.1566,
           "fx": 1608.55,
           "equiv": 291399.5329,
@@ -18982,8 +18982,8 @@ window.HISTORICAL_DATA = {
           "local": 267880.5938,
           "adr": 167.2215,
           "fx": 1616.42,
-          "equiv": 270300.1789,
-          "premium": 0.9032
+          "equiv": 270300.2282,
+          "premium": 0.9033
         },
         {
           "date": "2025-07-21",
@@ -18998,7 +18998,7 @@ window.HISTORICAL_DATA = {
           "local": 267382.7188,
           "adr": 167.2215,
           "fx": 1615.59,
-          "equiv": 270161.3719,
+          "equiv": 270161.4213,
           "premium": 1.0392
         },
         {
@@ -19027,7 +19027,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-28",
-          "local": 260909.7344,
+          "local": 260909.75,
           "adr": 162.7424,
           "fx": 1624.16,
           "equiv": 264319.6542,
@@ -19054,7 +19054,7 @@ window.HISTORICAL_DATA = {
           "local": 272361.9062,
           "adr": 171.203,
           "fx": 1590.27,
-          "equiv": 272258.9785,
+          "equiv": 272258.9543,
           "premium": -0.0378
         },
         {
@@ -19086,12 +19086,12 @@ window.HISTORICAL_DATA = {
           "local": 257424.2812,
           "adr": 159.2586,
           "fx": 1604.24,
-          "equiv": 255488.9755,
+          "equiv": 255489.0,
           "premium": -0.7518
         },
         {
           "date": "2025-08-07",
-          "local": 260909.7344,
+          "local": 260909.75,
           "adr": 160.254,
           "fx": 1613.98,
           "equiv": 258646.6704,
@@ -19102,8 +19102,8 @@ window.HISTORICAL_DATA = {
           "local": 255432.6094,
           "adr": 155.7748,
           "fx": 1616.9,
-          "equiv": 251872.2954,
-          "premium": -1.3938
+          "equiv": 251872.2707,
+          "premium": -1.3939
         },
         {
           "date": "2025-08-11",
@@ -19131,15 +19131,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-14",
-          "local": 275349.375,
+          "local": 275349.4062,
           "adr": 174.6868,
           "fx": 1613.61,
-          "equiv": 281876.3125,
+          "equiv": 281876.2879,
           "premium": 2.3704
         },
         {
           "date": "2025-08-15",
-          "local": 275349.375,
+          "local": 275349.4062,
           "adr": 169.2122,
           "fx": 1616.42,
           "equiv": 273518.0722,
@@ -19150,7 +19150,7 @@ window.HISTORICAL_DATA = {
           "local": 266386.8438,
           "adr": 167.2215,
           "fx": 1622.89,
-          "equiv": 271382.097,
+          "equiv": 271382.1466,
           "premium": 1.8752
         },
         {
@@ -19171,7 +19171,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-21",
-          "local": 243980.4688,
+          "local": 243980.4531,
           "adr": 148.8072,
           "fx": 1627.16,
           "equiv": 242133.1868,
@@ -19206,12 +19206,12 @@ window.HISTORICAL_DATA = {
           "local": 258918.0469,
           "adr": 160.7516,
           "fx": 1622.73,
-          "equiv": 260856.4938,
+          "equiv": 260856.5185,
           "premium": 0.7487
         },
         {
           "date": "2025-08-28",
-          "local": 267768.875,
+          "local": 267768.9062,
           "adr": 163.5103,
           "fx": 1620.9399,
           "equiv": 265040.4251,
@@ -19219,7 +19219,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-29",
-          "local": 268267.5312,
+          "local": 268267.5,
           "adr": 162.5133,
           "fx": 1616.1801,
           "equiv": 262650.7631,
@@ -19230,7 +19230,7 @@ window.HISTORICAL_DATA = {
           "local": 255302.9219,
           "adr": 154.5372,
           "fx": 1601.6899,
-          "equiv": 247520.6803,
+          "equiv": 247520.7047,
           "premium": -3.0482
         },
         {
@@ -19246,7 +19246,7 @@ window.HISTORICAL_DATA = {
           "local": 261785.2188,
           "adr": 158.5253,
           "fx": 1622.65,
-          "equiv": 257231.0309,
+          "equiv": 257231.0061,
           "premium": -1.7397
         },
         {
@@ -19278,7 +19278,7 @@ window.HISTORICAL_DATA = {
           "local": 287215.7812,
           "adr": 178.4655,
           "fx": 1630.71,
-          "equiv": 291025.543,
+          "equiv": 291025.5181,
           "premium": 1.3264
         },
         {
@@ -19299,7 +19299,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-12",
-          "local": 327605.5,
+          "local": 327605.5312,
           "adr": 204.3879,
           "fx": 1627.42,
           "equiv": 332624.9549,
@@ -19315,15 +19315,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-16",
-          "local": 347052.4062,
+          "local": 347052.375,
           "adr": 213.361,
           "fx": 1628.9399,
           "equiv": 347552.3171,
-          "premium": 0.144
+          "premium": 0.1441
         },
         {
           "date": "2025-09-17",
-          "local": 332591.9062,
+          "local": 332591.875,
           "adr": 198.9043,
           "fx": 1634.35,
           "equiv": 325079.2826,
@@ -19342,15 +19342,15 @@ window.HISTORICAL_DATA = {
           "local": 354532.0,
           "adr": 212.364,
           "fx": 1634.53,
-          "equiv": 347115.3575,
-          "premium": -2.092
+          "equiv": 347115.3824,
+          "premium": -2.0919
         },
         {
           "date": "2025-09-22",
           "local": 350044.25,
           "adr": 215.3551,
           "fx": 1639.9301,
-          "equiv": 353167.2298,
+          "equiv": 353167.2548,
           "premium": 0.8922
         },
         {
@@ -19358,15 +19358,15 @@ window.HISTORICAL_DATA = {
           "local": 360017.0312,
           "adr": 216.3521,
           "fx": 1639.39,
-          "equiv": 354685.4417,
+          "equiv": 354685.4167,
           "premium": -1.4809
         },
         {
           "date": "2025-09-24",
-          "local": 356526.5312,
+          "local": 356526.5625,
           "adr": 215.3551,
           "fx": 1644.0699,
-          "equiv": 354058.7766,
+          "equiv": 354058.8017,
           "premium": -0.6922
         },
         {
@@ -19387,23 +19387,23 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-29",
-          "local": 348049.6875,
+          "local": 348049.6562,
           "adr": 214.358,
           "fx": 1648.35,
           "equiv": 353337.0823,
-          "premium": 1.5191
+          "premium": 1.5192
         },
         {
           "date": "2025-09-30",
           "local": 346553.7812,
           "adr": 211.367,
           "fx": 1640.49,
-          "equiv": 346745.48,
+          "equiv": 346745.455,
           "premium": 0.0553
         },
         {
           "date": "2025-10-01",
-          "local": 359019.75,
+          "local": 359019.7188,
           "adr": 225.3252,
           "fx": 1647.17,
           "equiv": 371148.937,
@@ -19454,7 +19454,7 @@ window.HISTORICAL_DATA = {
           "local": 394423.0625,
           "adr": 263.2117,
           "fx": 1653.49,
-          "equiv": 435217.9624,
+          "equiv": 435218.0129,
           "premium": 10.3429
         },
         {
@@ -19478,15 +19478,15 @@ window.HISTORICAL_DATA = {
           "local": 410379.5,
           "adr": 251.2476,
           "fx": 1648.95,
-          "equiv": 414294.6998,
+          "equiv": 414294.6746,
           "premium": 0.954
         },
         {
           "date": "2025-10-15",
-          "local": 421349.5625,
-          "adr": 263.2117,
+          "local": 421349.5312,
+          "adr": 263.2118,
           "fx": 1658.13,
-          "equiv": 436439.2687,
+          "equiv": 436439.3193,
           "premium": 3.5813
         },
         {
@@ -19499,7 +19499,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-17",
-          "local": 464232.4688,
+          "local": 464232.4375,
           "adr": 274.1789,
           "fx": 1655.27,
           "equiv": 453840.1033,
@@ -19531,7 +19531,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-23",
-          "local": 477197.0625,
+          "local": 477197.0938,
           "adr": 296.1132,
           "fx": 1660.7,
           "equiv": 491755.2104,
@@ -19540,9 +19540,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-10-24",
           "local": 508611.2812,
-          "adr": 319.0445,
+          "adr": 319.0446,
           "fx": 1667.8101,
-          "equiv": 532105.6682,
+          "equiv": 532105.7191,
           "premium": 4.6193
         },
         {
@@ -19558,7 +19558,7 @@ window.HISTORICAL_DATA = {
           "local": 519581.3438,
           "adr": 324.0296,
           "fx": 1666.88,
-          "equiv": 540118.4646,
+          "equiv": 540118.5155,
           "premium": 3.9526
         },
         {
@@ -19587,7 +19587,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-03",
-          "local": 618311.75,
+          "local": 618311.8125,
           "adr": 387.8385,
           "fx": 1646.46,
           "equiv": 638560.6134,
@@ -19595,10 +19595,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-04",
-          "local": 584404.3125,
+          "local": 584404.375,
           "adr": 356.9311,
           "fx": 1645.72,
-          "equiv": 587408.6251,
+          "equiv": 587408.5749,
           "premium": 0.5141
         },
         {
@@ -19619,7 +19619,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-07",
-          "local": 578420.6875,
+          "local": 578420.75,
           "adr": 336.9908,
           "fx": 1671.6899,
           "equiv": 563344.1545,
@@ -19643,7 +19643,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-11-12",
-          "local": 615319.875,
+          "local": 615319.9375,
           "adr": 363.9102,
           "fx": 1690.86,
           "equiv": 615321.1215,
@@ -19692,9 +19692,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-11-20",
           "local": 569445.25,
-          "adr": 312.0655,
+          "adr": 312.0654,
           "fx": 1691.4,
-          "equiv": 527827.527,
+          "equiv": 527827.4754,
           "premium": -7.3085
         },
         {
@@ -21624,7 +21624,7 @@ window.HISTORICAL_DATA = {
           "local": 71368.6484,
           "adr": 1558.4086,
           "fx": 1151.12,
-          "equiv": 1793915.2647,
+          "equiv": 1793914.9837,
           "premium": 0.5436
         },
         {
@@ -21648,7 +21648,7 @@ window.HISTORICAL_DATA = {
           "local": 71549.7969,
           "adr": 1576.5293,
           "fx": 1149.41,
-          "equiv": 1812078.593,
+          "equiv": 1812079.1542,
           "premium": 1.3045
         },
         {
@@ -21661,10 +21661,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-02",
-          "local": 71821.4844,
-          "adr": 1564.7509,
+          "local": 71821.4922,
+          "adr": 1564.7507,
           "fx": 1150.9301,
-          "equiv": 1800918.785,
+          "equiv": 1800918.6445,
           "premium": 0.2997
         },
         {
@@ -21677,7 +21677,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-04",
-          "local": 75081.9922,
+          "local": 75082.0,
           "adr": 1643.1244,
           "fx": 1148.58,
           "equiv": 1887259.7393,
@@ -21720,7 +21720,7 @@ window.HISTORICAL_DATA = {
           "local": 71096.9297,
           "adr": 1535.3041,
           "fx": 1152.48,
-          "equiv": 1769407.2128,
+          "equiv": 1769407.7756,
           "premium": -0.451
         },
         {
@@ -21848,7 +21848,7 @@ window.HISTORICAL_DATA = {
           "local": 68832.7031,
           "adr": 1492.7198,
           "fx": 1155.28,
-          "equiv": 1724509.4305,
+          "equiv": 1724509.2894,
           "premium": 0.2145
         },
         {
@@ -21856,7 +21856,7 @@ window.HISTORICAL_DATA = {
           "local": 69376.1328,
           "adr": 1502.2334,
           "fx": 1157.13,
-          "equiv": 1738279.3397,
+          "equiv": 1738279.0572,
           "premium": 0.2235
         },
         {
@@ -21893,11 +21893,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-09-10",
-          "local": 68198.7109,
+          "local": 68198.7266,
           "adr": 1460.1019,
           "fx": 1169.13,
           "equiv": 1707048.975,
-          "premium": 0.1221
+          "premium": 0.122
         },
         {
           "date": "2021-09-13",
@@ -21976,8 +21976,8 @@ window.HISTORICAL_DATA = {
           "local": 70010.125,
           "adr": 1478.6759,
           "fx": 1174.7,
-          "equiv": 1737000.5114,
-          "premium": -0.7572
+          "equiv": 1737000.9416,
+          "premium": -0.7571
         },
         {
           "date": "2021-09-27",
@@ -21992,7 +21992,7 @@ window.HISTORICAL_DATA = {
           "local": 69104.4141,
           "adr": 1435.1855,
           "fx": 1176.96,
-          "equiv": 1689155.9252,
+          "equiv": 1689156.0689,
           "premium": -2.2259
         },
         {
@@ -22104,7 +22104,7 @@ window.HISTORICAL_DATA = {
           "local": 63881.9258,
           "adr": 1351.0762,
           "fx": 1181.79,
-          "equiv": 1596688.3619,
+          "equiv": 1596688.7947,
           "premium": -0.0225
         },
         {
@@ -22176,7 +22176,7 @@ window.HISTORICAL_DATA = {
           "local": 63517.9219,
           "adr": 1359.2701,
           "fx": 1167.37,
-          "equiv": 1586771.1786,
+          "equiv": 1586771.0361,
           "premium": -0.0741
         },
         {
@@ -22192,7 +22192,7 @@ window.HISTORICAL_DATA = {
           "local": 65064.9258,
           "adr": 1383.8517,
           "fx": 1176.5699,
-          "equiv": 1628198.3022,
+          "equiv": 1628198.1586,
           "premium": 0.0968
         },
         {
@@ -22224,7 +22224,7 @@ window.HISTORICAL_DATA = {
           "local": 64245.9258,
           "adr": 1367.0089,
           "fx": 1180.5,
-          "equiv": 1613754.0196,
+          "equiv": 1613753.7314,
           "premium": 0.4735
         },
         {
@@ -22240,7 +22240,7 @@ window.HISTORICAL_DATA = {
           "local": 63881.9258,
           "adr": 1359.2701,
           "fx": 1177.5,
-          "equiv": 1600540.5917,
+          "equiv": 1600540.448,
           "premium": 0.2187
         },
         {
@@ -22280,8 +22280,8 @@ window.HISTORICAL_DATA = {
           "local": 64336.9336,
           "adr": 1359.2701,
           "fx": 1184.05,
-          "equiv": 1609443.8775,
-          "premium": 0.0634
+          "equiv": 1609443.733,
+          "premium": 0.0635
         },
         {
           "date": "2021-11-18",
@@ -22304,7 +22304,7 @@ window.HISTORICAL_DATA = {
           "local": 68158.9375,
           "adr": 1442.1191,
           "fx": 1191.63,
-          "equiv": 1718472.4386,
+          "equiv": 1718472.1477,
           "premium": 0.8509
         },
         {
@@ -22365,10 +22365,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-02",
-          "local": 68977.9297,
-          "adr": 1457.5963,
+          "local": 68977.9141,
+          "adr": 1457.5962,
           "fx": 1177.11,
-          "equiv": 1715751.1752,
+          "equiv": 1715751.0315,
           "premium": -0.5043
         },
         {
@@ -22389,11 +22389,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-07",
-          "local": 70433.9219,
+          "local": 70433.9297,
           "adr": 1516.3188,
           "fx": 1180.5601,
           "equiv": 1790105.4676,
-          "premium": 1.6616
+          "premium": 1.6615
         },
         {
           "date": "2021-12-08",
@@ -22456,7 +22456,7 @@ window.HISTORICAL_DATA = {
           "local": 70979.9297,
           "adr": 1482.1781,
           "fx": 1186.15,
-          "equiv": 1758085.5902,
+          "equiv": 1758085.4454,
           "premium": -0.9249
         },
         {
@@ -22485,11 +22485,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-23",
-          "local": 72708.9141,
-          "adr": 1535.8932,
+          "local": 72708.9375,
+          "adr": 1535.8933,
           "fx": 1187.77,
-          "equiv": 1824287.8825,
-          "premium": 0.3612
+          "equiv": 1824288.0275,
+          "premium": 0.3611
         },
         {
           "date": "2021-12-24",
@@ -22533,18 +22533,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-31",
-          "local": 71574.6875,
-          "adr": 1507.9297,
+          "local": 71574.6953,
+          "adr": 1507.9298,
           "fx": 1189.89,
-          "equiv": 1794270.4779,
+          "equiv": 1794270.6232,
           "premium": 0.274
         },
         {
           "date": "2022-01-03",
-          "local": 71574.6875,
-          "adr": 1507.9297,
+          "local": 71574.6953,
+          "adr": 1507.9298,
           "fx": 1187.78,
-          "equiv": 1791088.7684,
+          "equiv": 1791088.9134,
           "premium": 0.0962
         },
         {
@@ -22568,7 +22568,7 @@ window.HISTORICAL_DATA = {
           "local": 70294.9453,
           "adr": 1452.1482,
           "fx": 1199.25,
-          "equiv": 1741488.7209,
+          "equiv": 1741488.5745,
           "premium": -0.9039
         },
         {
@@ -22597,10 +22597,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-12",
-          "local": 72123.1641,
-          "adr": 1515.2454,
+          "local": 72123.1562,
+          "adr": 1515.2455,
           "fx": 1189.4301,
-          "equiv": 1802278.3715,
+          "equiv": 1802278.5167,
           "premium": -0.0444
         },
         {
@@ -22800,7 +22800,7 @@ window.HISTORICAL_DATA = {
           "local": 68375.3203,
           "adr": 1427.0007,
           "fx": 1196.83,
-          "equiv": 1707877.2239,
+          "equiv": 1707877.37,
           "premium": -0.0881
         },
         {
@@ -22824,7 +22824,7 @@ window.HISTORICAL_DATA = {
           "local": 67918.2656,
           "adr": 1402.7679,
           "fx": 1195.0699,
-          "equiv": 1676405.8119,
+          "equiv": 1676405.666,
           "premium": -1.2692
         },
         {
@@ -22856,7 +22856,7 @@ window.HISTORICAL_DATA = {
           "local": 65724.3828,
           "adr": 1381.7356,
           "fx": 1206.0,
-          "equiv": 1666373.1284,
+          "equiv": 1666372.9812,
           "premium": 1.4158
         },
         {
@@ -22952,7 +22952,7 @@ window.HISTORICAL_DATA = {
           "local": 64170.4102,
           "adr": 1281.1458,
           "fx": 1242.05,
-          "equiv": 1591247.1438,
+          "equiv": 1591247.2954,
           "premium": -0.8112
         },
         {
@@ -23000,8 +23000,8 @@ window.HISTORICAL_DATA = {
           "local": 64444.6562,
           "adr": 1308.5795,
           "fx": 1214.95,
-          "equiv": 1589858.5605,
-          "premium": -1.3194
+          "equiv": 1589858.4122,
+          "premium": -1.3195
         },
         {
           "date": "2022-03-24",
@@ -23016,7 +23016,7 @@ window.HISTORICAL_DATA = {
           "local": 63804.7617,
           "adr": 1293.9484,
           "fx": 1217.55,
-          "equiv": 1575446.8941,
+          "equiv": 1575446.7455,
           "premium": -1.2333
         },
         {
@@ -23072,7 +23072,7 @@ window.HISTORICAL_DATA = {
           "local": 63583.293,
           "adr": 1292.4369,
           "fx": 1213.9,
-          "equiv": 1568889.1719,
+          "equiv": 1568889.0237,
           "premium": -1.3018
         },
         {
@@ -23184,7 +23184,7 @@ window.HISTORICAL_DATA = {
           "local": 60918.6602,
           "adr": 1208.3574,
           "fx": 1243.16,
-          "equiv": 1502181.6539,
+          "equiv": 1502181.3504,
           "premium": -1.3648
         },
         {
@@ -23253,10 +23253,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-06",
-          "local": 61102.4336,
-          "adr": 1197.7899,
+          "local": 61102.4297,
+          "adr": 1197.7897,
           "fx": 1268.7,
-          "equiv": 1519636.0092,
+          "equiv": 1519635.6995,
           "premium": -0.5188
         },
         {
@@ -23552,7 +23552,7 @@ window.HISTORICAL_DATA = {
           "local": 54578.7109,
           "adr": 1047.0897,
           "fx": 1286.2,
-          "equiv": 1346766.7489,
+          "equiv": 1346766.9059,
           "premium": -1.2973
         },
         {
@@ -23632,7 +23632,7 @@ window.HISTORICAL_DATA = {
           "local": 53710.6406,
           "adr": 1028.9497,
           "fx": 1310.86,
-          "equiv": 1348808.9979,
+          "equiv": 1348809.1579,
           "premium": 0.45
         },
         {
@@ -23661,7 +23661,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-18",
-          "local": 57223.5703,
+          "local": 57223.582,
           "adr": 1083.0322,
           "fx": 1318.12,
           "equiv": 1427566.4332,
@@ -23712,12 +23712,12 @@ window.HISTORICAL_DATA = {
           "local": 57038.6797,
           "adr": 1080.2585,
           "fx": 1310.4,
-          "equiv": 1415570.8236,
-          "premium": -0.7291
+          "equiv": 1415570.9836,
+          "premium": -0.729
         },
         {
           "date": "2022-07-27",
-          "local": 57131.125,
+          "local": 57131.1211,
           "adr": 1083.0322,
           "fx": 1310.9,
           "equiv": 1419746.9722,
@@ -23773,7 +23773,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-05",
-          "local": 56853.7852,
+          "local": 56853.7891,
           "adr": 1083.0322,
           "fx": 1302.08,
           "equiv": 1410194.554,
@@ -23792,7 +23792,7 @@ window.HISTORICAL_DATA = {
           "local": 55467.1133,
           "adr": 1052.0616,
           "fx": 1299.03,
-          "equiv": 1366659.6702,
+          "equiv": 1366660.1459,
           "premium": -1.4436
         },
         {
@@ -23824,7 +23824,7 @@ window.HISTORICAL_DATA = {
           "local": 55652.0078,
           "adr": 1062.6935,
           "fx": 1301.38,
-          "equiv": 1382968.0481,
+          "equiv": 1382967.8892,
           "premium": -0.5989
         },
         {
@@ -23949,10 +23949,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-09-06",
-          "local": 52786.2031,
-          "adr": 948.5198,
+          "local": 52786.207,
+          "adr": 948.5197,
           "fx": 1361.8101,
-          "equiv": 1291703.7709,
+          "equiv": 1291703.6047,
           "premium": -2.1181
         },
         {
@@ -23981,18 +23981,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-09-12",
-          "local": 51399.5234,
+          "local": 51399.5195,
           "adr": 954.9911,
           "fx": 1379.0601,
           "equiv": 1316990.067,
-          "premium": 2.4904
+          "premium": 2.4905
         },
         {
           "date": "2022-09-13",
           "local": 53710.6406,
           "adr": 941.1238,
           "fx": 1375.8101,
-          "equiv": 1294807.6459,
+          "equiv": 1294807.5619,
           "premium": -3.5716
         },
         {
@@ -24008,7 +24008,7 @@ window.HISTORICAL_DATA = {
           "local": 51769.3008,
           "adr": 923.3738,
           "fx": 1391.1801,
-          "equiv": 1284579.1839,
+          "equiv": 1284579.2688,
           "premium": -0.7459
         },
         {
@@ -24072,7 +24072,7 @@ window.HISTORICAL_DATA = {
           "local": 50105.2852,
           "adr": 874.561,
           "fx": 1429.77,
-          "equiv": 1250421.1483,
+          "equiv": 1250421.2356,
           "premium": -0.1765
         },
         {
@@ -24096,7 +24096,7 @@ window.HISTORICAL_DATA = {
           "local": 49425.6875,
           "adr": 858.6818,
           "fx": 1430.17,
-          "equiv": 1228060.9343,
+          "equiv": 1228061.0216,
           "premium": -0.6135
         },
         {
@@ -24120,21 +24120,21 @@ window.HISTORICAL_DATA = {
           "local": 52125.0117,
           "adr": 904.1303,
           "fx": 1416.53,
-          "equiv": 1280727.7346,
-          "premium": -1.7188
+          "equiv": 1280727.8211,
+          "premium": -1.7187
         },
         {
           "date": "2022-10-06",
           "local": 52404.2539,
           "adr": 921.0805,
           "fx": 1416.76,
-          "equiv": 1304950.0258,
+          "equiv": 1304949.9393,
           "premium": -0.3936
         },
         {
           "date": "2022-10-07",
           "local": 52311.1758,
-          "adr": 908.6008,
+          "adr": 908.6006,
           "fx": 1408.45,
           "equiv": 1279718.7948,
           "premium": -2.1457
@@ -24192,7 +24192,7 @@ window.HISTORICAL_DATA = {
           "local": 52590.418,
           "adr": 908.2283,
           "fx": 1430.15,
-          "equiv": 1298902.7719,
+          "equiv": 1298902.5973,
           "premium": -1.2061
         },
         {
@@ -24224,23 +24224,23 @@ window.HISTORICAL_DATA = {
           "local": 53521.2227,
           "adr": 920.1492,
           "fx": 1428.11,
-          "equiv": 1314074.3047,
+          "equiv": 1314074.3919,
           "premium": -1.7904
         },
         {
           "date": "2022-10-25",
-          "local": 53707.3828,
-          "adr": 941.5697,
+          "local": 53707.3984,
+          "adr": 941.5696,
           "fx": 1443.96,
-          "equiv": 1359588.9503,
+          "equiv": 1359588.7741,
           "premium": 1.259
         },
         {
           "date": "2022-10-26",
-          "local": 55289.7461,
-          "adr": 972.3035,
+          "local": 55289.7422,
+          "adr": 972.3033,
           "fx": 1426.9301,
-          "equiv": 1387409.0381,
+          "equiv": 1387408.8639,
           "premium": 0.3737
         },
         {
@@ -24248,7 +24248,7 @@ window.HISTORICAL_DATA = {
           "local": 55382.8242,
           "adr": 969.0439,
           "fx": 1412.6899,
-          "equiv": 1368958.5481,
+          "equiv": 1368958.4619,
           "premium": -1.1276
         },
         {
@@ -24256,12 +24256,12 @@ window.HISTORICAL_DATA = {
           "local": 53335.0625,
           "adr": 941.5697,
           "fx": 1420.65,
-          "equiv": 1337641.0203,
+          "equiv": 1337640.8469,
           "premium": 0.3198
         },
         {
           "date": "2022-10-31",
-          "local": 55289.7461,
+          "local": 55289.7422,
           "adr": 962.5245,
           "fx": 1421.65,
           "equiv": 1368372.9435,
@@ -24280,7 +24280,7 @@ window.HISTORICAL_DATA = {
           "local": 55475.9062,
           "adr": 965.7841,
           "fx": 1416.6,
-          "equiv": 1368129.6724,
+          "equiv": 1368129.8454,
           "premium": -1.3532
         },
         {
@@ -24288,8 +24288,8 @@ window.HISTORICAL_DATA = {
           "local": 55103.5938,
           "adr": 962.0588,
           "fx": 1423.1,
-          "equiv": 1369105.8219,
-          "premium": -0.6159
+          "equiv": 1369105.9956,
+          "premium": -0.6158
         },
         {
           "date": "2022-11-04",
@@ -24328,7 +24328,7 @@ window.HISTORICAL_DATA = {
           "local": 56220.5508,
           "adr": 1061.245,
           "fx": 1370.55,
-          "equiv": 1454489.3799,
+          "equiv": 1454489.2126,
           "premium": 3.4845
         },
         {
@@ -24384,7 +24384,7 @@ window.HISTORICAL_DATA = {
           "local": 57151.3555,
           "adr": 1040.7557,
           "fx": 1339.03,
-          "equiv": 1393603.1854,
+          "equiv": 1393603.5123,
           "premium": -2.4623
         },
         {
@@ -24424,7 +24424,7 @@ window.HISTORICAL_DATA = {
           "local": 55941.3086,
           "adr": 1042.6184,
           "fx": 1334.5601,
-          "equiv": 1391436.8839,
+          "equiv": 1391436.721,
           "premium": -0.5074
         },
         {
@@ -24576,15 +24576,15 @@ window.HISTORICAL_DATA = {
           "local": 54079.6914,
           "adr": 1051.4659,
           "fx": 1290.2,
-          "equiv": 1356601.3075,
+          "equiv": 1356601.465,
           "premium": 0.3409
         },
         {
           "date": "2022-12-26",
-          "local": 53893.5469,
-          "adr": 1051.4659,
+          "local": 53893.5547,
+          "adr": 1051.4661,
           "fx": 1279.24,
-          "equiv": 1345077.2819,
+          "equiv": 1345077.438,
           "premium": -0.1678
         },
         {
@@ -24592,7 +24592,7 @@ window.HISTORICAL_DATA = {
           "local": 54079.6914,
           "adr": 1051.4659,
           "fx": 1275.13,
-          "equiv": 1340755.7722,
+          "equiv": 1340755.9279,
           "premium": -0.8311
         },
         {
@@ -24600,7 +24600,7 @@ window.HISTORICAL_DATA = {
           "local": 53012.8867,
           "adr": 1033.3052,
           "fx": 1272.28,
-          "equiv": 1314653.5393,
+          "equiv": 1314653.6946,
           "premium": -0.805
         },
         {
@@ -24648,7 +24648,7 @@ window.HISTORICAL_DATA = {
           "local": 54511.4883,
           "adr": 1055.2646,
           "fx": 1271.08,
-          "equiv": 1341325.743,
+          "equiv": 1341326.0533,
           "premium": -1.5748
         },
         {
@@ -24670,10 +24670,10 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-01-10",
           "local": 56572.0586,
-          "adr": 1136.7998,
+          "adr": 1136.7994,
           "fx": 1239.28,
-          "equiv": 1408813.2953,
-          "premium": -0.388
+          "equiv": 1408812.8414,
+          "premium": -0.3881
         },
         {
           "date": "2023-01-11",
@@ -24718,9 +24718,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-01-18",
           "local": 56572.0586,
-          "adr": 1148.9829,
+          "adr": 1148.9828,
           "fx": 1237.0,
-          "equiv": 1421291.8599,
+          "equiv": 1421291.7089,
           "premium": 0.4943
         },
         {
@@ -24736,7 +24736,7 @@ window.HISTORICAL_DATA = {
           "local": 57883.332,
           "adr": 1176.1611,
           "fx": 1232.1801,
-          "equiv": 1449242.2878,
+          "equiv": 1449242.1374,
           "premium": 0.1492
         },
         {
@@ -24776,7 +24776,7 @@ window.HISTORICAL_DATA = {
           "local": 60505.8789,
           "adr": 1231.9232,
           "fx": 1231.85,
-          "equiv": 1517544.5857,
+          "equiv": 1517544.7361,
           "premium": 0.3238
         },
         {
@@ -24805,10 +24805,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-02",
-          "local": 59475.5938,
-          "adr": 1219.2715,
+          "local": 59475.5977,
+          "adr": 1219.2714,
           "fx": 1221.95,
-          "equiv": 1489888.7308,
+          "equiv": 1489888.5816,
           "premium": 0.2017
         },
         {
@@ -24917,10 +24917,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-22",
-          "local": 57227.6914,
-          "adr": 1101.6554,
+          "local": 57227.6953,
+          "adr": 1101.655,
           "fx": 1305.83,
-          "equiv": 1438574.6167,
+          "equiv": 1438574.1385,
           "premium": 0.5509
         },
         {
@@ -24928,7 +24928,7 @@ window.HISTORICAL_DATA = {
           "local": 58070.6562,
           "adr": 1114.776,
           "fx": 1302.83,
-          "equiv": 1452363.5684,
+          "equiv": 1452363.7274,
           "premium": 0.0411
         },
         {
@@ -25016,7 +25016,7 @@ window.HISTORICAL_DATA = {
           "local": 55729.0898,
           "adr": 1070.2596,
           "fx": 1325.55,
-          "equiv": 1418682.7228,
+          "equiv": 1418682.8846,
           "premium": 1.8271
         },
         {
@@ -25064,15 +25064,15 @@ window.HISTORICAL_DATA = {
           "local": 56384.7422,
           "adr": 1078.6942,
           "fx": 1307.65,
-          "equiv": 1410554.5151,
+          "equiv": 1410554.6747,
           "premium": 0.0664
         },
         {
           "date": "2023-03-21",
           "local": 56478.4023,
-          "adr": 1090.8778,
+          "adr": 1090.8777,
           "fx": 1304.9399,
-          "equiv": 1423530.0224,
+          "equiv": 1423529.8631,
           "premium": 0.8194
         },
         {
@@ -25088,7 +25088,7 @@ window.HISTORICAL_DATA = {
           "local": 58351.6523,
           "adr": 1136.7998,
           "fx": 1298.25,
-          "equiv": 1475850.3464,
+          "equiv": 1475849.871,
           "premium": 1.1694
         },
         {
@@ -25096,7 +25096,7 @@ window.HISTORICAL_DATA = {
           "local": 59007.2812,
           "adr": 1124.6162,
           "fx": 1286.29,
-          "equiv": 1446582.6299,
+          "equiv": 1446582.3159,
           "premium": -1.9387
         },
         {
@@ -25120,7 +25120,7 @@ window.HISTORICAL_DATA = {
           "local": 58726.2891,
           "adr": 1137.7367,
           "fx": 1296.98,
-          "equiv": 1475621.7156,
+          "equiv": 1475621.5573,
           "premium": 0.5084
         },
         {
@@ -25144,7 +25144,7 @@ window.HISTORICAL_DATA = {
           "local": 59443.1875,
           "adr": 1128.9893,
           "fx": 1305.48,
-          "equiv": 1473872.8742,
+          "equiv": 1473872.7149,
           "premium": -0.8214
         },
         {
@@ -25161,7 +25161,7 @@ window.HISTORICAL_DATA = {
           "adr": 1138.4132,
           "fx": 1312.41,
           "equiv": 1494064.9172,
-          "premium": -0.7213
+          "premium": -0.7214
         },
         {
           "date": "2023-04-06",
@@ -25280,7 +25280,7 @@ window.HISTORICAL_DATA = {
           "local": 60385.2422,
           "adr": 1135.5861,
           "fx": 1341.0,
-          "equiv": 1522820.9059,
+          "equiv": 1522820.7422,
           "premium": 0.8737
         },
         {
@@ -25288,7 +25288,7 @@ window.HISTORICAL_DATA = {
           "local": 60856.2617,
           "adr": 1146.8948,
           "fx": 1337.83,
-          "equiv": 1534350.187,
+          "equiv": 1534350.0237,
           "premium": 0.8508
         },
         {
@@ -25320,7 +25320,7 @@ window.HISTORICAL_DATA = {
           "local": 61609.9023,
           "adr": 1150.6641,
           "fx": 1342.3,
-          "equiv": 1544536.4273,
+          "equiv": 1544536.755,
           "premium": 0.2785
         },
         {
@@ -25376,7 +25376,7 @@ window.HISTORICAL_DATA = {
           "local": 60385.2422,
           "adr": 1123.3347,
           "fx": 1329.88,
-          "equiv": 1493900.3787,
+          "equiv": 1493900.541,
           "premium": -1.042
         },
         {
@@ -25488,7 +25488,7 @@ window.HISTORICAL_DATA = {
           "local": 66791.1641,
           "adr": 1275.0604,
           "fx": 1321.74,
-          "equiv": 1685298.3534,
+          "equiv": 1685298.1921,
           "premium": 0.9294
         },
         {
@@ -25504,7 +25504,7 @@ window.HISTORICAL_DATA = {
           "local": 67544.8047,
           "adr": 1289.1964,
           "fx": 1305.14,
-          "equiv": 1682581.8229,
+          "equiv": 1682581.6636,
           "premium": -0.3576
         },
         {
@@ -25512,7 +25512,7 @@ window.HISTORICAL_DATA = {
           "local": 67544.8047,
           "adr": 1296.7355,
           "fx": 1299.79,
-          "equiv": 1685483.8519,
+          "equiv": 1685484.0106,
           "premium": -0.1857
         },
         {
@@ -25568,7 +25568,7 @@ window.HISTORICAL_DATA = {
           "local": 67356.3984,
           "adr": 1325.0073,
           "fx": 1273.99,
-          "equiv": 1688046.068,
+          "equiv": 1688045.9125,
           "premium": 0.2456
         },
         {
@@ -25576,15 +25576,15 @@ window.HISTORICAL_DATA = {
           "local": 67639.0,
           "adr": 1325.0073,
           "fx": 1270.05,
-          "equiv": 1682825.6168,
-          "premium": -0.4819
+          "equiv": 1682825.4618,
+          "premium": -0.482
         },
         {
           "date": "2023-06-19",
-          "local": 67073.7812,
-          "adr": 1305.2169,
+          "local": 67073.7734,
+          "adr": 1305.217,
           "fx": 1276.3101,
-          "equiv": 1665861.4823,
+          "equiv": 1665861.6381,
           "premium": -0.655
         },
         {
@@ -25621,10 +25621,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-26",
-          "local": 68204.2344,
-          "adr": 1296.7355,
+          "local": 68204.2188,
+          "adr": 1296.7356,
           "fx": 1307.67,
-          "equiv": 1695702.1338,
+          "equiv": 1695702.2934,
           "premium": -0.5515
         },
         {
@@ -25648,7 +25648,7 @@ window.HISTORICAL_DATA = {
           "local": 68544.6172,
           "adr": 1309.6633,
           "fx": 1309.01,
-          "equiv": 1714362.4085,
+          "equiv": 1714362.5683,
           "premium": 0.0436
         },
         {
@@ -25669,10 +25669,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-04",
-          "local": 69112.6406,
-          "adr": 1339.0197,
+          "local": 69112.6562,
+          "adr": 1339.0195,
           "fx": 1306.1,
-          "equiv": 1748893.5365,
+          "equiv": 1748893.3771,
           "premium": 1.2199
         },
         {
@@ -25760,15 +25760,15 @@ window.HISTORICAL_DATA = {
           "local": 67881.8828,
           "adr": 1339.0197,
           "fx": 1264.9399,
-          "equiv": 1693779.4418,
-          "premium": -0.1925
+          "equiv": 1693779.2874,
+          "premium": -0.1926
         },
         {
           "date": "2023-07-20",
-          "local": 67219.1484,
-          "adr": 1308.7164,
+          "local": 67219.1406,
+          "adr": 1308.7163,
           "fx": 1265.09,
-          "equiv": 1655644.0245,
+          "equiv": 1655643.8701,
           "premium": -1.4778
         },
         {
@@ -25845,10 +25845,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-08-03",
-          "local": 65136.3008,
-          "adr": 1250.9512,
+          "local": 65136.293,
+          "adr": 1250.951,
           "fx": 1295.37,
-          "equiv": 1620444.6134,
+          "equiv": 1620444.4553,
           "premium": -0.489
         },
         {
@@ -25872,7 +25872,7 @@ window.HISTORICAL_DATA = {
           "local": 64000.207,
           "adr": 1213.0721,
           "fx": 1307.75,
-          "equiv": 1586395.0957,
+          "equiv": 1586394.9361,
           "premium": -0.8506
         },
         {
@@ -25928,15 +25928,15 @@ window.HISTORICAL_DATA = {
           "local": 63148.1289,
           "adr": 1168.5645,
           "fx": 1343.33,
-          "equiv": 1569767.6355,
+          "equiv": 1569767.4715,
           "premium": -0.566
         },
         {
           "date": "2023-08-18",
-          "local": 62769.4297,
-          "adr": 1162.8824,
+          "local": 62769.4336,
+          "adr": 1162.8826,
           "fx": 1339.08,
-          "equiv": 1557192.5751,
+          "equiv": 1557192.7385,
           "premium": -0.7675
         },
         {
@@ -25969,22 +25969,22 @@ window.HISTORICAL_DATA = {
           "adr": 1194.1327,
           "fx": 1327.78,
           "equiv": 1585545.5387,
-          "premium": -1.7755
+          "premium": -1.7756
         },
         {
           "date": "2023-08-25",
           "local": 63526.8281,
           "adr": 1193.1857,
           "fx": 1326.62,
-          "equiv": 1582903.9663,
+          "equiv": 1582904.1283,
           "premium": -0.3316
         },
         {
           "date": "2023-08-28",
-          "local": 63242.8047,
-          "adr": 1193.1857,
+          "local": 63242.8125,
+          "adr": 1193.1858,
           "fx": 1323.61,
-          "equiv": 1579312.4658,
+          "equiv": 1579312.6274,
           "premium": -0.1112
         },
         {
@@ -26008,7 +26008,7 @@ window.HISTORICAL_DATA = {
           "local": 63337.4805,
           "adr": 1196.0266,
           "fx": 1323.03,
-          "equiv": 1582379.1226,
+          "equiv": 1582379.2841,
           "premium": -0.0668
         },
         {
@@ -26120,7 +26120,7 @@ window.HISTORICAL_DATA = {
           "local": 65893.7031,
           "adr": 1246.2162,
           "fx": 1328.53,
-          "equiv": 1655635.6268,
+          "equiv": 1655635.789,
           "premium": 0.5034
         },
         {
@@ -26133,10 +26133,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-22",
-          "local": 65136.3008,
-          "adr": 1216.8602,
+          "local": 65136.293,
+          "adr": 1216.8601,
           "fx": 1341.17,
-          "equiv": 1632016.4875,
+          "equiv": 1632016.3237,
           "premium": 0.2216
         },
         {
@@ -26229,11 +26229,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-10",
-          "local": 63192.8203,
-          "adr": 1176.9656,
+          "local": 63192.8242,
+          "adr": 1176.9657,
           "fx": 1346.89,
-          "equiv": 1585243.1821,
-          "premium": 0.3432
+          "equiv": 1585243.3465,
+          "premium": 0.3433
         },
         {
           "date": "2023-10-11",
@@ -26269,10 +26269,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-17",
-          "local": 66047.9219,
-          "adr": 1217.9117,
+          "local": 66047.9141,
+          "adr": 1217.912,
           "fx": 1347.76,
-          "equiv": 1641452.7429,
+          "equiv": 1641453.0719,
           "premium": -0.5902
         },
         {
@@ -26285,10 +26285,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-19",
-          "local": 66143.0859,
-          "adr": 1217.9117,
+          "local": 66143.0938,
+          "adr": 1217.912,
           "fx": 1354.5601,
-          "equiv": 1649734.6022,
+          "equiv": 1649734.9329,
           "premium": -0.2324
         },
         {
@@ -26304,7 +26304,7 @@ window.HISTORICAL_DATA = {
           "local": 65096.2188,
           "adr": 1217.9117,
           "fx": 1349.34,
-          "equiv": 1643376.9899,
+          "equiv": 1643377.3193,
           "premium": 0.9814
         },
         {
@@ -26328,7 +26328,7 @@ window.HISTORICAL_DATA = {
           "local": 63478.3281,
           "adr": 1172.2045,
           "fx": 1352.6801,
-          "equiv": 1585617.6024,
+          "equiv": 1585617.7676,
           "premium": -0.0845
         },
         {
@@ -26357,7 +26357,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-01",
-          "local": 65286.5547,
+          "local": 65286.5508,
           "adr": 1216.0073,
           "fx": 1350.16,
           "equiv": 1641804.4904,
@@ -26373,10 +26373,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-03",
-          "local": 66238.2578,
-          "adr": 1277.9027,
+          "local": 66238.2656,
+          "adr": 1277.9028,
           "fx": 1333.6801,
-          "equiv": 1704313.3549,
+          "equiv": 1704313.5177,
           "premium": 2.9202
         },
         {
@@ -26384,7 +26384,7 @@ window.HISTORICAL_DATA = {
           "local": 67475.4766,
           "adr": 1295.9954,
           "fx": 1307.84,
-          "equiv": 1694954.5291,
+          "equiv": 1694954.2098,
           "premium": 0.4783
         },
         {
@@ -26400,8 +26400,8 @@ window.HISTORICAL_DATA = {
           "local": 66523.7656,
           "adr": 1277.9027,
           "fx": 1304.55,
-          "equiv": 1667088.0427,
-          "premium": 0.2401
+          "equiv": 1667088.2019,
+          "premium": 0.2402
         },
         {
           "date": "2023-11-09",
@@ -26464,7 +26464,7 @@ window.HISTORICAL_DATA = {
           "local": 69188.5234,
           "adr": 1335.9891,
           "fx": 1294.5,
-          "equiv": 1729437.9362,
+          "equiv": 1729438.2523,
           "premium": -0.0159
         },
         {
@@ -26496,7 +26496,7 @@ window.HISTORICAL_DATA = {
           "local": 68236.8359,
           "adr": 1302.661,
           "fx": 1300.1801,
-          "equiv": 1693693.8629,
+          "equiv": 1693693.7042,
           "premium": -0.7167
         },
         {
@@ -26600,7 +26600,7 @@ window.HISTORICAL_DATA = {
           "local": 69283.6953,
           "adr": 1299.8042,
           "fx": 1310.14,
-          "equiv": 1702925.4926,
+          "equiv": 1702925.6525,
           "premium": -1.6839
         },
         {
@@ -26608,7 +26608,7 @@ window.HISTORICAL_DATA = {
           "local": 69569.2031,
           "adr": 1347.4163,
           "fx": 1292.01,
-          "equiv": 1740875.2949,
+          "equiv": 1740875.1372,
           "premium": 0.0946
         },
         {
@@ -26632,15 +26632,15 @@ window.HISTORICAL_DATA = {
           "local": 69854.7188,
           "adr": 1336.9414,
           "fx": 1302.9301,
-          "equiv": 1741941.1383,
+          "equiv": 1741941.2973,
           "premium": -0.2535
         },
         {
           "date": "2023-12-20",
           "local": 71187.0859,
-          "adr": 1367.4132,
+          "adr": 1367.4133,
           "fx": 1297.76,
-          "equiv": 1774574.1782,
+          "equiv": 1774574.3366,
           "premium": -0.2867
         },
         {
@@ -26653,7 +26653,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-22",
-          "local": 72233.9609,
+          "local": 72233.9688,
           "adr": 1383.6012,
           "fx": 1291.71,
           "equiv": 1787211.4472,
@@ -26661,7 +26661,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-25",
-          "local": 72233.9609,
+          "local": 72233.9688,
           "adr": 1383.6012,
           "fx": 1297.36,
           "equiv": 1795028.8277,
@@ -26688,7 +26688,7 @@ window.HISTORICAL_DATA = {
           "local": 75062.1328,
           "adr": 1440.2775,
           "fx": 1294.76,
-          "equiv": 1864813.6657,
+          "equiv": 1864813.8238,
           "premium": -0.6256
         },
         {
@@ -26696,7 +26696,7 @@ window.HISTORICAL_DATA = {
           "local": 75062.1328,
           "adr": 1432.6266,
           "fx": 1277.84,
-          "equiv": 1830667.5089,
+          "equiv": 1830667.3529,
           "premium": -2.4452
         },
         {
@@ -26704,15 +26704,15 @@ window.HISTORICAL_DATA = {
           "local": 75062.1328,
           "adr": 1432.6266,
           "fx": 1293.53,
-          "equiv": 1853145.5109,
+          "equiv": 1853145.353,
           "premium": -1.2474
         },
         {
           "date": "2024-01-02",
-          "local": 76113.9531,
-          "adr": 1432.6266,
+          "local": 76113.9609,
+          "adr": 1432.6265,
           "fx": 1293.54,
-          "equiv": 1853159.8512,
+          "equiv": 1853159.6933,
           "premium": -2.6113
         },
         {
@@ -26742,9 +26742,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-01-08",
           "local": 73149.7266,
-          "adr": 1395.3285,
+          "adr": 1395.3286,
           "fx": 1313.13,
-          "equiv": 1832247.7085,
+          "equiv": 1832247.8688,
           "premium": 0.1916
         },
         {
@@ -26768,7 +26768,7 @@ window.HISTORICAL_DATA = {
           "local": 69994.2422,
           "adr": 1310.2125,
           "fx": 1317.5,
-          "equiv": 1726205.0009,
+          "equiv": 1726204.8401,
           "premium": -1.3516
         },
         {
@@ -26805,10 +26805,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-18",
-          "local": 68559.9375,
-          "adr": 1302.5618,
+          "local": 68559.9219,
+          "adr": 1302.5614,
           "fx": 1344.05,
-          "equiv": 1750708.2073,
+          "equiv": 1750707.7151,
           "premium": 2.1418
         },
         {
@@ -26968,15 +26968,15 @@ window.HISTORICAL_DATA = {
           "local": 69994.2422,
           "adr": 1303.5179,
           "fx": 1326.0,
-          "equiv": 1728464.7942,
-          "premium": -1.2225
+          "equiv": 1728464.9561,
+          "premium": -1.2224
         },
         {
           "date": "2024-02-16",
           "local": 69611.7578,
-          "adr": 1303.5179,
+          "adr": 1303.5181,
           "fx": 1327.66,
-          "equiv": 1730628.6785,
+          "equiv": 1730628.8406,
           "premium": -0.5554
         },
         {
@@ -26989,10 +26989,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-20",
-          "local": 70089.8672,
-          "adr": 1312.1251,
+          "local": 70089.8594,
+          "adr": 1312.1254,
           "fx": 1333.34,
-          "equiv": 1749508.8654,
+          "equiv": 1749509.1909,
           "premium": -0.1562
         },
         {
@@ -27000,7 +27000,7 @@ window.HISTORICAL_DATA = {
           "local": 69803.0078,
           "adr": 1310.2125,
           "fx": 1333.75,
-          "equiv": 1747495.9544,
+          "equiv": 1747495.7916,
           "premium": 0.1387
         },
         {
@@ -27013,10 +27013,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-23",
-          "local": 69707.375,
-          "adr": 1310.2125,
+          "local": 69707.3828,
+          "adr": 1310.2124,
           "fx": 1327.17,
-          "equiv": 1738874.8136,
+          "equiv": 1738874.6516,
           "premium": -0.2186
         },
         {
@@ -27136,7 +27136,7 @@ window.HISTORICAL_DATA = {
           "local": 69133.6719,
           "adr": 1294.9108,
           "fx": 1321.92,
-          "equiv": 1711768.4975,
+          "equiv": 1711768.3361,
           "premium": -0.9589
         },
         {
@@ -27184,15 +27184,15 @@ window.HISTORICAL_DATA = {
           "local": 74775.2578,
           "adr": 1395.3285,
           "fx": 1343.6,
-          "equiv": 1874763.3267,
+          "equiv": 1874763.4907,
           "premium": 0.2879
         },
         {
           "date": "2024-03-26",
           "local": 76400.8281,
-          "adr": 1420.1937,
+          "adr": 1420.1936,
           "fx": 1339.13,
-          "equiv": 1901824.0307,
+          "equiv": 1901823.8672,
           "premium": -0.4291
         },
         {
@@ -27246,10 +27246,10 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-04-04",
           "local": 81934.9922,
-          "adr": 1529.3577,
+          "adr": 1529.3578,
           "fx": 1344.84,
-          "equiv": 2056741.3113,
-          "premium": 0.4084
+          "equiv": 2056741.4755,
+          "premium": 0.4085
         },
         {
           "date": "2024-04-05",
@@ -27264,7 +27264,7 @@ window.HISTORICAL_DATA = {
           "local": 81166.5469,
           "adr": 1517.8298,
           "fx": 1350.27,
-          "equiv": 2049480.1196,
+          "equiv": 2049480.2844,
           "premium": 1.0012
         },
         {
@@ -27342,9 +27342,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-04-22",
           "local": 73097.9219,
-          "adr": 1329.5421,
+          "adr": 1329.542,
           "fx": 1373.9301,
-          "equiv": 1826697.8685,
+          "equiv": 1826697.7007,
           "premium": -0.0411
         },
         {
@@ -27392,7 +27392,7 @@ window.HISTORICAL_DATA = {
           "local": 74442.6797,
           "adr": 1353.5582,
           "fx": 1374.64,
-          "equiv": 1860655.3017,
+          "equiv": 1860655.6373,
           "premium": -0.0221
         },
         {
@@ -27448,7 +27448,7 @@ window.HISTORICAL_DATA = {
           "local": 76555.9062,
           "adr": 1408.3156,
           "fx": 1361.9399,
-          "equiv": 1918041.2,
+          "equiv": 1918041.0338,
           "premium": 0.2165
         },
         {
@@ -27477,7 +27477,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-15",
-          "local": 75211.1328,
+          "local": 75211.125,
           "adr": 1413.1188,
           "fx": 1362.55,
           "equiv": 1925445.0551,
@@ -27525,11 +27525,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-23",
-          "local": 75211.1328,
-          "adr": 1368.9288,
+          "local": 75211.125,
+          "adr": 1368.929,
           "fx": 1365.8101,
-          "equiv": 1869696.7696,
-          "premium": -0.5628
+          "equiv": 1869696.9363,
+          "premium": -0.5627
         },
         {
           "date": "2024-05-24",
@@ -27552,7 +27552,7 @@ window.HISTORICAL_DATA = {
           "local": 74538.75,
           "adr": 1369.8894,
           "fx": 1360.9301,
-          "equiv": 1864323.6606,
+          "equiv": 1864323.4944,
           "premium": 0.0459
         },
         {
@@ -27560,8 +27560,8 @@ window.HISTORICAL_DATA = {
           "local": 72233.4141,
           "adr": 1315.1323,
           "fx": 1362.76,
-          "equiv": 1792209.739,
-          "premium": -0.7545
+          "equiv": 1792209.5726,
+          "premium": -0.7546
         },
         {
           "date": "2024-05-30",
@@ -27574,9 +27574,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-05-31",
           "local": 70600.4922,
-          "adr": 1286.313,
+          "adr": 1286.3126,
           "fx": 1375.62,
-          "equiv": 1769477.8667,
+          "equiv": 1769477.3629,
           "premium": 0.253
         },
         {
@@ -27608,7 +27608,7 @@ window.HISTORICAL_DATA = {
           "local": 74346.6328,
           "adr": 1377.5747,
           "fx": 1368.74,
-          "equiv": 1885541.591,
+          "equiv": 1885541.2569,
           "premium": 1.446
         },
         {
@@ -27648,15 +27648,15 @@ window.HISTORICAL_DATA = {
           "local": 75499.3047,
           "adr": 1374.6926,
           "fx": 1370.41,
-          "equiv": 1883892.5699,
+          "equiv": 1883892.7372,
           "premium": -0.1902
         },
         {
           "date": "2024-06-14",
           "local": 76459.8516,
-          "adr": 1388.1417,
+          "adr": 1388.1418,
           "fx": 1373.74,
-          "equiv": 1906945.7979,
+          "equiv": 1906945.9656,
           "premium": -0.2381
         },
         {
@@ -27670,9 +27670,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-06-18",
           "local": 76651.9609,
-          "adr": 1414.0795,
+          "adr": 1414.0793,
           "fx": 1379.0601,
-          "equiv": 1950100.5137,
+          "equiv": 1950100.3453,
           "premium": 1.7639
         },
         {
@@ -27710,9 +27710,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-06-25",
           "local": 77612.5156,
-          "adr": 1402.5514,
+          "adr": 1402.5518,
           "fx": 1386.11,
-          "equiv": 1944090.4889,
+          "equiv": 1944090.9965,
           "premium": 0.1947
         },
         {
@@ -27720,7 +27720,7 @@ window.HISTORICAL_DATA = {
           "local": 78092.7734,
           "adr": 1414.0795,
           "fx": 1390.89,
-          "equiv": 1966829.0116,
+          "equiv": 1966828.8419,
           "premium": 0.7432
         },
         {
@@ -27728,7 +27728,7 @@ window.HISTORICAL_DATA = {
           "local": 78730.5312,
           "adr": 1418.6884,
           "fx": 1393.38,
-          "equiv": 1976771.9863,
+          "equiv": 1976772.1564,
           "premium": 0.4323
         },
         {
@@ -27744,7 +27744,7 @@ window.HISTORICAL_DATA = {
           "local": 78923.5156,
           "adr": 1411.9327,
           "fx": 1380.29,
-          "equiv": 1948876.6958,
+          "equiv": 1948876.5273,
           "premium": -1.2271
         },
         {
@@ -27760,7 +27760,7 @@ window.HISTORICAL_DATA = {
           "local": 78923.5156,
           "adr": 1432.1996,
           "fx": 1383.42,
-          "equiv": 1981333.6128,
+          "equiv": 1981333.9505,
           "premium": 0.4179
         },
         {
@@ -27805,7 +27805,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-07-11",
-          "local": 84519.5547,
+          "local": 84519.5625,
           "adr": 1528.7092,
           "fx": 1382.99,
           "equiv": 2114189.561,
@@ -27821,15 +27821,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-07-15",
-          "local": 83651.2031,
-          "adr": 1523.8837,
+          "local": 83651.1953,
+          "adr": 1523.8838,
           "fx": 1374.11,
-          "equiv": 2093983.7633,
+          "equiv": 2093983.9311,
           "premium": 0.1293
         },
         {
           "date": "2024-07-16",
-          "local": 84616.0312,
+          "local": 84616.0391,
           "adr": 1528.7092,
           "fx": 1383.6899,
           "equiv": 2115259.5828,
@@ -27837,7 +27837,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-07-17",
-          "local": 83651.2031,
+          "local": 83651.1953,
           "adr": 1500.7213,
           "fx": 1382.64,
           "equiv": 2074957.3388,
@@ -27856,7 +27856,7 @@ window.HISTORICAL_DATA = {
           "local": 81432.0703,
           "adr": 1454.397,
           "fx": 1385.24,
-          "equiv": 2014688.8482,
+          "equiv": 2014688.6791,
           "premium": -1.0371
         },
         {
@@ -27888,7 +27888,7 @@ window.HISTORICAL_DATA = {
           "local": 77572.7422,
           "adr": 1398.4214,
           "fx": 1382.65,
-          "equiv": 1933527.3645,
+          "equiv": 1933527.5333,
           "premium": -0.2986
         },
         {
@@ -27904,7 +27904,7 @@ window.HISTORICAL_DATA = {
           "local": 78344.6016,
           "adr": 1410.0024,
           "fx": 1382.09,
-          "equiv": 1948750.226,
+          "equiv": 1948750.3948,
           "premium": -0.5037
         },
         {
@@ -27912,8 +27912,8 @@ window.HISTORICAL_DATA = {
           "local": 78151.6484,
           "adr": 1399.3866,
           "fx": 1381.36,
-          "equiv": 1933056.6487,
-          "premium": -1.0612
+          "equiv": 1933056.4801,
+          "premium": -1.0613
         },
         {
           "date": "2024-07-31",
@@ -27926,9 +27926,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-08-01",
           "local": 80177.7891,
-          "adr": 1446.6761,
+          "adr": 1446.6763,
           "fx": 1367.92,
-          "equiv": 1978937.2992,
+          "equiv": 1978937.4662,
           "premium": -1.2725
         },
         {
@@ -27958,9 +27958,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-08-07",
           "local": 72073.1797,
-          "adr": 1335.6903,
+          "adr": 1335.6904,
           "fx": 1370.3101,
-          "equiv": 1830309.8637,
+          "equiv": 1830310.031,
           "premium": 1.5806
         },
         {
@@ -28040,8 +28040,8 @@ window.HISTORICAL_DATA = {
           "local": 75546.5938,
           "adr": 1418.6884,
           "fx": 1327.58,
-          "equiv": 1883422.2233,
-          "premium": -0.2776
+          "equiv": 1883422.3854,
+          "premium": -0.2775
         },
         {
           "date": "2024-08-22",
@@ -28080,15 +28080,15 @@ window.HISTORICAL_DATA = {
           "local": 73713.4062,
           "adr": 1366.5732,
           "fx": 1326.36,
-          "equiv": 1812568.0655,
+          "equiv": 1812568.2274,
           "premium": -1.6424
         },
         {
           "date": "2024-08-29",
-          "local": 71397.7891,
-          "adr": 1360.7827,
+          "local": 71397.7969,
+          "adr": 1360.7828,
           "fx": 1336.6899,
-          "equiv": 1818944.5674,
+          "equiv": 1818944.7305,
           "premium": 1.9048
         },
         {
@@ -28128,12 +28128,12 @@ window.HISTORICAL_DATA = {
           "local": 66573.625,
           "adr": 1247.8667,
           "fx": 1331.01,
-          "equiv": 1660923.0675,
+          "equiv": 1660922.905,
           "premium": -0.2053
         },
         {
           "date": "2024-09-06",
-          "local": 66477.1328,
+          "local": 66477.1406,
           "adr": 1223.7394,
           "fx": 1332.79,
           "equiv": 1630987.6559,
@@ -28144,7 +28144,7 @@ window.HISTORICAL_DATA = {
           "local": 65126.3672,
           "adr": 1219.879,
           "fx": 1337.77,
-          "equiv": 1631917.5915,
+          "equiv": 1631917.4282,
           "premium": 0.2308
         },
         {
@@ -28168,7 +28168,7 @@ window.HISTORICAL_DATA = {
           "local": 63968.5664,
           "adr": 1178.3799,
           "fx": 1339.1801,
-          "equiv": 1578062.8348,
+          "equiv": 1578062.9982,
           "premium": -1.3226
         },
         {
@@ -28288,7 +28288,7 @@ window.HISTORICAL_DATA = {
           "local": 59476.2422,
           "adr": 1120.5549,
           "fx": 1324.03,
-          "equiv": 1483648.379,
+          "equiv": 1483648.5406,
           "premium": -0.2191
         },
         {
@@ -28365,7 +28365,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-17",
-          "local": 57923.8438,
+          "local": 57923.8477,
           "adr": 1060.4041,
           "fx": 1364.2,
           "equiv": 1446603.157,
@@ -28405,8 +28405,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-24",
-          "local": 54916.0742,
-          "adr": 1000.2531,
+          "local": 54916.0703,
+          "adr": 1000.253,
           "fx": 1377.34,
           "equiv": 1377688.5882,
           "premium": 0.3487
@@ -28637,10 +28637,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-04",
-          "local": 51520.207,
-          "adr": 910.0265,
+          "local": 51520.2031,
+          "adr": 910.0264,
           "fx": 1411.67,
-          "equiv": 1284657.1341,
+          "equiv": 1284657.0479,
           "premium": -0.2599
         },
         {
@@ -28661,7 +28661,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-09",
-          "local": 51811.2773,
+          "local": 51811.2812,
           "adr": 903.7203,
           "fx": 1424.22,
           "equiv": 1287096.5518,
@@ -28672,7 +28672,7 @@ window.HISTORICAL_DATA = {
           "local": 52393.4297,
           "adr": 894.0186,
           "fx": 1426.6,
-          "equiv": 1275406.8483,
+          "equiv": 1275406.9354,
           "premium": -2.6285
         },
         {
@@ -28725,7 +28725,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-19",
-          "local": 51520.207,
+          "local": 51520.2031,
           "adr": 884.8019,
           "fx": 1451.5,
           "equiv": 1284290.0172,
@@ -28776,7 +28776,7 @@ window.HISTORICAL_DATA = {
           "local": 52457.6211,
           "adr": 888.6826,
           "fx": 1466.99,
-          "equiv": 1303688.5039,
+          "equiv": 1303688.4144,
           "premium": -0.5911
         },
         {
@@ -28912,7 +28912,7 @@ window.HISTORICAL_DATA = {
           "local": 53043.7344,
           "adr": 922.7469,
           "fx": 1425.79,
-          "equiv": 1315643.4074,
+          "equiv": 1315643.4944,
           "premium": -0.788
         },
         {
@@ -28920,7 +28920,7 @@ window.HISTORICAL_DATA = {
           "local": 52457.6211,
           "adr": 908.5809,
           "fx": 1434.34,
-          "equiv": 1303213.8563,
+          "equiv": 1303214.0314,
           "premium": -0.6273
         },
         {
@@ -28966,10 +28966,10 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-01-31",
           "local": 51187.6953,
-          "adr": 886.1105,
+          "adr": 886.1107,
           "fx": 1441.66,
-          "equiv": 1277470.1437,
-          "premium": -0.1737
+          "equiv": 1277470.3197,
+          "premium": -0.1736
         },
         {
           "date": "2025-02-03",
@@ -28981,7 +28981,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-04",
-          "local": 51480.7539,
+          "local": 51480.75,
           "adr": 891.9724,
           "fx": 1459.05,
           "equiv": 1301432.3914,
@@ -28992,7 +28992,7 @@ window.HISTORICAL_DATA = {
           "local": 51676.125,
           "adr": 898.3227,
           "fx": 1450.16,
-          "equiv": 1302711.667,
+          "equiv": 1302711.5785,
           "premium": 0.8366
         },
         {
@@ -29069,7 +29069,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-19",
-          "local": 57341.9375,
+          "local": 57341.9414,
           "adr": 998.462,
           "fx": 1440.08,
           "equiv": 1437865.0772,
@@ -29085,7 +29085,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-21",
-          "local": 56853.5078,
+          "local": 56853.5039,
           "adr": 988.6923,
           "fx": 1431.7,
           "equiv": 1415510.6614,
@@ -29133,7 +29133,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-03",
-          "local": 53239.1094,
+          "local": 53239.1133,
           "adr": 926.1663,
           "fx": 1459.8,
           "equiv": 1352017.6403,
@@ -29141,7 +29141,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-04",
-          "local": 53239.1094,
+          "local": 53239.1133,
           "adr": 901.7421,
           "fx": 1457.9301,
           "equiv": 1314676.8579,
@@ -29189,7 +29189,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-12",
-          "local": 53629.8555,
+          "local": 53629.8516,
           "adr": 926.1663,
           "fx": 1451.02,
           "equiv": 1343885.8729,
@@ -29208,7 +29208,7 @@ window.HISTORICAL_DATA = {
           "local": 53434.4844,
           "adr": 930.0742,
           "fx": 1453.23,
-          "equiv": 1351611.6501,
+          "equiv": 1351611.7387,
           "premium": 1.179
         },
         {
@@ -29237,7 +29237,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-20",
-          "local": 58807.2383,
+          "local": 58807.2344,
           "adr": 994.5541,
           "fx": 1443.39,
           "equiv": 1435529.5121,
@@ -29272,7 +29272,7 @@ window.HISTORICAL_DATA = {
           "local": 59979.4766,
           "adr": 1008.2318,
           "fx": 1462.09,
-          "equiv": 1474125.5256,
+          "equiv": 1474125.4364,
           "premium": -1.6913
         },
         {
@@ -29296,7 +29296,7 @@ window.HISTORICAL_DATA = {
           "local": 56798.2227,
           "adr": 956.5978,
           "fx": 1469.41,
-          "equiv": 1405634.3741,
+          "equiv": 1405634.4638,
           "premium": -1.0086
         },
         {
@@ -29304,7 +29304,7 @@ window.HISTORICAL_DATA = {
           "local": 57780.8945,
           "adr": 981.6679,
           "fx": 1471.96,
-          "equiv": 1444975.8551,
+          "equiv": 1444975.9449,
           "premium": 0.0314
         },
         {
@@ -29325,10 +29325,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-04",
-          "local": 55127.6836,
-          "adr": 914.3226,
+          "local": 55127.6875,
+          "adr": 914.3227,
           "fx": 1450.6801,
-          "equiv": 1326389.6047,
+          "equiv": 1326389.6932,
           "premium": -3.7587
         },
         {
@@ -29341,7 +29341,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-08",
-          "local": 52572.7461,
+          "local": 52572.75,
           "adr": 897.6093,
           "fx": 1469.95,
           "equiv": 1319440.6775,
@@ -29381,10 +29381,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-15",
-          "local": 55619.0195,
-          "adr": 970.8533,
+          "local": 55619.0156,
+          "adr": 970.8534,
           "fx": 1419.42,
-          "equiv": 1378048.6799,
+          "equiv": 1378048.7665,
           "premium": -0.8937
         },
         {
@@ -29413,7 +29413,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-21",
-          "local": 54439.8203,
+          "local": 54439.8164,
           "adr": 949.7158,
           "fx": 1414.23,
           "equiv": 1343116.4997,
@@ -29480,7 +29480,7 @@ window.HISTORICAL_DATA = {
           "local": 54538.0859,
           "adr": 956.5978,
           "fx": 1423.75,
-          "equiv": 1361956.0869,
+          "equiv": 1361956.1738,
           "premium": -0.1097
         },
         {
@@ -29512,7 +29512,7 @@ window.HISTORICAL_DATA = {
           "local": 53653.6836,
           "adr": 961.0219,
           "fx": 1374.77,
-          "equiv": 1321184.1122,
+          "equiv": 1321184.1961,
           "premium": -1.5028
         },
         {
@@ -29534,9 +29534,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-05-12",
           "local": 56601.6875,
-          "adr": 997.8898,
+          "adr": 997.8897,
           "fx": 1395.17,
-          "equiv": 1392225.915,
+          "equiv": 1392225.8298,
           "premium": -1.6124
         },
         {
@@ -29544,20 +29544,20 @@ window.HISTORICAL_DATA = {
           "local": 55913.8203,
           "adr": 977.2438,
           "fx": 1416.03,
-          "equiv": 1383806.5305,
+          "equiv": 1383806.6169,
           "premium": -1.0043
         },
         {
           "date": "2025-05-14",
-          "local": 56405.1523,
-          "adr": 997.8898,
+          "local": 56405.1562,
+          "adr": 997.8897,
           "fx": 1416.0,
-          "equiv": 1413011.915,
-          "premium": 0.2045
+          "equiv": 1413011.8286,
+          "premium": 0.2044
         },
         {
           "date": "2025-05-15",
-          "local": 56306.8906,
+          "local": 56306.8867,
           "adr": 1005.7549,
           "fx": 1407.33,
           "equiv": 1415429.0609,
@@ -29568,15 +29568,15 @@ window.HISTORICAL_DATA = {
           "local": 55815.5508,
           "adr": 995.9235,
           "fx": 1397.02,
-          "equiv": 1391325.0142,
+          "equiv": 1391325.0995,
           "premium": -0.2912
         },
         {
           "date": "2025-05-19",
           "local": 54832.8828,
-          "adr": 989.0415,
+          "adr": 989.0414,
           "fx": 1398.13,
-          "equiv": 1382808.6027,
+          "equiv": 1382808.5174,
           "premium": 0.8744
         },
         {
@@ -29608,7 +29608,7 @@ window.HISTORICAL_DATA = {
           "local": 53260.6172,
           "adr": 958.5641,
           "fx": 1381.34,
-          "equiv": 1324102.8831,
+          "equiv": 1324102.7987,
           "premium": -0.5567
         },
         {
@@ -29616,15 +29616,15 @@ window.HISTORICAL_DATA = {
           "local": 53751.9531,
           "adr": 958.5641,
           "fx": 1364.73,
-          "equiv": 1308181.1476,
+          "equiv": 1308181.0643,
           "premium": -2.6505
         },
         {
           "date": "2025-05-27",
           "local": 52965.8164,
-          "adr": 961.0219,
+          "adr": 961.022,
           "fx": 1368.1,
-          "equiv": 1314774.0538,
+          "equiv": 1314774.1373,
           "premium": -0.7077
         },
         {
@@ -29637,18 +29637,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-05-29",
-          "local": 55127.6836,
-          "adr": 989.0415,
+          "local": 55127.6875,
+          "adr": 989.0414,
           "fx": 1373.6,
-          "equiv": 1358547.3856,
+          "equiv": 1358547.3018,
           "premium": -1.4254
         },
         {
           "date": "2025-05-30",
           "local": 55225.9531,
-          "adr": 989.0415,
+          "adr": 989.0414,
           "fx": 1370.41,
-          "equiv": 1355392.4012,
+          "equiv": 1355392.3175,
           "premium": -1.8293
         },
         {
@@ -29680,7 +29680,7 @@ window.HISTORICAL_DATA = {
           "local": 58075.6914,
           "adr": 1073.5917,
           "fx": 1361.09,
-          "equiv": 1461254.856,
+          "equiv": 1461255.0221,
           "premium": 0.6449
         },
         {
@@ -29701,7 +29701,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-10",
-          "local": 58173.957,
+          "local": 58173.9531,
           "adr": 1058.8446,
           "fx": 1353.85,
           "equiv": 1433516.7419,
@@ -29710,9 +29710,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-06-11",
           "local": 58861.8242,
-          "adr": 1073.5917,
+          "adr": 1073.5918,
           "fx": 1363.88,
-          "equiv": 1464250.2187,
+          "equiv": 1464250.3852,
           "premium": -0.4958
         },
         {
@@ -29757,7 +29757,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-19",
-          "local": 58173.957,
+          "local": 58173.9531,
           "adr": 1051.9626,
           "fx": 1370.75,
           "equiv": 1441977.7977,
@@ -29830,9 +29830,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-07-02",
           "local": 60112.6953,
-          "adr": 1097.7634,
+          "adr": 1097.7633,
           "fx": 1355.59,
-          "equiv": 1488117.0875,
+          "equiv": 1488116.922,
           "premium": -0.9782
         },
         {
@@ -29877,7 +29877,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-10",
-          "local": 60310.4336,
+          "local": 60310.4375,
           "adr": 1094.7965,
           "fx": 1373.0,
           "equiv": 1503155.6066,
@@ -29885,11 +29885,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-11",
-          "local": 61892.3477,
-          "adr": 1117.5428,
+          "local": 61892.3438,
+          "adr": 1117.543,
           "fx": 1372.64,
-          "equiv": 1533984.0294,
-          "premium": -0.8612
+          "equiv": 1533984.197,
+          "premium": -0.8611
         },
         {
           "date": "2025-07-14",
@@ -29925,10 +29925,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-18",
-          "local": 66341.4766,
-          "adr": 1189.7382,
+          "local": 66341.4688,
+          "adr": 1189.7383,
           "fx": 1391.58,
-          "equiv": 1655615.7753,
+          "equiv": 1655615.9451,
           "premium": -0.1761
         },
         {
@@ -29950,9 +29950,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-07-23",
           "local": 65649.3906,
-          "adr": 1196.661,
+          "adr": 1196.6611,
           "fx": 1379.78,
-          "equiv": 1651128.9645,
+          "equiv": 1651129.1329,
           "premium": 0.6029
         },
         {
@@ -30008,7 +30008,7 @@ window.HISTORICAL_DATA = {
           "local": 68121.125,
           "adr": 1207.5397,
           "fx": 1391.51,
-          "equiv": 1680303.542,
+          "equiv": 1680303.7118,
           "premium": -1.3344
         },
         {
@@ -30086,9 +30086,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-08-15",
           "local": 70790.6094,
-          "adr": 1254.0216,
+          "adr": 1254.0217,
           "fx": 1387.87,
-          "equiv": 1740418.9608,
+          "equiv": 1740419.1302,
           "premium": -1.6582
         },
         {
@@ -30117,7 +30117,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-21",
-          "local": 69801.9062,
+          "local": 69801.9141,
           "adr": 1239.187,
           "fx": 1396.91,
           "equiv": 1731032.7709,
@@ -30166,9 +30166,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-08-29",
           "local": 68912.0859,
-          "adr": 1222.3744,
+          "adr": 1222.3743,
           "fx": 1384.41,
-          "equiv": 1692267.3706,
+          "equiv": 1692267.2016,
           "premium": -1.7724
         },
         {
@@ -30208,7 +30208,7 @@ window.HISTORICAL_DATA = {
           "local": 68714.3516,
           "adr": 1234.2421,
           "fx": 1392.0601,
-          "equiv": 1718139.0819,
+          "equiv": 1718139.2519,
           "premium": 0.0163
         },
         {
@@ -30288,7 +30288,7 @@ window.HISTORICAL_DATA = {
           "local": 79392.2578,
           "adr": 1418.1917,
           "fx": 1386.75,
-          "equiv": 1966677.2712,
+          "equiv": 1966677.1019,
           "premium": -0.9134
         },
         {
@@ -30366,25 +30366,25 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-10-03",
           "local": 89131.3359,
-          "adr": 1595.1219,
+          "adr": 1595.1221,
           "fx": 1405.63,
-          "equiv": 2242151.2719,
+          "equiv": 2242151.4435,
           "premium": 0.6224
         },
         {
           "date": "2025-10-06",
           "local": 89131.3359,
-          "adr": 1631.8713,
+          "adr": 1631.8715,
           "fx": 1406.0601,
-          "equiv": 2294509.109,
+          "equiv": 2294509.2806,
           "premium": 2.9721
         },
         {
           "date": "2025-10-07",
           "local": 89131.3359,
-          "adr": 1611.0135,
+          "adr": 1611.0137,
           "fx": 1409.92,
-          "equiv": 2271400.2949,
+          "equiv": 2271400.467,
           "premium": 1.935
         },
         {
@@ -30414,17 +30414,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-10-13",
           "local": 92656.8672,
-          "adr": 1623.9257,
+          "adr": 1623.9255,
           "fx": 1429.03,
-          "equiv": 2320638.5323,
+          "equiv": 2320638.3579,
           "premium": 0.182
         },
         {
           "date": "2025-10-14",
           "local": 90968.5859,
-          "adr": 1595.1219,
+          "adr": 1595.1221,
           "fx": 1426.0699,
-          "equiv": 2274755.4711,
+          "equiv": 2274755.6451,
           "premium": 0.0238
         },
         {
@@ -30448,7 +30448,7 @@ window.HISTORICAL_DATA = {
           "local": 97225.1641,
           "adr": 1693.4514,
           "fx": 1415.72,
-          "equiv": 2397452.9891,
+          "equiv": 2397453.1619,
           "premium": -1.3649
         },
         {
@@ -30526,9 +30526,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-10-31",
           "local": 106758.9844,
-          "adr": 1852.3677,
+          "adr": 1852.3678,
           "fx": 1424.02,
-          "equiv": 2637808.6538,
+          "equiv": 2637808.8277,
           "premium": -1.1677
         },
         {
@@ -30590,17 +30590,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-11-12",
           "local": 102389.3125,
-          "adr": 1730.2008,
+          "adr": 1730.2009,
           "fx": 1459.84,
-          "equiv": 2525816.285,
+          "equiv": 2525816.4632,
           "premium": -1.325
         },
         {
           "date": "2025-11-13",
           "local": 102091.3828,
-          "adr": 1702.3904,
+          "adr": 1702.3905,
           "fx": 1468.02,
-          "equiv": 2499143.1602,
+          "equiv": 2499143.3394,
           "premium": -2.0821
         },
         {
@@ -30608,7 +30608,7 @@ window.HISTORICAL_DATA = {
           "local": 96529.9844,
           "adr": 1686.4988,
           "fx": 1468.71,
-          "equiv": 2476977.5563,
+          "equiv": 2476977.7355,
           "premium": 2.6408
         },
         {
@@ -30622,17 +30622,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-11-18",
           "local": 97125.8516,
-          "adr": 1648.7562,
+          "adr": 1648.7563,
           "fx": 1461.6899,
-          "equiv": 2409970.3908,
-          "premium": -0.7486
+          "equiv": 2409970.5692,
+          "premium": -0.7485
         },
         {
           "date": "2025-11-19",
           "local": 95834.8125,
           "adr": 1633.8578,
           "fx": 1456.55,
-          "equiv": 2379795.641,
+          "equiv": 2379795.8188,
           "premium": -0.6709
         },
         {
@@ -30640,24 +30640,24 @@ window.HISTORICAL_DATA = {
           "local": 99906.5469,
           "adr": 1660.675,
           "fx": 1466.13,
-          "equiv": 2434765.5174,
+          "equiv": 2434765.3385,
           "premium": -2.5183
         },
         {
           "date": "2025-11-21",
           "local": 94146.5234,
-          "adr": 1597.1084,
+          "adr": 1597.1085,
           "fx": 1473.25,
-          "equiv": 2352939.948,
+          "equiv": 2352940.1278,
           "premium": -0.0307
         },
         {
           "date": "2025-11-24",
           "local": 96033.4297,
-          "adr": 1657.6953,
+          "adr": 1657.6952,
           "fx": 1467.73,
-          "equiv": 2433049.1086,
-          "premium": 1.3418
+          "equiv": 2433048.9295,
+          "premium": 1.3417
         },
         {
           "date": "2025-11-25",
@@ -30686,9 +30686,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-11-28",
           "local": 99807.2344,
-          "adr": 1718.2822,
+          "adr": 1718.2821,
           "fx": 1461.4,
-          "equiv": 2511097.6878,
+          "equiv": 2511097.5095,
           "premium": 0.6379
         },
         {
@@ -30734,9 +30734,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-12-08",
           "local": 108745.1953,
-          "adr": 1832.5032,
+          "adr": 1832.5033,
           "fx": 1471.8101,
-          "equiv": 2697096.6036,
+          "equiv": 2697096.7833,
           "premium": -0.7921
         },
         {
@@ -30768,15 +30768,15 @@ window.HISTORICAL_DATA = {
           "local": 108149.3281,
           "adr": 1766.9502,
           "fx": 1470.85,
-          "equiv": 2598918.6516,
+          "equiv": 2598918.8312,
           "premium": -3.8767
         },
         {
           "date": "2025-12-15",
           "local": 104077.5938,
-          "adr": 1767.9435,
+          "adr": 1767.9434,
           "fx": 1472.91,
-          "equiv": 2604021.6937,
+          "equiv": 2604021.5139,
           "premium": 0.08
         },
         {
@@ -30806,9 +30806,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-12-19",
           "local": 105567.25,
-          "adr": 1804.6929,
+          "adr": 1804.6927,
           "fx": 1474.36,
-          "equiv": 2660766.955,
+          "equiv": 2660766.775,
           "premium": 0.8179
         },
         {
@@ -32068,7 +32068,7 @@ window.HISTORICAL_DATA = {
           "local": 594.959,
           "adr": 712.2828,
           "fx": 0.8469,
-          "equiv": 603.2323,
+          "equiv": 603.2322,
           "premium": 1.3906
         },
         {
@@ -32106,9 +32106,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-08-03",
           "local": 621.6987,
-          "adr": 744.6968,
+          "adr": 744.6967,
           "fx": 0.8421,
-          "equiv": 627.1315,
+          "equiv": 627.1314,
           "premium": 0.8739
         },
         {
@@ -32178,7 +32178,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-08-16",
           "local": 634.6866,
-          "adr": 752.1672,
+          "adr": 752.1673,
           "fx": 0.8478,
           "equiv": 637.7174,
           "premium": 0.4775
@@ -32186,9 +32186,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-08-17",
           "local": 634.7821,
-          "adr": 741.8594,
+          "adr": 741.8593,
           "fx": 0.8489,
-          "equiv": 629.7644,
+          "equiv": 629.7643,
           "premium": -0.7905
         },
         {
@@ -32268,7 +32268,7 @@ window.HISTORICAL_DATA = {
           "local": 672.7907,
           "adr": 795.8158,
           "fx": 0.8477,
-          "equiv": 674.5971,
+          "equiv": 674.597,
           "premium": 0.2685
         },
         {
@@ -32276,7 +32276,7 @@ window.HISTORICAL_DATA = {
           "local": 682.0541,
           "adr": 804.5376,
           "fx": 0.8467,
-          "equiv": 681.2181,
+          "equiv": 681.2182,
           "premium": -0.1226
         },
         {
@@ -32306,9 +32306,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-09-07",
           "local": 697.334,
-          "adr": 823.2618,
+          "adr": 823.2617,
           "fx": 0.8421,
-          "equiv": 693.2688,
+          "equiv": 693.2687,
           "premium": -0.583
         },
         {
@@ -32372,7 +32372,7 @@ window.HISTORICAL_DATA = {
           "local": 698.0024,
           "adr": 821.4276,
           "fx": 0.8498,
-          "equiv": 698.0492,
+          "equiv": 698.0491,
           "premium": 0.0067
         },
         {
@@ -32386,22 +32386,22 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-09-21",
           "local": 698.7665,
-          "adr": 816.5364,
+          "adr": 816.5363,
           "fx": 0.8525,
-          "equiv": 696.0973,
+          "equiv": 696.0972,
           "premium": -0.382
         },
         {
           "date": "2021-09-22",
-          "local": 705.4514,
+          "local": 705.4513,
           "adr": 826.0991,
           "fx": 0.853,
-          "equiv": 704.6874,
+          "equiv": 704.6873,
           "premium": -0.1083
         },
         {
           "date": "2021-09-23",
-          "local": 719.8718,
+          "local": 719.8717,
           "adr": 840.467,
           "fx": 0.8556,
           "equiv": 719.1035,
@@ -32412,7 +32412,7 @@ window.HISTORICAL_DATA = {
           "local": 706.1199,
           "adr": 829.9969,
           "fx": 0.8518,
-          "equiv": 706.9665,
+          "equiv": 706.9664,
           "premium": 0.1199
         },
         {
@@ -32420,7 +32420,7 @@ window.HISTORICAL_DATA = {
           "local": 684.6324,
           "adr": 797.9842,
           "fx": 0.853,
-          "equiv": 680.6965,
+          "equiv": 680.6964,
           "premium": -0.5749
         },
         {
@@ -32458,9 +32458,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-10-04",
           "local": 584.0721,
-          "adr": 681.0823,
+          "adr": 681.0825,
           "fx": 0.8615,
-          "equiv": 586.7728,
+          "equiv": 586.773,
           "premium": 0.4624
         },
         {
@@ -32476,7 +32476,7 @@ window.HISTORICAL_DATA = {
           "local": 600.9754,
           "adr": 699.7683,
           "fx": 0.8624,
-          "equiv": 603.4522,
+          "equiv": 603.4521,
           "premium": 0.4121
         },
         {
@@ -32484,7 +32484,7 @@ window.HISTORICAL_DATA = {
           "local": 622.1762,
           "adr": 713.4484,
           "fx": 0.8654,
-          "equiv": 617.4183,
+          "equiv": 617.4184,
           "premium": -0.7647
         },
         {
@@ -32492,7 +32492,7 @@ window.HISTORICAL_DATA = {
           "local": 606.0368,
           "adr": 697.6379,
           "fx": 0.8651,
-          "equiv": 603.5056,
+          "equiv": 603.5055,
           "premium": -0.4177
         },
         {
@@ -32505,8 +32505,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-10-12",
-          "local": 598.2059,
-          "adr": 692.6511,
+          "local": 598.2061,
+          "adr": 692.6512,
           "fx": 0.8655,
           "equiv": 599.5033,
           "premium": 0.2169
@@ -32562,9 +32562,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-10-21",
           "local": 636.3101,
-          "adr": 752.3678,
+          "adr": 752.368,
           "fx": 0.858,
-          "equiv": 645.5316,
+          "equiv": 645.5318,
           "premium": 1.4492
         },
         {
@@ -32588,7 +32588,7 @@ window.HISTORICAL_DATA = {
           "local": 649.2979,
           "adr": 755.874,
           "fx": 0.8612,
-          "equiv": 650.9586,
+          "equiv": 650.9587,
           "premium": 0.2558
         },
         {
@@ -32604,7 +32604,7 @@ window.HISTORICAL_DATA = {
           "local": 666.9653,
           "adr": 776.8527,
           "fx": 0.8621,
-          "equiv": 669.6936,
+          "equiv": 669.6937,
           "premium": 0.4091
         },
         {
@@ -32625,10 +32625,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-11-02",
-          "local": 674.8209,
-          "adr": 777.7422,
+          "local": 674.821,
+          "adr": 777.7423,
           "fx": 0.8621,
-          "equiv": 670.4915,
+          "equiv": 670.4916,
           "premium": -0.6416
         },
         {
@@ -32644,7 +32644,7 @@ window.HISTORICAL_DATA = {
           "local": 694.1616,
           "adr": 814.5884,
           "fx": 0.8609,
-          "equiv": 701.2791,
+          "equiv": 701.279,
           "premium": 1.0253
         },
         {
@@ -32684,13 +32684,13 @@ window.HISTORICAL_DATA = {
           "local": 699.1406,
           "adr": 798.2101,
           "fx": 0.8706,
-          "equiv": 694.9457,
+          "equiv": 694.9458,
           "premium": -0.6
         },
         {
           "date": "2021-11-12",
           "local": 707.4705,
-          "adr": 815.6801,
+          "adr": 815.6802,
           "fx": 0.8733,
           "equiv": 712.3335,
           "premium": 0.6874
@@ -32724,7 +32724,7 @@ window.HISTORICAL_DATA = {
           "local": 737.7263,
           "adr": 842.0097,
           "fx": 0.8833,
-          "equiv": 743.7472,
+          "equiv": 743.7471,
           "premium": 0.8161
         },
         {
@@ -32738,7 +32738,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-11-22",
           "local": 715.5131,
-          "adr": 790.8926,
+          "adr": 790.8925,
           "fx": 0.8869,
           "equiv": 701.411,
           "premium": -1.9709
@@ -32788,7 +32788,7 @@ window.HISTORICAL_DATA = {
           "local": 669.8422,
           "adr": 758.0981,
           "fx": 0.8855,
-          "equiv": 671.2731,
+          "equiv": 671.273,
           "premium": 0.2136
         },
         {
@@ -32820,12 +32820,12 @@ window.HISTORICAL_DATA = {
           "local": 634.2244,
           "adr": 724.4604,
           "fx": 0.8846,
-          "equiv": 640.8432,
+          "equiv": 640.8433,
           "premium": 1.0436
         },
         {
           "date": "2021-12-07",
-          "local": 686.8851,
+          "local": 686.885,
           "adr": 771.986,
           "fx": 0.886,
           "equiv": 683.9795,
@@ -32844,12 +32844,12 @@ window.HISTORICAL_DATA = {
           "local": 661.6078,
           "adr": 739.9958,
           "fx": 0.8814,
-          "equiv": 652.2323,
+          "equiv": 652.2324,
           "premium": -1.4171
         },
         {
           "date": "2021-12-10",
-          "local": 655.863,
+          "local": 655.8632,
           "adr": 748.8362,
           "fx": 0.8855,
           "equiv": 663.0795,
@@ -32897,10 +32897,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-20",
-          "local": 632.118,
-          "adr": 721.0987,
+          "local": 632.1179,
+          "adr": 721.0986,
           "fx": 0.8894,
-          "equiv": 641.3452,
+          "equiv": 641.3451,
           "premium": 1.4597
         },
         {
@@ -32940,7 +32940,7 @@ window.HISTORICAL_DATA = {
           "local": 682.7679,
           "adr": 777.1772,
           "fx": 0.8831,
-          "equiv": 686.2941,
+          "equiv": 686.2942,
           "premium": 0.5165
         },
         {
@@ -32948,7 +32948,7 @@ window.HISTORICAL_DATA = {
           "local": 684.8743,
           "adr": 770.7982,
           "fx": 0.8826,
-          "equiv": 680.3142,
+          "equiv": 680.3143,
           "premium": -0.6658
         },
         {
@@ -32980,15 +32980,15 @@ window.HISTORICAL_DATA = {
           "local": 671.8528,
           "adr": 763.8257,
           "fx": 0.8792,
-          "equiv": 671.5861,
+          "equiv": 671.586,
           "premium": -0.0397
         },
         {
           "date": "2022-01-04",
           "local": 652.3204,
-          "adr": 746.2981,
+          "adr": 746.298,
           "fx": 0.8848,
-          "equiv": 660.3096,
+          "equiv": 660.3095,
           "premium": 1.2247
         },
         {
@@ -33018,18 +33018,18 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-01-10",
           "local": 595.8301,
-          "adr": 696.4741,
+          "adr": 696.474,
           "fx": 0.8808,
           "equiv": 613.4196,
           "premium": 2.9521
         },
         {
           "date": "2022-01-11",
-          "local": 600.3302,
-          "adr": 698.3799,
+          "local": 600.3303,
+          "adr": 698.38,
           "fx": 0.8826,
           "equiv": 616.3762,
-          "premium": 2.6729
+          "premium": 2.6728
         },
         {
           "date": "2022-01-12",
@@ -33081,15 +33081,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-01-20",
-          "local": 612.7772,
-          "adr": 676.6382,
+          "local": 612.7773,
+          "adr": 676.6383,
           "fx": 0.8816,
           "equiv": 596.504,
-          "premium": -2.6556
+          "premium": -2.6557
         },
         {
           "date": "2022-01-21",
-          "local": 602.5323,
+          "local": 602.5324,
           "adr": 665.4034,
           "fx": 0.8839,
           "equiv": 588.1368,
@@ -33130,7 +33130,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-01-28",
           "local": 542.0206,
-          "adr": 617.7438,
+          "adr": 617.7439,
           "fx": 0.8971,
           "equiv": 554.178,
           "premium": 2.243
@@ -33148,8 +33148,8 @@ window.HISTORICAL_DATA = {
           "local": 574.8617,
           "adr": 652.7127,
           "fx": 0.8905,
-          "equiv": 581.2407,
-          "premium": 1.1097
+          "equiv": 581.2406,
+          "premium": 1.1096
         },
         {
           "date": "2022-02-02",
@@ -33202,7 +33202,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-02-10",
           "local": 559.2549,
-          "adr": 629.1512,
+          "adr": 629.1511,
           "fx": 0.8755,
           "equiv": 550.8471,
           "premium": -1.5034
@@ -33217,8 +33217,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-14",
-          "local": 535.8929,
-          "adr": 601.4041,
+          "local": 535.8928,
+          "adr": 601.404,
           "fx": 0.8799,
           "equiv": 529.1694,
           "premium": -1.2546
@@ -33233,7 +33233,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-16",
-          "local": 549.4888,
+          "local": 549.4887,
           "adr": 635.8365,
           "fx": 0.8805,
           "equiv": 559.8732,
@@ -33242,9 +33242,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-02-17",
           "local": 553.606,
-          "adr": 622.9734,
+          "adr": 622.9735,
           "fx": 0.8791,
-          "equiv": 547.6559,
+          "equiv": 547.656,
           "premium": -1.0748
         },
         {
@@ -33252,13 +33252,13 @@ window.HISTORICAL_DATA = {
           "local": 546.1378,
           "adr": 620.4832,
           "fx": 0.8798,
-          "equiv": 545.8887,
+          "equiv": 545.8886,
           "premium": -0.0456
         },
         {
           "date": "2022-02-21",
-          "local": 527.3713,
-          "adr": 620.4832,
+          "local": 527.3714,
+          "adr": 620.4831,
           "fx": 0.8836,
           "equiv": 548.2651,
           "premium": 3.9619
@@ -33321,7 +33321,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-03",
-          "local": 548.9142,
+          "local": 548.9144,
           "adr": 604.1624,
           "fx": 0.8999,
           "equiv": 543.6858,
@@ -33354,30 +33354,30 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-03-09",
           "local": 533.4034,
-          "adr": 595.1115,
+          "adr": 595.1114,
           "fx": 0.9176,
-          "equiv": 546.0624,
+          "equiv": 546.0623,
           "premium": 2.3732
         },
         {
           "date": "2022-03-10",
-          "local": 522.201,
-          "adr": 574.7394,
+          "local": 522.2012,
+          "adr": 574.7391,
           "fx": 0.903,
-          "equiv": 519.0069,
+          "equiv": 519.0067,
           "premium": -0.6117
         },
         {
           "date": "2022-03-11",
           "local": 519.7117,
-          "adr": 561.1195,
+          "adr": 561.1196,
           "fx": 0.9079,
-          "equiv": 509.4628,
+          "equiv": 509.4629,
           "premium": -1.972
         },
         {
           "date": "2022-03-14",
-          "local": 511.7647,
+          "local": 511.7646,
           "adr": 553.1699,
           "fx": 0.9147,
           "equiv": 506.0067,
@@ -33393,7 +33393,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-16",
-          "local": 554.2762,
+          "local": 554.2761,
           "adr": 623.1649,
           "fx": 0.9116,
           "equiv": 568.0958,
@@ -33433,10 +33433,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-23",
-          "local": 587.7874,
-          "adr": 637.2731,
+          "local": 587.7876,
+          "adr": 637.2733,
           "fx": 0.9066,
-          "equiv": 577.7773,
+          "equiv": 577.7774,
           "premium": -1.703
         },
         {
@@ -33481,10 +33481,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-31",
-          "local": 584.0533,
-          "adr": 639.7346,
+          "local": 584.0532,
+          "adr": 639.7347,
           "fx": 0.8959,
-          "equiv": 573.1447,
+          "equiv": 573.1448,
           "premium": -1.8677
         },
         {
@@ -33521,10 +33521,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-04-07",
-          "local": 543.2653,
+          "local": 543.2654,
           "adr": 598.9042,
           "fx": 0.9176,
-          "equiv": 549.5425,
+          "equiv": 549.5426,
           "premium": 1.1555
         },
         {
@@ -33644,7 +33644,7 @@ window.HISTORICAL_DATA = {
           "local": 525.3608,
           "adr": 565.6116,
           "fx": 0.9474,
-          "equiv": 535.8661,
+          "equiv": 535.866,
           "premium": 1.9996
         },
         {
@@ -33690,7 +33690,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-05-06",
           "local": 505.5857,
-          "adr": 531.3676,
+          "adr": 531.3674,
           "fx": 0.9488,
           "equiv": 504.1563,
           "premium": -0.2827
@@ -33700,7 +33700,7 @@ window.HISTORICAL_DATA = {
           "local": 469.2865,
           "adr": 494.3936,
           "fx": 0.9495,
-          "equiv": 469.4118,
+          "equiv": 469.4119,
           "premium": 0.0267
         },
         {
@@ -33721,19 +33721,19 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-12",
-          "local": 483.1217,
-          "adr": 503.7479,
+          "local": 483.1216,
+          "adr": 503.748,
           "fx": 0.9513,
-          "equiv": 479.1902,
-          "premium": -0.8138
+          "equiv": 479.1903,
+          "premium": -0.8137
         },
         {
           "date": "2022-05-13",
           "local": 506.3571,
           "adr": 528.783,
           "fx": 0.9634,
-          "equiv": 509.4454,
-          "premium": 0.6099
+          "equiv": 509.4456,
+          "premium": 0.61
         },
         {
           "date": "2022-05-16",
@@ -33753,10 +33753,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-05-18",
-          "local": 496.4265,
-          "adr": 509.4764,
+          "local": 496.4266,
+          "adr": 509.4763,
           "fx": 0.9481,
-          "equiv": 483.0142,
+          "equiv": 483.014,
           "premium": -2.7018
         },
         {
@@ -33786,15 +33786,15 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-05-24",
           "local": 490.931,
-          "adr": 526.9604,
+          "adr": 526.9603,
           "fx": 0.9362,
-          "equiv": 493.314,
+          "equiv": 493.3139,
           "premium": 0.4854
         },
         {
           "date": "2022-05-25",
           "local": 489.0028,
-          "adr": 528.5516,
+          "adr": 528.5515,
           "fx": 0.9314,
           "equiv": 492.2929,
           "premium": 0.6728
@@ -33804,7 +33804,7 @@ window.HISTORICAL_DATA = {
           "local": 498.4512,
           "adr": 540.1144,
           "fx": 0.9358,
-          "equiv": 505.412,
+          "equiv": 505.4121,
           "premium": 1.3965
         },
         {
@@ -33812,8 +33812,8 @@ window.HISTORICAL_DATA = {
           "local": 521.8793,
           "adr": 562.5938,
           "fx": 0.9317,
-          "equiv": 524.1743,
-          "premium": 0.4397
+          "equiv": 524.1744,
+          "premium": 0.4398
         },
         {
           "date": "2022-05-30",
@@ -33860,7 +33860,7 @@ window.HISTORICAL_DATA = {
           "local": 519.1797,
           "adr": 551.3204,
           "fx": 0.9323,
-          "equiv": 514.0015,
+          "equiv": 514.0014,
           "premium": -0.9974
         },
         {
@@ -33921,18 +33921,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-16",
-          "local": 432.7463,
+          "local": 432.7462,
           "adr": 451.4695,
           "fx": 0.9564,
           "equiv": 431.7719,
-          "premium": -0.2252
+          "premium": -0.2251
         },
         {
           "date": "2022-06-17",
           "local": 433.0355,
           "adr": 456.4843,
           "fx": 0.9481,
-          "equiv": 432.8156,
+          "equiv": 432.8155,
           "premium": -0.0508
         },
         {
@@ -33940,7 +33940,7 @@ window.HISTORICAL_DATA = {
           "local": 440.8449,
           "adr": 456.4843,
           "fx": 0.9532,
-          "equiv": 435.1026,
+          "equiv": 435.1025,
           "premium": -1.3026
         },
         {
@@ -33949,7 +33949,7 @@ window.HISTORICAL_DATA = {
           "adr": 476.736,
           "fx": 0.9505,
           "equiv": 453.1376,
-          "premium": 0.0532
+          "premium": 0.0533
         },
         {
           "date": "2022-06-22",
@@ -34002,9 +34002,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-06-30",
           "local": 439.4951,
-          "adr": 458.9241,
+          "adr": 458.9242,
           "fx": 0.9572,
-          "equiv": 439.3051,
+          "equiv": 439.3052,
           "premium": -0.0432
         },
         {
@@ -34049,8 +34049,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-08",
-          "local": 430.1432,
-          "adr": 436.8112,
+          "local": 430.1431,
+          "adr": 436.8111,
           "fx": 0.9833,
           "equiv": 429.5164,
           "premium": -0.1457
@@ -34068,7 +34068,7 @@ window.HISTORICAL_DATA = {
           "local": 419.1039,
           "adr": 419.0088,
           "fx": 0.9953,
-          "equiv": 417.0269,
+          "equiv": 417.027,
           "premium": -0.4956
         },
         {
@@ -34077,19 +34077,19 @@ window.HISTORICAL_DATA = {
           "adr": 431.0828,
           "fx": 0.9967,
           "equiv": 429.6602,
-          "premium": 0.8827
+          "premium": 0.8826
         },
         {
           "date": "2022-07-14",
           "local": 427.1061,
           "adr": 440.6203,
           "fx": 0.9967,
-          "equiv": 439.1839,
+          "equiv": 439.184,
           "premium": 2.8278
         },
         {
           "date": "2022-07-15",
-          "local": 448.7025,
+          "local": 448.7024,
           "adr": 458.683,
           "fx": 0.9974,
           "equiv": 457.5087,
@@ -34113,7 +34113,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-20",
-          "local": 483.2181,
+          "local": 483.218,
           "adr": 496.0909,
           "fx": 0.9774,
           "equiv": 484.8743,
@@ -34180,7 +34180,7 @@ window.HISTORICAL_DATA = {
           "local": 544.7291,
           "adr": 557.5502,
           "fx": 0.9796,
-          "equiv": 546.1762,
+          "equiv": 546.1763,
           "premium": 0.2657
         },
         {
@@ -34233,7 +34233,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-10",
-          "local": 525.8414,
+          "local": 525.8415,
           "adr": 547.1896,
           "fx": 0.9796,
           "equiv": 536.0325,
@@ -34242,10 +34242,10 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-08-11",
           "local": 530.3837,
-          "adr": 543.6708,
+          "adr": 543.671,
           "fx": 0.9708,
-          "equiv": 527.7956,
-          "premium": -0.488
+          "equiv": 527.7958,
+          "premium": -0.4879
         },
         {
           "date": "2022-08-12",
@@ -34301,7 +34301,7 @@ window.HISTORICAL_DATA = {
           "adr": 502.7417,
           "fx": 0.9965,
           "equiv": 500.977,
-          "premium": -1.3751
+          "premium": -1.3752
         },
         {
           "date": "2022-08-23",
@@ -34332,7 +34332,7 @@ window.HISTORICAL_DATA = {
           "local": 503.9032,
           "adr": 492.9492,
           "fx": 1.0029,
-          "equiv": 494.3688,
+          "equiv": 494.3689,
           "premium": -1.8921
         },
         {
@@ -34373,7 +34373,7 @@ window.HISTORICAL_DATA = {
           "adr": 451.6236,
           "fx": 1.0048,
           "equiv": 453.7868,
-          "premium": -3.017
+          "premium": -3.0169
         },
         {
           "date": "2022-09-05",
@@ -34404,12 +34404,12 @@ window.HISTORICAL_DATA = {
           "local": 463.8925,
           "adr": 466.665,
           "fx": 1.0004,
-          "equiv": 466.8657,
+          "equiv": 466.8658,
           "premium": 0.6409
         },
         {
           "date": "2022-09-09",
-          "local": 481.1918,
+          "local": 481.1917,
           "adr": 484.307,
           "fx": 0.9988,
           "equiv": 483.7259,
@@ -34465,7 +34465,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-09-20",
-          "local": 449.9757,
+          "local": 449.9756,
           "adr": 446.5678,
           "fx": 0.997,
           "equiv": 445.2504,
@@ -34545,7 +34545,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-04",
-          "local": 453.1167,
+          "local": 453.1166,
           "adr": 449.6129,
           "fx": 1.0171,
           "equiv": 457.2923,
@@ -34585,7 +34585,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-11",
-          "local": 400.9771,
+          "local": 400.977,
           "adr": 386.2469,
           "fx": 1.0299,
           "equiv": 397.7803,
@@ -34604,7 +34604,7 @@ window.HISTORICAL_DATA = {
           "local": 397.4979,
           "adr": 391.8924,
           "fx": 1.0301,
-          "equiv": 403.6805,
+          "equiv": 403.6804,
           "premium": 1.5554
         },
         {
@@ -34617,7 +34617,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-17",
-          "local": 387.1086,
+          "local": 387.1085,
           "adr": 379.1515,
           "fx": 1.0268,
           "equiv": 389.2976,
@@ -34625,10 +34625,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-18",
-          "local": 390.0562,
-          "adr": 385.6959,
+          "local": 390.0563,
+          "adr": 385.696,
           "fx": 1.0156,
-          "equiv": 391.7127,
+          "equiv": 391.7128,
           "premium": 0.4247
         },
         {
@@ -34650,17 +34650,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-10-21",
           "local": 444.1287,
-          "adr": 446.8288,
+          "adr": 446.8289,
           "fx": 1.0226,
-          "equiv": 456.9316,
+          "equiv": 456.9317,
           "premium": 2.8827
         },
         {
           "date": "2022-10-24",
-          "local": 461.9113,
-          "adr": 457.2109,
+          "local": 461.9112,
+          "adr": 457.211,
           "fx": 1.0142,
-          "equiv": 463.6987,
+          "equiv": 463.6988,
           "premium": 0.387
         },
         {
@@ -34668,13 +34668,13 @@ window.HISTORICAL_DATA = {
           "local": 479.3555,
           "adr": 469.8165,
           "fx": 1.0115,
-          "equiv": 475.21,
+          "equiv": 475.2099,
           "premium": -0.8648
         },
         {
           "date": "2022-10-26",
           "local": 474.3784,
-          "adr": 467.9605,
+          "adr": 467.9604,
           "fx": 1.0036,
           "equiv": 469.6639,
           "premium": -0.9938
@@ -34705,11 +34705,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-01",
-          "local": 465.4871,
+          "local": 465.4872,
           "adr": 459.5407,
           "fx": 1.0115,
           "equiv": 464.8254,
-          "premium": -0.1421
+          "premium": -0.1422
         },
         {
           "date": "2022-11-02",
@@ -34721,16 +34721,16 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-03",
-          "local": 439.7504,
-          "adr": 426.5428,
+          "local": 439.7503,
+          "adr": 426.5427,
           "fx": 1.0189,
           "equiv": 434.6087,
           "premium": -1.1692
         },
         {
           "date": "2022-11-04",
-          "local": 450.1213,
-          "adr": 454.5058,
+          "local": 450.1214,
+          "adr": 454.5059,
           "fx": 1.0257,
           "equiv": 466.1775,
           "premium": 3.5671
@@ -34785,18 +34785,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-15",
-          "local": 561.4885,
-          "adr": 579.3019,
+          "local": 561.4886,
+          "adr": 579.3018,
           "fx": 0.9691,
-          "equiv": 561.3783,
-          "premium": -0.0196
+          "equiv": 561.3782,
+          "premium": -0.0197
         },
         {
           "date": "2022-11-16",
           "local": 541.522,
-          "adr": 559.1636,
+          "adr": 559.1635,
           "fx": 0.9654,
-          "equiv": 539.8445,
+          "equiv": 539.8444,
           "premium": -0.3098
         },
         {
@@ -34820,8 +34820,8 @@ window.HISTORICAL_DATA = {
           "local": 546.2714,
           "adr": 562.6443,
           "fx": 0.968,
-          "equiv": 544.6229,
-          "premium": -0.3018
+          "equiv": 544.623,
+          "premium": -0.3017
         },
         {
           "date": "2022-11-22",
@@ -34884,7 +34884,7 @@ window.HISTORICAL_DATA = {
           "local": 564.2994,
           "adr": 592.6727,
           "fx": 0.9592,
-          "equiv": 568.4916,
+          "equiv": 568.4917,
           "premium": 0.7429
         },
         {
@@ -35052,7 +35052,7 @@ window.HISTORICAL_DATA = {
           "local": 488.3099,
           "adr": 529.7849,
           "fx": 0.938,
-          "equiv": 496.9488,
+          "equiv": 496.9489,
           "premium": 1.7691
         },
         {
@@ -35092,7 +35092,7 @@ window.HISTORICAL_DATA = {
           "local": 534.5434,
           "adr": 577.7312,
           "fx": 0.9504,
-          "equiv": 549.0584,
+          "equiv": 549.0585,
           "premium": 2.7154
         },
         {
@@ -35153,8 +35153,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-18",
-          "local": 594.7339,
-          "adr": 632.455,
+          "local": 594.7338,
+          "adr": 632.4551,
           "fx": 0.9265,
           "equiv": 585.9696,
           "premium": -1.4737
@@ -35193,8 +35193,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-25",
-          "local": 598.1263,
-          "adr": 660.8058,
+          "local": 598.1264,
+          "adr": 660.8057,
           "fx": 0.9184,
           "equiv": 606.9038,
           "premium": 1.4675
@@ -35244,7 +35244,7 @@ window.HISTORICAL_DATA = {
           "local": 615.476,
           "adr": 675.3691,
           "fx": 0.908,
-          "equiv": 613.2554,
+          "equiv": 613.2553,
           "premium": -0.3608
         },
         {
@@ -35369,10 +35369,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-24",
-          "local": 562.4026,
-          "adr": 600.8775,
+          "local": 562.4028,
+          "adr": 600.8776,
           "fx": 0.9436,
-          "equiv": 566.97,
+          "equiv": 566.9701,
           "premium": 0.8121
         },
         {
@@ -35386,9 +35386,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-02-28",
           "local": 567.2593,
-          "adr": 600.246,
+          "adr": 600.2459,
           "fx": 0.9424,
-          "equiv": 565.6718,
+          "equiv": 565.6717,
           "premium": -0.2799
         },
         {
@@ -35420,7 +35420,7 @@ window.HISTORICAL_DATA = {
           "local": 573.2816,
           "adr": 603.3942,
           "fx": 0.9411,
-          "equiv": 567.8362,
+          "equiv": 567.8363,
           "premium": -0.9499
         },
         {
@@ -35444,8 +35444,8 @@ window.HISTORICAL_DATA = {
           "local": 568.5221,
           "adr": 587.6237,
           "fx": 0.9479,
-          "equiv": 557.0143,
-          "premium": -2.0242
+          "equiv": 557.0144,
+          "premium": -2.0241
         },
         {
           "date": "2023-03-10",
@@ -35505,11 +35505,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-03-21",
-          "local": 578.1382,
-          "adr": 623.9553,
+          "local": 578.1384,
+          "adr": 623.9554,
           "fx": 0.9329,
           "equiv": 582.0942,
-          "premium": 0.6843
+          "premium": 0.6842
         },
         {
           "date": "2023-03-22",
@@ -35556,7 +35556,7 @@ window.HISTORICAL_DATA = {
           "local": 588.4343,
           "adr": 640.4644,
           "fx": 0.9226,
-          "equiv": 590.8605,
+          "equiv": 590.8604,
           "premium": 0.4123
         },
         {
@@ -35564,7 +35564,7 @@ window.HISTORICAL_DATA = {
           "local": 605.8213,
           "adr": 657.5274,
           "fx": 0.9222,
-          "equiv": 606.3718,
+          "equiv": 606.3719,
           "premium": 0.0909
         },
         {
@@ -35578,9 +35578,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-04-03",
           "local": 599.9933,
-          "adr": 654.9135,
+          "adr": 654.9136,
           "fx": 0.9256,
-          "equiv": 606.2141,
+          "equiv": 606.2142,
           "premium": 1.0368
         },
         {
@@ -35617,8 +35617,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-10",
-          "local": 589.6002,
-          "adr": 642.9131,
+          "local": 589.6,
+          "adr": 642.9133,
           "fx": 0.9163,
           "equiv": 589.0948,
           "premium": -0.0857
@@ -35652,7 +35652,7 @@ window.HISTORICAL_DATA = {
           "local": 589.1143,
           "adr": 647.3441,
           "fx": 0.9046,
-          "equiv": 585.5875,
+          "equiv": 585.5874,
           "premium": -0.5987
         },
         {
@@ -35673,8 +35673,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-19",
-          "local": 550.6495,
-          "adr": 605.9498,
+          "local": 550.6494,
+          "adr": 605.9497,
           "fx": 0.9111,
           "equiv": 552.099,
           "premium": 0.2632
@@ -35721,18 +35721,18 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-27",
-          "local": 548.027,
-          "adr": 611.4302,
+          "local": 548.0269,
+          "adr": 611.4301,
           "fx": 0.9052,
-          "equiv": 553.4666,
+          "equiv": 553.4665,
           "premium": 0.9926
         },
         {
           "date": "2023-04-28",
-          "local": 558.7339,
-          "adr": 618.8345,
+          "local": 558.7338,
+          "adr": 618.8344,
           "fx": 0.9064,
-          "equiv": 560.9425,
+          "equiv": 560.9424,
           "premium": 0.3953
         },
         {
@@ -35804,8 +35804,8 @@ window.HISTORICAL_DATA = {
           "local": 578.0242,
           "adr": 633.6359,
           "fx": 0.9104,
-          "equiv": 576.8684,
-          "premium": -0.1999
+          "equiv": 576.8683,
+          "premium": -0.2
         },
         {
           "date": "2023-05-12",
@@ -35852,7 +35852,7 @@ window.HISTORICAL_DATA = {
           "local": 626.8343,
           "adr": 676.3304,
           "fx": 0.928,
-          "equiv": 627.6617,
+          "equiv": 627.6616,
           "premium": 0.132
         },
         {
@@ -35916,7 +35916,7 @@ window.HISTORICAL_DATA = {
           "local": 654.2108,
           "adr": 704.5239,
           "fx": 0.9317,
-          "equiv": 656.4049,
+          "equiv": 656.4048,
           "premium": 0.3354
         },
         {
@@ -35948,7 +35948,7 @@ window.HISTORICAL_DATA = {
           "local": 651.9699,
           "adr": 698.3842,
           "fx": 0.9336,
-          "equiv": 651.9766,
+          "equiv": 651.9765,
           "premium": 0.001
         },
         {
@@ -36004,8 +36004,8 @@ window.HISTORICAL_DATA = {
           "local": 656.4515,
           "adr": 719.8824,
           "fx": 0.9222,
-          "equiv": 663.9116,
-          "premium": 1.1364
+          "equiv": 663.9117,
+          "premium": 1.1365
         },
         {
           "date": "2023-06-16",
@@ -36049,7 +36049,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-23",
-          "local": 624.3011,
+          "local": 624.301,
           "adr": 680.1213,
           "fx": 0.9125,
           "equiv": 620.6107,
@@ -36098,15 +36098,15 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-07-03",
           "local": 648.9497,
-          "adr": 715.195,
+          "adr": 715.1949,
           "fx": 0.9168,
-          "equiv": 655.6908,
+          "equiv": 655.6907,
           "premium": 1.0388
         },
         {
           "date": "2023-07-04",
           "local": 651.8724,
-          "adr": 715.195,
+          "adr": 715.1949,
           "fx": 0.9163,
           "equiv": 655.3546,
           "premium": 0.5342
@@ -36116,7 +36116,7 @@ window.HISTORICAL_DATA = {
           "local": 642.3248,
           "adr": 697.4486,
           "fx": 0.9187,
-          "equiv": 640.746,
+          "equiv": 640.7461,
           "premium": -0.2458
         },
         {
@@ -36156,7 +36156,7 @@ window.HISTORICAL_DATA = {
           "local": 637.1612,
           "adr": 706.4047,
           "fx": 0.9079,
-          "equiv": 641.366,
+          "equiv": 641.3661,
           "premium": 0.6599
         },
         {
@@ -36204,12 +36204,12 @@ window.HISTORICAL_DATA = {
           "local": 604.1341,
           "adr": 658.9153,
           "fx": 0.8924,
-          "equiv": 588.0424,
+          "equiv": 588.0425,
           "premium": -2.6636
         },
         {
           "date": "2023-07-21",
-          "local": 609.3951,
+          "local": 609.395,
           "adr": 675.7067,
           "fx": 0.8979,
           "equiv": 606.717,
@@ -36218,7 +36218,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-07-24",
           "local": 599.8474,
-          "adr": 667.0527,
+          "adr": 667.0528,
           "fx": 0.8989,
           "equiv": 599.5803,
           "premium": -0.0445
@@ -36228,16 +36228,16 @@ window.HISTORICAL_DATA = {
           "local": 612.2205,
           "adr": 669.801,
           "fx": 0.9039,
-          "equiv": 605.4332,
+          "equiv": 605.4331,
           "premium": -1.1086
         },
         {
           "date": "2023-07-26",
-          "local": 601.5037,
+          "local": 601.5035,
           "adr": 666.8774,
           "fx": 0.9049,
-          "equiv": 603.4841,
-          "premium": 0.3292
+          "equiv": 603.484,
+          "premium": 0.3293
         },
         {
           "date": "2023-07-27",
@@ -36257,8 +36257,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-31",
-          "local": 635.4076,
-          "adr": 698.1697,
+          "local": 635.4075,
+          "adr": 698.1698,
           "fx": 0.9071,
           "equiv": 633.3027,
           "premium": -0.3313
@@ -36273,7 +36273,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-08-02",
-          "local": 614.0727,
+          "local": 614.0728,
           "adr": 667.1523,
           "fx": 0.9084,
           "equiv": 606.0679,
@@ -36298,7 +36298,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-08-07",
           "local": 610.46,
-          "adr": 677.2711,
+          "adr": 677.2712,
           "fx": 0.9089,
           "equiv": 615.5514,
           "premium": 0.834
@@ -36364,7 +36364,7 @@ window.HISTORICAL_DATA = {
           "local": 578.7263,
           "adr": 629.3342,
           "fx": 0.9196,
-          "equiv": 578.7042,
+          "equiv": 578.7043,
           "premium": -0.0038
         },
         {
@@ -36418,14 +36418,14 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-08-28",
           "local": 592.2009,
-          "adr": 643.643,
+          "adr": 643.6431,
           "fx": 0.9262,
           "equiv": 596.11,
           "premium": 0.6601
         },
         {
           "date": "2023-08-29",
-          "local": 598.5475,
+          "local": 598.5476,
           "adr": 651.9646,
           "fx": 0.9237,
           "equiv": 602.2458,
@@ -36444,8 +36444,8 @@ window.HISTORICAL_DATA = {
           "local": 593.5679,
           "adr": 645.1472,
           "fx": 0.9147,
-          "equiv": 590.1161,
-          "premium": -0.5815
+          "equiv": 590.1159,
+          "premium": -0.5816
         },
         {
           "date": "2023-09-01",
@@ -36538,9 +36538,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-09-18",
           "local": 544.3561,
-          "adr": 583.8097,
+          "adr": 583.8098,
           "fx": 0.9374,
-          "equiv": 547.2398,
+          "equiv": 547.2399,
           "premium": 0.5298
         },
         {
@@ -36553,10 +36553,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-20",
-          "local": 543.4773,
-          "adr": 576.1425,
+          "local": 543.4772,
+          "adr": 576.1424,
           "fx": 0.9362,
-          "equiv": 539.3558,
+          "equiv": 539.3557,
           "premium": -0.7584
         },
         {
@@ -36604,7 +36604,7 @@ window.HISTORICAL_DATA = {
           "local": 537.8141,
           "adr": 567.1276,
           "fx": 0.9519,
-          "equiv": 539.8487,
+          "equiv": 539.8486,
           "premium": 0.3783
         },
         {
@@ -36620,7 +36620,7 @@ window.HISTORICAL_DATA = {
           "local": 543.2821,
           "adr": 568.6217,
           "fx": 0.9465,
-          "equiv": 538.2004,
+          "equiv": 538.2005,
           "premium": -0.9354
         },
         {
@@ -36641,7 +36641,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-10-05",
-          "local": 535.4706,
+          "local": 535.4707,
           "adr": 568.1432,
           "fx": 0.9517,
           "equiv": 540.7246,
@@ -36668,7 +36668,7 @@ window.HISTORICAL_DATA = {
           "local": 558.6118,
           "adr": 588.1266,
           "fx": 0.9453,
-          "equiv": 555.9444,
+          "equiv": 555.9445,
           "premium": -0.4775
         },
         {
@@ -36676,15 +36676,15 @@ window.HISTORICAL_DATA = {
           "local": 553.7297,
           "adr": 592.0727,
           "fx": 0.943,
-          "equiv": 558.3068,
-          "premium": 0.8266
+          "equiv": 558.3067,
+          "premium": 0.8265
         },
         {
           "date": "2023-10-12",
           "local": 574.8206,
           "adr": 602.3964,
           "fx": 0.9412,
-          "equiv": 566.9996,
+          "equiv": 566.9997,
           "premium": -1.3606
         },
         {
@@ -36738,7 +36738,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-10-23",
           "local": 539.5717,
-          "adr": 574.1011,
+          "adr": 574.101,
           "fx": 0.9443,
           "equiv": 542.1179,
           "premium": 0.4719
@@ -36748,7 +36748,7 @@ window.HISTORICAL_DATA = {
           "local": 549.3359,
           "adr": 586.7593,
           "fx": 0.9372,
-          "equiv": 549.9225,
+          "equiv": 549.9226,
           "premium": 0.1068
         },
         {
@@ -36820,12 +36820,12 @@ window.HISTORICAL_DATA = {
           "local": 579.2355,
           "adr": 624.1896,
           "fx": 0.9318,
-          "equiv": 581.6074,
+          "equiv": 581.6075,
           "premium": 0.4095
         },
         {
           "date": "2023-11-07",
-          "local": 586.4796,
+          "local": 586.4797,
           "adr": 623.0831,
           "fx": 0.9327,
           "equiv": 581.1496,
@@ -36860,7 +36860,7 @@ window.HISTORICAL_DATA = {
           "local": 599.5974,
           "adr": 640.993,
           "fx": 0.9354,
-          "equiv": 599.6105,
+          "equiv": 599.6104,
           "premium": 0.0022
         },
         {
@@ -36908,13 +36908,13 @@ window.HISTORICAL_DATA = {
           "local": 612.5194,
           "adr": 670.1931,
           "fx": 0.9136,
-          "equiv": 612.275,
+          "equiv": 612.2749,
           "premium": -0.0399
         },
         {
           "date": "2023-11-22",
           "local": 619.9592,
-          "adr": 670.5652,
+          "adr": 670.5651,
           "fx": 0.9159,
           "equiv": 614.1706,
           "premium": -0.9337
@@ -36922,9 +36922,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-11-23",
           "local": 616.533,
-          "adr": 670.5652,
+          "adr": 670.5651,
           "fx": 0.9182,
-          "equiv": 615.713,
+          "equiv": 615.7129,
           "premium": -0.133
         },
         {
@@ -36949,7 +36949,7 @@ window.HISTORICAL_DATA = {
           "adr": 661.9384,
           "fx": 0.9125,
           "equiv": 604.0453,
-          "premium": -0.4287
+          "premium": -0.4286
         },
         {
           "date": "2023-11-29",
@@ -36964,13 +36964,13 @@ window.HISTORICAL_DATA = {
           "local": 609.8763,
           "adr": 669.5469,
           "fx": 0.9113,
-          "equiv": 610.138,
+          "equiv": 610.1381,
           "premium": 0.0429
         },
         {
           "date": "2023-12-01",
-          "local": 624.0707,
-          "adr": 677.8113,
+          "local": 624.0709,
+          "adr": 677.8114,
           "fx": 0.9181,
           "equiv": 622.2985,
           "premium": -0.284
@@ -37017,7 +37017,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-11",
-          "local": 645.3136,
+          "local": 645.3137,
           "adr": 695.4764,
           "fx": 0.9289,
           "equiv": 646.0072,
@@ -37044,7 +37044,7 @@ window.HISTORICAL_DATA = {
           "local": 667.8293,
           "adr": 738.0428,
           "fx": 0.9186,
-          "equiv": 677.9662,
+          "equiv": 677.9661,
           "premium": 1.5179
         },
         {
@@ -37081,7 +37081,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-21",
-          "local": 668.2208,
+          "local": 668.2206,
           "adr": 739.5704,
           "fx": 0.9136,
           "equiv": 675.6715,
@@ -37132,15 +37132,15 @@ window.HISTORICAL_DATA = {
           "local": 667.3397,
           "adr": 741.186,
           "fx": 0.9035,
-          "equiv": 669.6542,
-          "premium": 0.3468
+          "equiv": 669.6543,
+          "premium": 0.3469
         },
         {
           "date": "2024-01-01",
           "local": 667.3397,
           "adr": 741.186,
           "fx": 0.9045,
-          "equiv": 670.4028,
+          "equiv": 670.4029,
           "premium": 0.459
         },
         {
@@ -37148,7 +37148,7 @@ window.HISTORICAL_DATA = {
           "local": 650.3062,
           "adr": 702.0175,
           "fx": 0.9059,
-          "equiv": 635.9577,
+          "equiv": 635.9576,
           "premium": -2.2064
         },
         {
@@ -37196,7 +37196,7 @@ window.HISTORICAL_DATA = {
           "local": 637.678,
           "adr": 702.8694,
           "fx": 0.9147,
-          "equiv": 642.9217,
+          "equiv": 642.9216,
           "premium": 0.8223
         },
         {
@@ -37281,7 +37281,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-25",
-          "local": 794.699,
+          "local": 794.6991,
           "adr": 851.0146,
           "fx": 0.919,
           "equiv": 782.0569,
@@ -37332,7 +37332,7 @@ window.HISTORICAL_DATA = {
           "local": 801.5515,
           "adr": 872.146,
           "fx": 0.9196,
-          "equiv": 801.9993,
+          "equiv": 801.9994,
           "premium": 0.0559
         },
         {
@@ -37346,9 +37346,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-02-06",
           "local": 817.6837,
-          "adr": 887.631,
+          "adr": 887.6309,
           "fx": 0.9309,
-          "equiv": 826.3312,
+          "equiv": 826.3311,
           "premium": 1.0576
         },
         {
@@ -37356,7 +37356,7 @@ window.HISTORICAL_DATA = {
           "local": 833.5705,
           "adr": 904.6403,
           "fx": 0.9296,
-          "equiv": 840.9627,
+          "equiv": 840.9626,
           "premium": 0.8868
         },
         {
@@ -37441,15 +37441,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-02-22",
-          "local": 859.8525,
-          "adr": 933.6953,
+          "local": 859.8524,
+          "adr": 933.6954,
           "fx": 0.9242,
-          "equiv": 862.9025,
+          "equiv": 862.9026,
           "premium": 0.3547
         },
         {
           "date": "2024-02-23",
-          "local": 848.2806,
+          "local": 848.2805,
           "adr": 915.4501,
           "fx": 0.9237,
           "equiv": 845.6287,
@@ -37458,14 +37458,14 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-02-26",
           "local": 852.9878,
-          "adr": 929.5166,
+          "adr": 929.5165,
           "fx": 0.9242,
           "equiv": 859.0685,
           "premium": 0.7129
         },
         {
           "date": "2024-02-27",
-          "local": 862.2061,
+          "local": 862.2062,
           "adr": 923.4152,
           "fx": 0.9216,
           "equiv": 851.001,
@@ -37505,7 +37505,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-05",
-          "local": 882.1138,
+          "local": 882.1136,
           "adr": 950.3613,
           "fx": 0.9212,
           "equiv": 875.4918,
@@ -37546,17 +37546,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-03-12",
           "local": 875.0529,
-          "adr": 965.5165,
+          "adr": 965.5166,
           "fx": 0.9148,
-          "equiv": 883.2545,
+          "equiv": 883.2546,
           "premium": 0.9373
         },
         {
           "date": "2024-03-13",
           "local": 861.9119,
-          "adr": 950.3024,
+          "adr": 950.3023,
           "fx": 0.9151,
-          "equiv": 869.6217,
+          "equiv": 869.6216,
           "premium": 0.8945
         },
         {
@@ -37613,7 +37613,7 @@ window.HISTORICAL_DATA = {
           "adr": 961.2692,
           "fx": 0.9206,
           "equiv": 884.9541,
-          "premium": -0.4087
+          "premium": -0.4088
         },
         {
           "date": "2024-03-25",
@@ -37689,10 +37689,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-04-05",
-          "local": 888.1939,
+          "local": 888.194,
           "adr": 960.8669,
           "fx": 0.9228,
-          "equiv": 886.6496,
+          "equiv": 886.6495,
           "premium": -0.1739
         },
         {
@@ -37705,7 +37705,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-04-09",
-          "local": 881.9176,
+          "local": 881.9175,
           "adr": 970.9509,
           "fx": 0.9205,
           "equiv": 893.7603,
@@ -37738,9 +37738,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-04-15",
           "local": 893.2934,
-          "adr": 936.6087,
+          "adr": 936.6086,
           "fx": 0.939,
-          "equiv": 879.4756,
+          "equiv": 879.4755,
           "premium": -1.5468
         },
         {
@@ -37756,7 +37756,7 @@ window.HISTORICAL_DATA = {
           "local": 835.9242,
           "adr": 890.2991,
           "fx": 0.9415,
-          "equiv": 838.2077,
+          "equiv": 838.2076,
           "premium": 0.2732
         },
         {
@@ -37778,17 +37778,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-04-22",
           "local": 797.4818,
-          "adr": 855.4174,
+          "adr": 855.4172,
           "fx": 0.9382,
-          "equiv": 802.5868,
+          "equiv": 802.5867,
           "premium": 0.6401
         },
         {
           "date": "2024-04-23",
           "local": 818.174,
-          "adr": 884.3743,
+          "adr": 884.3744,
           "fx": 0.9386,
-          "equiv": 830.0825,
+          "equiv": 830.0827,
           "premium": 1.4555
         },
         {
@@ -37844,12 +37844,12 @@ window.HISTORICAL_DATA = {
           "local": 797.3904,
           "adr": 855.4565,
           "fx": 0.9327,
-          "equiv": 797.8842,
+          "equiv": 797.8843,
           "premium": 0.0619
         },
         {
           "date": "2024-05-03",
-          "local": 821.4675,
+          "local": 821.4674,
           "adr": 886.2724,
           "fx": 0.9317,
           "equiv": 825.74,
@@ -37873,7 +37873,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-08",
-          "local": 830.4103,
+          "local": 830.4102,
           "adr": 895.9448,
           "fx": 0.9302,
           "equiv": 833.3989,
@@ -37881,7 +37881,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-09",
-          "local": 833.2602,
+          "local": 833.2603,
           "adr": 897.9796,
           "fx": 0.9305,
           "equiv": 835.5699,
@@ -37940,7 +37940,7 @@ window.HISTORICAL_DATA = {
           "local": 849.7702,
           "adr": 923.4384,
           "fx": 0.9195,
-          "equiv": 849.1016,
+          "equiv": 849.1017,
           "premium": -0.0787
         },
         {
@@ -37964,7 +37964,7 @@ window.HISTORICAL_DATA = {
           "local": 861.2682,
           "adr": 918.3369,
           "fx": 0.9238,
-          "equiv": 848.332,
+          "equiv": 848.3319,
           "premium": -1.502
         },
         {
@@ -37986,9 +37986,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-05-28",
           "local": 880.5297,
-          "adr": 974.9557,
+          "adr": 974.9556,
           "fx": 0.9207,
-          "equiv": 897.593,
+          "equiv": 897.5929,
           "premium": 1.9378
         },
         {
@@ -38012,7 +38012,7 @@ window.HISTORICAL_DATA = {
           "local": 855.7648,
           "adr": 943.9922,
           "fx": 0.9229,
-          "equiv": 871.2104,
+          "equiv": 871.2105,
           "premium": 1.8049
         },
         {
@@ -38020,7 +38020,7 @@ window.HISTORICAL_DATA = {
           "local": 865.2974,
           "adr": 949.0349,
           "fx": 0.9214,
-          "equiv": 874.4408,
+          "equiv": 874.4407,
           "premium": 1.0567
         },
         {
@@ -38036,7 +38036,7 @@ window.HISTORICAL_DATA = {
           "local": 927.3078,
           "adr": 1023.6027,
           "fx": 0.919,
-          "equiv": 940.6499,
+          "equiv": 940.6498,
           "premium": 1.4388
         },
         {
@@ -38156,7 +38156,7 @@ window.HISTORICAL_DATA = {
           "local": 930.2561,
           "adr": 999.2842,
           "fx": 0.9337,
-          "equiv": 933.0716,
+          "equiv": 933.0715,
           "premium": 0.3027
         },
         {
@@ -38177,7 +38177,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-07-01",
-          "local": 937.8231,
+          "local": 937.8232,
           "adr": 1015.8865,
           "fx": 0.9315,
           "equiv": 946.3084,
@@ -38194,9 +38194,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-07-03",
           "local": 968.7792,
-          "adr": 1053.1608,
+          "adr": 1053.1606,
           "fx": 0.9304,
-          "equiv": 979.8292,
+          "equiv": 979.829,
           "premium": 1.1406
         },
         {
@@ -38204,7 +38204,7 @@ window.HISTORICAL_DATA = {
           "local": 967.2068,
           "adr": 1053.1608,
           "fx": 0.9265,
-          "equiv": 975.7535,
+          "equiv": 975.7534,
           "premium": 0.8836
         },
         {
@@ -38348,7 +38348,7 @@ window.HISTORICAL_DATA = {
           "local": 793.2584,
           "adr": 847.1542,
           "fx": 0.9243,
-          "equiv": 782.9907,
+          "equiv": 782.9908,
           "premium": -1.2944
         },
         {
@@ -38380,7 +38380,7 @@ window.HISTORICAL_DATA = {
           "local": 734.4802,
           "adr": 807.8708,
           "fx": 0.9165,
-          "equiv": 740.4298,
+          "equiv": 740.4299,
           "premium": 0.81
         },
         {
@@ -38409,7 +38409,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-09",
-          "local": 771.8935,
+          "local": 771.8934,
           "adr": 847.4595,
           "fx": 0.9161,
           "equiv": 776.3661,
@@ -38417,10 +38417,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-08-12",
-          "local": 772.4841,
-          "adr": 839.8864,
+          "local": 772.4842,
+          "adr": 839.8865,
           "fx": 0.9163,
-          "equiv": 769.5627,
+          "equiv": 769.5628,
           "premium": -0.3782
         },
         {
@@ -38428,7 +38428,7 @@ window.HISTORICAL_DATA = {
           "local": 777.3085,
           "adr": 856.2635,
           "fx": 0.9144,
-          "equiv": 782.9588,
+          "equiv": 782.9589,
           "premium": 0.7269
         },
         {
@@ -38436,12 +38436,12 @@ window.HISTORICAL_DATA = {
           "local": 786.9571,
           "adr": 866.2,
           "fx": 0.9093,
-          "equiv": 787.6703,
+          "equiv": 787.6702,
           "premium": 0.0906
         },
         {
           "date": "2024-08-15",
-          "local": 819.1522,
+          "local": 819.1523,
           "adr": 914.1296,
           "fx": 0.908,
           "equiv": 830.0297,
@@ -38468,7 +38468,7 @@ window.HISTORICAL_DATA = {
           "local": 819.743,
           "adr": 912.0911,
           "fx": 0.902,
-          "equiv": 822.7061,
+          "equiv": 822.7062,
           "premium": 0.3615
         },
         {
@@ -38484,7 +38484,7 @@ window.HISTORICAL_DATA = {
           "local": 820.1368,
           "adr": 893.9021,
           "fx": 0.8964,
-          "equiv": 801.3207,
+          "equiv": 801.3206,
           "premium": -2.2943
         },
         {
@@ -38545,7 +38545,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-03",
-          "local": 770.7119,
+          "local": 770.712,
           "adr": 832.5301,
           "fx": 0.9036,
           "equiv": 752.2326,
@@ -38564,21 +38564,21 @@ window.HISTORICAL_DATA = {
           "local": 708.8817,
           "adr": 783.4974,
           "fx": 0.9025,
-          "equiv": 707.0986,
-          "premium": -0.2515
+          "equiv": 707.0985,
+          "premium": -0.2516
         },
         {
           "date": "2024-09-06",
-          "local": 670.4839,
-          "adr": 741.3386,
+          "local": 670.484,
+          "adr": 741.3387,
           "fx": 0.9,
-          "equiv": 667.2047,
+          "equiv": 667.2048,
           "premium": -0.4891
         },
         {
           "date": "2024-09-09",
           "local": 666.0535,
-          "adr": 738.4139,
+          "adr": 738.4138,
           "fx": 0.9019,
           "equiv": 666.0051,
           "premium": -0.0073
@@ -38620,7 +38620,7 @@ window.HISTORICAL_DATA = {
           "local": 708.7833,
           "adr": 790.8243,
           "fx": 0.9018,
-          "equiv": 713.197,
+          "equiv": 713.1969,
           "premium": 0.6227
         },
         {
@@ -38673,8 +38673,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-25",
-          "local": 723.6501,
-          "adr": 805.734,
+          "local": 723.65,
+          "adr": 805.7341,
           "fx": 0.8936,
           "equiv": 719.9717,
           "premium": -0.5083
@@ -38689,10 +38689,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-09-27",
-          "local": 745.6057,
-          "adr": 828.7386,
+          "local": 745.6058,
+          "adr": 828.7387,
           "fx": 0.8947,
-          "equiv": 741.4559,
+          "equiv": 741.456,
           "premium": -0.5566
         },
         {
@@ -38705,7 +38705,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-01",
-          "local": 730.3451,
+          "local": 730.3452,
           "adr": 809.8405,
           "fx": 0.8979,
           "equiv": 727.1882,
@@ -38748,7 +38748,7 @@ window.HISTORICAL_DATA = {
           "local": 740.4861,
           "adr": 811.7215,
           "fx": 0.9111,
-          "equiv": 739.5594,
+          "equiv": 739.5595,
           "premium": -0.1251
         },
         {
@@ -38757,7 +38757,7 @@ window.HISTORICAL_DATA = {
           "adr": 833.0323,
           "fx": 0.9111,
           "equiv": 758.9757,
-          "premium": 0.4404
+          "premium": 0.4403
         },
         {
           "date": "2024-10-10",
@@ -38785,7 +38785,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-10-15",
-          "local": 657.7831,
+          "local": 657.7832,
           "adr": 719.3188,
           "fx": 0.9167,
           "equiv": 659.3708,
@@ -38794,9 +38794,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-10-16",
           "local": 624.1113,
-          "adr": 673.1225,
+          "adr": 673.1224,
           "fx": 0.9188,
-          "equiv": 618.4448,
+          "equiv": 618.4447,
           "premium": -0.9079
         },
         {
@@ -38826,9 +38826,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-10-22",
           "local": 656.5032,
-          "adr": 709.9436,
+          "adr": 709.9437,
           "fx": 0.9244,
-          "equiv": 656.2718,
+          "equiv": 656.2719,
           "premium": -0.0352
         },
         {
@@ -38836,7 +38836,7 @@ window.HISTORICAL_DATA = {
           "local": 648.6268,
           "adr": 697.8405,
           "fx": 0.9262,
-          "equiv": 646.312,
+          "equiv": 646.3121,
           "premium": -0.3569
         },
         {
@@ -38852,7 +38852,7 @@ window.HISTORICAL_DATA = {
           "local": 653.8448,
           "adr": 700.8738,
           "fx": 0.9239,
-          "equiv": 647.5093,
+          "equiv": 647.5092,
           "premium": -0.969
         },
         {
@@ -38860,7 +38860,7 @@ window.HISTORICAL_DATA = {
           "local": 645.3777,
           "adr": 697.8701,
           "fx": 0.9262,
-          "equiv": 646.3813,
+          "equiv": 646.3814,
           "premium": 0.1555
         },
         {
@@ -38897,8 +38897,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-11-04",
-          "local": 610.0684,
-          "adr": 662.4846,
+          "local": 610.0685,
+          "adr": 662.4845,
           "fx": 0.9196,
           "equiv": 609.2075,
           "premium": -0.1411
@@ -38921,7 +38921,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-11-07",
-          "local": 616.4829,
+          "local": 616.4828,
           "adr": 668.4564,
           "fx": 0.9317,
           "equiv": 622.8008,
@@ -38985,7 +38985,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-11-19",
-          "local": 616.4829,
+          "local": 616.4828,
           "adr": 653.6008,
           "fx": 0.9438,
           "equiv": 616.9011,
@@ -39001,15 +39001,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-11-21",
-          "local": 623.1934,
+          "local": 623.1935,
           "adr": 663.4716,
           "fx": 0.9482,
           "equiv": 629.1104,
-          "premium": 0.9495
+          "premium": 0.9494
         },
         {
           "date": "2024-11-22",
-          "local": 633.6541,
+          "local": 633.6539,
           "adr": 664.1823,
           "fx": 0.9552,
           "equiv": 634.4069,
@@ -39034,7 +39034,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-11-27",
           "local": 619.4434,
-          "adr": 661.8133,
+          "adr": 661.8132,
           "fx": 0.9532,
           "equiv": 630.8272,
           "premium": 1.8378
@@ -39045,7 +39045,7 @@ window.HISTORICAL_DATA = {
           "adr": 661.8133,
           "fx": 0.9467,
           "equiv": 626.5717,
-          "premium": -1.2407
+          "premium": -1.2408
         },
         {
           "date": "2024-11-29",
@@ -39097,7 +39097,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-09",
-          "local": 666.1212,
+          "local": 666.1213,
           "adr": 697.3875,
           "fx": 0.9465,
           "equiv": 660.0633,
@@ -39121,7 +39121,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-12",
-          "local": 674.3121,
+          "local": 674.312,
           "adr": 703.8824,
           "fx": 0.9518,
           "equiv": 669.9271,
@@ -39130,7 +39130,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-12-13",
           "local": 678.6542,
-          "adr": 709.2916,
+          "adr": 709.2915,
           "fx": 0.9547,
           "equiv": 677.189,
           "premium": -0.2159
@@ -39164,7 +39164,7 @@ window.HISTORICAL_DATA = {
           "local": 681.7134,
           "adr": 701.0792,
           "fx": 0.9662,
-          "equiv": 677.3546,
+          "equiv": 677.3545,
           "premium": -0.6394
         },
         {
@@ -39185,7 +39185,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-24",
-          "local": 679.4437,
+          "local": 679.4438,
           "adr": 710.407,
           "fx": 0.961,
           "equiv": 682.7012,
@@ -39193,7 +39193,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-25",
-          "local": 679.4437,
+          "local": 679.4438,
           "adr": 710.407,
           "fx": 0.9613,
           "equiv": 682.9143,
@@ -39201,7 +39201,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-12-26",
-          "local": 679.4437,
+          "local": 679.4438,
           "adr": 706.6067,
           "fx": 0.9616,
           "equiv": 679.4588,
@@ -39228,7 +39228,7 @@ window.HISTORICAL_DATA = {
           "local": 669.7726,
           "adr": 684.1213,
           "fx": 0.961,
-          "equiv": 657.42,
+          "equiv": 657.4199,
           "premium": -1.8443
         },
         {
@@ -39249,7 +39249,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-06",
-          "local": 737.9636,
+          "local": 737.9637,
           "adr": 758.5762,
           "fx": 0.9704,
           "equiv": 736.0996,
@@ -39266,18 +39266,18 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-01-08",
           "local": 714.7728,
-          "adr": 734.3632,
+          "adr": 734.3633,
           "fx": 0.9666,
           "equiv": 709.8355,
           "premium": -0.6908
         },
         {
           "date": "2025-01-09",
-          "local": 724.2466,
-          "adr": 734.3632,
+          "local": 724.2465,
+          "adr": 734.3633,
           "fx": 0.9695,
-          "equiv": 711.9578,
-          "premium": -1.6968
+          "equiv": 711.9579,
+          "premium": -1.6967
         },
         {
           "date": "2025-01-10",
@@ -39321,7 +39321,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-17",
-          "local": 729.3781,
+          "local": 729.3782,
           "adr": 746.5536,
           "fx": 0.9707,
           "equiv": 724.6721,
@@ -39340,7 +39340,7 @@ window.HISTORICAL_DATA = {
           "local": 722.7662,
           "adr": 753.1375,
           "fx": 0.9596,
-          "equiv": 722.7333,
+          "equiv": 722.7332,
           "premium": -0.0046
         },
         {
@@ -39353,11 +39353,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-23",
-          "local": 705.8912,
+          "local": 705.8911,
           "adr": 736.594,
           "fx": 0.9606,
           "equiv": 707.5722,
-          "premium": 0.2381
+          "premium": 0.2382
         },
         {
           "date": "2025-01-24",
@@ -39393,11 +39393,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-01-30",
-          "local": 697.4042,
+          "local": 697.4044,
           "adr": 727.4636,
           "fx": 0.9592,
-          "equiv": 697.7904,
-          "premium": 0.0554
+          "equiv": 697.7903,
+          "premium": 0.0553
         },
         {
           "date": "2025-01-31",
@@ -39420,7 +39420,7 @@ window.HISTORICAL_DATA = {
           "local": 703.0294,
           "adr": 721.9557,
           "fx": 0.9683,
-          "equiv": 699.0697,
+          "equiv": 699.0696,
           "premium": -0.5632
         },
         {
@@ -39458,7 +39458,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-02-11",
           "local": 715.6293,
-          "adr": 744.8185,
+          "adr": 744.8184,
           "fx": 0.9707,
           "equiv": 723.0177,
           "premium": 1.0324
@@ -39481,7 +39481,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-14",
-          "local": 724.1346,
+          "local": 724.1345,
           "adr": 743.404,
           "fx": 0.9559,
           "equiv": 710.5976,
@@ -39529,11 +39529,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-02-24",
-          "local": 705.6406,
+          "local": 705.6405,
           "adr": 727.983,
           "fx": 0.9547,
-          "equiv": 694.9835,
-          "premium": -1.5103
+          "equiv": 694.9836,
+          "premium": -1.5102
         },
         {
           "date": "2025-02-25",
@@ -39585,7 +39585,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-05",
-          "local": 665.29,
+          "local": 665.2899,
           "adr": 731.7319,
           "fx": 0.941,
           "equiv": 688.5597,
@@ -39626,17 +39626,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-03-12",
           "local": 638.3896,
-          "adr": 695.7462,
+          "adr": 695.7463,
           "fx": 0.9162,
-          "equiv": 637.4705,
+          "equiv": 637.4706,
           "premium": -0.144
         },
         {
           "date": "2025-03-13",
           "local": 635.3238,
-          "adr": 687.0614,
+          "adr": 687.0615,
           "fx": 0.9186,
-          "equiv": 631.1277,
+          "equiv": 631.1278,
           "premium": -0.6605
         },
         {
@@ -39674,7 +39674,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-03-20",
           "local": 665.0922,
-          "adr": 726.1036,
+          "adr": 726.1035,
           "fx": 0.9164,
           "equiv": 665.4232,
           "premium": 0.0498
@@ -39689,7 +39689,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-24",
-          "local": 667.169,
+          "local": 667.1691,
           "adr": 719.951,
           "fx": 0.9229,
           "equiv": 664.4212,
@@ -39697,7 +39697,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-03-25",
-          "local": 667.2679,
+          "local": 667.268,
           "adr": 718.8629,
           "fx": 0.9256,
           "equiv": 665.3939,
@@ -39770,7 +39770,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-04-07",
           "local": 543.9416,
-          "adr": 609.165,
+          "adr": 609.1649,
           "fx": 0.9104,
           "equiv": 554.5656,
           "premium": 1.9531
@@ -39794,7 +39794,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2025-04-10",
           "local": 571.2375,
-          "adr": 642.5095,
+          "adr": 642.5096,
           "fx": 0.9131,
           "equiv": 586.6562,
           "premium": 2.6992
@@ -39817,7 +39817,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-15",
-          "local": 598.7313,
+          "local": 598.7314,
           "adr": 675.7552,
           "fx": 0.8819,
           "equiv": 595.9215,
@@ -39829,7 +39829,7 @@ window.HISTORICAL_DATA = {
           "adr": 628.048,
           "fx": 0.8855,
           "equiv": 556.1554,
-          "premium": -2.0296
+          "premium": -2.0297
         },
         {
           "date": "2025-04-17",
@@ -39841,10 +39841,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-21",
-          "local": 557.9852,
-          "adr": 617.919,
+          "local": 557.9851,
+          "adr": 617.9191,
           "fx": 0.8774,
-          "equiv": 542.1868,
+          "equiv": 542.1869,
           "premium": -2.8313
         },
         {
@@ -39865,7 +39865,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-04-24",
-          "local": 585.1823,
+          "local": 585.1822,
           "adr": 667.6837,
           "fx": 0.8828,
           "equiv": 589.4445,
@@ -39989,7 +39989,7 @@ window.HISTORICAL_DATA = {
           "adr": 752.4633,
           "fx": 0.8943,
           "equiv": 672.9279,
-          "premium": -0.5706
+          "premium": -0.5707
         },
         {
           "date": "2025-05-16",
@@ -40028,7 +40028,7 @@ window.HISTORICAL_DATA = {
           "local": 651.5913,
           "adr": 734.9407,
           "fx": 0.8825,
-          "equiv": 648.5999,
+          "equiv": 648.5998,
           "premium": -0.4591
         },
         {
@@ -40089,7 +40089,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-03",
-          "local": 647.9207,
+          "local": 647.9208,
           "adr": 741.4398,
           "fx": 0.8731,
           "equiv": 647.351,
@@ -40100,8 +40100,8 @@ window.HISTORICAL_DATA = {
           "local": 647.2263,
           "adr": 737.0046,
           "fx": 0.8784,
-          "equiv": 647.3775,
-          "premium": 0.0234
+          "equiv": 647.3774,
+          "premium": 0.0233
         },
         {
           "date": "2025-06-05",
@@ -40145,7 +40145,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-12",
-          "local": 671.2344,
+          "local": 671.2343,
           "adr": 780.0968,
           "fx": 0.8689,
           "equiv": 677.7949,
@@ -40185,8 +40185,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-19",
-          "local": 647.9207,
-          "adr": 755.7179,
+          "local": 647.9208,
+          "adr": 755.7178,
           "fx": 0.8713,
           "equiv": 658.4343,
           "premium": 1.6227
@@ -40201,7 +40201,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-23",
-          "local": 663.397,
+          "local": 663.3971,
           "adr": 773.6572,
           "fx": 0.8695,
           "equiv": 672.6949,
@@ -40217,8 +40217,8 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-06-25",
-          "local": 688.9924,
-          "adr": 808.9011,
+          "local": 688.9925,
+          "adr": 808.901,
           "fx": 0.8612,
           "equiv": 696.5932,
           "premium": 1.1032
@@ -40249,7 +40249,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-01",
-          "local": 662.9009,
+          "local": 662.901,
           "adr": 784.3236,
           "fx": 0.8484,
           "equiv": 665.4045,
@@ -40289,7 +40289,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-08",
-          "local": 673.5161,
+          "local": 673.5162,
           "adr": 787.9254,
           "fx": 0.852,
           "equiv": 671.344,
@@ -40341,11 +40341,11 @@ window.HISTORICAL_DATA = {
           "adr": 748.5837,
           "fx": 0.8615,
           "equiv": 644.9199,
-          "premium": 3.8791
+          "premium": 3.879
         },
         {
           "date": "2025-07-17",
-          "local": 645.0438,
+          "local": 645.0437,
           "adr": 739.1179,
           "fx": 0.8594,
           "equiv": 635.2127,
@@ -40353,11 +40353,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-18",
-          "local": 628.4762,
+          "local": 628.4761,
           "adr": 728.8683,
           "fx": 0.8609,
           "equiv": 627.4973,
-          "premium": -0.1558
+          "premium": -0.1557
         },
         {
           "date": "2025-07-21",
@@ -40372,7 +40372,7 @@ window.HISTORICAL_DATA = {
           "local": 597.6228,
           "adr": 699.9946,
           "fx": 0.8551,
-          "equiv": 598.5653,
+          "equiv": 598.5652,
           "premium": 0.1577
         },
         {
@@ -40409,7 +40409,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-07-29",
-          "local": 619.6985,
+          "local": 619.6986,
           "adr": 714.7117,
           "fx": 0.8623,
           "equiv": 616.303,
@@ -40441,7 +40441,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-04",
-          "local": 599.2078,
+          "local": 599.2077,
           "adr": 695.6823,
           "fx": 0.8631,
           "equiv": 600.4155,
@@ -40461,7 +40461,7 @@ window.HISTORICAL_DATA = {
           "adr": 687.3265,
           "fx": 0.8636,
           "equiv": 593.5889,
-          "premium": 0.6496
+          "premium": 0.6495
         },
         {
           "date": "2025-08-07",
@@ -40505,7 +40505,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-14",
-          "local": 639.4932,
+          "local": 639.4931,
           "adr": 751.2386,
           "fx": 0.8538,
           "equiv": 641.3775,
@@ -40513,7 +40513,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-15",
-          "local": 633.326,
+          "local": 633.3259,
           "adr": 738.2572,
           "fx": 0.8583,
           "equiv": 633.624,
@@ -40537,15 +40537,15 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-20",
-          "local": 634.8181,
+          "local": 634.818,
           "adr": 745.5486,
           "fx": 0.8589,
           "equiv": 640.3666,
-          "premium": 0.874
+          "premium": 0.8741
         },
         {
           "date": "2025-08-21",
-          "local": 631.1376,
+          "local": 631.1377,
           "adr": 731.5328,
           "fx": 0.8582,
           "equiv": 627.8307,
@@ -40561,7 +40561,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-08-25",
-          "local": 643.2729,
+          "local": 643.273,
           "adr": 750.4926,
           "fx": 0.854,
           "equiv": 640.9207,
@@ -40605,7 +40605,7 @@ window.HISTORICAL_DATA = {
           "adr": 738.7148,
           "fx": 0.8553,
           "equiv": 631.8228,
-          "premium": -0.1432
+          "premium": -0.1433
         },
         {
           "date": "2025-09-02",
@@ -40697,7 +40697,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-17",
-          "local": 733.0944,
+          "local": 733.0945,
           "adr": 867.683,
           "fx": 0.8424,
           "equiv": 730.9015,
@@ -40721,7 +40721,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-09-22",
-          "local": 806.5034,
+          "local": 806.5033,
           "adr": 952.7632,
           "fx": 0.852,
           "equiv": 811.7638,
@@ -40801,7 +40801,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-06",
-          "local": 892.545,
+          "local": 892.5449,
           "adr": 1037.8136,
           "fx": 0.8538,
           "equiv": 886.0749,
@@ -40841,11 +40841,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-13",
-          "local": 839.5275,
+          "local": 839.5274,
           "adr": 979.4819,
           "fx": 0.8619,
           "equiv": 844.2057,
-          "premium": 0.5572
+          "premium": 0.5573
         },
         {
           "date": "2025-10-14",
@@ -40913,7 +40913,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-24",
-          "local": 889.6604,
+          "local": 889.6603,
           "adr": 1027.6672,
           "fx": 0.8607,
           "equiv": 884.544,
@@ -40937,7 +40937,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-10-29",
-          "local": 916.142,
+          "local": 916.1421,
           "adr": 1067.0986,
           "fx": 0.8578,
           "equiv": 915.3465,
@@ -41233,7 +41233,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-12-19",
-          "local": 898.405,
+          "local": 898.4051,
           "adr": 1052.3304,
           "fx": 0.8528,
           "equiv": 897.459,
@@ -41289,7 +41289,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2025-12-31",
-          "local": 918.135,
+          "local": 918.1349,
           "adr": 1066.1221,
           "fx": 0.8513,
           "equiv": 907.5471,
@@ -41337,7 +41337,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2026-01-09",
-          "local": 1077.7672,
+          "local": 1077.7673,
           "adr": 1269.4293,
           "fx": 0.8578,
           "equiv": 1088.9038,
@@ -41377,7 +41377,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2026-01-16",
-          "local": 1163.0638,
+          "local": 1163.064,
           "adr": 1353.8234,
           "fx": 0.8614,
           "equiv": 1166.1835,
@@ -41409,7 +41409,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2026-01-22",
-          "local": 1172.2313,
+          "local": 1172.2314,
           "adr": 1390.1261,
           "fx": 0.8567,
           "equiv": 1190.8932,
@@ -41417,7 +41417,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2026-01-23",
-          "local": 1174.025,
+          "local": 1174.0249,
           "adr": 1384.187,
           "fx": 0.8507,
           "equiv": 1177.5694,
@@ -41481,11 +41481,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2026-02-04",
-          "local": 1136.5581,
+          "local": 1136.5582,
           "adr": 1334.4513,
           "fx": 0.8463,
           "equiv": 1129.3461,
-          "premium": -0.6345
+          "premium": -0.6346
         },
         {
           "date": "2026-02-05",
@@ -41497,7 +41497,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2026-02-06",
-          "local": 1189.5698,
+          "local": 1189.5697,
           "adr": 1408.0731,
           "fx": 0.849,
           "equiv": 1195.5245,
@@ -42576,7 +42576,7 @@ window.HISTORICAL_DATA = {
           "local": 191.4219,
           "adr": 184.1922,
           "fx": 7.7831,
-          "equiv": 1433.5862,
+          "equiv": 1433.5863,
           "premium": -6.3857
         },
         {
@@ -42624,7 +42624,7 @@ window.HISTORICAL_DATA = {
           "local": 170.2851,
           "adr": 162.1904,
           "fx": 7.7918,
-          "equiv": 1263.755,
+          "equiv": 1263.7549,
           "premium": -7.2324
         },
         {
@@ -42632,7 +42632,7 @@ window.HISTORICAL_DATA = {
           "local": 160.8579,
           "adr": 151.086,
           "fx": 7.7879,
-          "equiv": 1176.6424,
+          "equiv": 1176.6425,
           "premium": -8.5651
         },
         {
@@ -42648,15 +42648,15 @@ window.HISTORICAL_DATA = {
           "local": 150.9345,
           "adr": 151.5659,
           "fx": 7.7907,
-          "equiv": 1180.806,
-          "premium": -2.2088
+          "equiv": 1180.8061,
+          "premium": -2.2087
         },
         {
           "date": "2021-08-24",
           "local": 165.2242,
           "adr": 161.5787,
           "fx": 7.7916,
-          "equiv": 1258.9566,
+          "equiv": 1258.9567,
           "premium": -4.7539
         },
         {
@@ -42681,7 +42681,7 @@ window.HISTORICAL_DATA = {
           "adr": 150.0696,
           "fx": 7.7872,
           "equiv": 1168.6192,
-          "premium": -5.577
+          "premium": -5.5771
         },
         {
           "date": "2021-08-30",
@@ -42712,7 +42712,7 @@ window.HISTORICAL_DATA = {
           "local": 169.6897,
           "adr": 161.861,
           "fx": 7.7767,
-          "equiv": 1258.7446,
+          "equiv": 1258.7445,
           "premium": -7.276
         },
         {
@@ -42785,7 +42785,7 @@ window.HISTORICAL_DATA = {
           "adr": 148.5545,
           "fx": 7.7796,
           "equiv": 1155.6949,
-          "premium": -5.4692
+          "premium": -5.4693
         },
         {
           "date": "2021-09-16",
@@ -42797,7 +42797,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-09-17",
-          "local": 153.713,
+          "local": 153.7131,
           "adr": 150.6154,
           "fx": 7.7828,
           "equiv": 1172.213,
@@ -42861,11 +42861,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-09-29",
-          "local": 147.1636,
+          "local": 147.1637,
           "adr": 138.8805,
           "fx": 7.783,
-          "equiv": 1080.9071,
-          "premium": -8.1883
+          "equiv": 1080.907,
+          "premium": -8.1884
         },
         {
           "date": "2021-09-30",
@@ -42888,7 +42888,7 @@ window.HISTORICAL_DATA = {
           "local": 135.9502,
           "adr": 131.3992,
           "fx": 7.7853,
-          "equiv": 1022.9819,
+          "equiv": 1022.9818,
           "premium": -5.9415
         },
         {
@@ -42934,9 +42934,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-10-12",
           "local": 160.064,
-          "adr": 153.3915,
+          "adr": 153.3916,
           "fx": 7.7786,
-          "equiv": 1193.173,
+          "equiv": 1193.1731,
           "premium": -6.8206
         },
         {
@@ -42992,7 +42992,7 @@ window.HISTORICAL_DATA = {
           "local": 172.5675,
           "adr": 166.9615,
           "fx": 7.7737,
-          "equiv": 1297.9088,
+          "equiv": 1297.9089,
           "premium": -5.9854
         },
         {
@@ -43040,7 +43040,7 @@ window.HISTORICAL_DATA = {
           "local": 161.751,
           "adr": 155.2172,
           "fx": 7.778,
-          "equiv": 1207.2793,
+          "equiv": 1207.2792,
           "premium": -6.7023
         },
         {
@@ -43144,7 +43144,7 @@ window.HISTORICAL_DATA = {
           "local": 163.5372,
           "adr": 152.0553,
           "fx": 7.7873,
-          "equiv": 1184.0999,
+          "equiv": 1184.1,
           "premium": -9.4931
         },
         {
@@ -43160,7 +43160,7 @@ window.HISTORICAL_DATA = {
           "local": 138.2326,
           "adr": 132.0673,
           "fx": 7.7889,
-          "equiv": 1028.6602,
+          "equiv": 1028.6601,
           "premium": -6.981
         },
         {
@@ -43213,7 +43213,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-11-30",
-          "local": 126.3246,
+          "local": 126.3245,
           "adr": 120.0124,
           "fx": 7.7995,
           "equiv": 936.0404,
@@ -43241,7 +43241,7 @@ window.HISTORICAL_DATA = {
           "adr": 105.3602,
           "fx": 7.7917,
           "equiv": 820.9353,
-          "premium": -13.3925
+          "premium": -13.3926
         },
         {
           "date": "2021-12-06",
@@ -43293,7 +43293,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-12-14",
-          "local": 117.7904,
+          "local": 117.7905,
           "adr": 119.1184,
           "fx": 7.8015,
           "equiv": 929.3024,
@@ -43424,7 +43424,7 @@ window.HISTORICAL_DATA = {
           "local": 113.6226,
           "adr": 114.0179,
           "fx": 7.7935,
-          "equiv": 888.5986,
+          "equiv": 888.5987,
           "premium": -2.2423
         },
         {
@@ -43441,7 +43441,7 @@ window.HISTORICAL_DATA = {
           "adr": 122.158,
           "fx": 7.8006,
           "equiv": 952.9082,
-          "premium": -6.8065
+          "premium": -6.8064
         },
         {
           "date": "2022-01-10",
@@ -43472,7 +43472,7 @@ window.HISTORICAL_DATA = {
           "local": 131.187,
           "adr": 123.6261,
           "fx": 7.7918,
-          "equiv": 963.2683,
+          "equiv": 963.2682,
           "premium": -8.2161
         },
         {
@@ -43552,7 +43552,7 @@ window.HISTORICAL_DATA = {
           "local": 107.6686,
           "adr": 105.2002,
           "fx": 7.7865,
-          "equiv": 819.1407,
+          "equiv": 819.1406,
           "premium": -4.9002
         },
         {
@@ -43568,7 +43568,7 @@ window.HISTORICAL_DATA = {
           "local": 113.8211,
           "adr": 118.375,
           "fx": 7.7936,
-          "equiv": 922.5614,
+          "equiv": 922.5613,
           "premium": 1.317
         },
         {
@@ -43576,7 +43576,7 @@ window.HISTORICAL_DATA = {
           "local": 113.8211,
           "adr": 119.7207,
           "fx": 7.7973,
-          "equiv": 933.497,
+          "equiv": 933.4969,
           "premium": 2.518
         },
         {
@@ -43645,7 +43645,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-02-14",
-          "local": 117.7904,
+          "local": 117.7905,
           "adr": 114.7331,
           "fx": 7.8008,
           "equiv": 895.0135,
@@ -43809,7 +43809,7 @@ window.HISTORICAL_DATA = {
           "adr": 73.1762,
           "fx": 7.828,
           "equiv": 572.8251,
-          "premium": -10.8084
+          "premium": -10.8083
         },
         {
           "date": "2022-03-15",
@@ -43848,8 +43848,8 @@ window.HISTORICAL_DATA = {
           "local": 98.3406,
           "adr": 97.4836,
           "fx": 7.8239,
-          "equiv": 762.706,
-          "premium": -3.053
+          "equiv": 762.7059,
+          "premium": -3.0531
         },
         {
           "date": "2022-03-22",
@@ -43873,7 +43873,7 @@ window.HISTORICAL_DATA = {
           "adr": 108.3622,
           "fx": 7.8237,
           "equiv": 847.7889,
-          "premium": -6.1582
+          "premium": -6.1583
         },
         {
           "date": "2022-03-25",
@@ -43937,7 +43937,7 @@ window.HISTORICAL_DATA = {
           "adr": 104.4568,
           "fx": 7.8345,
           "equiv": 818.3627,
-          "premium": -9.3358
+          "premium": -9.3357
         },
         {
           "date": "2022-04-06",
@@ -43968,7 +43968,7 @@ window.HISTORICAL_DATA = {
           "local": 97.7452,
           "adr": 95.5639,
           "fx": 7.8389,
-          "equiv": 749.1119,
+          "equiv": 749.1118,
           "premium": -4.201
         },
         {
@@ -44088,7 +44088,7 @@ window.HISTORICAL_DATA = {
           "local": 101.3176,
           "adr": 95.2439,
           "fx": 7.847,
-          "equiv": 747.379,
+          "equiv": 747.3791,
           "premium": -7.7926
         },
         {
@@ -44168,7 +44168,7 @@ window.HISTORICAL_DATA = {
           "local": 83.9517,
           "adr": 81.3822,
           "fx": 7.8497,
-          "equiv": 638.8284,
+          "equiv": 638.8285,
           "premium": -4.8816
         },
         {
@@ -44269,7 +44269,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-02",
-          "local": 91.5927,
+          "local": 91.5928,
           "adr": 91.7526,
           "fx": 7.8474,
           "equiv": 720.0222,
@@ -44277,10 +44277,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-03",
-          "local": 91.5927,
+          "local": 91.5928,
           "adr": 87.7155,
           "fx": 7.8448,
-          "equiv": 688.107,
+          "equiv": 688.1069,
           "premium": -6.0915
         },
         {
@@ -44328,7 +44328,7 @@ window.HISTORICAL_DATA = {
           "local": 103.0046,
           "adr": 92.7125,
           "fx": 7.8493,
-          "equiv": 727.729,
+          "equiv": 727.7291,
           "premium": -11.6873
         },
         {
@@ -44352,12 +44352,12 @@ window.HISTORICAL_DATA = {
           "local": 101.6153,
           "adr": 95.4698,
           "fx": 7.8486,
-          "equiv": 749.304,
+          "equiv": 749.3039,
           "premium": -7.8259
         },
         {
           "date": "2022-06-17",
-          "local": 103.6993,
+          "local": 103.6992,
           "adr": 96.2132,
           "fx": 7.8492,
           "equiv": 755.1966,
@@ -44381,11 +44381,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-22",
-          "local": 100.7222,
+          "local": 100.7223,
           "adr": 98.9517,
           "fx": 7.8497,
           "equiv": 776.7438,
-          "premium": -3.6032
+          "premium": -3.6033
         },
         {
           "date": "2022-06-23",
@@ -44430,7 +44430,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-06-30",
           "local": 111.0426,
-          "adr": 106.9788,
+          "adr": 106.9789,
           "fx": 7.846,
           "equiv": 839.355,
           "premium": -5.5143
@@ -44472,7 +44472,7 @@ window.HISTORICAL_DATA = {
           "local": 115.8058,
           "adr": 115.1754,
           "fx": 7.8469,
-          "equiv": 903.7698,
+          "equiv": 903.7699,
           "premium": -2.4477
         },
         {
@@ -44625,7 +44625,7 @@ window.HISTORICAL_DATA = {
           "adr": 90.0775,
           "fx": 7.8497,
           "equiv": 707.0817,
-          "premium": -1.4193
+          "premium": -1.4192
         },
         {
           "date": "2022-08-04",
@@ -44712,7 +44712,7 @@ window.HISTORICAL_DATA = {
           "local": 87.5738,
           "adr": 85.3911,
           "fx": 7.8425,
-          "equiv": 669.6797,
+          "equiv": 669.6798,
           "premium": -4.4121
         },
         {
@@ -44749,7 +44749,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-25",
-          "local": 93.0812,
+          "local": 93.0813,
           "adr": 94.0017,
           "fx": 7.8458,
           "equiv": 737.5187,
@@ -44920,7 +44920,7 @@ window.HISTORICAL_DATA = {
           "local": 77.7993,
           "adr": 74.1549,
           "fx": 7.8489,
-          "equiv": 582.0346,
+          "equiv": 582.0347,
           "premium": -6.4845
         },
         {
@@ -45005,7 +45005,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-10",
-          "local": 78.0969,
+          "local": 78.097,
           "adr": 74.569,
           "fx": 7.8496,
           "equiv": 585.339,
@@ -45029,10 +45029,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-10-13",
-          "local": 72.1925,
-          "adr": 70.5883,
+          "local": 72.1926,
+          "adr": 70.5884,
           "fx": 7.8495,
-          "equiv": 554.0818,
+          "equiv": 554.0819,
           "premium": -4.0618
         },
         {
@@ -45240,7 +45240,7 @@ window.HISTORICAL_DATA = {
           "local": 79.3374,
           "adr": 75.7359,
           "fx": 7.8265,
-          "equiv": 592.7448,
+          "equiv": 592.7447,
           "premium": -6.6101
         },
         {
@@ -45472,7 +45472,7 @@ window.HISTORICAL_DATA = {
           "local": 84.8945,
           "adr": 83.876,
           "fx": 7.7938,
-          "equiv": 653.7136,
+          "equiv": 653.7137,
           "premium": -3.7461
         },
         {
@@ -45525,7 +45525,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-09",
-          "local": 109.5541,
+          "local": 109.554,
           "adr": 104.2968,
           "fx": 7.8078,
           "equiv": 814.331,
@@ -45536,7 +45536,7 @@ window.HISTORICAL_DATA = {
           "local": 108.6609,
           "adr": 108.1081,
           "fx": 7.8048,
-          "equiv": 843.7621,
+          "equiv": 843.762,
           "premium": -2.9364
         },
         {
@@ -45752,7 +45752,7 @@ window.HISTORICAL_DATA = {
           "local": 101.3176,
           "adr": 97.0319,
           "fx": 7.8464,
-          "equiv": 761.3521,
+          "equiv": 761.3522,
           "premium": -6.0687
         },
         {
@@ -45825,11 +45825,11 @@ window.HISTORICAL_DATA = {
           "adr": 84.6477,
           "fx": 7.849,
           "equiv": 664.4012,
-          "premium": -8.932
+          "premium": -8.9321
         },
         {
           "date": "2023-03-02",
-          "local": 86.9287,
+          "local": 86.9288,
           "adr": 84.4595,
           "fx": 7.8481,
           "equiv": 662.8463,
@@ -45840,7 +45840,7 @@ window.HISTORICAL_DATA = {
           "local": 87.3257,
           "adr": 84.4124,
           "fx": 7.8494,
-          "equiv": 662.5867,
+          "equiv": 662.5868,
           "premium": -5.1558
         },
         {
@@ -45886,7 +45886,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-03-13",
           "local": 82.6121,
-          "adr": 78.0133,
+          "adr": 78.0132,
           "fx": 7.8475,
           "equiv": 612.2105,
           "premium": -7.3667
@@ -46005,7 +46005,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-03",
-          "local": 97.7949,
+          "local": 97.7948,
           "adr": 92.5901,
           "fx": 7.8496,
           "equiv": 726.7956,
@@ -46016,7 +46016,7 @@ window.HISTORICAL_DATA = {
           "local": 94.9171,
           "adr": 94.7828,
           "fx": 7.8468,
-          "equiv": 743.7427,
+          "equiv": 743.7426,
           "premium": -2.0536
         },
         {
@@ -46120,7 +46120,7 @@ window.HISTORICAL_DATA = {
           "local": 87.2761,
           "adr": 83.876,
           "fx": 7.8488,
-          "equiv": 658.3251,
+          "equiv": 658.3252,
           "premium": -5.7123
         },
         {
@@ -46197,7 +46197,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-05-05",
-          "local": 81.0244,
+          "local": 81.0243,
           "adr": 78.3144,
           "fx": 7.8471,
           "equiv": 614.5407,
@@ -46304,7 +46304,7 @@ window.HISTORICAL_DATA = {
           "local": 80.429,
           "adr": 76.4229,
           "fx": 7.8368,
-          "equiv": 598.9123,
+          "equiv": 598.9122,
           "premium": -6.9191
         },
         {
@@ -46480,7 +46480,7 @@ window.HISTORICAL_DATA = {
           "local": 83.406,
           "adr": 79.9142,
           "fx": 7.8301,
-          "equiv": 625.7359,
+          "equiv": 625.736,
           "premium": -6.2213
         },
         {
@@ -46584,7 +46584,7 @@ window.HISTORICAL_DATA = {
           "local": 89.1615,
           "adr": 88.4589,
           "fx": 7.8268,
-          "equiv": 692.3503,
+          "equiv": 692.3504,
           "premium": -2.9359
         },
         {
@@ -46704,7 +46704,7 @@ window.HISTORICAL_DATA = {
           "local": 94.4209,
           "adr": 89.4659,
           "fx": 7.7942,
-          "equiv": 697.3148,
+          "equiv": 697.3147,
           "premium": -7.6853
         },
         {
@@ -46720,7 +46720,7 @@ window.HISTORICAL_DATA = {
           "local": 94.4209,
           "adr": 91.188,
           "fx": 7.8082,
-          "equiv": 712.014,
+          "equiv": 712.0139,
           "premium": -5.7394
         },
         {
@@ -46761,7 +46761,7 @@ window.HISTORICAL_DATA = {
           "adr": 90.0775,
           "fx": 7.8196,
           "equiv": 704.3704,
-          "premium": -6.8981
+          "premium": -6.898
         },
         {
           "date": "2023-08-14",
@@ -46928,7 +46928,7 @@ window.HISTORICAL_DATA = {
           "local": 87.3753,
           "adr": 83.4808,
           "fx": 7.8404,
-          "equiv": 654.5242,
+          "equiv": 654.5243,
           "premium": -6.3631
         },
         {
@@ -46984,7 +46984,7 @@ window.HISTORICAL_DATA = {
           "local": 83.8525,
           "adr": 80.6858,
           "fx": 7.8209,
-          "equiv": 631.0359,
+          "equiv": 631.0358,
           "premium": -5.9307
         },
         {
@@ -47280,7 +47280,7 @@ window.HISTORICAL_DATA = {
           "local": 78.9901,
           "adr": 77.8721,
           "fx": 7.8089,
-          "equiv": 608.0953,
+          "equiv": 608.0954,
           "premium": -3.7703
         },
         {
@@ -47385,14 +47385,14 @@ window.HISTORICAL_DATA = {
           "adr": 70.2684,
           "fx": 7.7945,
           "equiv": 547.7076,
-          "premium": -5.1003
+          "premium": -5.1002
         },
         {
           "date": "2023-11-30",
-          "local": 72.1925,
+          "local": 72.1926,
           "adr": 70.466,
           "fx": 7.8041,
-          "equiv": 549.9237,
+          "equiv": 549.9238,
           "premium": -4.7818
         },
         {
@@ -47440,7 +47440,7 @@ window.HISTORICAL_DATA = {
           "local": 69.9598,
           "adr": 67.8875,
           "fx": 7.8115,
-          "equiv": 530.3034,
+          "equiv": 530.3033,
           "premium": -5.2485
         },
         {
@@ -47521,7 +47521,7 @@ window.HISTORICAL_DATA = {
           "adr": 71.7947,
           "fx": 7.8096,
           "equiv": 560.6853,
-          "premium": -1.8738
+          "premium": -1.8739
         },
         {
           "date": "2023-12-25",
@@ -47560,7 +47560,7 @@ window.HISTORICAL_DATA = {
           "local": 75.1518,
           "adr": 73.9215,
           "fx": 7.8118,
-          "equiv": 577.4599,
+          "equiv": 577.46,
           "premium": -3.9511
         },
         {
@@ -47568,12 +47568,12 @@ window.HISTORICAL_DATA = {
           "local": 75.1518,
           "adr": 73.9215,
           "fx": 7.808,
-          "equiv": 577.179,
+          "equiv": 577.1791,
           "premium": -3.9978
         },
         {
           "date": "2024-01-02",
-          "local": 74.2572,
+          "local": 74.2571,
           "adr": 71.2988,
           "fx": 7.8097,
           "equiv": 556.8195,
@@ -47600,7 +47600,7 @@ window.HISTORICAL_DATA = {
           "local": 71.2252,
           "adr": 69.6298,
           "fx": 7.8091,
-          "equiv": 543.7464,
+          "equiv": 543.7463,
           "premium": -4.5727
         },
         {
@@ -47672,7 +47672,7 @@ window.HISTORICAL_DATA = {
           "local": 66.2549,
           "adr": 64.8995,
           "fx": 7.8225,
-          "equiv": 507.6754,
+          "equiv": 507.6755,
           "premium": -4.2192
         },
         {
@@ -47936,7 +47936,7 @@ window.HISTORICAL_DATA = {
           "local": 69.2868,
           "adr": 68.7334,
           "fx": 7.8249,
-          "equiv": 537.8316,
+          "equiv": 537.8317,
           "premium": -2.97
         },
         {
@@ -47944,7 +47944,7 @@ window.HISTORICAL_DATA = {
           "local": 71.424,
           "adr": 70.2974,
           "fx": 7.8244,
-          "equiv": 550.0338,
+          "equiv": 550.0337,
           "premium": -3.738
         },
         {
@@ -47997,11 +47997,11 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-03-15",
-          "local": 71.4737,
-          "adr": 70.0209,
+          "local": 71.4738,
+          "adr": 70.0208,
           "fx": 7.822,
-          "equiv": 547.7059,
-          "premium": -4.212
+          "equiv": 547.7058,
+          "premium": -4.2121
         },
         {
           "date": "2024-03-18",
@@ -48014,7 +48014,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2024-03-19",
           "local": 70.6785,
-          "adr": 70.0209,
+          "adr": 70.0208,
           "fx": 7.8194,
           "equiv": 547.5231,
           "premium": -3.1666
@@ -48112,7 +48112,7 @@ window.HISTORICAL_DATA = {
           "local": 69.9329,
           "adr": 68.6189,
           "fx": 7.8285,
-          "equiv": 537.1817,
+          "equiv": 537.1818,
           "premium": -3.9827
         },
         {
@@ -48120,7 +48120,7 @@ window.HISTORICAL_DATA = {
           "local": 69.6347,
           "adr": 68.3423,
           "fx": 7.8292,
-          "equiv": 535.0658,
+          "equiv": 535.0659,
           "premium": -3.9513
         },
         {
@@ -48312,7 +48312,7 @@ window.HISTORICAL_DATA = {
           "local": 76.3447,
           "adr": 75.7812,
           "fx": 7.8166,
-          "equiv": 592.3514,
+          "equiv": 592.3515,
           "premium": -3.0137
         },
         {
@@ -48360,7 +48360,7 @@ window.HISTORICAL_DATA = {
           "local": 85.1919,
           "adr": 84.4408,
           "fx": 7.8013,
-          "equiv": 658.7457,
+          "equiv": 658.7458,
           "premium": -3.3439
         },
         {
@@ -48373,7 +48373,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-05-21",
-          "local": 83.8997,
+          "local": 83.8996,
           "adr": 82.1424,
           "fx": 7.7987,
           "equiv": 640.604,
@@ -52945,7 +52945,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-07-30",
-          "local": 423.8712,
+          "local": 423.8713,
           "adr": 54.4913,
           "fx": 7.77,
           "equiv": 423.3993,
@@ -52972,7 +52972,7 @@ window.HISTORICAL_DATA = {
           "local": 404.2263,
           "adr": 52.6571,
           "fx": 7.7771,
-          "equiv": 409.5193,
+          "equiv": 409.5194,
           "premium": 1.3094
         },
         {
@@ -52989,11 +52989,11 @@ window.HISTORICAL_DATA = {
           "adr": 51.3838,
           "fx": 7.7764,
           "equiv": 399.5797,
-          "premium": -0.4522
+          "premium": -0.4521
         },
         {
           "date": "2021-08-09",
-          "local": 408.4739,
+          "local": 408.4738,
           "adr": 53.9125,
           "fx": 7.7802,
           "equiv": 419.4501,
@@ -53020,7 +53020,7 @@ window.HISTORICAL_DATA = {
           "local": 426.526,
           "adr": 54.3399,
           "fx": 7.7784,
-          "equiv": 422.6758,
+          "equiv": 422.6757,
           "premium": -0.9027
         },
         {
@@ -53041,7 +53041,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-17",
-          "local": 384.9353,
+          "local": 384.9352,
           "adr": 49.1045,
           "fx": 7.784,
           "equiv": 382.2296,
@@ -53105,7 +53105,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2021-08-27",
-          "local": 412.7214,
+          "local": 412.7215,
           "adr": 52.4968,
           "fx": 7.7872,
           "equiv": 408.8021,
@@ -53188,15 +53188,15 @@ window.HISTORICAL_DATA = {
           "local": 433.6052,
           "adr": 55.533,
           "fx": 7.7772,
-          "equiv": 431.8935,
+          "equiv": 431.8934,
           "premium": -0.3948
         },
         {
           "date": "2021-09-13",
-          "local": 422.9863,
+          "local": 422.9864,
           "adr": 54.696,
           "fx": 7.7779,
-          "equiv": 425.421,
+          "equiv": 425.4209,
           "premium": 0.5756
         },
         {
@@ -53205,14 +53205,14 @@ window.HISTORICAL_DATA = {
           "adr": 53.3694,
           "fx": 7.7793,
           "equiv": 415.1785,
-          "premium": -0.7664
+          "premium": -0.7663
         },
         {
           "date": "2021-09-15",
           "local": 401.2176,
           "adr": 51.8379,
           "fx": 7.7796,
-          "equiv": 403.2784,
+          "equiv": 403.2783,
           "premium": 0.5136
         },
         {
@@ -53244,7 +53244,7 @@ window.HISTORICAL_DATA = {
           "local": 398.2089,
           "adr": 51.7311,
           "fx": 7.7869,
-          "equiv": 402.8227,
+          "equiv": 402.8226,
           "premium": 1.1586
         },
         {
@@ -53266,9 +53266,9 @@ window.HISTORICAL_DATA = {
         {
           "date": "2021-09-24",
           "local": 407.235,
-          "adr": 51.8824,
+          "adr": 51.8825,
           "fx": 7.785,
-          "equiv": 403.9032,
+          "equiv": 403.9033,
           "premium": -0.8181
         },
         {
@@ -53356,7 +53356,7 @@ window.HISTORICAL_DATA = {
           "local": 438.9147,
           "adr": 55.4529,
           "fx": 7.7843,
-          "equiv": 431.6617,
+          "equiv": 431.6618,
           "premium": -1.6525
         },
         {
@@ -53372,7 +53372,7 @@ window.HISTORICAL_DATA = {
           "local": 427.5879,
           "adr": 56.5391,
           "fx": 7.781,
-          "equiv": 439.9299,
+          "equiv": 439.9298,
           "premium": 2.8864
         },
         {
@@ -53644,7 +53644,7 @@ window.HISTORICAL_DATA = {
           "local": 406.5271,
           "adr": 52.0427,
           "fx": 7.7995,
-          "equiv": 405.9087,
+          "equiv": 405.9088,
           "premium": -0.1521
         },
         {
@@ -53708,7 +53708,7 @@ window.HISTORICAL_DATA = {
           "local": 410.0667,
           "adr": 52.9242,
           "fx": 7.7968,
-          "equiv": 412.6367,
+          "equiv": 412.6366,
           "premium": 0.6267
         },
         {
@@ -53749,7 +53749,7 @@ window.HISTORICAL_DATA = {
           "adr": 50.075,
           "fx": 7.8032,
           "equiv": 390.7475,
-          "premium": 0.8147
+          "premium": 0.8146
         },
         {
           "date": "2021-12-20",
@@ -53836,7 +53836,7 @@ window.HISTORICAL_DATA = {
           "local": 401.5716,
           "adr": 51.8557,
           "fx": 7.7959,
-          "equiv": 404.2631,
+          "equiv": 404.2632,
           "premium": 0.6703
         },
         {
@@ -53949,7 +53949,7 @@ window.HISTORICAL_DATA = {
           "adr": 54.3864,
           "fx": 7.786,
           "equiv": 423.4537,
-          "premium": -2.1777
+          "premium": -2.1778
         },
         {
           "date": "2022-01-24",
@@ -54076,8 +54076,8 @@ window.HISTORICAL_DATA = {
           "local": 430.3279,
           "adr": 54.824,
           "fx": 7.8008,
-          "equiv": 427.6726,
-          "premium": -0.617
+          "equiv": 427.6725,
+          "premium": -0.6171
         },
         {
           "date": "2022-02-15",
@@ -54148,7 +54148,7 @@ window.HISTORICAL_DATA = {
           "local": 386.5658,
           "adr": 49.6734,
           "fx": 7.8075,
-          "equiv": 387.8251,
+          "equiv": 387.8252,
           "premium": 0.3258
         },
         {
@@ -54201,7 +54201,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-08",
-          "local": 349.3679,
+          "local": 349.368,
           "adr": 44.3952,
           "fx": 7.8183,
           "equiv": 347.095,
@@ -54252,7 +54252,7 @@ window.HISTORICAL_DATA = {
           "local": 334.5981,
           "adr": 47.9505,
           "fx": 7.8267,
-          "equiv": 375.294,
+          "equiv": 375.2939,
           "premium": 12.1626
         },
         {
@@ -54273,7 +54273,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-21",
-          "local": 339.5215,
+          "local": 339.5214,
           "adr": 43.7662,
           "fx": 7.8239,
           "equiv": 342.4241,
@@ -54289,7 +54289,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-03-23",
-          "local": 354.6558,
+          "local": 354.6559,
           "adr": 43.6295,
           "fx": 7.8267,
           "equiv": 341.4734,
@@ -54309,7 +54309,7 @@ window.HISTORICAL_DATA = {
           "adr": 41.6422,
           "fx": 7.8234,
           "equiv": 325.7833,
-          "premium": 0.2614
+          "premium": 0.2613
         },
         {
           "date": "2022-03-28",
@@ -54356,8 +54356,8 @@ window.HISTORICAL_DATA = {
           "local": 355.5675,
           "adr": 45.9085,
           "fx": 7.8346,
-          "equiv": 359.6746,
-          "premium": 1.1551
+          "equiv": 359.6745,
+          "premium": 1.155
         },
         {
           "date": "2022-04-05",
@@ -54444,7 +54444,7 @@ window.HISTORICAL_DATA = {
           "local": 331.8631,
           "adr": 42.4535,
           "fx": 7.8415,
-          "equiv": 332.899,
+          "equiv": 332.8991,
           "premium": 0.3122
         },
         {
@@ -54460,7 +54460,7 @@ window.HISTORICAL_DATA = {
           "local": 317.2757,
           "adr": 38.8253,
           "fx": 7.8439,
-          "equiv": 304.5418,
+          "equiv": 304.5417,
           "premium": -4.0135
         },
         {
@@ -54517,7 +54517,7 @@ window.HISTORICAL_DATA = {
           "adr": 43.0643,
           "fx": 7.847,
           "equiv": 337.9253,
-          "premium": -1.7887
+          "premium": -1.7888
         },
         {
           "date": "2022-05-03",
@@ -54628,7 +54628,7 @@ window.HISTORICAL_DATA = {
           "local": 322.6953,
           "adr": 40.5295,
           "fx": 7.8479,
-          "equiv": 318.0717,
+          "equiv": 318.0716,
           "premium": -1.4328
         },
         {
@@ -54689,10 +54689,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-01",
-          "local": 330.2084,
+          "local": 330.2083,
           "adr": 41.5004,
           "fx": 7.8472,
-          "equiv": 325.6628,
+          "equiv": 325.6627,
           "premium": -1.3766
         },
         {
@@ -54732,7 +54732,7 @@ window.HISTORICAL_DATA = {
           "local": 358.6114,
           "adr": 47.1242,
           "fx": 7.8454,
-          "equiv": 369.706,
+          "equiv": 369.7059,
           "premium": 3.0938
         },
         {
@@ -54754,10 +54754,10 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-06-13",
           "local": 345.4178,
-          "adr": 42.7919,
+          "adr": 42.7918,
           "fx": 7.8493,
           "equiv": 335.8865,
-          "premium": -2.7593
+          "premium": -2.7594
         },
         {
           "date": "2022-06-14",
@@ -54793,7 +54793,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-06-20",
-          "local": 339.7372,
+          "local": 339.7371,
           "adr": 42.801,
           "fx": 7.8497,
           "equiv": 335.9742,
@@ -54850,7 +54850,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2022-06-29",
           "local": 334.423,
-          "adr": 42.4988,
+          "adr": 42.4987,
           "fx": 7.8458,
           "equiv": 333.4367,
           "premium": -0.2949
@@ -54953,7 +54953,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-07-18",
-          "local": 304.7373,
+          "local": 304.7372,
           "adr": 38.6977,
           "fx": 7.8496,
           "equiv": 303.7613,
@@ -55033,7 +55033,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-01",
-          "local": 274.5017,
+          "local": 274.5018,
           "adr": 34.1822,
           "fx": 7.8494,
           "equiv": 268.311,
@@ -55057,7 +55057,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-04",
-          "local": 285.863,
+          "local": 285.8629,
           "adr": 36.3621,
           "fx": 7.8494,
           "equiv": 285.4205,
@@ -55089,7 +55089,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-08-10",
-          "local": 270.8369,
+          "local": 270.8368,
           "adr": 35.034,
           "fx": 7.8497,
           "equiv": 275.0063,
@@ -55172,7 +55172,7 @@ window.HISTORICAL_DATA = {
           "local": 284.0305,
           "adr": 36.7376,
           "fx": 7.8464,
-          "equiv": 288.2579,
+          "equiv": 288.258,
           "premium": 1.4884
         },
         {
@@ -55180,7 +55180,7 @@ window.HISTORICAL_DATA = {
           "local": 297.7739,
           "adr": 38.7435,
           "fx": 7.8458,
-          "equiv": 303.9735,
+          "equiv": 303.9736,
           "premium": 2.082
         },
         {
@@ -55204,7 +55204,7 @@ window.HISTORICAL_DATA = {
           "local": 296.4912,
           "adr": 36.6369,
           "fx": 7.8472,
-          "equiv": 287.4967,
+          "equiv": 287.4968,
           "premium": -3.0336
         },
         {
@@ -55284,12 +55284,12 @@ window.HISTORICAL_DATA = {
           "local": 279.2661,
           "adr": 35.0798,
           "fx": 7.8487,
-          "equiv": 275.3293,
+          "equiv": 275.3294,
           "premium": -1.4097
         },
         {
           "date": "2022-09-14",
-          "local": 274.5017,
+          "local": 274.5018,
           "adr": 35.0523,
           "fx": 7.8495,
           "equiv": 275.1431,
@@ -55305,7 +55305,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-09-16",
-          "local": 268.6379,
+          "local": 268.6378,
           "adr": 33.8982,
           "fx": 7.849,
           "equiv": 266.0673,
@@ -55348,7 +55348,7 @@ window.HISTORICAL_DATA = {
           "local": 251.9626,
           "adr": 31.9382,
           "fx": 7.8489,
-          "equiv": 250.6795,
+          "equiv": 250.6796,
           "premium": -0.5092
         },
         {
@@ -55357,11 +55357,11 @@ window.HISTORICAL_DATA = {
           "adr": 32.9732,
           "fx": 7.8496,
           "equiv": 258.8255,
-          "premium": -0.2505
+          "premium": -0.2506
         },
         {
           "date": "2022-09-27",
-          "local": 257.2767,
+          "local": 257.2766,
           "adr": 32.3137,
           "fx": 7.8493,
           "equiv": 253.6393,
@@ -55532,7 +55532,7 @@ window.HISTORICAL_DATA = {
           "local": 193.8737,
           "adr": 25.5176,
           "fx": 7.8493,
-          "equiv": 200.2951,
+          "equiv": 200.295,
           "premium": 3.3121
         },
         {
@@ -55585,7 +55585,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-11-04",
-          "local": 218.6119,
+          "local": 218.6118,
           "adr": 28.2928,
           "fx": 7.8498,
           "equiv": 222.0918,
@@ -55660,7 +55660,7 @@ window.HISTORICAL_DATA = {
           "local": 267.5384,
           "adr": 35.8308,
           "fx": 7.8242,
-          "equiv": 280.3477,
+          "equiv": 280.3476,
           "premium": 4.7878
         },
         {
@@ -55857,7 +55857,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2022-12-22",
-          "local": 296.6745,
+          "local": 296.6744,
           "adr": 37.1131,
           "fx": 7.7961,
           "equiv": 289.3377,
@@ -55924,7 +55924,7 @@ window.HISTORICAL_DATA = {
           "local": 316.2817,
           "adr": 40.8318,
           "fx": 7.8055,
-          "equiv": 318.7124,
+          "equiv": 318.7125,
           "premium": 0.7685
         },
         {
@@ -55961,7 +55961,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-01-10",
-          "local": 349.5981,
+          "local": 349.5982,
           "adr": 45.2936,
           "fx": 7.8048,
           "equiv": 353.5074,
@@ -55988,7 +55988,7 @@ window.HISTORICAL_DATA = {
           "local": 358.2802,
           "adr": 46.1234,
           "fx": 7.8082,
-          "equiv": 360.1433,
+          "equiv": 360.1432,
           "premium": 0.52
         },
         {
@@ -55996,7 +55996,7 @@ window.HISTORICAL_DATA = {
           "local": 357.1227,
           "adr": 46.1234,
           "fx": 7.8102,
-          "equiv": 360.2337,
+          "equiv": 360.2336,
           "premium": 0.8711
         },
         {
@@ -56004,8 +56004,8 @@ window.HISTORICAL_DATA = {
           "local": 360.5954,
           "adr": 46.0945,
           "fx": 7.8104,
-          "equiv": 360.0172,
-          "premium": -0.1604
+          "equiv": 360.0173,
+          "premium": -0.1603
         },
         {
           "date": "2023-01-18",
@@ -56028,7 +56028,7 @@ window.HISTORICAL_DATA = {
           "local": 377.9596,
           "adr": 48.6515,
           "fx": 7.8298,
-          "equiv": 380.9317,
+          "equiv": 380.9318,
           "premium": 0.7864
         },
         {
@@ -56060,8 +56060,8 @@ window.HISTORICAL_DATA = {
           "local": 392.4297,
           "adr": 50.5042,
           "fx": 7.8295,
-          "equiv": 395.4225,
-          "premium": 0.7626
+          "equiv": 395.4226,
+          "premium": 0.7627
         },
         {
           "date": "2023-01-27",
@@ -56097,7 +56097,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-02",
-          "local": 369.4704,
+          "local": 369.4705,
           "adr": 46.5962,
           "fx": 7.839,
           "equiv": 365.2679,
@@ -56180,7 +56180,7 @@ window.HISTORICAL_DATA = {
           "local": 369.0846,
           "adr": 47.0594,
           "fx": 7.8464,
-          "equiv": 369.2474,
+          "equiv": 369.2473,
           "premium": 0.0441
         },
         {
@@ -56209,7 +56209,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-22",
-          "local": 343.4242,
+          "local": 343.4243,
           "adr": 43.2094,
           "fx": 7.8448,
           "equiv": 338.9687,
@@ -56217,10 +56217,10 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-02-23",
-          "local": 343.4242,
+          "local": 343.4243,
           "adr": 42.9874,
           "fx": 7.8452,
-          "equiv": 337.2431,
+          "equiv": 337.2432,
           "premium": -1.7998
         },
         {
@@ -56228,7 +56228,7 @@ window.HISTORICAL_DATA = {
           "local": 337.0574,
           "adr": 42.0707,
           "fx": 7.8468,
-          "equiv": 330.1224,
+          "equiv": 330.1223,
           "premium": -2.0575
         },
         {
@@ -56268,7 +56268,7 @@ window.HISTORICAL_DATA = {
           "local": 354.6144,
           "adr": 45.4673,
           "fx": 7.8494,
-          "equiv": 356.8909,
+          "equiv": 356.8908,
           "premium": 0.6419
         },
         {
@@ -56300,7 +56300,7 @@ window.HISTORICAL_DATA = {
           "local": 328.1824,
           "adr": 40.7584,
           "fx": 7.8495,
-          "equiv": 319.9318,
+          "equiv": 319.9317,
           "premium": -2.514
         },
         {
@@ -56308,7 +56308,7 @@ window.HISTORICAL_DATA = {
           "local": 319.8862,
           "adr": 41.0576,
           "fx": 7.8496,
-          "equiv": 322.2847,
+          "equiv": 322.2846,
           "premium": 0.7498
         },
         {
@@ -56316,7 +56316,7 @@ window.HISTORICAL_DATA = {
           "local": 332.6199,
           "adr": 42.0707,
           "fx": 7.8475,
-          "equiv": 330.151,
+          "equiv": 330.1509,
           "premium": -0.7423
         },
         {
@@ -56396,7 +56396,7 @@ window.HISTORICAL_DATA = {
           "local": 349.984,
           "adr": 44.5699,
           "fx": 7.8495,
-          "equiv": 349.8527,
+          "equiv": 349.8528,
           "premium": -0.0375
         },
         {
@@ -56421,7 +56421,7 @@ window.HISTORICAL_DATA = {
           "adr": 48.1691,
           "fx": 7.8499,
           "equiv": 378.1223,
-          "premium": 1.8101
+          "premium": 1.81
         },
         {
           "date": "2023-03-31",
@@ -56442,7 +56442,7 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-04-04",
           "local": 371.3998,
-          "adr": 47.7349,
+          "adr": 47.7348,
           "fx": 7.8468,
           "equiv": 374.5663,
           "premium": 0.8526
@@ -56532,7 +56532,7 @@ window.HISTORICAL_DATA = {
           "local": 344.5818,
           "adr": 43.9813,
           "fx": 7.8492,
-          "equiv": 345.2167,
+          "equiv": 345.2166,
           "premium": 0.1842
         },
         {
@@ -56561,7 +56561,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-04-25",
-          "local": 326.446,
+          "local": 326.4459,
           "adr": 40.8839,
           "fx": 7.8491,
           "equiv": 320.9016,
@@ -56588,7 +56588,7 @@ window.HISTORICAL_DATA = {
           "local": 332.234,
           "adr": 42.8041,
           "fx": 7.8499,
-          "equiv": 336.0077,
+          "equiv": 336.0078,
           "premium": 1.1359
         },
         {
@@ -56636,7 +56636,7 @@ window.HISTORICAL_DATA = {
           "local": 328.7612,
           "adr": 41.7137,
           "fx": 7.8472,
-          "equiv": 327.3351,
+          "equiv": 327.335,
           "premium": -0.4338
         },
         {
@@ -56653,7 +56653,7 @@ window.HISTORICAL_DATA = {
           "adr": 40.7488,
           "fx": 7.8417,
           "equiv": 319.5398,
-          "premium": 0.4979
+          "premium": 0.4978
         },
         {
           "date": "2023-05-11",
@@ -56692,7 +56692,7 @@ window.HISTORICAL_DATA = {
           "local": 330.6905,
           "adr": 43.0839,
           "fx": 7.8383,
-          "equiv": 337.7046,
+          "equiv": 337.7047,
           "premium": 2.1211
         },
         {
@@ -56709,7 +56709,7 @@ window.HISTORICAL_DATA = {
           "adr": 41.2729,
           "fx": 7.8273,
           "equiv": 323.0552,
-          "premium": -0.2041
+          "premium": -0.2042
         },
         {
           "date": "2023-05-22",
@@ -56793,7 +56793,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-06-05",
-          "local": 328.5738,
+          "local": 328.5737,
           "adr": 41.7101,
           "fx": 7.8375,
           "equiv": 326.9016,
@@ -56954,17 +56954,17 @@ window.HISTORICAL_DATA = {
         {
           "date": "2023-07-03",
           "local": 328.3794,
-          "adr": 41.8073,
+          "adr": 41.8072,
           "fx": 7.8373,
-          "equiv": 327.656,
+          "equiv": 327.6559,
           "premium": -0.2203
         },
         {
           "date": "2023-07-04",
           "local": 329.5453,
-          "adr": 41.8073,
+          "adr": 41.8072,
           "fx": 7.8341,
-          "equiv": 327.5222,
+          "equiv": 327.5221,
           "premium": -0.6139
         },
         {
@@ -56989,7 +56989,7 @@ window.HISTORICAL_DATA = {
           "adr": 41.6615,
           "fx": 7.8204,
           "equiv": 325.8097,
-          "premium": 2.6807
+          "premium": 2.6806
         },
         {
           "date": "2023-07-10",
@@ -57017,7 +57017,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-07-13",
-          "local": 339.8435,
+          "local": 339.8436,
           "adr": 44.0808,
           "fx": 7.8255,
           "equiv": 344.9535,
@@ -57197,7 +57197,7 @@ window.HISTORICAL_DATA = {
           "adr": 41.0397,
           "fx": 7.8176,
           "equiv": 320.8319,
-          "premium": -0.8909
+          "premium": -0.891
         },
         {
           "date": "2023-08-15",
@@ -57237,7 +57237,7 @@ window.HISTORICAL_DATA = {
           "adr": 39.6212,
           "fx": 7.8326,
           "equiv": 310.3385,
-          "premium": 0.4498
+          "premium": 0.4499
         },
         {
           "date": "2023-08-22",
@@ -57289,7 +57289,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-08-30",
-          "local": 316.5267,
+          "local": 316.5266,
           "adr": 40.8551,
           "fx": 7.8462,
           "equiv": 320.5572,
@@ -57385,7 +57385,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-09-15",
-          "local": 308.1714,
+          "local": 308.1715,
           "adr": 39.2423,
           "fx": 7.8292,
           "equiv": 307.2356,
@@ -57540,7 +57540,7 @@ window.HISTORICAL_DATA = {
           "local": 307.5886,
           "adr": 38.3484,
           "fx": 7.8197,
-          "equiv": 299.8731,
+          "equiv": 299.873,
           "premium": -2.5084
         },
         {
@@ -57628,7 +57628,7 @@ window.HISTORICAL_DATA = {
           "local": 284.4659,
           "adr": 35.8417,
           "fx": 7.8204,
-          "equiv": 280.2966,
+          "equiv": 280.2967,
           "premium": -1.4657
         },
         {
@@ -57809,7 +57809,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-11-29",
-          "local": 307.9771,
+          "local": 307.9772,
           "adr": 39.5046,
           "fx": 7.7945,
           "equiv": 307.9189,
@@ -57841,7 +57841,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-05",
-          "local": 300.0106,
+          "local": 300.0105,
           "adr": 38.5233,
           "fx": 7.8155,
           "equiv": 301.08,
@@ -57881,7 +57881,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-12",
-          "local": 302.5365,
+          "local": 302.5366,
           "adr": 38.6399,
           "fx": 7.8062,
           "equiv": 301.6307,
@@ -57941,11 +57941,11 @@ window.HISTORICAL_DATA = {
           "adr": 39.3006,
           "fx": 7.8069,
           "equiv": 306.814,
-          "premium": 1.0246
+          "premium": 1.0245
         },
         {
           "date": "2023-12-22",
-          "local": 266.2011,
+          "local": 266.201,
           "adr": 35.4337,
           "fx": 7.8096,
           "equiv": 276.7213,
@@ -57953,7 +57953,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-25",
-          "local": 266.2011,
+          "local": 266.201,
           "adr": 35.4337,
           "fx": 7.8099,
           "equiv": 276.7326,
@@ -57961,7 +57961,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-26",
-          "local": 266.2011,
+          "local": 266.201,
           "adr": 36.6579,
           "fx": 7.8099,
           "equiv": 286.2942,
@@ -57977,7 +57977,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2023-12-28",
-          "local": 284.6603,
+          "local": 284.6602,
           "adr": 36.3372,
           "fx": 7.8099,
           "equiv": 283.7902,
@@ -58068,7 +58068,7 @@ window.HISTORICAL_DATA = {
           "local": 280.1912,
           "adr": 35.8806,
           "fx": 7.8178,
-          "equiv": 280.5072,
+          "equiv": 280.5073,
           "premium": 0.1128
         },
         {
@@ -58092,7 +58092,7 @@ window.HISTORICAL_DATA = {
           "local": 266.784,
           "adr": 34.2386,
           "fx": 7.8263,
-          "equiv": 267.9617,
+          "equiv": 267.9616,
           "premium": 0.4414
         },
         {
@@ -58169,7 +58169,7 @@ window.HISTORICAL_DATA = {
         },
         {
           "date": "2024-01-31",
-          "local": 262.8979,
+          "local": 262.8978,
           "adr": 33.85,
           "fx": 7.817,
           "equiv": 264.6053,
@@ -58245,7 +58245,7 @@ window.HISTORICAL_DATA = {
           "adr": 35.7446,
           "fx": 7.8177,
           "equiv": 279.4396,
-          "premium": 0.1485
+          "premium": 0.1484
         },
         {
           "date": "2024-02-14",
@@ -58493,7 +58493,7 @@ window.HISTORICAL_DATA = {
           "adr": 37.8043,
           "fx": 7.823,
           "equiv": 295.7421,
-          "premium": 0.7968
+          "premium": 0.7969
         },
         {
           "date": "2024-03-28",
@@ -58604,7 +58604,7 @@ window.HISTORICAL_DATA = {
           "local": 293.2098,
           "adr": 37.2894,
           "fx": 7.8289,
-          "equiv": 291.9349,
+          "equiv": 291.9348,
           "premium": -0.4348
         },
         {
@@ -58637,7 +58637,7 @@ window.HISTORICAL_DATA = {
           "adr": 39.8544,
           "fx": 7.8317,
           "equiv": 312.1278,
-          "premium": 0.2723
+          "premium": 0.2722
         },
         {
           "date": "2024-04-23",
@@ -59989,7 +59989,7 @@ window.HISTORICAL_DATA = {
           "adr": 51.5774,
           "fx": 7.7751,
           "equiv": 401.0194,
-          "premium": -0.1383
+          "premium": -0.1384
         },
         {
           "date": "2024-12-16",

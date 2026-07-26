@@ -135,6 +135,12 @@
             animation: borderPulse 2s infinite;
         }
 
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
         /* Navigation Layout */
         .nav-section {
             display: flex;
@@ -442,6 +448,11 @@
             height: 380px;
             overflow: hidden;
             min-width: 0;
+        }
+
+        .chart-wrapper canvas {
+            width: 100% !important;
+            height: 100% !important;
         }
 
         /* Calculator Styles */
@@ -794,26 +805,60 @@
         @media (max-width: 768px) {
 
             /* ① Shrink body padding & support iOS safe area */
+            html, body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
             body {
                 padding: 0.75rem 0.875rem;
                 padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+            }
+            .container,
+            .main-dashboard-wrapper {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow-x: hidden;
+            }
+
+            /* Prevent Flexbox overflow stretching on mobile */
+            .nav-section,
+            .controls-row,
+            .stock-tabs,
+            .dr-tabs,
+            .timeframe-group,
+            .stats-grid,
+            .main-grid,
+            .chart-card,
+            .table-card {
+                min-width: 0 !important;
             }
 
             /* ① Compact header */
             header {
                 margin-bottom: 1.25rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             header::after {
                 bottom: -0.625rem;
             }
             .header-title-container {
-                gap: 0.75rem;
-                flex-wrap: nowrap;
+                display: flex;
+                flex-direction: column;
                 align-items: flex-start;
+                gap: 0.75rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             h1 {
                 font-size: 1.35rem;
                 letter-spacing: -0.02em;
+                word-wrap: break-word;
+                word-break: break-all;
             }
             .subtitle {
                 font-size: 0.8rem;
@@ -830,6 +875,9 @@
             .nav-section {
                 gap: 0.625rem;
                 margin-bottom: 1.25rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .stock-tabs {
                 display: flex;
@@ -841,6 +889,9 @@
                 padding: 0.25rem;
                 gap: 0.375rem;
                 border-radius: 12px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .stock-tabs::-webkit-scrollbar { display: none; }
             .stock-btn {
@@ -857,6 +908,9 @@
                 flex-direction: column;
                 align-items: stretch;
                 gap: 0.625rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .dr-tabs {
                 display: flex;
@@ -867,6 +921,9 @@
                 scrollbar-width: none;
                 padding: 0.25rem;
                 gap: 0.25rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .dr-tabs::-webkit-scrollbar { display: none; }
             .dr-btn {
@@ -886,6 +943,9 @@
                 scrollbar-width: none;
                 padding: 0.25rem;
                 justify-content: flex-start;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .timeframe-group::-webkit-scrollbar { display: none; }
             .time-btn {
@@ -901,6 +961,9 @@
                 grid-template-columns: 1fr;
                 gap: 0.75rem;
                 margin-bottom: 1.25rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .stat-card {
                 padding: 1rem 1.125rem;
@@ -909,6 +972,9 @@
                 flex-direction: row;
                 align-items: center;
                 gap: 1rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .stat-card:hover {
                 transform: none;
@@ -945,13 +1011,21 @@
 
             /* ④ Chart – taller on mobile for readability */
             .main-grid {
+                display: grid;
+                grid-template-columns: 1fr !important;
                 gap: 1rem;
                 margin-bottom: 1.25rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .chart-card {
                 padding: 1.125rem 1.125rem;
                 min-height: unset;
                 border-radius: 16px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .chart-header {
                 flex-wrap: wrap;
@@ -965,9 +1039,15 @@
                 font-size: 0.75rem;
             }
             .chart-wrapper {
-                height: 260px;
+                height: 260px !important;
+                width: 100% !important;
+                max-width: 100% !important;
                 overflow: hidden;
                 min-width: 0;
+            }
+            .chart-wrapper canvas {
+                width: 100% !important;
+                height: 100% !important;
             }
             .chart-toggle-group {
                 order: 3;
@@ -1031,6 +1111,9 @@
             .table-card {
                 padding: 1.125rem 1.125rem;
                 border-radius: 16px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             .table-header {
                 flex-direction: column;
@@ -1251,9 +1334,15 @@
             <!-- Chart Card -->
             <div class="chart-card">
                 <div class="chart-header">
-                    <div class="chart-title">
-                        <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="17" x2="9" y2="10"></line><line x1="15" y1="17" x2="15" y2="7"></line><line x1="12" y1="17" x2="12" y2="13"></line></svg>
-                        <span id="chart-main-title">折溢價率波動趨勢</span>
+                    <div class="chart-title" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="17" x2="9" y2="10"></line><line x1="15" y1="17" x2="15" y2="7"></line><line x1="12" y1="17" x2="12" y2="13"></line></svg>
+                            <span id="chart-main-title">折溢價率波動趨勢</span>
+                        </div>
+                        <span id="ws-status-badge" style="display: none; align-items: center; gap: 0.35rem; font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 30px; font-weight: 600; line-height: 1; transition: all 0.3s ease;">
+                            <span style="width: 7px; height: 7px; border-radius: 50%; display: inline-block;" id="ws-status-dot"></span>
+                            <span id="ws-status-text">連線中斷</span>
+                        </span>
                     </div>
                     <!-- Binance Toggle buttons -->
                     <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none;">
@@ -1420,8 +1509,41 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             runDashboardInit = () => {
-                const data = window.HISTORICAL_DATA;
+                let data = window.HISTORICAL_DATA;
             if (!data) return;
+
+            // Clean and initialize 1-minute Binance data to filter out stale data (>1 hour)
+            const seriesKey = 'skhynix_binance';
+            if (data.series && data.series[seriesKey]) {
+                const binanceSeries = data.series[seriesKey];
+                
+                const getCleanIntraday1m = () => {
+                    const jsonPoints = binanceSeries.intraday_1m || [];
+                    let localPoints = [];
+                    try {
+                        const stored = localStorage.getItem('binance_intraday_1m');
+                        if (stored) {
+                            localPoints = JSON.parse(stored);
+                        }
+                    } catch (e) {}
+                    
+                    const oneHourAgo = Date.now() - 60 * 60 * 1000;
+                    const allPoints = [...jsonPoints, ...localPoints];
+                    
+                    const uniquePointsMap = new Map();
+                    allPoints.forEach(item => {
+                        if (item.timestamp && item.timestamp > oneHourAgo) {
+                            uniquePointsMap.set(item.timestamp, item);
+                        }
+                    });
+                    
+                    return Array.from(uniquePointsMap.values())
+                        .sort((a, b) => a.timestamp - b.timestamp)
+                        .slice(-60);
+                };
+                
+                binanceSeries.intraday_1m = getCleanIntraday1m();
+            }
 
             // Global stock styling themes map
             const STOCK_THEMES = {
@@ -1442,7 +1564,7 @@
             const rowsPerPage = () => window.innerWidth <= 768 ? 10 : 15;
             let filteredHistory = [];
             let chartInstance = null;
-            let activeBinanceChartView = 'live';
+            let activeBinanceChartView = 'live_1m';
             let fxDirectionFlipped = false;
 
             // DOM Elements
@@ -1509,8 +1631,9 @@
                             fxDirectionFlipped = false; // Reset FX conversion direction
                             
                             // Reset Binance chart view states
-                            activeBinanceChartView = 'live';
-                            document.getElementById('btn-chart-live').classList.add('active');
+                            activeBinanceChartView = 'live_1m';
+                            document.getElementById('btn-chart-live-1m').classList.add('active');
+                            document.getElementById('btn-chart-live').classList.remove('active');
                             document.getElementById('btn-chart-daily').classList.remove('active');
                             
                             buildDRTabs();
@@ -1551,8 +1674,9 @@
                             fxDirectionFlipped = false; // Reset FX conversion direction
                             
                             // Reset Binance chart view states
-                            activeBinanceChartView = 'live';
-                            document.getElementById('btn-chart-live').classList.add('active');
+                            activeBinanceChartView = 'live_1m';
+                            document.getElementById('btn-chart-live-1m').classList.add('active');
+                            document.getElementById('btn-chart-live').classList.remove('active');
                             document.getElementById('btn-chart-daily').classList.remove('active');
                             
                             // Set active class
@@ -1621,9 +1745,26 @@
 
             // 5. Update Statistics cards
             function renderStats() {
-                if (filteredHistory.length === 0) {
+                const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                let datasetForStats = filteredHistory;
+                let latestDateText = '';
+
+                if (isBinance && activeBinanceChartView === 'live_1m') {
+                    const seriesKey = `${currentStock}_${currentDr}`;
+                    datasetForStats = data.series[seriesKey]?.intraday_1m || [];
+                    latestDateText = '即時 (1分鐘)';
+                } else if (isBinance && activeBinanceChartView === 'live') {
+                    const seriesKey = `${currentStock}_${currentDr}`;
+                    const dateSelect = document.getElementById('binance-date-select');
+                    const selectedDate = dateSelect ? dateSelect.value : '';
+                    const data15m = data.series[seriesKey]?.intraday_15m || [];
+                    datasetForStats = data15m.filter(item => item.time && item.time.startsWith(selectedDate));
+                    latestDateText = `15分鐘 (${selectedDate})`;
+                }
+
+                if (datasetForStats.length === 0) {
                     valLatest.innerText = '--';
-                    descLatest.innerText = '無收盤價數據';
+                    descLatest.innerText = '無數據';
                     valMean.innerText = '--';
                     valMedian.innerText = '--';
                     valRange.innerText = '--';
@@ -1631,16 +1772,21 @@
                     return;
                 }
 
-                const latestRecord = filteredHistory[filteredHistory.length - 1];
+                const latestRecord = datasetForStats[datasetForStats.length - 1];
                 const latestPrem = latestRecord.premium;
                 
                 // Latest close value & style
                 valLatest.innerText = (latestPrem >= 0 ? '+' : '') + latestPrem.toFixed(2) + '%';
                 valLatest.className = 'stat-value ' + (latestPrem >= 0 ? 'up' : 'down');
-                descLatest.innerText = `交易收盤日期: ${latestRecord.date}`;
+                
+                if (latestDateText) {
+                    descLatest.innerText = `交易時間: ${latestDateText} ${latestRecord.time}`;
+                } else {
+                    descLatest.innerText = `交易收盤日期: ${latestRecord.date}`;
+                }
 
                 // Calculate arrays of clean values
-                const prems = filteredHistory
+                const prems = datasetForStats
                     .map(item => item.premium)
                     .filter(v => v !== null && !isNaN(v));
 
@@ -1854,6 +2000,7 @@
                     document.getElementById('binance-date-select').style.display = 'none';
                     timeframeGroup.style.opacity = '1';
                     timeframeGroup.style.pointerEvents = 'auto';
+                    updateWsStatusBadge('hidden');
 
                     if (filteredHistory.length === 0) return;
 
@@ -1865,6 +2012,7 @@
                 } else {
                     // Show toggle
                     toggleGroup.style.display = 'flex';
+                    updateWsStatusBadge(wsConnectionState);
                     
                     const seriesKey = `${currentStock}_${currentDr}`;
                     const seriesData = data.series[seriesKey];
@@ -1872,7 +2020,21 @@
 
                     const dateSelect = document.getElementById('binance-date-select');
 
-                    if (activeBinanceChartView === 'live') {
+                    if (activeBinanceChartView === 'live_1m') {
+                        // Hide date select and dim timeframe selector
+                        dateSelect.style.display = 'none';
+                        timeframeGroup.style.opacity = '0.35';
+                        timeframeGroup.style.pointerEvents = 'none';
+
+                        const data1m = seriesData.intraday_1m || [];
+                        if (data1m.length > 0) {
+                            chartInstance = createLineChart(ctx, data1m, `1 分鐘即時折溢價率 (%) (近60分鐘)`, theme);
+                        } else {
+                            chartInstance = createLineChart(ctx,
+                                [{time: '暫無數據', local: 0, adr: 0, premium: 0}],
+                                '1 分鐘即時折溢價率 (%)', theme);
+                        }
+                    } else if (activeBinanceChartView === 'live') {
                         // Dim timeframe selector (not applicable to 15m intraday)
                         timeframeGroup.style.opacity = '0.35';
                         timeframeGroup.style.pointerEvents = 'none';
@@ -1921,6 +2083,7 @@
                         dateSelect.style.display = 'none';
                         timeframeGroup.style.opacity = '1';
                         timeframeGroup.style.pointerEvents = 'auto';
+                        updateWsStatusBadge('hidden');
 
                         if (filteredHistory.length > 0) {
                             chartInstance = createLineChart(ctx, filteredHistory, '日線級別歷史溢價 (%)', theme, false);
@@ -2269,11 +2432,23 @@
             });
 
             // Bind click events to Binance Chart Toggle buttons
+            document.getElementById('btn-chart-live-1m').addEventListener('click', () => {
+                if (activeBinanceChartView === 'live_1m') return;
+                activeBinanceChartView = 'live_1m';
+                document.getElementById('btn-chart-live-1m').classList.add('active');
+                document.getElementById('btn-chart-live').classList.remove('active');
+                document.getElementById('btn-chart-daily').classList.remove('active');
+                renderStats();
+                renderChart();
+            });
+
             document.getElementById('btn-chart-live').addEventListener('click', () => {
                 if (activeBinanceChartView === 'live') return;
                 activeBinanceChartView = 'live';
                 document.getElementById('btn-chart-live').classList.add('active');
+                document.getElementById('btn-chart-live-1m').classList.remove('active');
                 document.getElementById('btn-chart-daily').classList.remove('active');
+                renderStats();
                 renderChart();
             });
 
@@ -2282,6 +2457,8 @@
                 activeBinanceChartView = 'daily';
                 document.getElementById('btn-chart-daily').classList.add('active');
                 document.getElementById('btn-chart-live').classList.remove('active');
+                document.getElementById('btn-chart-live-1m').classList.remove('active');
+                renderStats();
                 renderChart();
             });
 
@@ -2466,6 +2643,203 @@
                 startBackgroundPolling();
             }
 
+            // Real-time price tracking via Binance WebSockets (bypasses CORS)
+            let latestPriceDr = null;
+            let latestPriceLocal = null;
+            let binanceWs = null;
+
+            function updateLivePremiumUI(localPrice, drPrice) {
+                const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                if (!isBinance) return;
+                if (activeBinanceChartView !== 'live_1m') return;
+
+                const ratio = 0.1;
+                const premium = ((drPrice / ratio) / localPrice - 1) * 100;
+
+                // Update the "Latest Premium" card
+                valLatest.innerText = (premium >= 0 ? '+' : '') + premium.toFixed(2) + '%';
+                valLatest.className = 'stat-value ' + (premium >= 0 ? 'up' : 'down');
+                
+                const now = new Date();
+                const timeStr = now.toTimeString().split(' ')[0];
+                descLatest.innerText = `即時成交 (WebSocket) ${timeStr}`;
+
+                // Update calculator if open and has SK Hynix select
+                const calcDrPriceInput = document.getElementById('calc-dr-price');
+                const calcLocalPriceInput = document.getElementById('calc-local-price');
+                // (Only update inputs if the user is not actively editing them)
+                if (calcDrPriceInput && document.activeElement !== calcDrPriceInput) {
+                    calcDrPriceInput.value = drPrice;
+                }
+                if (calcLocalPriceInput && document.activeElement !== calcLocalPriceInput) {
+                    calcLocalPriceInput.value = localPrice;
+                }
+                if (typeof calculatePremium === 'function') {
+                    calculatePremium();
+                }
+            }
+
+            const WS_DOMAINS = [
+                "fstream.binance.com",
+                "fstream.binance.me",
+                "fstream.binance.info",
+                "fstream.binance.cloud"
+            ];
+            let currentWsDomainIndex = 0;
+            let wsConnectionState = 'disconnected'; // 'connecting', 'connected', 'disconnected'
+
+            function updateWsStatusBadge(status) {
+                wsConnectionState = status;
+                const badge = document.getElementById('ws-status-badge');
+                const dot = document.getElementById('ws-status-dot');
+                const text = document.getElementById('ws-status-text');
+                if (!badge || !dot || !text) return;
+
+                const isBinanceLive = currentStock === 'skhynix' && currentDr === 'binance' && 
+                                     (activeBinanceChartView === 'live_1m' || activeBinanceChartView === 'live');
+
+                if (status === 'hidden' || !isBinanceLive) {
+                    badge.style.display = 'none';
+                    return;
+                }
+
+                badge.style.display = 'inline-flex';
+                if (status === 'connecting') {
+                    badge.style.background = 'rgba(245, 158, 11, 0.08)';
+                    badge.style.color = '#f59e0b';
+                    dot.style.background = '#f59e0b';
+                    dot.style.boxShadow = 'none';
+                    dot.style.animation = 'none';
+                    text.innerText = `報價連線中 (${WS_DOMAINS[currentWsDomainIndex]})...`;
+                } else if (status === 'connected') {
+                    badge.style.background = 'rgba(16, 185, 129, 0.08)';
+                    badge.style.color = '#10b981';
+                    dot.style.background = '#10b981';
+                    dot.style.boxShadow = '0 0 8px #10b981';
+                    dot.style.animation = 'pulse-dot 1.5s infinite';
+                    text.innerText = '即時串流中';
+                } else if (status === 'disconnected') {
+                    badge.style.background = 'rgba(239, 68, 68, 0.08)';
+                    badge.style.color = '#ef4444';
+                    dot.style.background = '#ef4444';
+                    dot.style.boxShadow = 'none';
+                    dot.style.animation = 'none';
+                    text.innerText = '連線中斷';
+                }
+            }
+
+            function initBinanceWebSocket() {
+                const host = WS_DOMAINS[currentWsDomainIndex];
+                const wsUrl = `wss://${host}/market/stream?streams=skhyusdt@ticker/skhynixusdt@ticker`;
+                console.log(`Connecting to Binance WebSocket: ${wsUrl}`);
+                updateWsStatusBadge('connecting');
+                
+                try {
+                    binanceWs = new WebSocket(wsUrl);
+                    
+                    binanceWs.onopen = () => {
+                        console.log(`WebSocket connected to ${host}`);
+                        updateWsStatusBadge('connected');
+                    };
+                    
+                    binanceWs.onmessage = (event) => {
+                        try {
+                            const msg = JSON.parse(event.data);
+                            const streamName = msg.stream;
+                            const rawData = msg.data;
+                            
+                            let priceChanged = false;
+                            if (streamName === "skhyusdt@ticker") {
+                                latestPriceDr = parseFloat(rawData.c);
+                                priceChanged = true;
+                            } else if (streamName === "skhynixusdt@ticker") {
+                                latestPriceLocal = parseFloat(rawData.c);
+                                priceChanged = true;
+                            }
+                            
+                            if (priceChanged && latestPriceDr !== null && latestPriceLocal !== null) {
+                                updateLivePremiumUI(latestPriceLocal, latestPriceDr);
+                            }
+                        } catch (e) {
+                            console.error("Error parsing WebSocket message:", e);
+                        }
+                    };
+                    
+                    binanceWs.onclose = () => {
+                        console.warn(`Binance WebSocket closed on ${host}, rotating server domain...`);
+                        updateWsStatusBadge('disconnected');
+                        // Rotate to the next mirror domain
+                        currentWsDomainIndex = (currentWsDomainIndex + 1) % WS_DOMAINS.length;
+                        setTimeout(initBinanceWebSocket, 5000);
+                    };
+                    
+                    binanceWs.onerror = (err) => {
+                        console.error(`Binance WebSocket error on ${host}:`, err);
+                        binanceWs.close();
+                    };
+                } catch (e) {
+                    console.error(`Failed to initialize Binance WebSocket on ${host}:`, e);
+                    currentWsDomainIndex = (currentWsDomainIndex + 1) % WS_DOMAINS.length;
+                    updateWsStatusBadge('disconnected');
+                    setTimeout(initBinanceWebSocket, 5000);
+                }
+            }
+
+            function startLiveBinanceUpdates() {
+                // Initialize WebSocket for real-time streaming
+                initBinanceWebSocket();
+
+                // Append a new 1-minute data point every 60 seconds using the latest prices received
+                setInterval(() => {
+                    const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                    if (!isBinance) return;
+                    if (latestPriceDr === null || latestPriceLocal === null) return;
+
+                    const ratio = 0.1;
+                    const premium = ((latestPriceDr / ratio) / latestPriceLocal - 1) * 100;
+                    
+                    const now = new Date();
+                    const timeStr = now.toTimeString().split(' ')[0]; // "HH:MM:SS"
+                    
+                    const seriesKey = 'skhynix_binance';
+                    if (data.series && data.series[seriesKey]) {
+                        const binanceSeries = data.series[seriesKey];
+                        if (!binanceSeries.intraday_1m) {
+                            binanceSeries.intraday_1m = [];
+                        }
+                        
+                        // Check if the last record has the same time to avoid duplicates
+                        const lastRecord = binanceSeries.intraday_1m[binanceSeries.intraday_1m.length - 1];
+                        if (lastRecord && lastRecord.time === timeStr) {
+                            return;
+                        }
+                        
+                        binanceSeries.intraday_1m.push({
+                            "time": timeStr,
+                            "local": latestPriceLocal,
+                            "adr": latestPriceDr,
+                            "premium": parseFloat(premium.toFixed(4)),
+                            "timestamp": Date.now()
+                        });
+                        
+                        if (binanceSeries.intraday_1m.length > 60) {
+                            binanceSeries.intraday_1m.shift();
+                        }
+                        
+                        // Save to localStorage
+                        try {
+                            localStorage.setItem('binance_intraday_1m', JSON.stringify(binanceSeries.intraday_1m));
+                        } catch (e) {}
+                        
+                        // Re-render chart if the active view is live_1m
+                        if (activeBinanceChartView === 'live_1m') {
+                            renderStats();
+                            renderChart();
+                        }
+                    }
+                }, 60000);
+            }
+
             // RUN INITIALIZATION
             buildStockTabs();
             buildDRTabs();
@@ -2474,6 +2848,23 @@
             renderDashboard();
             initCalculatorOptions();
             initUpdateTimer();
+            startLiveBinanceUpdates();
+
+            // Auto-reconnect WebSocket when user unlocks their phone or returns to the tab
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                    if (!isBinance) return;
+                    console.log("Tab became active. Re-syncing WebSocket price feed...");
+                    if (binanceWs) {
+                        try {
+                            binanceWs.onclose = null;
+                            binanceWs.close();
+                        } catch (e) {}
+                    }
+                    initBinanceWebSocket();
+                }
+            });
             };
             if (typeof window.HISTORICAL_DATA !== 'undefined') {
                 runDashboardInit();
