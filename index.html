@@ -1630,10 +1630,10 @@
                             fxDirectionFlipped = false; // Reset FX conversion direction
                             
                             // Reset Binance chart view states
-                            activeBinanceChartView = 'live_1m';
-                            document.getElementById('btn-chart-live-1m').classList.add('active');
-                            document.getElementById('btn-chart-live').classList.remove('active');
-                            document.getElementById('btn-chart-daily').classList.remove('active');
+                            activeBinanceChartView = 'live';
+                            document.getElementById('btn-chart-live-1m')?.classList.remove('active');
+                            document.getElementById('btn-chart-live')?.classList.add('active');
+                            document.getElementById('btn-chart-daily')?.classList.remove('active');
                             
                             buildDRTabs();
                             updateTheme();
@@ -1673,10 +1673,10 @@
                             fxDirectionFlipped = false; // Reset FX conversion direction
                             
                             // Reset Binance chart view states
-                            activeBinanceChartView = 'live_1m';
-                            document.getElementById('btn-chart-live-1m').classList.add('active');
-                            document.getElementById('btn-chart-live').classList.remove('active');
-                            document.getElementById('btn-chart-daily').classList.remove('active');
+                            activeBinanceChartView = 'live';
+                            document.getElementById('btn-chart-live-1m')?.classList.remove('active');
+                            document.getElementById('btn-chart-live')?.classList.add('active');
+                            document.getElementById('btn-chart-daily')?.classList.remove('active');
                             
                             // Set active class
                             document.querySelectorAll('.dr-btn').forEach(b => b.classList.remove('active'));
@@ -2429,35 +2429,44 @@
             });
 
             // Bind click events to Binance Chart Toggle buttons
-            document.getElementById('btn-chart-live-1m').addEventListener('click', () => {
-                if (activeBinanceChartView === 'live_1m') return;
-                activeBinanceChartView = 'live_1m';
-                document.getElementById('btn-chart-live-1m').classList.add('active');
-                document.getElementById('btn-chart-live').classList.remove('active');
-                document.getElementById('btn-chart-daily').classList.remove('active');
-                renderStats();
-                renderChart();
-            });
+            const btnLive1m = document.getElementById('btn-chart-live-1m');
+            if (btnLive1m) {
+                btnLive1m.addEventListener('click', () => {
+                    if (activeBinanceChartView === 'live_1m') return;
+                    activeBinanceChartView = 'live_1m';
+                    btnLive1m.classList.add('active');
+                    document.getElementById('btn-chart-live')?.classList.remove('active');
+                    document.getElementById('btn-chart-daily')?.classList.remove('active');
+                    renderStats();
+                    renderChart();
+                });
+            }
 
-            document.getElementById('btn-chart-live').addEventListener('click', () => {
-                if (activeBinanceChartView === 'live') return;
-                activeBinanceChartView = 'live';
-                document.getElementById('btn-chart-live').classList.add('active');
-                document.getElementById('btn-chart-live-1m').classList.remove('active');
-                document.getElementById('btn-chart-daily').classList.remove('active');
-                renderStats();
-                renderChart();
-            });
+            const btnLive = document.getElementById('btn-chart-live');
+            if (btnLive) {
+                btnLive.addEventListener('click', () => {
+                    if (activeBinanceChartView === 'live') return;
+                    activeBinanceChartView = 'live';
+                    btnLive.classList.add('active');
+                    document.getElementById('btn-chart-live-1m')?.classList.remove('active');
+                    document.getElementById('btn-chart-daily')?.classList.remove('active');
+                    renderStats();
+                    renderChart();
+                });
+            }
 
-            document.getElementById('btn-chart-daily').addEventListener('click', () => {
-                if (activeBinanceChartView === 'daily') return;
-                activeBinanceChartView = 'daily';
-                document.getElementById('btn-chart-daily').classList.add('active');
-                document.getElementById('btn-chart-live').classList.remove('active');
-                document.getElementById('btn-chart-live-1m').classList.remove('active');
-                renderStats();
-                renderChart();
-            });
+            const btnDaily = document.getElementById('btn-chart-daily');
+            if (btnDaily) {
+                btnDaily.addEventListener('click', () => {
+                    if (activeBinanceChartView === 'daily') return;
+                    activeBinanceChartView = 'daily';
+                    btnDaily.classList.add('active');
+                    document.getElementById('btn-chart-live-1m')?.classList.remove('active');
+                    document.getElementById('btn-chart-live')?.classList.remove('active');
+                    renderStats();
+                    renderChart();
+                });
+            }
 
             document.getElementById('binance-date-select').addEventListener('change', () => {
                 renderChart();
