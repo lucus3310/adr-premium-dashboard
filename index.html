@@ -973,6 +973,8 @@
                 order: 3;
                 width: 100%;
                 justify-content: center;
+                margin-left: 0;
+                margin-top: 0.25rem;
             }
             .chart-toggle-btn {
                 flex: 1;
@@ -1102,6 +1104,9 @@
             padding: 2px;
             border-radius: 8px;
             border: 1px solid var(--card-border);
+            margin-left: 1rem;
+            align-items: center;
+            gap: 0.5rem;
         }
         .chart-toggle-btn {
             background: transparent;
@@ -1251,7 +1256,7 @@
                         <span id="chart-main-title">折溢價率波動趨勢</span>
                     </div>
                     <!-- Binance Toggle buttons -->
-                    <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none; margin-left: 1rem; align-items: center; gap: 0.5rem;">
+                    <div class="chart-toggle-group" id="binance-chart-toggle" style="display: none;">
                         <button class="chart-toggle-btn active" id="btn-chart-live">📊 15分鐘</button>
                         <button class="chart-toggle-btn" id="btn-chart-daily">📅 日線歷史</button>
                         <select id="binance-date-select" style="display: none; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--card-border); color: var(--text-primary); padding: 0.3rem 0.6rem; border-radius: 8px; font-size: 0.75rem; cursor: pointer; outline: none; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -1425,7 +1430,8 @@
                 samsung: { primary: '#3b82f6', secondary: '#1d4ed8', glow: 'rgba(59, 130, 246, 0.15)' },
                 asml: { primary: '#34d399', secondary: '#059669', glow: 'rgba(52, 211, 153, 0.15)' },
                 alibaba: { primary: '#f97316', secondary: '#c2410c', glow: 'rgba(249, 115, 22, 0.15)' },
-                tencent: { primary: '#06b6d4', secondary: '#0891b2', glow: 'rgba(6, 182, 212, 0.15)' }
+                tencent: { primary: '#06b6d4', secondary: '#0891b2', glow: 'rgba(6, 182, 212, 0.15)' },
+                crude_oil: { primary: '#eab308', secondary: '#a16207', glow: 'rgba(234, 179, 8, 0.15)' }
             };
 
             // Global State Variables
@@ -1573,7 +1579,7 @@
                 // Show notice if historical data is extremely short (e.g. skhynix US ADR)
                 const seriesKey = `${currentStock}_${currentDr}`;
                 const historyCount = data.series[seriesKey].history.length;
-                if (historyCount < 50 && currentDr !== 'binance') {
+                if (historyCount < 50 && seriesKey !== 'skhynix_binance' && seriesKey !== 'crude_oil_wti') {
                     hynixNoticeEl.style.display = 'flex';
                 } else {
                     hynixNoticeEl.style.display = 'none';
@@ -1665,7 +1671,7 @@
                 valStd.innerText = std.toFixed(2) + '%';
             }
 
-            function createLineChart(ctx, dataset, labelText, theme) {
+            function createLineChart(ctx, dataset, labelText, theme, hasIntradayBtn = false) {
                 const dates = dataset.map(item => item.date || item.time || '');
                 const premiums = dataset.map(item => item.premium);
                 const mainColor = theme.primary;
@@ -1688,10 +1694,8 @@
                             pointBorderColor: '#0b0f19',
                             pointHoverBackgroundColor: '#ffffff',
                             pointHoverBorderColor: mainColor,
-                            pointRadius: (labelText.includes('15 分鐘') || labelText.includes('即時') || labelText.includes('15分鐘'))
-                                ? 3
-                                : (dates.length > 150 ? 0 : (dates.length > 50 ? 1 : 3)),
-                            pointHoverRadius: (labelText.includes('15 分鐘') || labelText.includes('即時') || labelText.includes('15分鐘')) ? 7 : 5,
+                            pointRadius: hasIntradayBtn ? 3 : (dates.length > 150 ? 0 : (dates.length > 50 ? 1 : 3)),
+                            pointHoverRadius: hasIntradayBtn ? 7 : 5,
                             tension: 0.1,
                             fill: true,
                             backgroundColor: chartGradient
@@ -1829,7 +1833,9 @@
 
             // 6. Draw Chart
             function renderChart() {
-                const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
+                const seriesKey = `${currentStock}_${currentDr}`;
+                const seriesData = data.series[seriesKey] || {};
+                const hasIntradayData = seriesData.intraday_15m !== undefined && seriesData.intraday_15m.length > 0;
                 const toggleGroup = document.getElementById('binance-chart-toggle');
                 const timeframeGroup = document.querySelector('.timeframe-group');
                 const theme = STOCK_THEMES[currentStock] || STOCK_THEMES.tsmc;
@@ -1842,7 +1848,7 @@
                     chartInstance.destroy();
                 }
 
-                if (!isBinance) {
+                if (!hasIntradayData) {
                     // Hide toggle, enable timeframe
                     toggleGroup.style.display = 'none';
                     document.getElementById('binance-date-select').style.display = 'none';
@@ -1855,7 +1861,7 @@
                     const drInfo = stockInfo.dr_listings[currentDr];
                     const labelText = `${stockInfo.name} ${drInfo.name} 溢價率 (%)`;
                     
-                    chartInstance = createLineChart(ctx, filteredHistory, labelText, theme);
+                    chartInstance = createLineChart(ctx, filteredHistory, labelText, theme, false);
                 } else {
                     // Show toggle
                     toggleGroup.style.display = 'flex';
@@ -1903,12 +1909,12 @@
                             const selectedDate = dateSelect.value;
                             const filtered15m = data15m.filter(item => item.time && item.time.startsWith(selectedDate));
                             
-                            chartInstance = createLineChart(ctx, filtered15m, `15 分鐘溢價率 (%) — ${selectedDate}`, theme);
+                            chartInstance = createLineChart(ctx, filtered15m, `15 分鐘溢價率 (%) — ${selectedDate}`, theme, true);
                         } else {
                             dateSelect.style.display = 'none';
                             chartInstance = createLineChart(ctx,
                                 [{time: '暫無數據', local: 0, adr: 0, premium: 0}],
-                                '15 分鐘溢價率 (%)', theme);
+                                '15 分鐘溢價率 (%)', theme, true);
                         }
                     } else {
                         // Daily history view
@@ -1917,7 +1923,7 @@
                         timeframeGroup.style.pointerEvents = 'auto';
 
                         if (filteredHistory.length > 0) {
-                            chartInstance = createLineChart(ctx, filteredHistory, '日線級別歷史溢價 (%)', theme);
+                            chartInstance = createLineChart(ctx, filteredHistory, '日線級別歷史溢價 (%)', theme, false);
                         }
                     }
                 }

@@ -59,86 +59,93 @@ def binance_update_loop():
     """
     interval_seconds = 60  # 1 minute
     
+    pairs = [
+        {"series_key": "skhynix_binance", "dr_symbol": "SKHYUSDT", "local_symbol": "SKHYNIXUSDT", "ratio": 0.1},
+        {"series_key": "crude_oil_wti", "dr_symbol": "CLUSDT", "local_symbol": "BZUSDT", "ratio": 1.0}
+    ]
+    
     while True:
-        price_local = get_binance_futures_price("SKHYNIXUSDT")
-        price_dr = get_binance_futures_price("SKHYUSDT")
+        json_path = "data.json"
         
-        if price_local is not None and price_dr is not None:
-            now = datetime.datetime.now()
-            time_str = now.strftime("%H:%M:%S")
-            ratio = 0.1
-            premium = ((price_dr / ratio) / price_local - 1) * 100
+        for pair in pairs:
+            price_local = get_binance_futures_price(pair["local_symbol"])
+            price_dr = get_binance_futures_price(pair["dr_symbol"])
             
-            try:
-                json_path = "data.json"
-                if os.path.exists(json_path):
-                    with open(json_path, "r", encoding="utf-8") as f:
-                        master_data = json.load(f)
-                    
-                    if "series" in master_data and "skhynix_binance" in master_data["series"]:
-                        binance_series = master_data["series"]["skhynix_binance"]
-                        if "intraday_1m" not in binance_series:
-                            binance_series["intraday_1m"] = []
+            if price_local is not None and price_dr is not None:
+                now = datetime.datetime.now()
+                time_str = now.strftime("%H:%M:%S")
+                ratio = pair["ratio"]
+                premium = ((price_dr / ratio) / price_local - 1) * 100
+                
+                try:
+                    if os.path.exists(json_path):
+                        with open(json_path, "r", encoding="utf-8") as f:
+                            master_data = json.load(f)
                         
-                        # Append new 1m intraday price record
-                        new_record = {
-                            "time": time_str,
-                            "local": price_local,
-                            "adr": price_dr,
-                            "premium": round(premium, 4)
-                        }
-                        binance_series["intraday_1m"].append(new_record)
-                        
-                        # Keep only the last 60 minutes of data
-                        if len(binance_series["intraday_1m"]) > 60:
-                            binance_series["intraday_1m"].pop(0)
-                        
-                        # Also update today's last daily history point
-                        today_str = now.strftime("%Y-%m-%d")
-                        history = binance_series.get("history", [])
-                        if history:
-                            if history[-1]["date"] == today_str:
-                                history[-1]["local"] = price_local
-                                history[-1]["adr"] = price_dr
-                                history[-1]["equiv"] = price_dr
-                                history[-1]["premium"] = round(premium, 4)
-                            else:
-                                history.append({
-                                    "date": today_str,
-                                    "local": price_local,
-                                    "adr": price_dr,
-                                    "fx": 1.0,
-                                    "equiv": price_dr,
-                                    "premium": round(premium, 4)
-                                })
-                        
-                        # Re-calculate statistics including this new latest premium
-                        prems = [item["premium"] for item in history]
-                        if prems:
-                            binance_series["stats"] = {
-                                "mean": round(float(np.mean(prems)), 4),
-                                "median": round(float(np.median(prems)), 4),
-                                "min": round(float(np.min(prems)), 4),
-                                "max": round(float(np.max(prems)), 4),
-                                "std": round(float(np.std(prems)), 4),
-                                "latest": round(premium, 4)
+                        if "series" in master_data and pair["series_key"] in master_data["series"]:
+                            binance_series = master_data["series"][pair["series_key"]]
+                            if "intraday_1m" not in binance_series:
+                                binance_series["intraday_1m"] = []
+                            
+                            # Append new 1m intraday price record
+                            new_record = {
+                                "time": time_str,
+                                "local": price_local,
+                                "adr": price_dr,
+                                "premium": round(premium, 4)
                             }
-                        
-                        # Update global last_updated time
-                        master_data["last_updated"] = now.strftime("%Y-%m-%d %H:%M:%S")
-                        
-                        # Save back to data.json
-                        with open(json_path, "w", encoding="utf-8") as f:
-                            json.dump(master_data, f, ensure_ascii=False, indent=2)
-                        
-                        # Save back to data.js
-                        js_path = "data.js"
-                        with open(js_path, "w", encoding="utf-8") as f:
-                            f.write("window.HISTORICAL_DATA = " + json.dumps(master_data, ensure_ascii=False, indent=2) + ";")
-                        
-                        print(f"[{time_str}] 幣安 1 分鐘即時數據更新成功！(Premium: {premium:.2f}%)")
-            except Exception as e:
-                print(f"Error updating Binance intraday data: {e}", file=sys.stderr)
+                            binance_series["intraday_1m"].append(new_record)
+                            
+                            # Keep only the last 60 minutes of data
+                            if len(binance_series["intraday_1m"]) > 60:
+                                binance_series["intraday_1m"].pop(0)
+                            
+                            # Also update today's last daily history point
+                            today_str = now.strftime("%Y-%m-%d")
+                            history = binance_series.get("history", [])
+                            if history:
+                                if history[-1]["date"] == today_str:
+                                    history[-1]["local"] = price_local
+                                    history[-1]["adr"] = price_dr
+                                    history[-1]["equiv"] = price_dr
+                                    history[-1]["premium"] = round(premium, 4)
+                                else:
+                                    history.append({
+                                        "date": today_str,
+                                        "local": price_local,
+                                        "adr": price_dr,
+                                        "fx": 1.0,
+                                        "equiv": price_dr,
+                                        "premium": round(premium, 4)
+                                    })
+                            
+                            # Re-calculate statistics including this new latest premium
+                            prems = [item["premium"] for item in history]
+                            if prems:
+                                binance_series["stats"] = {
+                                    "mean": round(float(np.mean(prems)), 4),
+                                    "median": round(float(np.median(prems)), 4),
+                                    "min": round(float(np.min(prems)), 4),
+                                    "max": round(float(np.max(prems)), 4),
+                                    "std": round(float(np.std(prems)), 4),
+                                    "latest": round(premium, 4)
+                                }
+                            
+                            # Update global last_updated time
+                            master_data["last_updated"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                            
+                            # Save back to data.json
+                            with open(json_path, "w", encoding="utf-8") as f:
+                                json.dump(master_data, f, ensure_ascii=False, indent=2)
+                            
+                            # Save back to data.js
+                            js_path = "data.js"
+                            with open(js_path, "w", encoding="utf-8") as f:
+                                f.write("window.HISTORICAL_DATA = " + json.dumps(master_data, ensure_ascii=False, indent=2) + ";")
+                            
+                            print(f"[{time_str}] {pair['series_key']} 1 分鐘即時數據更新成功！(Premium: {premium:.2f}%)")
+                except Exception as e:
+                    print(f"Error updating Binance intraday data for {pair['series_key']}: {e}", file=sys.stderr)
         
         # Sleep for 1 minute before the next iteration
         time.sleep(interval_seconds)

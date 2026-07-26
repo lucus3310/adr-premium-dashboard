@@ -107,13 +107,30 @@ STOCKS_CONFIG = {
         "local_ticker": "0700.HK",
         "local_currency": "HKD",
         "dr_listings": {
-            "us": {
-                "name": "美股 OTC ADR (TCEHY)",
+            "tencent_otc": {
+                "name": "騰訊 OTC ADR (TCEHY)",
                 "ticker": "TCEHY",
                 "currency": "USD",
                 "fx_ticker": "USDHKD=X",
                 "ratio": 1.0,
                 "csv_name": "tencent_premium.csv"
+            }
+        }
+    },
+    "crude_oil": {
+        "name": "原油期貨 (Crude Oil)",
+        "local_ticker": "BZUSDT",
+        "local_currency": "USDT",
+        "dr_listings": {
+            "wti": {
+                "name": "WTI (CLUSDT)",
+                "ticker": "CLUSDT",
+                "currency": "USDT",
+                "fx_ticker": "1.0",
+                "ratio": 1.0,
+                "csv_name": "crude_oil_spread.csv",
+                "override_local_ticker": "BZUSDT",
+                "override_local_currency": "USDT"
             }
         }
     }
@@ -131,6 +148,18 @@ def get_binance_futures_price(symbol):
             return float(data['price'])
     except Exception as e:
         print(f"Error fetching Binance live price for {symbol}: {e}")
+        # Fallback to Gate.io
+        try:
+            gate_symbol = symbol.replace("USDT", "_USDT") if symbol.endswith("USDT") else symbol
+            print(f"  -> Falling back to Gate.io for {gate_symbol}...")
+            url_gate = f"https://api.gateio.ws/api/v4/futures/usdt/tickers?contract={gate_symbol}"
+            req_gate = urllib.request.Request(url_gate, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req_gate, timeout=5) as r:
+                data_gate = json.loads(r.read().decode())
+                if data_gate and len(data_gate) > 0:
+                    return float(data_gate[0]['last'])
+        except Exception as e2:
+            print(f"Error fetching Gate.io live price for {symbol}: {e2}")
         return None
 
 def get_binance_klines(symbol, interval="1d", limit=1000, time_format="%Y-%m-%d"):
@@ -160,50 +189,93 @@ def get_binance_klines(symbol, interval="1d", limit=1000, time_format="%Y-%m-%d"
             return df
     except Exception as e:
         print(f"Error fetching Binance klines for {symbol}: {e}")
+        # Fallback to Gate.io
+        try:
+            gate_symbol = symbol.replace("USDT", "_USDT") if symbol.endswith("USDT") else symbol
+            print(f"  -> Falling back to Gate.io for {gate_symbol}...")
+            url_gate = f"https://api.gateio.ws/api/v4/futures/usdt/candlesticks?contract={gate_symbol}&limit={limit}&interval={interval}"
+            req_gate = urllib.request.Request(url_gate, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req_gate, timeout=10) as r:
+                data_gate = json.loads(r.read().decode())
+                records = []
+                # Gate.io returns list of dicts: {'t': 1629811200, 'c': '2.1', ...}
+                for item in data_gate:
+                    dt = datetime.datetime.fromtimestamp(item['t'], tz=datetime.timezone.utc)
+                    date_str = dt.strftime(time_format)
+                    records.append((date_str, float(item['c'])))
+                df = pd.DataFrame(records, columns=["Date", "Close"])
+                df["Date"] = pd.to_datetime(df["Date"]).dt.normalize()
+                df = df.set_index("Date")
+                df = df[~df.index.duplicated(keep="last")]
+                return df
+        except Exception as e2:
+            print(f"Error fetching Gate.io klines for {symbol}: {e2}")
         return pd.DataFrame(columns=["Close"])
+
 def get_binance_15m_premium(dr_symbol, local_symbol, ratio, limit=192):
     """
     Fetches 15-minute klines for both dr and local Binance Futures symbols,
     aligns them by timestamp, calculates premium, and returns a list of records.
     limit=192 covers the last 48 hours (192 x 15min = 48h).
     Time labels are expressed in UTC+8 for readability.
+    Falls back to Gate.io if Binance fails.
     """
-    url_dr = f"https://fapi.binance.com/fapi/v1/klines?symbol={dr_symbol}&interval=15m&limit={limit}"
-    url_local = f"https://fapi.binance.com/fapi/v1/klines?symbol={local_symbol}&interval=15m&limit={limit}"
-    try:
-        req_dr = urllib.request.Request(url_dr, headers={'User-Agent': 'Mozilla/5.0'})
+    def fetch_exchange(exchange_dr, exchange_local, ex_limit):
+        if "_" not in exchange_dr: # Binance
+            u_dr = f"https://fapi.binance.com/fapi/v1/klines?symbol={exchange_dr}&interval=15m&limit={ex_limit}"
+            u_loc = f"https://fapi.binance.com/fapi/v1/klines?symbol={exchange_local}&interval=15m&limit={ex_limit}"
+        else: # Gate.io
+            u_dr = f"https://api.gateio.ws/api/v4/futures/usdt/candlesticks?contract={exchange_dr}&limit={ex_limit}&interval=15m"
+            u_loc = f"https://api.gateio.ws/api/v4/futures/usdt/candlesticks?contract={exchange_local}&limit={ex_limit}&interval=15m"
+            
+        req_dr = urllib.request.Request(u_dr, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req_dr, timeout=10) as r:
             data_dr = json.loads(r.read().decode())
-
-        req_local = urllib.request.Request(url_local, headers={'User-Agent': 'Mozilla/5.0'})
+        req_local = urllib.request.Request(u_loc, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req_local, timeout=10) as r:
             data_local = json.loads(r.read().decode())
+            
+        dr_prices = {}
+        local_prices = {}
+        if "_" not in exchange_dr:
+            dr_prices = {item[0]: float(item[4]) for item in data_dr}
+            local_prices = {item[0]: float(item[4]) for item in data_local}
+        else:
+            dr_prices = {item['t'] * 1000: float(item['c']) for item in data_dr}
+            local_prices = {item['t'] * 1000: float(item['c']) for item in data_local}
+        return dr_prices, local_prices
 
-        # Build timestamp -> close price dicts
-        dr_prices = {item[0]: float(item[4]) for item in data_dr}
-        local_prices = {item[0]: float(item[4]) for item in data_local}
-
-        # Join on common timestamps
-        common_ts = sorted(set(dr_prices.keys()) & set(local_prices.keys()))
-        records = []
-        for ts in common_ts:
-            dt_utc = datetime.datetime.fromtimestamp(ts / 1000.0, tz=datetime.timezone.utc)
-            dt_local = dt_utc + datetime.timedelta(hours=8)  # Convert to UTC+8
-            time_str = dt_local.strftime("%m-%d %H:%M")
-            price_dr = dr_prices[ts]
-            price_local = local_prices[ts]
-            premium = ((price_dr / ratio) / price_local - 1) * 100
-            records.append({
-                "time": time_str,
-                "local": round(price_local, 4),
-                "adr": round(price_dr, 4),
-                "premium": round(premium, 4)
-            })
-        print(f"  Binance 15m premium: fetched {len(records)} candles for {dr_symbol}/{local_symbol}")
-        return records
+    try:
+        dr_prices, local_prices = fetch_exchange(dr_symbol, local_symbol, limit)
     except Exception as e:
-        print(f"Error fetching Binance 15m premium for {dr_symbol}/{local_symbol}: {e}")
-        return []
+        print(f"Error fetching Binance 15m premium: {e}")
+        try:
+            print("  -> Falling back to Gate.io...")
+            gate_dr = dr_symbol.replace("USDT", "_USDT") if dr_symbol.endswith("USDT") else dr_symbol
+            gate_loc = local_symbol.replace("USDT", "_USDT") if local_symbol.endswith("USDT") else local_symbol
+            dr_prices, local_prices = fetch_exchange(gate_dr, gate_loc, limit)
+        except Exception as e2:
+            print(f"Error fetching Gate.io 15m premium: {e2}")
+            return []
+
+    # Join on common timestamps
+    common_ts = sorted(set(dr_prices.keys()) & set(local_prices.keys()))
+    records = []
+    for ts in common_ts:
+        dt_utc = datetime.datetime.fromtimestamp(ts / 1000.0, tz=datetime.timezone.utc)
+        dt_local = dt_utc + datetime.timedelta(hours=8)  # Convert to UTC+8
+        time_str = dt_local.strftime("%m-%d %H:%M")
+        price_dr = dr_prices[ts]
+        price_local = local_prices[ts]
+        premium = ((price_dr / ratio) / price_local - 1) * 100
+        records.append({
+            "time": time_str,
+            "local": round(price_local, 4),
+            "adr": round(price_dr, 4),
+            "premium": round(premium, 4)
+        })
+    print(f"  Binance/Gate.io 15m premium: fetched {len(records)} candles for {dr_symbol}/{local_symbol}")
+    return records
 
 def get_live_price(symbol, ticker_obj):
     """
@@ -393,9 +465,14 @@ def fetch_data():
 
     # --- Fetch Binance 15m intraday premium (48h window, auto-refreshes every run) ---
     print("\nFetching Binance 15m intraday premium for skhynix_binance...")
-    records_15m = get_binance_15m_premium("SKHYUSDT", "SKHYNIXUSDT", ratio=0.1, limit=192)
-    if records_15m and "skhynix_binance" in series_data:
-        series_data["skhynix_binance"]["intraday_15m"] = records_15m
+    records_15m_hynix = get_binance_15m_premium("SKHYUSDT", "SKHYNIXUSDT", ratio=0.1, limit=192)
+    if records_15m_hynix and "skhynix_binance" in series_data:
+        series_data["skhynix_binance"]["intraday_15m"] = records_15m_hynix
+
+    print("\nFetching Binance 15m intraday premium for crude_oil_wti...")
+    records_15m_oil = get_binance_15m_premium("CLUSDT", "BZUSDT", ratio=1.0, limit=192)
+    if records_15m_oil and "crude_oil_wti" in series_data:
+        series_data["crude_oil_wti"]["intraday_15m"] = records_15m_oil
 
     print("\n=== Step 3: Compiling Master JSON outputs ===")
 
@@ -423,6 +500,10 @@ def fetch_data():
                     # --- Preserve intraday_1m ---
                     if "intraday_1m" in old_binance:
                         new_binance["intraday_1m"] = old_binance["intraday_1m"]
+
+                    # --- Preserve intraday_15m if new fetch failed ---
+                    if "intraday_15m" in old_binance and "intraday_15m" not in new_binance:
+                        new_binance["intraday_15m"] = old_binance["intraday_15m"]
 
                     # --- Merge history: old rows + new rows, new wins on same date ---
                     old_history = old_binance.get("history", [])
