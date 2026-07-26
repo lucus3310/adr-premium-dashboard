@@ -1776,7 +1776,12 @@
                 const latestPrem = latestRecord.premium;
                 
                 // Latest close value & style
-                valLatest.innerText = (latestPrem >= 0 ? '+' : '') + latestPrem.toFixed(2) + '%';
+                let latestValueStr = (latestPrem >= 0 ? '+' : '') + latestPrem.toFixed(2) + '%';
+                if (currentStock === 'crude_oil') {
+                    const latestSpread = (latestRecord.adr / drInfo.ratio) - latestRecord.local;
+                    latestValueStr += ` ($${latestSpread >= 0 ? '+' : ''}${latestSpread.toFixed(2)})`;
+                }
+                valLatest.innerText = latestValueStr;
                 valLatest.className = 'stat-value ' + (latestPrem >= 0 ? 'up' : 'down');
                 
                 if (latestDateText) {
@@ -1889,12 +1894,19 @@
                                         const prem = record.premium;
                                         const sign = prem >= 0 ? '+' : '';
                                         const arrow = prem >= 0 ? '▲' : '▼';
+                                        
+                                        let displayPrem = `${arrow} 折溢價率：${sign}${prem.toFixed(4)}%`;
+                                        if (currentStock === 'crude_oil') {
+                                            const spreadUsd = (record.adr / drInfo.ratio) - record.local;
+                                            const spreadSign = spreadUsd >= 0 ? '+' : '';
+                                            displayPrem = `${arrow} 價差：$${spreadSign}${spreadUsd.toFixed(2)} (${sign}${prem.toFixed(2)}%)`;
+                                        }
 
                                         if (record.fx !== undefined) {
                                             // Daily history record
                                             const equivSingle = record.equiv / drInfo.ratio;
                                             return [
-                                                `${arrow} 折溢價率：${sign}${prem.toFixed(4)}%`,
+                                                displayPrem,
                                                 `原股收盤：${record.local.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${localCurrency}`,
                                                 `海外存託：${record.adr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`,
                                                 `適用匯率：${record.fx.toFixed(4)} ${drCurrency}→${localCurrency}`,
@@ -1904,7 +1916,7 @@
                                             // Binance intraday (15m or 1m) record
                                             const equivInDr = record.adr / drInfo.ratio;
                                             return [
-                                                `${arrow} 折溢價率：${sign}${prem.toFixed(4)}%`,
+                                                displayPrem,
                                                 `原股合約：${record.local.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${localCurrency}`,
                                                 `海外合約：${record.adr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`,
                                                 `DR 折合單股：${equivInDr.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} ${drCurrency}`
@@ -2648,16 +2660,25 @@
             let latestPriceLocal = null;
             let binanceWs = null;
 
+            let latestPriceDr_oil = null;
+            let latestPriceLocal_oil = null;
+
             function updateLivePremiumUI(localPrice, drPrice) {
-                const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
-                if (!isBinance) return;
+                const seriesKey = `${currentStock}_${currentDr}`;
+                const isValidPair = seriesKey === 'skhynix_binance' || seriesKey === 'crude_oil_wti';
+                if (!isValidPair) return;
                 if (activeBinanceChartView !== 'live_1m') return;
 
-                const ratio = 0.1;
+                const ratio = currentStock === 'crude_oil' ? 1.0 : 0.1;
                 const premium = ((drPrice / ratio) / localPrice - 1) * 100;
 
                 // Update the "Latest Premium" card
-                valLatest.innerText = (premium >= 0 ? '+' : '') + premium.toFixed(2) + '%';
+                let latestValueStr = (premium >= 0 ? '+' : '') + premium.toFixed(2) + '%';
+                if (currentStock === 'crude_oil') {
+                    const spreadUsd = (drPrice / ratio) - localPrice;
+                    latestValueStr += ` ($${spreadUsd >= 0 ? '+' : ''}${spreadUsd.toFixed(2)})`;
+                }
+                valLatest.innerText = latestValueStr;
                 valLatest.className = 'stat-value ' + (premium >= 0 ? 'up' : 'down');
                 
                 const now = new Date();
@@ -2695,7 +2716,7 @@
                 const text = document.getElementById('ws-status-text');
                 if (!badge || !dot || !text) return;
 
-                const isBinanceLive = currentStock === 'skhynix' && currentDr === 'binance' && 
+                const isBinanceLive = (currentStock === 'skhynix' && currentDr === 'binance' || currentStock === 'crude_oil' && currentDr === 'wti') && 
                                      (activeBinanceChartView === 'live_1m' || activeBinanceChartView === 'live');
 
                 if (status === 'hidden' || !isBinanceLive) {
@@ -2791,17 +2812,31 @@
 
                 // Append a new 1-minute data point every 60 seconds using the latest prices received
                 setInterval(() => {
-                    const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
-                    if (!isBinance) return;
-                    if (latestPriceDr === null || latestPriceLocal === null) return;
+                    const seriesKey = `${currentStock}_${currentDr}`;
+                    const isValidPair = seriesKey === 'skhynix_binance' || seriesKey === 'crude_oil_wti';
+                    if (!isValidPair) return;
+                    
+                    let activeDrPrice = null;
+                    let activeLocalPrice = null;
+                    let ratio = 0.1;
+                    
+                    if (seriesKey === 'skhynix_binance') {
+                        activeDrPrice = latestPriceDr;
+                        activeLocalPrice = latestPriceLocal;
+                        ratio = 0.1;
+                    } else if (seriesKey === 'crude_oil_wti') {
+                        activeDrPrice = latestPriceDr_oil;
+                        activeLocalPrice = latestPriceLocal_oil;
+                        ratio = 1.0;
+                    }
+                    
+                    if (activeDrPrice === null || activeLocalPrice === null) return;
 
-                    const ratio = 0.1;
-                    const premium = ((latestPriceDr / ratio) / latestPriceLocal - 1) * 100;
+                    const premium = ((activeDrPrice / ratio) / activeLocalPrice - 1) * 100;
                     
                     const now = new Date();
                     const timeStr = now.toTimeString().split(' ')[0]; // "HH:MM:SS"
                     
-                    const seriesKey = 'skhynix_binance';
                     if (data.series && data.series[seriesKey]) {
                         const binanceSeries = data.series[seriesKey];
                         if (!binanceSeries.intraday_1m) {
@@ -2816,8 +2851,8 @@
                         
                         binanceSeries.intraday_1m.push({
                             "time": timeStr,
-                            "local": latestPriceLocal,
-                            "adr": latestPriceDr,
+                            "local": activeLocalPrice,
+                            "adr": activeDrPrice,
                             "premium": parseFloat(premium.toFixed(4)),
                             "timestamp": Date.now()
                         });
@@ -2828,7 +2863,7 @@
                         
                         // Save to localStorage
                         try {
-                            localStorage.setItem('binance_intraday_1m', JSON.stringify(binanceSeries.intraday_1m));
+                            localStorage.setItem(`${seriesKey}_intraday_1m`, JSON.stringify(binanceSeries.intraday_1m));
                         } catch (e) {}
                         
                         // Re-render chart if the active view is live_1m
