@@ -116,23 +116,6 @@ STOCKS_CONFIG = {
                 "csv_name": "tencent_premium.csv"
             }
         }
-    },
-    "crude_oil": {
-        "name": "原油期貨 (Crude Oil)",
-        "local_ticker": "BZUSDT",
-        "local_currency": "USDT",
-        "dr_listings": {
-            "wti": {
-                "name": "WTI (CLUSDT)",
-                "ticker": "CLUSDT",
-                "currency": "USDT",
-                "fx_ticker": "1.0",
-                "ratio": 1.0,
-                "csv_name": "crude_oil_spread.csv",
-                "override_local_ticker": "BZUSDT",
-                "override_local_currency": "USDT"
-            }
-        }
     }
 }
 
@@ -513,11 +496,6 @@ def fetch_data():
     records_15m_hynix = get_binance_15m_premium("SKHYUSDT", "SKHYNIXUSDT", ratio=0.1, limit=192)
     if records_15m_hynix and "skhynix_binance" in series_data:
         series_data["skhynix_binance"]["intraday_15m"] = records_15m_hynix
-
-    print("\nFetching Binance 15m intraday premium for crude_oil_wti...")
-    records_15m_oil = get_binance_15m_premium("CLUSDT", "BZUSDT", ratio=1.0, limit=192)
-    if records_15m_oil and "crude_oil_wti" in series_data:
-        series_data["crude_oil_wti"]["intraday_15m"] = records_15m_oil
 
     # --- Fetch Binance 1m intraday premium (last 60 minutes, auto-refreshes every run) ---
     print("\nFetching Binance 1m intraday premium for skhynix_binance...")

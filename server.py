@@ -60,8 +60,7 @@ def binance_update_loop():
     interval_seconds = 60  # 1 minute
     
     pairs = [
-        {"series_key": "skhynix_binance", "dr_symbol": "SKHYUSDT", "local_symbol": "SKHYNIXUSDT", "ratio": 0.1},
-        {"series_key": "crude_oil_wti", "dr_symbol": "CLUSDT", "local_symbol": "BZUSDT", "ratio": 1.0}
+        {"series_key": "skhynix_binance", "dr_symbol": "SKHYUSDT", "local_symbol": "SKHYNIXUSDT", "ratio": 0.1}
     ]
     
     while True:
