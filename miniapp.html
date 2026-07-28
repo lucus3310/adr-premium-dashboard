@@ -358,6 +358,12 @@
 
       if (processed.data.length === 0) return;
 
+      // 👈 核心修復：當切換 1d / 5d / 1m 或商品標的時，直接銷毀舊圖表並重新建立，徹底解開 Zoom 插件的鎖定！
+      if (forceRebuild && myChart) {
+        myChart.destroy();
+        myChart = null;
+      }
+
       const gradientGreen = ctx.createLinearGradient(0, 0, 0, 300);
       gradientGreen.addColorStop(0, 'rgba(63, 185, 80, 0.25)');
       gradientGreen.addColorStop(1, 'rgba(63, 185, 80, 0.0)');
@@ -452,14 +458,7 @@
         myChart.data.datasets[0].data = processed.data;
         myChart.data.datasets[0].backgroundColor = gradientGreen;
         myChart.data.datasets[1].data = processed.ma;
-        
-        // 👈 重大修復：當切換 1d / 5d / 1m 或商品標的時，強制重置縮放並完全刷新坐標軸 scale！
-        if (forceRebuild) {
-          myChart.resetZoom();
-          myChart.update(); // 完全刷新重新計算橫縱軸 scale
-        } else {
-          myChart.update('none'); // 背景 15s 輪詢無感靜默刷新
-        }
+        myChart.update('none'); // 背景 15s 靜默更新
       }
 
       updatePricePanel(processed.data, processed.ma);
@@ -494,7 +493,7 @@
         btn.classList.toggle('active', (idx === 0 && target === 'skhy') || (idx === 1 && target === 'oil') || (idx === 2 && target === 'metal'));
       });
       document.getElementById('chart-title').innerText = getTitle(target);
-      renderChart(false, true); // 強制 full update 重新計算圖表
+      renderChart(false, true);
     }
 
     function switchRange(range) {
@@ -503,7 +502,7 @@
       document.querySelectorAll('.range-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && range === '1d') || (idx === 1 && range === '5d') || (idx === 2 && range === '1m'));
       });
-      renderChart(false, true); // 強制 full update 重新計算圖表
+      renderChart(false, true);
     }
 
     function switchTimeframe(range) {
@@ -518,7 +517,11 @@
 
     function resetZoom() {
       isUserZoomed = false;
-      if (myChart) myChart.resetZoom();
+      if (myChart) {
+        myChart.destroy();
+        myChart = null;
+      }
+      renderChart(false, true);
     }
 
     function startAutoRefresh() {
