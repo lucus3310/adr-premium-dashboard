@@ -218,7 +218,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">💡 已自動過濾零值噪點 | 支援雙指縮放與拖曳</div>
+  <div class="footer-hint">💡 已自動修正早期小數點單位 | 支援雙指縮放與拖曳</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -277,7 +277,7 @@
       const ma = [];
       for (let i = 0; i < dataArr.length; i++) {
         if (i < period - 1) {
-          ma.push(null); // 👈 關鍵防錯修復：資料不足 period 前填充 null，絕不產生 0 下甩大折線！
+          ma.push(null);
         } else {
           let sum = 0;
           let validCount = 0;
@@ -312,11 +312,17 @@
         const item = sliced[i];
         let val = 0;
         
-        if (target === 'skhy') val = parseFloat(item.skhy);
+        if (target === 'skhy') {
+          val = parseFloat(item.skhy);
+          // 👈 核心修復：早期紀錄中，海力士曾被寫入為小數比率 0.2426 (代表 24.26%)。
+          // 當 val > 0 且 val < 1.0 時，自動乘以 100 轉為百分比 24.26%，避免 0.24 貼在最底部造成暴跌斜線！
+          if (val > 0 && val < 1.0) {
+            val = parseFloat((val * 100).toFixed(2));
+          }
+        }
         else if (target === 'oil') val = parseFloat(item.oil);
         else if (target === 'metal') val = parseFloat(item.metal);
 
-        // 👈 關鍵防錯修復：徹底過濾無效資料或 0 值空列，避免左側出現拉到 0 的長折線！
         if (isNaN(val) || val === 0) continue;
 
         labels.push(item.time);
@@ -357,7 +363,7 @@
                 pointHoverBorderWidth: 2,
                 tension: 0.25,
                 yAxisID: 'y',
-                spanGaps: true // 允許跨過空值
+                spanGaps: true
               },
               {
                 label: '均線 (MA15)',
@@ -416,6 +422,7 @@
       } else {
         myChart.data.labels = processed.labels;
         myChart.data.datasets[0].data = processed.data;
+        myChart.data.datasets[0].backgroundColor = gradientGreen;
         myChart.data.datasets[1].data = processed.ma;
         myChart.resetZoom();
         myChart.update();
