@@ -237,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 每 15 秒智慧輪詢更新 | 雙指縮放時自動鎖定防打擾 | 視窗縮小休眠省電</div>
+  <div class="footer-hint">🟢 每 15 秒智慧輪詢更新 | 極致流暢動畫過渡 | 視窗縮小休眠省電</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -352,17 +352,11 @@
       return { labels, data, ma };
     }
 
-    function renderChart(isSilent = false, forceRebuild = false) {
+    function renderChart(isSilent = false, animate = false) {
       const ctx = document.getElementById('myChart').getContext('2d');
       const processed = processData(currentTarget, currentRange);
 
       if (processed.data.length === 0) return;
-
-      // 👈 核心修復：當切換 1d / 5d / 1m 或商品標的時，直接銷毀舊圖表並重新建立，徹底解開 Zoom 插件的鎖定！
-      if (forceRebuild && myChart) {
-        myChart.destroy();
-        myChart = null;
-      }
 
       const gradientGreen = ctx.createLinearGradient(0, 0, 0, 300);
       gradientGreen.addColorStop(0, 'rgba(63, 185, 80, 0.25)');
@@ -406,6 +400,10 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            animation: {
+              duration: 350,
+              easing: 'easeOutQuart'
+            },
             interaction: { mode: 'index', intersect: false },
             plugins: {
               legend: { display: false },
@@ -458,7 +456,17 @@
         myChart.data.datasets[0].data = processed.data;
         myChart.data.datasets[0].backgroundColor = gradientGreen;
         myChart.data.datasets[1].data = processed.ma;
-        myChart.update('none'); // 背景 15s 靜默更新
+        
+        // 👈 精妙修復：解開 Zoom 鎖的同時，保留 Chart.js 最強大的 0.35s 絲滑平滑變形動畫！
+        if (myChart.resetZoom) {
+          myChart.resetZoom('none');
+        }
+        
+        if (animate) {
+          myChart.update(); // 觸發極致絲滑的曲線變形動畫！
+        } else {
+          myChart.update('none'); // 背景 15s 靜默更新
+        }
       }
 
       updatePricePanel(processed.data, processed.ma);
@@ -493,7 +501,7 @@
         btn.classList.toggle('active', (idx === 0 && target === 'skhy') || (idx === 1 && target === 'oil') || (idx === 2 && target === 'metal'));
       });
       document.getElementById('chart-title').innerText = getTitle(target);
-      renderChart(false, true);
+      renderChart(false, true); // 觸發動畫切換！
     }
 
     function switchRange(range) {
@@ -502,7 +510,7 @@
       document.querySelectorAll('.range-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && range === '1d') || (idx === 1 && range === '5d') || (idx === 2 && range === '1m'));
       });
-      renderChart(false, true);
+      renderChart(false, true); // 觸發動畫切換！
     }
 
     function switchTimeframe(range) {
@@ -518,8 +526,7 @@
     function resetZoom() {
       isUserZoomed = false;
       if (myChart) {
-        myChart.destroy();
-        myChart = null;
+        myChart.resetZoom();
       }
       renderChart(false, true);
     }
