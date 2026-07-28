@@ -199,7 +199,7 @@
   </div>
 
   <div class="chart-card">
-    <div id="loading" class="loading-overlay">正在讀取 24 小時完整歷史數據...</div>
+    <div id="loading" class="loading-overlay">正在讀取 24 小時真實數據...</div>
     <div class="chart-container">
       <canvas id="myChart"></canvas>
     </div>
@@ -220,7 +220,7 @@
     </div>
   </div>
 
-  <div class="hint">📊 數據源：Google 試算表完整 24 小時數據 | 雙指縮放與拖曳</div>
+  <div class="hint">📊 手指觸碰或移動滑鼠可查看精確數據標籤 | 雙指縮放與拖曳</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -290,10 +290,10 @@
       if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [] };
 
       let step = 1;
-      let limit = 60; // 預設 1m 看最近 60 分鐘
+      let limit = 60;
 
-      if (tf === '5m') { limit = 300; step = 5; }      // 5m 看最近 5 小時 (300 筆)
-      else if (tf === '1h') { limit = 1440; step = 15; } // 1h 全面展現 24 小時 (1440 筆)
+      if (tf === '5m') { limit = 300; step = 5; }
+      else if (tf === '1h') { limit = 1440; step = 15; }
 
       const sliced = rawSheetData.slice(-limit);
       const labels = [];
@@ -317,6 +317,11 @@
 
       if (processed.data.length === 0) return;
 
+      // 建立高質感漸層背景 Gradient Fill
+      const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
+      gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+
       if (!myChart) {
         myChart = new Chart(ctx, {
           type: 'line',
@@ -326,26 +331,53 @@
               label: getTitle(currentTarget),
               data: processed.data,
               borderColor: '#38bdf8',
-              backgroundColor: 'rgba(56, 189, 248, 0.12)',
+              backgroundColor: gradient,
               fill: true,
               borderWidth: 2.5,
-              pointRadius: currentTimeframe === '1h' ? 1.5 : 3,
-              tension: 0.2
+              pointRadius: 0,            // 👈 平時完全不露點，呈現乾淨平滑折線
+              pointHoverRadius: 6,       // 👈 手指移動上去時浮現精美點位
+              pointHoverBackgroundColor: '#38bdf8',
+              pointHoverBorderColor: '#ffffff',
+              pointHoverBorderWidth: 2,
+              tension: 0.35               // 👈 極致滑順的絲滑曲線
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false
+            },
             plugins: {
               legend: { display: false },
+              tooltip: {
+                enabled: true,
+                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                titleColor: '#38bdf8',
+                bodyColor: '#f8fafc',
+                borderColor: '#334155',
+                borderWidth: 1,
+                padding: 10,
+                displayColors: false,
+                callbacks: {
+                  label: function(context) {
+                    let unit = '%';
+                    if (currentTarget === 'oil') unit = ' USD';
+                    else if (currentTarget === 'metal') unit = 'x';
+                    const val = context.parsed.y;
+                    return getTitle(currentTarget) + ': ' + (val >= 0 ? '+' : '') + val + unit;
+                  }
+                }
+              },
               zoom: {
                 pan: { enabled: true, mode: 'x' },
                 zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
               }
             },
             scales: {
-              x: { ticks: { color: '#64748b', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-              y: { ticks: { color: '#94a3af', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
+              x: { ticks: { color: '#64748b', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.03)' } },
+              y: { ticks: { color: '#94a3af', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.06)' } }
             }
           }
         });
@@ -353,7 +385,7 @@
         myChart.data.labels = processed.labels;
         myChart.data.datasets[0].label = getTitle(currentTarget);
         myChart.data.datasets[0].data = processed.data;
-        myChart.data.datasets[0].pointRadius = currentTimeframe === '1h' ? 1.5 : 3;
+        myChart.data.datasets[0].backgroundColor = gradient;
         myChart.resetZoom();
         myChart.update();
       }
@@ -362,9 +394,9 @@
     }
 
     function getTitle(target) {
-      if (target === 'skhy') return 'SK海力士 溢價率 (%)';
-      if (target === 'oil') return '原油 BZ-CL 價差 (USD)';
-      return '貴金屬 金銀比 (XAU/XAG)';
+      if (target === 'skhy') return 'SK海力士 溢價率';
+      if (target === 'oil') return '原油 BZ-CL 價差';
+      return '貴金屬 金銀比';
     }
 
     function updateStatsInfo(arr) {
