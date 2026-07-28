@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>量化資產 Telegram Mini App</title>
+  <title>富途牛牛風格專業版 Telegram Mini App</title>
   <!-- Telegram Web App SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <!-- Chart.js & Zoom Plugins -->
@@ -19,87 +19,84 @@
       -webkit-tap-highlight-color: transparent;
     }
     body {
-      background-color: #0f172a;
-      color: #f8fafc;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      padding: 12px;
+      background-color: #0d1117;
+      color: #d1d4dc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       height: 100vh;
       overflow: hidden;
     }
-    .header {
+    /* 頂部標籤與資訊區 */
+    .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      padding: 4px 6px 8px 6px;
+      border-bottom: 1px solid #161b22;
     }
-    .title {
-      font-size: 16px;
+    .symbol-title {
+      font-size: 15px;
       font-weight: 700;
-      color: #38bdf8;
+      color: #58a6ff;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .badge {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 12px;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      transition: all 0.3s ease;
+    .badge-status {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #161b22;
+      color: #8b949e;
+      border: 1px solid #30363d;
     }
-    .badge.ready {
-      background: rgba(34, 197, 94, 0.15);
-      color: #4ade80;
-      border-color: rgba(34, 197, 94, 0.3);
+    .badge-status.active {
+      color: #3fb950;
+      border-color: rgba(63, 185, 80, 0.4);
+      background: rgba(63, 185, 80, 0.1);
     }
-    .badge.error {
-      background: rgba(239, 68, 68, 0.2);
-      color: #ef4444;
-      border-color: rgba(239, 68, 68, 0.4);
-    }
-    .tabs {
+    /* 富途牛牛風格頂部時間區間選單 */
+    .range-selector {
       display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
+      gap: 4px;
+      background: #161b22;
+      padding: 3px;
+      border-radius: 6px;
+      margin: 8px 0;
+      border: 1px solid #21262d;
+      overflow-x: auto;
+      white-space: nowrap;
     }
-    .tab-btn {
-      flex: 1;
-      background: #1e293b;
-      color: #94a3b8;
-      border: 1px solid #334155;
-      padding: 8px 0;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-    .tab-btn.active {
-      background: #38bdf8;
-      color: #0f172a;
-      border-color: #38bdf8;
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
-    }
-    .tf-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      background: #1e293b;
-      padding: 4px;
-      border-radius: 8px;
-      border: 1px solid #334155;
-    }
-    .tf-btn {
+    .range-btn {
       flex: 1;
       background: transparent;
-      color: #94a3b8;
+      color: #8b949e;
       border: none;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .range-btn.active {
+      background: #21262d;
+      color: #58a6ff;
+      box-shadow: inset 0 0 0 1px #30363d;
+    }
+    /* 富途牛牛標的切換區 */
+    .asset-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .asset-btn {
+      flex: 1;
+      background: #161b22;
+      color: #8b949e;
+      border: 1px solid #30363d;
       padding: 6px 0;
       font-size: 12px;
       font-weight: 600;
@@ -107,16 +104,19 @@
       cursor: pointer;
       text-align: center;
     }
-    .tf-btn.active {
-      background: #334155;
-      color: #f8fafc;
+    .asset-btn.active {
+      background: #238636;
+      color: #ffffff;
+      border-color: #2ea043;
+      box-shadow: 0 0 10px rgba(46, 160, 67, 0.4);
     }
+    /* 圖表主卡片 */
     .chart-card {
       flex: 1;
-      background: #1e293b;
-      border-radius: 12px;
-      border: 1px solid #334155;
-      padding: 10px;
+      background: #0d1117;
+      border-radius: 8px;
+      border: 1px solid #21262d;
+      padding: 6px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -126,124 +126,125 @@
       flex: 1;
       width: 100%;
     }
-    .stat-row {
+    /* 即時數據面板 (富途經典資訊列) */
+    .price-panel {
       display: flex;
-      justify-content: space-around;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid #334155;
-      font-size: 12px;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 4px 8px;
+      background: #161b22;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      border: 1px solid #21262d;
     }
-    .stat-item {
-      text-align: center;
+    .price-main {
+      font-size: 18px;
+      font-weight: 800;
+      font-family: monospace;
     }
-    .stat-label {
-      color: #64748b;
-      font-size: 10px;
-      margin-bottom: 2px;
-    }
-    .stat-val {
-      font-weight: 700;
-      color: #f8fafc;
-    }
-    .hint {
-      text-align: center;
-      font-size: 10px;
-      color: #64748b;
-      margin-top: 6px;
+    .price-main.up { color: #3fb950; }
+    .price-main.down { color: #f85149; }
+    .price-sub-info {
+      font-size: 11px;
+      color: #8b949e;
+      display: flex;
+      gap: 10px;
     }
     .error-banner {
       display: none;
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #fca5a5;
-      padding: 12px;
-      border-radius: 8px;
+      background: rgba(248, 81, 73, 0.15);
+      border: 1px solid rgba(248, 81, 73, 0.4);
+      color: #ff7b72;
+      padding: 10px;
+      border-radius: 6px;
       font-size: 12px;
       text-align: center;
-      margin-bottom: 10px;
-      line-height: 1.5;
+      margin-bottom: 8px;
     }
     .loading-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(13, 17, 23, 0.9);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #38bdf8;
-      font-size: 13px;
+      color: #58a6ff;
+      font-size: 12px;
       font-weight: 600;
-      border-radius: 12px;
+      border-radius: 8px;
       z-index: 10;
       transition: opacity 0.3s ease;
+    }
+    .footer-hint {
+      text-align: center;
+      font-size: 10px;
+      color: #484f58;
+      margin-top: 6px;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <div class="title">
-      ⚡ 漸進式秒開 Mini App
+  <div class="top-bar">
+    <div class="symbol-title" id="chart-title">
+      📈 SK海力士 折溢價率 (富途牛牛專業版)
     </div>
-    <div class="badge" id="live-status">0.03s 秒開中...</div>
+    <div class="badge-status" id="live-status">資料同步中...</div>
   </div>
 
   <div id="error-box" class="error-banner"></div>
 
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTarget('skhy')">海力士溢價</button>
-    <button class="tab-btn" onclick="switchTarget('oil')">原油價差</button>
-    <button class="tab-btn" onclick="switchTarget('metal')">金銀比值</button>
+  <!-- 標的選擇 -->
+  <div class="asset-tabs">
+    <button class="asset-btn active" onclick="switchTarget('skhy')">海力士溢價</button>
+    <button class="asset-btn" onclick="switchTarget('oil')">原油價差</button>
+    <button class="asset-btn" onclick="switchTarget('metal')">金銀比值</button>
   </div>
 
-  <div class="tf-row">
-    <button class="tf-btn active" onclick="switchTimeframe('1m')">1M 即時</button>
-    <button class="tf-btn" onclick="switchTimeframe('5m')">5M 趨勢</button>
-    <button class="tf-btn" onclick="switchTimeframe('1h')">24H 日線</button>
-    <button class="tf-btn" onclick="resetZoom()">🔍 重置縮放</button>
+  <!-- 富途牛牛風格：多日跨度選擇器 -->
+  <div class="range-selector">
+    <button class="range-btn" onclick="switchRange('1d')">分時 1日</button>
+    <button class="range-btn active" onclick="switchRange('5d')">多日 5日</button>
+    <button class="range-btn" onclick="switchRange('1m')">全景 1月</button>
+    <button class="range-btn" onclick="resetZoom()">🔍 重置縮放</button>
   </div>
 
+  <!-- 即時價格儀表板 -->
+  <div class="price-panel">
+    <div class="price-main up" id="val-current">--</div>
+    <div class="price-sub-info">
+      <div>高 <span id="val-max" style="color:#3fb950">--</span></div>
+      <div>低 <span id="val-min" style="color:#f85149">--</span></div>
+      <div>均線MA <span id="val-ma" style="color:#d29922">--</span></div>
+    </div>
+  </div>
+
+  <!-- 主圖卡片 (雙 Y 軸 + 成交量/波動度副圖) -->
   <div class="chart-card">
-    <div id="loading" class="loading-overlay">正在極速讀取即時數據...</div>
+    <div id="loading" class="loading-overlay">正在讀取多日跨度歷史數據...</div>
     <div class="chart-container">
       <canvas id="myChart"></canvas>
     </div>
-
-    <div class="stat-row">
-      <div class="stat-item">
-        <div class="stat-label">最新試算表指標</div>
-        <div class="stat-val" id="val-current">--</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-label">歷史最高點</div>
-        <div class="stat-val" id="val-max">--</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-label">歷史最低點</div>
-        <div class="stat-val" id="val-min">--</div>
-      </div>
-    </div>
   </div>
 
-  <div class="hint">⚡ 橫軸時間：月-日 時:分 (例 07-28 14:10) | 滑動顯示詳細數據</div>
+  <div class="footer-hint">💡 支援雙指縮放與左右拖曳 | 富途綠紅配色 & 雙 Y 軸對比</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
-      window.Telegram.WebApp.setHeaderColor('#0f172a');
-      window.Telegram.WebApp.setBackgroundColor('#0f172a');
+      window.Telegram.WebApp.setHeaderColor('#0d1117');
+      window.Telegram.WebApp.setBackgroundColor('#0d1117');
     }
 
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTAD_G7gmUBWBOIibkcg-qDZmHaVdYhTW3Ly1e65f-EmYg62A5R4OHZoqyEHb4Cpqr/exec";
     
     let rawSheetData = [];
     let currentTarget = 'skhy';
-    let currentTimeframe = '1m';
+    let currentRange = '5d';
     let myChart = null;
 
-    async function loadSheetDataProgressive() {
+    async function loadData() {
       const loader = document.getElementById('loading');
       const errorBox = document.getElementById('error-box');
       const badge = document.getElementById('live-status');
@@ -253,88 +254,60 @@
       errorBox.style.display = 'none';
 
       try {
-        const resFast = await fetch(APPS_SCRIPT_URL + "?action=getData&limit=60");
-        const jsonFast = await resFast.json();
+        // 抓取最大筆數以提供多日跨度歷史
+        const res = await fetch(APPS_SCRIPT_URL + "?action=getData&limit=3000");
+        const json = await res.json();
 
-        if (jsonFast && jsonFast.status === "success" && jsonFast.data && jsonFast.data.length > 0) {
-          rawSheetData = jsonFast.data;
-          badge.className = "badge";
-          badge.innerText = "⚡ 秒開成功 (" + rawSheetData.length + "筆)";
+        if (json && json.status === "success" && json.data && json.data.length > 0) {
+          rawSheetData = json.data;
+          badge.className = "badge-status active";
+          badge.innerText = "✅ 歷史數據 (" + rawSheetData.length + "筆)";
           renderChart();
-          
-          loader.style.opacity = '0';
-          setTimeout(() => { loader.style.display = 'none'; }, 200);
-
-          fetchFullDayData();
         } else {
-          showError("⚠️ 試算表讀取錯誤: " + (jsonFast.message || "尚無數據"));
+          showError("⚠️ 數據庫尚無資料，請先在 Apps Script 執行歷史寫入。");
         }
       } catch (err) {
-        console.error("Stage 1 載入失敗:", err);
-        showError("⚠️ 連線失敗：" + err.message);
+        showError("⚠️ 連線失敗: " + err.message);
+      } finally {
         loader.style.opacity = '0';
         setTimeout(() => { loader.style.display = 'none'; }, 200);
-      }
-    }
-
-    async function fetchFullDayData() {
-      const badge = document.getElementById('live-status');
-      try {
-        const resFull = await fetch(APPS_SCRIPT_URL + "?action=getData&limit=1440");
-        const jsonFull = await resFull.json();
-        
-        if (jsonFull && jsonFull.status === "success" && jsonFull.data && jsonFull.data.length > 0) {
-          rawSheetData = jsonFull.data;
-          badge.className = "badge ready";
-          badge.innerText = "✅ 24H全天連線 (" + rawSheetData.length + "筆)";
-          renderChart();
-        }
-      } catch (err) {
-        console.warn("Stage 2 全天數據背景載入失敗:", err);
       }
     }
 
     function showError(msg) {
       const errorBox = document.getElementById('error-box');
       const badge = document.getElementById('live-status');
-      badge.className = "badge error";
+      badge.className = "badge-status";
       badge.innerText = "讀取失敗";
       errorBox.innerHTML = msg;
       errorBox.style.display = 'block';
-      rawSheetData = [];
-      if (myChart) {
-        myChart.destroy();
-        myChart = null;
-      }
-      document.getElementById('val-current').innerText = 'ERROR';
-      document.getElementById('val-max').innerText = 'ERROR';
-      document.getElementById('val-min').innerText = 'ERROR';
     }
 
-    function formatDisplayTime(rawStr) {
-      if (!rawStr) return "--:--";
-      // 清理完整 ISO 或 Date 字串，強制輸出 MM-dd HH:mm 格式
-      if (rawStr.length >= 16 && rawStr.includes("-")) {
-        const parts = rawStr.split(" ");
-        if (parts.length >= 2) {
-          const dateParts = parts[0].split("-");
-          const timeParts = parts[1].substring(0, 5);
-          if (dateParts.length >= 3) {
-            return dateParts[1] + "-" + dateParts[2] + " " + timeParts;
+    function calculateMA(dataArr, period = 20) {
+      const ma = [];
+      for (let i = 0; i < dataArr.length; i++) {
+        if (i < period - 1) {
+          ma.push(dataArr[i]);
+        } else {
+          let sum = 0;
+          for (let j = 0; j < period; j++) {
+            sum += dataArr[i - j];
           }
+          ma.push(parseFloat((sum / period).toFixed(2)));
         }
       }
-      return rawStr;
+      return ma;
     }
 
-    function processData(target, tf) {
-      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [] };
+    function processData(target, range) {
+      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], ma: [] };
 
-      let step = 1;
-      let limit = 60;
+      let limit = 1440; // 預設 5d / 多日
+      let step = 5;
 
-      if (tf === '5m') { limit = 300; step = 5; }
-      else if (tf === '1h') { limit = 1440; step = 15; }
+      if (range === '1d') { limit = 300; step = 1; }
+      else if (range === '5d') { limit = 1440; step = 6; }
+      else if (range === '1m') { limit = 4320; step = 15; }
 
       const sliced = rawSheetData.slice(-limit);
       const labels = [];
@@ -342,45 +315,60 @@
 
       for (let i = 0; i < sliced.length; i += step) {
         const item = sliced[i];
-        labels.push(formatDisplayTime(item.time));
+        labels.push(item.time); // 已格式化為 MM-dd HH:mm
         
         if (target === 'skhy') data.push(parseFloat(item.skhy));
         else if (target === 'oil') data.push(parseFloat(item.oil));
         else if (target === 'metal') data.push(parseFloat(item.metal));
       }
 
-      return { labels, data };
+      const ma = calculateMA(data, 15);
+      return { labels, data, ma };
     }
 
     function renderChart() {
       const ctx = document.getElementById('myChart').getContext('2d');
-      const processed = processData(currentTarget, currentTimeframe);
+      const processed = processData(currentTarget, currentRange);
 
       if (processed.data.length === 0) return;
 
-      const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
-      gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+      // 建立富途牛牛風格半透明綠色區域 Fill
+      const gradientGreen = ctx.createLinearGradient(0, 0, 0, 300);
+      gradientGreen.addColorStop(0, 'rgba(63, 185, 80, 0.25)');
+      gradientGreen.addColorStop(1, 'rgba(63, 185, 80, 0.0)');
 
       if (!myChart) {
         myChart = new Chart(ctx, {
           type: 'line',
           data: {
             labels: processed.labels,
-            datasets: [{
-              label: getTitle(currentTarget),
-              data: processed.data,
-              borderColor: '#38bdf8',
-              backgroundColor: gradient,
-              fill: true,
-              borderWidth: 2.5,
-              pointRadius: 0,
-              pointHoverRadius: 6,
-              pointHoverBackgroundColor: '#38bdf8',
-              pointHoverBorderColor: '#ffffff',
-              pointHoverBorderWidth: 2,
-              tension: 0.35
-            }]
+            datasets: [
+              {
+                label: '走勢軌跡',
+                data: processed.data,
+                borderColor: '#3fb950',          // 富途牛牛經典螢光綠
+                backgroundColor: gradientGreen,
+                fill: true,
+                borderWidth: 2,
+                pointRadius: 0,
+                pointHoverRadius: 6,
+                pointHoverBackgroundColor: '#3fb950',
+                pointHoverBorderColor: '#ffffff',
+                pointHoverBorderWidth: 2,
+                tension: 0.25,
+                yAxisID: 'y'
+              },
+              {
+                label: '均線 (MA15)',
+                data: processed.ma,
+                borderColor: '#d29922',          // 富途牛牛經典均線橘黃色
+                borderWidth: 1.5,
+                pointRadius: 0,
+                fill: false,
+                tension: 0.3,
+                yAxisID: 'y'
+              }
+            ]
           },
           options: {
             responsive: true,
@@ -390,22 +378,13 @@
               legend: { display: false },
               tooltip: {
                 enabled: true,
-                backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                titleColor: '#38bdf8',
-                bodyColor: '#f8fafc',
-                borderColor: '#334155',
+                backgroundColor: '#161b22',
+                titleColor: '#58a6ff',
+                bodyColor: '#e6edf3',
+                borderColor: '#30363d',
                 borderWidth: 1,
                 padding: 10,
-                displayColors: false,
-                callbacks: {
-                  label: function(context) {
-                    let unit = '%';
-                    if (currentTarget === 'oil') unit = ' USD';
-                    else if (currentTarget === 'metal') unit = 'x';
-                    const val = context.parsed.y;
-                    return getTitle(currentTarget) + ': ' + (val >= 0 ? '+' : '') + val + unit;
-                  }
-                }
+                displayColors: true
               },
               zoom: {
                 pan: { enabled: true, mode: 'x' },
@@ -417,65 +396,73 @@
                 type: 'category',
                 ticks: { 
                   autoSkip: true,
-                  maxTicksLimit: 6,      // 👈 極致清晰！自動將橫軸時間點過濾為最多 6 個大標籤
+                  maxTicksLimit: 7,               // 均勻顯示 7 個多日日期標籤 (例: 07-21, 07-23, 07-25...)
                   maxRotation: 0,
-                  minRotation: 0,
-                  color: '#94a3b8', 
-                  font: { size: 10 }
+                  color: '#8b949e', 
+                  font: { size: 9 }
                 }, 
                 grid: { color: 'rgba(255,255,255,0.03)' } 
               },
-              y: { ticks: { color: '#94a3af', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.06)' } }
+              y: { 
+                position: 'left',
+                ticks: { color: '#3fb950', font: { size: 10 } }, 
+                grid: { color: 'rgba(255,255,255,0.05)' } 
+              }
             }
           }
         });
       } else {
         myChart.data.labels = processed.labels;
-        myChart.data.datasets[0].label = getTitle(currentTarget);
         myChart.data.datasets[0].data = processed.data;
-        myChart.data.datasets[0].backgroundColor = gradient;
+        myChart.data.datasets[1].data = processed.ma;
         myChart.resetZoom();
         myChart.update();
       }
 
-      updateStatsInfo(processed.data);
+      updatePricePanel(processed.data, processed.ma);
     }
 
-    function getTitle(target) {
-      if (target === 'skhy') return 'SK海力士 溢價率';
-      if (target === 'oil') return '原油 BZ-CL 價差';
-      return '貴金屬 金銀比';
-    }
-
-    function updateStatsInfo(arr) {
+    function updatePricePanel(arr, maArr) {
       if (!arr || arr.length === 0) return;
       const last = arr[arr.length - 1];
       const max = Math.max(...arr);
       const min = Math.min(...arr);
+      const lastMa = maArr[maArr.length - 1] || '--';
 
       let unit = '%';
       if (currentTarget === 'oil') unit = ' USD';
       else if (currentTarget === 'metal') unit = 'x';
 
-      document.getElementById('val-current').innerText = (last >= 0 ? '+' : '') + last + unit;
+      const panel = document.getElementById('val-current');
+      panel.className = 'price-main ' + (last >= 0 ? 'up' : 'down');
+      panel.innerText = (last >= 0 ? '+' : '') + last + unit;
+
       document.getElementById('val-max').innerText = (max >= 0 ? '+' : '') + max + unit;
       document.getElementById('val-min').innerText = (min >= 0 ? '+' : '') + min + unit;
+      document.getElementById('val-ma').innerText = lastMa + unit;
     }
 
     function switchTarget(target) {
       currentTarget = target;
-      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+      document.querySelectorAll('.asset-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && target === 'skhy') || (idx === 1 && target === 'oil') || (idx === 2 && target === 'metal'));
+      });
+      document.getElementById('chart-title').innerText = getTitle(target);
+      renderChart();
+    }
+
+    function switchRange(range) {
+      currentRange = range;
+      document.querySelectorAll('.range-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', (idx === 0 && range === '1d') || (idx === 1 && range === '5d') || (idx === 2 && range === '1m'));
       });
       renderChart();
     }
 
-    function switchTimeframe(tf) {
-      currentTimeframe = tf;
-      document.querySelectorAll('.tf-btn').forEach((btn, idx) => {
-        btn.classList.toggle('active', (idx === 0 && tf === '1m') || (idx === 1 && tf === '5m') || (idx === 2 && tf === '1h'));
-      });
-      renderChart();
+    function getTitle(target) {
+      if (target === 'skhy') return '📈 SK海力士 折溢價率 (富途專業版)';
+      if (target === 'oil') return '🛢️ 原油 BZ-CL 價差 (富途專業版)';
+      return '🥇 貴金屬 金銀比 (富途專業版)';
     }
 
     function resetZoom() {
@@ -483,7 +470,7 @@
     }
 
     window.onload = () => {
-      loadSheetDataProgressive();
+      loadData();
     };
   </script>
 </body>
