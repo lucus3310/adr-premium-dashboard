@@ -226,7 +226,7 @@
     </div>
   </div>
 
-  <div class="hint">⚡ 橫軸時間格式：月-日 時:分 (例 07-28 14:10) | 雙指縮放與拖曳</div>
+  <div class="hint">⚡ 橫軸時間：月-日 時:分 (例 07-28 14:10) | 滑動顯示詳細數據</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -313,13 +313,12 @@
 
     function formatDisplayTime(rawStr) {
       if (!rawStr) return "--:--";
-      // 如果包含年份 2026-07-28 14:10:00 -> 轉成 07-28 14:10
+      // 清理完整 ISO 或 Date 字串，強制輸出 MM-dd HH:mm 格式
       if (rawStr.length >= 16 && rawStr.includes("-")) {
-        // 檢查是否包含年號 "2026-" 或 "2025-"
         const parts = rawStr.split(" ");
         if (parts.length >= 2) {
-          const dateParts = parts[0].split("-"); // [2026, 07, 28]
-          const timeParts = parts[1].substring(0, 5); // 14:10
+          const dateParts = parts[0].split("-");
+          const timeParts = parts[1].substring(0, 5);
           if (dateParts.length >= 3) {
             return dateParts[1] + "-" + dateParts[2] + " " + timeParts;
           }
@@ -417,10 +416,12 @@
               x: { 
                 type: 'category',
                 ticks: { 
-                  color: '#94a3b8', 
-                  font: { size: 9 },
+                  autoSkip: true,
+                  maxTicksLimit: 6,      // 👈 極致清晰！自動將橫軸時間點過濾為最多 6 個大標籤
                   maxRotation: 0,
-                  minRotation: 0
+                  minRotation: 0,
+                  color: '#94a3b8', 
+                  font: { size: 10 }
                 }, 
                 grid: { color: 'rgba(255,255,255,0.03)' } 
               },
