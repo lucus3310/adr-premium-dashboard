@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>富途牛牛風格專業版 Telegram Mini App</title>
+  <title>量化資產 Telegram Mini App</title>
   <!-- Telegram Web App SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <!-- Chart.js & Zoom Plugins -->
@@ -198,7 +198,7 @@
 
   <div class="top-bar">
     <div class="symbol-title" id="chart-title">
-      📈 SK海力士 折溢價率 (富途專業版)
+      📈 SK海力士 折溢價率
     </div>
     <div class="badge-status active" id="live-status">
       <div class="pulse-dot"></div>
@@ -254,7 +254,7 @@
     let currentRange = '5d';
     let myChart = null;
     let refreshTimer = null;
-    let isUserZoomed = false; // 手勢防打擾標籤
+    let isUserZoomed = false;
 
     async function loadData(isSilent = false) {
       const loader = document.getElementById('loading');
@@ -453,9 +453,8 @@
         myChart.data.datasets[0].backgroundColor = gradientGreen;
         myChart.data.datasets[1].data = processed.ma;
         
-        // 👈 手勢防打擾保護：若使用者正在雙指縮放或拖曳，只靜默更新數據，不強行重置畫面！
         if (!isUserZoomed) {
-          myChart.update('none'); // 無感平滑刷新
+          myChart.update('none');
         } else {
           myChart.update('none');
         }
@@ -495,7 +494,7 @@
       renderChart();
     }
 
-    function switchRange(range) {
+    function switchTimeframe(range) {
       currentRange = range;
       document.querySelectorAll('.range-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && range === '1d') || (idx === 1 && range === '5d') || (idx === 2 && range === '1m'));
@@ -504,9 +503,9 @@
     }
 
     function getTitle(target) {
-      if (target === 'skhy') return '📈 SK海力士 折溢價率 (富途專業版)';
-      if (target === 'oil') return '🛢️ 原油 BZ-CL 價差 (富途專業版)';
-      return '🥇 貴金屬 金銀比 (富途專業版)';
+      if (target === 'skhy') return '📈 SK海力士 折溢價率';
+      if (target === 'oil') return '🛢️ 原油 BZ-CL 價差';
+      return '🥇 貴金屬 金銀比';
     }
 
     function resetZoom() {
@@ -514,18 +513,15 @@
       if (myChart) myChart.resetZoom();
     }
 
-    // 🔄 智慧輪詢與休眠機制
     function startAutoRefresh() {
       if (refreshTimer) clearInterval(refreshTimer);
       refreshTimer = setInterval(() => {
-        // 當視窗為可見狀態時，每 15 秒背景靜默刷新一次
         if (!document.hidden) {
           loadData(true);
         }
       }, 15000);
     }
 
-    // 視窗休眠切換監聽
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         if (refreshTimer) clearInterval(refreshTimer);
