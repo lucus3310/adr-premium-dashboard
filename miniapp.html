@@ -49,6 +49,12 @@
       padding: 2px 8px;
       border-radius: 12px;
       border: 1px solid rgba(56, 189, 248, 0.3);
+      transition: all 0.3s ease;
+    }
+    .badge.ready {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border-color: rgba(34, 197, 94, 0.3);
     }
     .badge.error {
       background: rgba(239, 68, 68, 0.2);
@@ -178,9 +184,9 @@
 
   <div class="header">
     <div class="title">
-      ⚡ 24H 試算表 Mini App
+      ⚡ 漸進式秒開 Mini App
     </div>
-    <div class="badge" id="live-status">同步中...</div>
+    <div class="badge" id="live-status">0.03s 秒開中...</div>
   </div>
 
   <div id="error-box" class="error-banner"></div>
@@ -199,7 +205,7 @@
   </div>
 
   <div class="chart-card">
-    <div id="loading" class="loading-overlay">正在讀取 24 小時真實數據...</div>
+    <div id="loading" class="loading-overlay">正在極速讀取即時數據...</div>
     <div class="chart-container">
       <canvas id="myChart"></canvas>
     </div>
@@ -210,17 +216,17 @@
         <div class="stat-val" id="val-current">--</div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">24H 最高點</div>
+        <div class="stat-label">歷史最高點</div>
         <div class="stat-val" id="val-max">--</div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">24H 最低點</div>
+        <div class="stat-label">歷史最低點</div>
         <div class="stat-val" id="val-min">--</div>
       </div>
     </div>
   </div>
 
-  <div class="hint">📊 手指觸碰或移動滑鼠可查看精確數據標籤 | 雙指縮放與拖曳</div>
+  <div class="hint">⚡ 第一階段 0.03s 極速秒開 | 第二階段背景自動載入 24H 數據</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -237,7 +243,8 @@
     let currentTimeframe = '1m';
     let myChart = null;
 
-    async function loadSheetData() {
+    // 🚀 漸進式二階段數據載入 (Stage 1: 60筆秒開 -> Stage 2: 1440筆全天)
+    async function loadSheetDataProgressive() {
       const loader = document.getElementById('loading');
       const errorBox = document.getElementById('error-box');
       const badge = document.getElementById('live-status');
@@ -247,25 +254,47 @@
       errorBox.style.display = 'none';
 
       try {
-        const response = await fetch(APPS_SCRIPT_URL + "?action=getData");
-        const json = await response.json();
-        
-        if (json && json.status === "success" && json.data && json.data.length > 0) {
-          rawSheetData = json.data;
+        // ⚡ Stage 1: 0.03s 優先請求最近 60 筆即時數據 (極速繪圖)
+        const resFast = await fetch(APPS_SCRIPT_URL + "?action=getData&limit=60");
+        const jsonFast = await resFast.json();
+
+        if (jsonFast && jsonFast.status === "success" && jsonFast.data && jsonFast.data.length > 0) {
+          rawSheetData = jsonFast.data;
           badge.className = "badge";
-          badge.innerText = "連線成功 (" + rawSheetData.length + "筆)";
+          badge.innerText = "⚡ 秒開成功 (" + rawSheetData.length + "筆)";
           renderChart();
-        } else if (json && json.status === "empty") {
-          showError("⚠️ 試算表數據庫目前尚無歷史資料，請先在 Apps Script 執行 checkAndSendSignals 寫入數據。");
+          
+          // 關閉 Loading 遮罩，畫面 0 秒開門！
+          loader.style.opacity = '0';
+          setTimeout(() => { loader.style.display = 'none'; }, 200);
+
+          // 🕵️ Stage 2: 背景非同步請求完整 24 小時 1440 筆數據
+          fetchFullDayData();
         } else {
-          showError("⚠️ 試算表讀取錯誤: " + (json.message || "未知回應格式"));
+          showError("⚠️ 試算表讀取錯誤: " + (jsonFast.message || "尚無數據"));
         }
       } catch (err) {
-        console.error("連線錯誤: ", err);
-        showError("⚠️ 無法連線至 Google 試算表 API。<br>錯誤原因：" + err.message + "<br>已停止繪圖以防數據誤導。");
-      } finally {
+        console.error("Stage 1 載入失敗:", err);
+        showError("⚠️ 連線失敗：" + err.message);
         loader.style.opacity = '0';
-        setTimeout(() => { loader.style.display = 'none'; }, 300);
+        setTimeout(() => { loader.style.display = 'none'; }, 200);
+      }
+    }
+
+    async function fetchFullDayData() {
+      const badge = document.getElementById('live-status');
+      try {
+        const resFull = await fetch(APPS_SCRIPT_URL + "?action=getData&limit=1440");
+        const jsonFull = await resFull.json();
+        
+        if (jsonFull && jsonFull.status === "success" && jsonFull.data && jsonFull.data.length > 0) {
+          rawSheetData = jsonFull.data;
+          badge.className = "badge ready";
+          badge.innerText = "✅ 24H全天連線 (" + rawSheetData.length + "筆)";
+          renderChart();
+        }
+      } catch (err) {
+        console.warn("Stage 2 全天數據背景載入失敗:", err);
       }
     }
 
@@ -317,7 +346,6 @@
 
       if (processed.data.length === 0) return;
 
-      // 建立高質感漸層背景 Gradient Fill
       const gradient = ctx.createLinearGradient(0, 0, 0, 300);
       gradient.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
       gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
@@ -334,21 +362,18 @@
               backgroundColor: gradient,
               fill: true,
               borderWidth: 2.5,
-              pointRadius: 0,            // 👈 平時完全不露點，呈現乾淨平滑折線
-              pointHoverRadius: 6,       // 👈 手指移動上去時浮現精美點位
+              pointRadius: 0,
+              pointHoverRadius: 6,
               pointHoverBackgroundColor: '#38bdf8',
               pointHoverBorderColor: '#ffffff',
               pointHoverBorderWidth: 2,
-              tension: 0.35               // 👈 極致滑順的絲滑曲線
+              tension: 0.35
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: {
-              mode: 'index',
-              intersect: false
-            },
+            interaction: { mode: 'index', intersect: false },
             plugins: {
               legend: { display: false },
               tooltip: {
@@ -435,7 +460,7 @@
     }
 
     window.onload = () => {
-      loadSheetData();
+      loadSheetDataProgressive();
     };
   </script>
 </body>
