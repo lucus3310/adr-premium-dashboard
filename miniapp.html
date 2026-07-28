@@ -50,6 +50,11 @@
       border-radius: 12px;
       border: 1px solid rgba(56, 189, 248, 0.3);
     }
+    .badge.error {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.4);
+    }
     .tabs {
       display: flex;
       gap: 6px;
@@ -141,6 +146,18 @@
       color: #64748b;
       margin-top: 6px;
     }
+    .error-banner {
+      display: none;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      text-align: center;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
     .loading-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -163,8 +180,10 @@
     <div class="title">
       ⚡ 試算表連線 Mini App
     </div>
-    <div class="badge" id="live-status">資料同步中</div>
+    <div class="badge" id="live-status">資料同步中...</div>
   </div>
+
+  <div id="error-box" class="error-banner"></div>
 
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTarget('skhy')">海力士溢價</button>
@@ -201,7 +220,7 @@
     </div>
   </div>
 
-  <div class="hint">📊 數據源：Google 試算表「獨立欄位數據庫」 | 雙指縮放與拖曳</div>
+  <div class="hint">📊 數據源：Google 試算表「獨立欄位數據庫」 | 絕無模擬數據</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -220,31 +239,55 @@
 
     async function loadSheetData() {
       const loader = document.getElementById('loading');
+      const errorBox = document.getElementById('error-box');
+      const badge = document.getElementById('live-status');
+      
       loader.style.opacity = '1';
       loader.style.display = 'flex';
+      errorBox.style.display = 'none';
 
       try {
         const response = await fetch(APPS_SCRIPT_URL + "?action=getData");
         const json = await response.json();
         
-        if (json && json.data && json.data.length > 0) {
+        if (json && json.status === "success" && json.data && json.data.length > 0) {
           rawSheetData = json.data;
-          document.getElementById('live-status').innerText = "連線成功 (" + rawSheetData.length + "筆)";
+          badge.className = "badge";
+          badge.innerText = "連線成功 (" + rawSheetData.length + "筆)";
+          renderChart();
+        } else if (json && json.status === "empty") {
+          showError("⚠️ 試算表數據庫目前尚無歷史資料，請先在 Apps Script 執行 checkAndSendSignals 寫入數據。");
+        } else {
+          showError("⚠️ 試算表讀取錯誤: " + (json.message || "未知回應格式"));
         }
       } catch (err) {
-        console.error("載入試算表失敗: ", err);
-        document.getElementById('live-status').innerText = "讀取預設模型";
+        console.error("連線錯誤: ", err);
+        showError("⚠️ 無法連線至 Google 試算表 API。<br>錯誤原因：" + err.message + "<br>已停止繪圖以防數據誤導。");
       } finally {
         loader.style.opacity = '0';
         setTimeout(() => { loader.style.display = 'none'; }, 300);
-        renderChart();
       }
     }
 
-    function processData(target, tf) {
-      if (!rawSheetData || rawSheetData.length === 0) {
-        return generateFallbackData(target, tf);
+    function showError(msg) {
+      const errorBox = document.getElementById('error-box');
+      const badge = document.getElementById('live-status');
+      badge.className = "badge error";
+      badge.innerText = "讀取失敗";
+      errorBox.innerHTML = msg;
+      errorBox.style.display = 'block';
+      rawSheetData = [];
+      if (myChart) {
+        myChart.destroy();
+        myChart = null;
       }
+      document.getElementById('val-current').innerText = 'ERROR';
+      document.getElementById('val-max').innerText = 'ERROR';
+      document.getElementById('val-min').innerText = 'ERROR';
+    }
+
+    function processData(target, tf) {
+      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [] };
 
       let step = 1;
       let limit = 30;
@@ -268,25 +311,11 @@
       return { labels, data };
     }
 
-    function generateFallbackData(target, tf) {
-      const count = tf === '1m' ? 30 : (tf === '5m' ? 60 : 120);
-      const labels = [];
-      const data = [];
-      const now = new Date();
-      let baseVal = target === 'skhy' ? 35.2 : (target === 'oil' ? 3.24 : 69.5);
-
-      for (let i = count; i >= 0; i--) {
-        const d = new Date(now.getTime() - i * 60000);
-        labels.push(String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'));
-        baseVal += (Math.random() - 0.48) * 0.2;
-        data.push(parseFloat(baseVal.toFixed(2)));
-      }
-      return { labels, data };
-    }
-
     function renderChart() {
       const ctx = document.getElementById('myChart').getContext('2d');
       const processed = processData(currentTarget, currentTimeframe);
+
+      if (processed.data.length === 0) return;
 
       if (!myChart) {
         myChart = new Chart(ctx, {
