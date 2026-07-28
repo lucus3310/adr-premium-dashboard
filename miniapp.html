@@ -141,15 +141,29 @@
       color: #64748b;
       margin-top: 6px;
     }
+    .loading-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #38bdf8;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 12px;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
   </style>
 </head>
 <body>
 
   <div class="header">
     <div class="title">
-      ⚡ 量化監控 Mini App
+      ⚡ 試算表連線 Mini App
     </div>
-    <div class="badge" id="live-time">更新中...</div>
+    <div class="badge" id="live-status">資料同步中</div>
   </div>
 
   <div class="tabs">
@@ -166,30 +180,30 @@
   </div>
 
   <div class="chart-card">
+    <div id="loading" class="loading-overlay">正在讀取 Google 試算表真實數據...</div>
     <div class="chart-container">
       <canvas id="myChart"></canvas>
     </div>
 
     <div class="stat-row">
       <div class="stat-item">
-        <div class="stat-label">當前指標數值</div>
+        <div class="stat-label">最新試算表指標</div>
         <div class="stat-val" id="val-current">--</div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">商品 A 價格</div>
-        <div class="stat-val" id="val-priceA">--</div>
+        <div class="stat-label">歷史最高點</div>
+        <div class="stat-val" id="val-max">--</div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">商品 B 價格</div>
-        <div class="stat-val" id="val-priceB">--</div>
+        <div class="stat-label">歷史最低點</div>
+        <div class="stat-val" id="val-min">--</div>
       </div>
     </div>
   </div>
 
-  <div class="hint">💡 支援雙指放大/縮放圖表與左右平移，點擊頂部切換標的與時間</div>
+  <div class="hint">📊 數據源：Google 試算表「獨立欄位數據庫」 | 雙指縮放與拖曳</div>
 
   <script>
-    // 初始化 Telegram WebApp
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
@@ -197,77 +211,124 @@
       window.Telegram.WebApp.setBackgroundColor('#0f172a');
     }
 
-    const WORKER_URL = "https://polished-paper-a7b8.lou2739994.workers.dev/?symbol=";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTAD_G7gmUBWBOIibkcg-qDZmHaVdYhTW3Ly1e65f-EmYg62A5R4OHZoqyEHb4Cpqr/exec";
+    
+    let rawSheetData = [];
     let currentTarget = 'skhy';
     let currentTimeframe = '1m';
     let myChart = null;
 
-    // 模擬與歷史資料生成器
-    function generateData(target, tf) {
-      const count = tf === '1m' ? 30 : (tf === '5m' ? 60 : 120);
+    async function loadSheetData() {
+      const loader = document.getElementById('loading');
+      loader.style.opacity = '1';
+      loader.style.display = 'flex';
+
+      try {
+        const response = await fetch(APPS_SCRIPT_URL + "?action=getData");
+        const json = await response.json();
+        
+        if (json && json.data && json.data.length > 0) {
+          rawSheetData = json.data;
+          document.getElementById('live-status').innerText = "連線成功 (" + rawSheetData.length + "筆)";
+        }
+      } catch (err) {
+        console.error("載入試算表失敗: ", err);
+        document.getElementById('live-status').innerText = "讀取預設模型";
+      } finally {
+        loader.style.opacity = '0';
+        setTimeout(() => { loader.style.display = 'none'; }, 300);
+        renderChart();
+      }
+    }
+
+    function processData(target, tf) {
+      if (!rawSheetData || rawSheetData.length === 0) {
+        return generateFallbackData(target, tf);
+      }
+
+      let step = 1;
+      let limit = 30;
+
+      if (tf === '5m') { limit = 150; step = 5; }
+      else if (tf === '1h') { limit = 1440; step = 60; }
+
+      const sliced = rawSheetData.slice(-limit);
       const labels = [];
       const data = [];
-      const now = new Date();
-      
-      let baseVal = target === 'skhy' ? 35.2 : (target === 'oil' ? 3.24 : 69.5);
-      let volatility = target === 'skhy' ? 0.3 : (target === 'oil' ? 0.1 : 0.2);
 
-      for (let i = count; i >= 0; i--) {
-        const d = new Date(now.getTime() - i * (tf === '1m' ? 60000 : (tf === '5m' ? 300000 : 3600000)));
-        const timeStr = tf === '1h' 
-          ? (d.getMonth()+1) + '-' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':00'
-          : String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+      for (let i = 0; i < sliced.length; i += step) {
+        const item = sliced[i];
+        labels.push(item.time);
         
-        labels.push(timeStr);
-        baseVal += (Math.random() - 0.48) * volatility;
-        data.push(parseFloat(baseVal.toFixed(2)));
+        if (target === 'skhy') data.push(parseFloat(item.skhy));
+        else if (target === 'oil') data.push(parseFloat(item.oil));
+        else if (target === 'metal') data.push(parseFloat(item.metal));
       }
 
       return { labels, data };
     }
 
-    function initChart() {
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const dataObj = generateData(currentTarget, currentTimeframe);
+    function generateFallbackData(target, tf) {
+      const count = tf === '1m' ? 30 : (tf === '5m' ? 60 : 120);
+      const labels = [];
+      const data = [];
+      const now = new Date();
+      let baseVal = target === 'skhy' ? 35.2 : (target === 'oil' ? 3.24 : 69.5);
 
-      myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: dataObj.labels,
-          datasets: [{
-            label: getTitle(currentTarget),
-            data: dataObj.data,
-            borderColor: '#38bdf8',
-            backgroundColor: 'rgba(56, 189, 248, 0.12)',
-            fill: true,
-            borderWidth: 2.5,
-            pointRadius: 2,
-            tension: 0.25
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            zoom: {
-              pan: { enabled: true, mode: 'x' },
-              zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
-            }
+      for (let i = count; i >= 0; i--) {
+        const d = new Date(now.getTime() - i * 60000);
+        labels.push(String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'));
+        baseVal += (Math.random() - 0.48) * 0.2;
+        data.push(parseFloat(baseVal.toFixed(2)));
+      }
+      return { labels, data };
+    }
+
+    function renderChart() {
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const processed = processData(currentTarget, currentTimeframe);
+
+      if (!myChart) {
+        myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: processed.labels,
+            datasets: [{
+              label: getTitle(currentTarget),
+              data: processed.data,
+              borderColor: '#38bdf8',
+              backgroundColor: 'rgba(56, 189, 248, 0.12)',
+              fill: true,
+              borderWidth: 2.5,
+              pointRadius: 3,
+              tension: 0.2
+            }]
           },
-          scales: {
-            x: {
-              ticks: { color: '#64748b', font: { size: 10 } },
-              grid: { color: 'rgba(255,255,255,0.05)' }
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              zoom: {
+                pan: { enabled: true, mode: 'x' },
+                zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
+              }
             },
-            y: {
-              ticks: { color: '#94a3af', font: { size: 10 } },
-              grid: { color: 'rgba(255,255,255,0.08)' }
+            scales: {
+              x: { ticks: { color: '#64748b', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+              y: { ticks: { color: '#94a3af', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
             }
           }
-        }
-      });
-      updateStats();
+        });
+      } else {
+        myChart.data.labels = processed.labels;
+        myChart.data.datasets[0].label = getTitle(currentTarget);
+        myChart.data.datasets[0].data = processed.data;
+        myChart.resetZoom();
+        myChart.update();
+      }
+
+      updateStatsInfo(processed.data);
     }
 
     function getTitle(target) {
@@ -276,12 +337,27 @@
       return '貴金屬 金銀比 (XAU/XAG)';
     }
 
+    function updateStatsInfo(arr) {
+      if (!arr || arr.length === 0) return;
+      const last = arr[arr.length - 1];
+      const max = Math.max(...arr);
+      const min = Math.min(...arr);
+
+      let unit = '%';
+      if (currentTarget === 'oil') unit = ' USD';
+      else if (currentTarget === 'metal') unit = 'x';
+
+      document.getElementById('val-current').innerText = (last >= 0 ? '+' : '') + last + unit;
+      document.getElementById('val-max').innerText = (max >= 0 ? '+' : '') + max + unit;
+      document.getElementById('val-min').innerText = (min >= 0 ? '+' : '') + min + unit;
+    }
+
     function switchTarget(target) {
       currentTarget = target;
       document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && target === 'skhy') || (idx === 1 && target === 'oil') || (idx === 2 && target === 'metal'));
       });
-      updateChart();
+      renderChart();
     }
 
     function switchTimeframe(tf) {
@@ -289,66 +365,15 @@
       document.querySelectorAll('.tf-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && tf === '1m') || (idx === 1 && tf === '5m') || (idx === 2 && tf === '1h'));
       });
-      updateChart();
-    }
-
-    function updateChart() {
-      if (!myChart) return;
-      const dataObj = generateData(currentTarget, currentTimeframe);
-      myChart.data.labels = dataObj.labels;
-      myChart.data.datasets[0].label = getTitle(currentTarget);
-      myChart.data.datasets[0].data = dataObj.data;
-      myChart.resetZoom();
-      myChart.update();
-      updateStats();
+      renderChart();
     }
 
     function resetZoom() {
       if (myChart) myChart.resetZoom();
     }
 
-    async function updateStats() {
-      const now = new Date();
-      document.getElementById('live-time').innerText = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0');
-
-      let symA = 'SKHYUSDT', symB = 'SKHYNIXUSDT';
-      if (currentTarget === 'oil') { symA = 'BZUSDT'; symB = 'CLUSDT'; }
-      if (currentTarget === 'metal') { symA = 'XAUUSDT'; symB = 'XAGUSDT'; }
-
-      try {
-        const [resA, resB] = await Promise.all([
-          fetch(WORKER_URL + symA).then(r => r.json()),
-          fetch(WORKER_URL + symB).then(r => r.json())
-        ]);
-
-        const pA = parseFloat(resA.price);
-        const pB = parseFloat(resB.price);
-
-        document.getElementById('val-priceA').innerText = '$' + pA;
-        document.getElementById('val-priceB').innerText = '$' + pB;
-
-        let calcVal = 0;
-        let unit = '%';
-        if (currentTarget === 'skhy') {
-          calcVal = (((pA / 0.1) / pB - 1) * 100).toFixed(2);
-          unit = '%';
-        } else if (currentTarget === 'oil') {
-          calcVal = (pA - pB).toFixed(2);
-          unit = ' USD';
-        } else {
-          calcVal = (pA / pB).toFixed(2);
-          unit = 'x';
-        }
-
-        document.getElementById('val-current').innerText = (calcVal >= 0 ? '+' : '') + calcVal + unit;
-      } catch (e) {
-        document.getElementById('val-current').innerText = '即時連線中...';
-      }
-    }
-
     window.onload = () => {
-      initChart();
-      setInterval(updateStats, 5000);
+      loadSheetData();
     };
   </script>
 </body>
