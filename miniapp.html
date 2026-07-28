@@ -50,11 +50,27 @@
       background: #161b22;
       color: #8b949e;
       border: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
     .badge-status.active {
       color: #3fb950;
       border-color: rgba(63, 185, 80, 0.4);
       background: rgba(63, 185, 80, 0.1);
+    }
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #3fb950;
+      box-shadow: 0 0 6px #3fb950;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
     }
     .range-selector {
       display: flex;
@@ -182,9 +198,12 @@
 
   <div class="top-bar">
     <div class="symbol-title" id="chart-title">
-      📈 SK海力士 折溢價率 (富途牛牛專業版)
+      📈 SK海力士 折溢價率 (富途專業版)
     </div>
-    <div class="badge-status" id="live-status">資料同步中...</div>
+    <div class="badge-status active" id="live-status">
+      <div class="pulse-dot"></div>
+      <span id="status-text">15s 即時動態連線</span>
+    </div>
   </div>
 
   <div id="error-box" class="error-banner"></div>
@@ -218,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">💡 已自動修正早期小數點單位 | 支援雙指縮放與拖曳</div>
+  <div class="footer-hint">🟢 每 15 秒智慧輪詢更新 | 雙指縮放時自動鎖定防打擾 | 視窗縮小休眠省電</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -234,14 +253,18 @@
     let currentTarget = 'skhy';
     let currentRange = '5d';
     let myChart = null;
+    let refreshTimer = null;
+    let isUserZoomed = false; // 手勢防打擾標籤
 
-    async function loadData() {
+    async function loadData(isSilent = false) {
       const loader = document.getElementById('loading');
       const errorBox = document.getElementById('error-box');
-      const badge = document.getElementById('live-status');
+      const statusText = document.getElementById('status-text');
       
-      loader.style.opacity = '1';
-      loader.style.display = 'flex';
+      if (!isSilent) {
+        loader.style.opacity = '1';
+        loader.style.display = 'flex';
+      }
       errorBox.style.display = 'none';
 
       try {
@@ -250,25 +273,25 @@
 
         if (json && json.status === "success" && json.data && json.data.length > 0) {
           rawSheetData = json.data;
-          badge.className = "badge-status active";
-          badge.innerText = "✅ 歷史數據 (" + rawSheetData.length + "筆)";
-          renderChart();
+          statusText.innerText = "15s 即時動態 (" + rawSheetData.length + "筆)";
+          renderChart(isSilent);
         } else {
-          showError("⚠️ 數據庫尚無資料，請先在 Apps Script 執行歷史寫入。");
+          if (!isSilent) showError("⚠️ 數據庫尚無資料，請先在 Apps Script 執行歷史寫入。");
         }
       } catch (err) {
-        showError("⚠️ 連線失敗: " + err.message);
+        if (!isSilent) showError("⚠️ 連線失敗: " + err.message);
       } finally {
-        loader.style.opacity = '0';
-        setTimeout(() => { loader.style.display = 'none'; }, 200);
+        if (!isSilent) {
+          loader.style.opacity = '0';
+          setTimeout(() => { loader.style.display = 'none'; }, 200);
+        }
       }
     }
 
     function showError(msg) {
       const errorBox = document.getElementById('error-box');
-      const badge = document.getElementById('live-status');
-      badge.className = "badge-status";
-      badge.innerText = "讀取失敗";
+      const statusText = document.getElementById('status-text');
+      statusText.innerText = "讀取失敗";
       errorBox.innerHTML = msg;
       errorBox.style.display = 'block';
     }
@@ -314,11 +337,7 @@
         
         if (target === 'skhy') {
           val = parseFloat(item.skhy);
-          // 👈 核心修復：早期紀錄中，海力士曾被寫入為小數比率 0.2426 (代表 24.26%)。
-          // 當 val > 0 且 val < 1.0 時，自動乘以 100 轉為百分比 24.26%，避免 0.24 貼在最底部造成暴跌斜線！
-          if (val > 0 && val < 1.0) {
-            val = parseFloat((val * 100).toFixed(2));
-          }
+          if (val > 0 && val < 1.0) val = parseFloat((val * 100).toFixed(2));
         }
         else if (target === 'oil') val = parseFloat(item.oil);
         else if (target === 'metal') val = parseFloat(item.metal);
@@ -333,7 +352,7 @@
       return { labels, data, ma };
     }
 
-    function renderChart() {
+    function renderChart(isSilent = false) {
       const ctx = document.getElementById('myChart').getContext('2d');
       const processed = processData(currentTarget, currentRange);
 
@@ -395,8 +414,17 @@
                 displayColors: true
               },
               zoom: {
-                pan: { enabled: true, mode: 'x' },
-                zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
+                pan: { 
+                  enabled: true, 
+                  mode: 'x',
+                  onPanStart: () => { isUserZoomed = true; }
+                },
+                zoom: { 
+                  wheel: { enabled: true }, 
+                  pinch: { enabled: true }, 
+                  mode: 'x',
+                  onZoomStart: () => { isUserZoomed = true; }
+                }
               }
             },
             scales: {
@@ -424,8 +452,13 @@
         myChart.data.datasets[0].data = processed.data;
         myChart.data.datasets[0].backgroundColor = gradientGreen;
         myChart.data.datasets[1].data = processed.ma;
-        myChart.resetZoom();
-        myChart.update();
+        
+        // 👈 手勢防打擾保護：若使用者正在雙指縮放或拖曳，只靜默更新數據，不強行重置畫面！
+        if (!isUserZoomed) {
+          myChart.update('none'); // 無感平滑刷新
+        } else {
+          myChart.update('none');
+        }
       }
 
       updatePricePanel(processed.data, processed.ma);
@@ -477,11 +510,34 @@
     }
 
     function resetZoom() {
+      isUserZoomed = false;
       if (myChart) myChart.resetZoom();
     }
 
+    // 🔄 智慧輪詢與休眠機制
+    function startAutoRefresh() {
+      if (refreshTimer) clearInterval(refreshTimer);
+      refreshTimer = setInterval(() => {
+        // 當視窗為可見狀態時，每 15 秒背景靜默刷新一次
+        if (!document.hidden) {
+          loadData(true);
+        }
+      }, 15000);
+    }
+
+    // 視窗休眠切換監聽
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        if (refreshTimer) clearInterval(refreshTimer);
+      } else {
+        loadData(true);
+        startAutoRefresh();
+      }
+    });
+
     window.onload = () => {
       loadData();
+      startAutoRefresh();
     };
   </script>
 </body>
