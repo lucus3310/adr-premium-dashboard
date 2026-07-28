@@ -137,6 +137,7 @@
       position: relative;
       flex: 1;
       width: 100%;
+      touch-action: none; /* 阻止瀏覽器預設滑動干擾 */
     }
     .price-panel {
       display: flex;
@@ -236,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 絲滑準星 + 觸動震動 | 已移除均線 | 15s 動態連線</div>
+  <div class="footer-hint">🟢 60 FPS 極速手勢準星 + 觸動震動 | 雙指縮放 | 15s 動態連線</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -253,10 +254,10 @@
     let currentRange = '5d';
     let myChart = null;
     let refreshTimer = null;
-    let isUserZoomed = false;
     let lastHoveredIndex = -1;
+    let activeTouchX = null; // 實時手勢追蹤 X 座標
 
-    // 📳 非阻塞輕量觸動震動
+    // 📳 輕量化非阻塞震動
     function triggerHapticFeedbackAsync() {
       setTimeout(() => {
         try {
@@ -269,13 +270,11 @@
       }, 0);
     }
 
-    // 🎯 60 FPS 超極致絲滑垂直準星 Plugin
+    // 🎯 60 FPS 獨立原生 Canvas 準星 Plugin (不受任何套件鎖定干擾)
     const okxCrosshairPlugin = {
       id: 'okxCrosshair',
       afterDatasetsDraw: (chart) => {
-        const activeElems = chart.tooltip ? chart.tooltip._active : null;
-        if (activeElems && activeElems.length > 0) {
-          const x = activeElems[0].element.x;
+        if (activeTouchX !== null) {
           const topY = chart.scales.y.top;
           const bottomY = chart.scales.y.bottom;
           const ctx = chart.ctx;
@@ -283,10 +282,10 @@
           ctx.save();
           ctx.beginPath();
           ctx.setLineDash([4, 4]);
-          ctx.moveTo(x, topY);
-          ctx.lineTo(x, bottomY);
-          ctx.lineWidth = 1.2;
-          ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
+          ctx.moveTo(activeTouchX, topY);
+          ctx.lineTo(activeTouchX, bottomY);
+          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = 'rgba(88, 166, 255, 0.9)';
           ctx.stroke();
           ctx.restore();
         }
@@ -369,8 +368,56 @@
       return { labels, data };
     }
 
+    function setupDirectTouchListeners(canvas) {
+      // 👈 直連 DOM 原生手勢監聽器，避開 Zoom 插件拖曳鎖定問題！
+      const handleTouch = (e) => {
+        if (!myChart) return;
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches ? e.touches[0] : e;
+        if (!touch) return;
+
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        // 尋找距離手指最近的資料點
+        const elements = myChart.getElementsAtEventForMode(
+          e, 'index', { intersect: false }, false
+        );
+
+        if (elements && elements.length > 0) {
+          const idx = elements[0].index;
+          activeTouchX = elements[0].element.x; // 鎖定精準 X 座標
+
+          if (idx !== lastHoveredIndex) {
+            lastHoveredIndex = idx;
+            triggerHapticFeedbackAsync();
+          }
+          myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
+          myChart.tooltip.setActiveElements([{ datasetIndex: 0, index: idx }], { x, y });
+          myChart.update('none');
+        }
+      };
+
+      const handleTouchEnd = () => {
+        activeTouchX = null;
+        lastHoveredIndex = -1;
+        if (myChart) {
+          myChart.setActiveElements([]);
+          myChart.tooltip.setActiveElements([]);
+          myChart.update('none');
+        }
+      };
+
+      canvas.addEventListener('touchstart', handleTouch, { passive: true });
+      canvas.addEventListener('touchmove', handleTouch, { passive: true });
+      canvas.addEventListener('touchend', handleTouch, { passive: true });
+      canvas.addEventListener('mousemove', handleTouch);
+      canvas.addEventListener('mouseleave', handleTouchEnd);
+    }
+
     function renderChart(isSilent = false, animate = false) {
-      const ctx = document.getElementById('myChart').getContext('2d');
+      const canvas = document.getElementById('myChart');
+      const ctx = canvas.getContext('2d');
       const processed = processData(currentTarget, currentRange);
 
       if (processed.data.length === 0) return;
@@ -411,17 +458,6 @@
               easing: 'easeOutQuart'
             },
             interaction: { mode: 'index', intersect: false },
-            onHover: (event, elements) => {
-              if (elements && elements.length > 0) {
-                const idx = elements[0].index;
-                if (idx !== lastHoveredIndex) {
-                  lastHoveredIndex = idx;
-                  triggerHapticFeedbackAsync(); // 非阻塞非卡頓震動觸動
-                }
-              } else {
-                lastHoveredIndex = -1;
-              }
-            },
             plugins: {
               legend: { display: false },
               tooltip: {
@@ -435,16 +471,11 @@
                 displayColors: false
               },
               zoom: {
-                pan: { 
-                  enabled: true, 
-                  mode: 'x',
-                  onPanStart: () => { isUserZoomed = true; }
-                },
+                pan: { enabled: false }, // 👈 關閉單指 pan，徹底解決單指滑動與 Tooltip 衝突卡死的終極元兇！
                 zoom: { 
                   wheel: { enabled: true }, 
-                  pinch: { enabled: true }, 
-                  mode: 'x',
-                  onZoomStart: () => { isUserZoomed = true; }
+                  pinch: { enabled: true }, // 保留極致順暢的雙指 pinch 縮放！
+                  mode: 'x'
                 }
               }
             },
@@ -468,6 +499,8 @@
             }
           }
         });
+
+        setupDirectTouchListeners(canvas);
       } else {
         myChart.data.labels = processed.labels;
         myChart.data.datasets[0].data = processed.data;
@@ -507,7 +540,6 @@
 
     function switchTarget(target) {
       currentTarget = target;
-      isUserZoomed = false;
       document.querySelectorAll('.asset-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && target === 'skhy') || (idx === 1 && target === 'oil') || (idx === 2 && target === 'metal'));
       });
@@ -517,7 +549,6 @@
 
     function switchRange(range) {
       currentRange = range;
-      isUserZoomed = false;
       document.querySelectorAll('.range-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && range === '1d') || (idx === 1 && range === '5d') || (idx === 2 && range === '1m'));
       });
@@ -535,7 +566,6 @@
     }
 
     function resetZoom() {
-      isUserZoomed = false;
       if (myChart) {
         myChart.resetZoom();
       }
