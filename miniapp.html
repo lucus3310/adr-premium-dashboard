@@ -226,7 +226,7 @@
     </div>
   </div>
 
-  <div class="hint">⚡ 第一階段 0.03s 極速秒開 | 第二階段背景自動載入 24H 數據</div>
+  <div class="hint">⚡ 橫軸時間格式：月-日 時:分 (例 07-28 14:10) | 雙指縮放與拖曳</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -243,7 +243,6 @@
     let currentTimeframe = '1m';
     let myChart = null;
 
-    // 🚀 漸進式二階段數據載入 (Stage 1: 60筆秒開 -> Stage 2: 1440筆全天)
     async function loadSheetDataProgressive() {
       const loader = document.getElementById('loading');
       const errorBox = document.getElementById('error-box');
@@ -254,7 +253,6 @@
       errorBox.style.display = 'none';
 
       try {
-        // ⚡ Stage 1: 0.03s 優先請求最近 60 筆即時數據 (極速繪圖)
         const resFast = await fetch(APPS_SCRIPT_URL + "?action=getData&limit=60");
         const jsonFast = await resFast.json();
 
@@ -264,11 +262,9 @@
           badge.innerText = "⚡ 秒開成功 (" + rawSheetData.length + "筆)";
           renderChart();
           
-          // 關閉 Loading 遮罩，畫面 0 秒開門！
           loader.style.opacity = '0';
           setTimeout(() => { loader.style.display = 'none'; }, 200);
 
-          // 🕵️ Stage 2: 背景非同步請求完整 24 小時 1440 筆數據
           fetchFullDayData();
         } else {
           showError("⚠️ 試算表讀取錯誤: " + (jsonFast.message || "尚無數據"));
@@ -315,6 +311,23 @@
       document.getElementById('val-min').innerText = 'ERROR';
     }
 
+    function formatDisplayTime(rawStr) {
+      if (!rawStr) return "--:--";
+      // 如果包含年份 2026-07-28 14:10:00 -> 轉成 07-28 14:10
+      if (rawStr.length >= 16 && rawStr.includes("-")) {
+        // 檢查是否包含年號 "2026-" 或 "2025-"
+        const parts = rawStr.split(" ");
+        if (parts.length >= 2) {
+          const dateParts = parts[0].split("-"); // [2026, 07, 28]
+          const timeParts = parts[1].substring(0, 5); // 14:10
+          if (dateParts.length >= 3) {
+            return dateParts[1] + "-" + dateParts[2] + " " + timeParts;
+          }
+        }
+      }
+      return rawStr;
+    }
+
     function processData(target, tf) {
       if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [] };
 
@@ -330,7 +343,7 @@
 
       for (let i = 0; i < sliced.length; i += step) {
         const item = sliced[i];
-        labels.push(item.time);
+        labels.push(formatDisplayTime(item.time));
         
         if (target === 'skhy') data.push(parseFloat(item.skhy));
         else if (target === 'oil') data.push(parseFloat(item.oil));
@@ -401,7 +414,16 @@
               }
             },
             scales: {
-              x: { ticks: { color: '#64748b', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.03)' } },
+              x: { 
+                type: 'category',
+                ticks: { 
+                  color: '#94a3b8', 
+                  font: { size: 9 },
+                  maxRotation: 0,
+                  minRotation: 0
+                }, 
+                grid: { color: 'rgba(255,255,255,0.03)' } 
+              },
               y: { ticks: { color: '#94a3af', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.06)' } }
             }
           }
