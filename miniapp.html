@@ -274,7 +274,7 @@
         if (json && json.status === "success" && json.data && json.data.length > 0) {
           rawSheetData = json.data;
           statusText.innerText = "15s 即時動態 (" + rawSheetData.length + "筆)";
-          renderChart(isSilent);
+          renderChart();
         } else {
           if (!isSilent) showError("⚠️ 數據庫尚無資料，請先在 Apps Script 執行歷史寫入。");
         }
@@ -352,7 +352,7 @@
       return { labels, data, ma };
     }
 
-    function renderChart(isSilent = false) {
+    function renderChart() {
       const ctx = document.getElementById('myChart').getContext('2d');
       const processed = processData(currentTarget, currentRange);
 
@@ -494,12 +494,17 @@
       renderChart();
     }
 
-    function switchTimeframe(range) {
+    function switchRange(range) {
       currentRange = range;
       document.querySelectorAll('.range-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', (idx === 0 && range === '1d') || (idx === 1 && range === '5d') || (idx === 2 && range === '1m'));
       });
       renderChart();
+    }
+
+    // 別名相容修復
+    function switchTimeframe(range) {
+      switchRange(range);
     }
 
     function getTitle(target) {
