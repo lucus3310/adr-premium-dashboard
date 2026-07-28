@@ -159,7 +159,7 @@
       font-size: 11px;
       color: #8b949e;
       display: flex;
-      gap: 10px;
+      gap: 12px;
     }
     .error-banner {
       display: none;
@@ -224,9 +224,8 @@
   <div class="price-panel">
     <div class="price-main up" id="val-current">--</div>
     <div class="price-sub-info">
-      <div>高 <span id="val-max" style="color:#3fb950">--</span></div>
-      <div>低 <span id="val-min" style="color:#f85149">--</span></div>
-      <div>均線MA <span id="val-ma" style="color:#d29922">--</span></div>
+      <div>最高 <span id="val-max" style="color:#3fb950">--</span></div>
+      <div>最低 <span id="val-min" style="color:#f85149">--</span></div>
     </div>
   </div>
 
@@ -237,7 +236,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 垂直貫穿準星 + OKX 觸動震動 | 15s 動態連線</div>
+  <div class="footer-hint">🟢 絲滑準星 + 觸動震動 | 已移除均線 | 15s 動態連線</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -255,37 +254,39 @@
     let myChart = null;
     let refreshTimer = null;
     let isUserZoomed = false;
-    let lastHoveredIndex = -1; // 追蹤觸動震動的點位索引
+    let lastHoveredIndex = -1;
 
-    // 📳 OKX 風格觸動震動反饋
-    function triggerHapticFeedback() {
-      try {
-        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback) {
-          window.Telegram.WebApp.HapticFeedback.selectionChanged(); // Telegram 原生 Selection Change Haptic
-        } else if (navigator.vibrate) {
-          navigator.vibrate(8); // Web Vibration API (8ms 輕微震動)
-        }
-      } catch (e) {}
+    // 📳 非阻塞輕量觸動震動
+    function triggerHapticFeedbackAsync() {
+      setTimeout(() => {
+        try {
+          if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback) {
+            window.Telegram.WebApp.HapticFeedback.selectionChanged();
+          } else if (navigator.vibrate) {
+            navigator.vibrate(6);
+          }
+        } catch (e) {}
+      }, 0);
     }
 
-    // 🎯 OKX / TradingView 風格垂直貫穿準星 Plugin
+    // 🎯 60 FPS 超極致絲滑垂直準星 Plugin
     const okxCrosshairPlugin = {
       id: 'okxCrosshair',
-      afterDraw: (chart) => {
-        if (chart.tooltip && chart.tooltip._active && chart.tooltip._active.length > 0) {
-          const activePoint = chart.tooltip._active[0];
-          const x = activePoint.element.x;
+      afterDatasetsDraw: (chart) => {
+        const activeElems = chart.tooltip ? chart.tooltip._active : null;
+        if (activeElems && activeElems.length > 0) {
+          const x = activeElems[0].element.x;
           const topY = chart.scales.y.top;
           const bottomY = chart.scales.y.bottom;
           const ctx = chart.ctx;
 
           ctx.save();
           ctx.beginPath();
-          ctx.setLineDash([4, 4]); // 虛線貫穿特效
+          ctx.setLineDash([4, 4]);
           ctx.moveTo(x, topY);
           ctx.lineTo(x, bottomY);
           ctx.lineWidth = 1.2;
-          ctx.strokeStyle = 'rgba(88, 166, 255, 0.75)'; // 亮藍色準星線
+          ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
           ctx.stroke();
           ctx.restore();
         }
@@ -334,29 +335,8 @@
       errorBox.style.display = 'block';
     }
 
-    function calculateMA(dataArr, period = 15) {
-      const ma = [];
-      for (let i = 0; i < dataArr.length; i++) {
-        if (i < period - 1) {
-          ma.push(null);
-        } else {
-          let sum = 0;
-          let validCount = 0;
-          for (let j = 0; j < period; j++) {
-            const v = dataArr[i - j];
-            if (typeof v === 'number' && !isNaN(v)) {
-              sum += v;
-              validCount++;
-            }
-          }
-          ma.push(validCount > 0 ? parseFloat((sum / validCount).toFixed(2)) : null);
-        }
-      }
-      return ma;
-    }
-
     function processData(target, range) {
-      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], ma: [] };
+      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [] };
 
       let limit = 1440;
       let step = 5;
@@ -386,8 +366,7 @@
         data.push(val);
       }
 
-      const ma = calculateMA(data, 15);
-      return { labels, data, ma };
+      return { labels, data };
     }
 
     function renderChart(isSilent = false, animate = false) {
@@ -421,17 +400,6 @@
                 tension: 0.25,
                 yAxisID: 'y',
                 spanGaps: true
-              },
-              {
-                label: '均線 (MA15)',
-                data: processed.ma,
-                borderColor: '#d29922',
-                borderWidth: 1.5,
-                pointRadius: 0,
-                fill: false,
-                tension: 0.3,
-                yAxisID: 'y',
-                spanGaps: true
               }
             ]
           },
@@ -448,7 +416,7 @@
                 const idx = elements[0].index;
                 if (idx !== lastHoveredIndex) {
                   lastHoveredIndex = idx;
-                  triggerHapticFeedback(); // 滑過不同點時觸發 OKX 風格觸動震動！
+                  triggerHapticFeedbackAsync(); // 非阻塞非卡頓震動觸動
                 }
               } else {
                 lastHoveredIndex = -1;
@@ -464,7 +432,7 @@
                 borderColor: '#30363d',
                 borderWidth: 1,
                 padding: 10,
-                displayColors: true
+                displayColors: false
               },
               zoom: {
                 pan: { 
@@ -504,7 +472,6 @@
         myChart.data.labels = processed.labels;
         myChart.data.datasets[0].data = processed.data;
         myChart.data.datasets[0].backgroundColor = gradientGreen;
-        myChart.data.datasets[1].data = processed.ma;
         
         if (myChart.resetZoom) {
           myChart.resetZoom('none');
@@ -517,17 +484,14 @@
         }
       }
 
-      updatePricePanel(processed.data, processed.ma);
+      updatePricePanel(processed.data);
     }
 
-    function updatePricePanel(arr, maArr) {
+    function updatePricePanel(arr) {
       if (!arr || arr.length === 0) return;
       const last = arr[arr.length - 1];
       const max = Math.max(...arr);
       const min = Math.min(...arr);
-      
-      let validMas = maArr.filter(v => v !== null && !isNaN(v));
-      const lastMa = validMas.length > 0 ? validMas[validMas.length - 1] : '--';
 
       let unit = '%';
       if (currentTarget === 'oil') unit = ' USD';
@@ -539,7 +503,6 @@
 
       document.getElementById('val-max').innerText = (max >= 0 ? '+' : '') + max + unit;
       document.getElementById('val-min').innerText = (min >= 0 ? '+' : '') + min + unit;
-      document.getElementById('val-ma').innerText = lastMa + unit;
     }
 
     function switchTarget(target) {
