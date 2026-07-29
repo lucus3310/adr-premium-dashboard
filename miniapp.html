@@ -274,16 +274,18 @@
 
     // 🕐 解析時間字串 (完全相容 "07-29 12:20", "2026-07-29 12:20:00", "ul 29 2026 12:20")
     function parseTimeStr(rawStr) {
-      if (!rawStr) return { date: "", time: "--:--" };
+      if (!rawStr) return { date: "", time: "--:--", hour: "" };
       let str = rawStr.toString().trim();
       let cleanStr = str.replace(/^ul\s+/i, 'Jul ');
 
       // 1. 先嘗試匹配標準格式 "MM-dd HH:mm" 或 "MM/dd HH:mm"
       const m1 = str.match(/(\d{1,2})[-/](\d{1,2})\s+(\d{1,2}):(\d{2})/);
       if (m1) {
+        const h = (parseInt(m1[3], 10) < 10 ? '0' : '') + parseInt(m1[3], 10);
         return {
           date: `${parseInt(m1[1], 10)}/${parseInt(m1[2], 10)}`,
-          time: `${parseInt(m1[3], 10)}:${m1[4]}`
+          time: `${h}:${m1[4]}`,
+          hour: h
         };
       }
 
@@ -292,15 +294,16 @@
       if (!isNaN(d.getTime())) {
         const month = d.getMonth() + 1;
         const day = d.getDate();
-        const hour = d.getHours();
+        const hour = (d.getHours() < 10 ? '0' : '') + d.getHours();
         const minute = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
         return {
           date: `${month}/${day}`,
-          time: `${hour}:${minute}`
+          time: `${hour}:${minute}`,
+          hour: hour
         };
       }
 
-      return { date: "", time: str };
+      return { date: "", time: str, hour: "" };
     }
 
     // 🎯 60 FPS 無框極簡純文字 Crosshair Plugin
@@ -637,10 +640,6 @@
                   if (!parsedList || !parsedList[index]) return "";
 
                   const curr = parsedList[index];
-                  const timeParts = curr.time ? curr.time.split(':') : [];
-                  const minute = timeParts[1] || "";
-                  const isFullHour = (minute === "00");
-
                   if (index === 0) {
                     return curr.date ? `${curr.date} ${curr.time}` : curr.time;
                   }
@@ -650,8 +649,8 @@
                     return curr.date;
                   }
 
-                  if (isFullHour) {
-                    return curr.time;
+                  if (prev && curr.hour && prev.hour && curr.hour !== prev.hour) {
+                    return `${curr.hour}:00`;
                   }
 
                   return "";
