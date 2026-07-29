@@ -638,7 +638,7 @@
 
                   const curr = parsedList[index];
                   if (index === 0) {
-                    return curr.date ? `${curr.date} ${curr.hour}:00` : `${curr.hour}:00`;
+                    return curr.date ? `${curr.date} ${curr.time}` : curr.time;
                   }
 
                   const prev = index > 0 ? parsedList[index - 1] : null;
@@ -646,11 +646,7 @@
                     return curr.date;
                   }
 
-                  if (prev && curr.hour && prev.hour && curr.hour !== prev.hour) {
-                    return `${curr.hour}:00`;
-                  }
-
-                  return "";
+                  return curr.time;
                 }
               }, 
               grid: { color: 'rgba(255, 255, 255, 0.05)' } 
