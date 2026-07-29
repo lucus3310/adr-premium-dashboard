@@ -449,35 +449,43 @@
       return processedDataStore;
     }
 
+    let touchRaf = null;
+
     function setupDirectTouchListeners(canvas) {
       const handleTouch = (e) => {
         if (!myChart) return;
-        const rect = canvas.getBoundingClientRect();
-        const touch = e.touches ? e.touches[0] : e;
-        if (!touch) return;
+        
+        if (touchRaf) return;
+        touchRaf = requestAnimationFrame(() => {
+          touchRaf = null;
+          const rect = canvas.getBoundingClientRect();
+          const touch = e.touches ? e.touches[0] : e;
+          if (!touch) return;
 
-        const x = touch.clientX - rect.left;
-        const y = touch.clientY - rect.top;
+          const elements = myChart.getElementsAtEventForMode(
+            e, 'index', { intersect: false }, false
+          );
 
-        const elements = myChart.getElementsAtEventForMode(
-          e, 'index', { intersect: false }, false
-        );
+          if (elements && elements.length > 0) {
+            const idx = elements[0].index;
+            activeTouchX = elements[0].element.x;
+            activeTouchY = elements[0].element.y;
 
-        if (elements && elements.length > 0) {
-          const idx = elements[0].index;
-          activeTouchX = elements[0].element.x;
-          activeTouchY = elements[0].element.y;
-
-          if (idx !== lastHoveredIndex) {
-            lastHoveredIndex = idx;
-            triggerHapticFeedbackAsync();
+            if (idx !== lastHoveredIndex) {
+              lastHoveredIndex = idx;
+              triggerHapticFeedbackAsync();
+            }
+            myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
+            myChart.update('none');
           }
-          myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
-          myChart.update('none');
-        }
+        });
       };
 
       const handleTouchEnd = () => {
+        if (touchRaf) {
+          cancelAnimationFrame(touchRaf);
+          touchRaf = null;
+        }
         activeTouchX = null;
         activeTouchY = null;
         lastHoveredIndex = -1;
@@ -577,6 +585,8 @@
           datasets: datasets
         },
         options: {
+          normalized: true,
+          events: [],
           responsive: true,
           maintainAspectRatio: false,
           transitions: {
