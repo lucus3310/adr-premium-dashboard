@@ -454,6 +454,7 @@
     let crosshairActive = false;
     let touchStartX = 0;
     let touchStartY = 0;
+    let lastTouchEvent = null;
 
     function setupDirectTouchListeners(canvas) {
       const handleTouchStart = (e) => {
@@ -471,6 +472,7 @@
 
         touchStartX = touch.clientX;
         touchStartY = touch.clientY;
+        lastTouchEvent = e;
         crosshairActive = false;
 
         // ⏱️ 長按 150ms 啟動查價線 (TradingView 標準模式)
@@ -478,7 +480,9 @@
         longPressTimer = setTimeout(() => {
           crosshairActive = true;
           triggerHapticFeedbackAsync();
-          updateCrosshairPosition(e);
+          if (lastTouchEvent) {
+            updateCrosshairPosition(lastTouchEvent);
+          }
         }, 150);
       };
 
@@ -495,6 +499,8 @@
         const touch = e.touches ? e.touches[0] : e;
         if (!touch) return;
 
+        lastTouchEvent = e;
+
         // 如果尚未長按滿 150ms，且手指滑動超過 8px，代表使用者是在滑動/縮放頁面，取消長按觸發！
         if (!crosshairActive) {
           const moveDist = Math.hypot(touch.clientX - touchStartX, touch.clientY - touchStartY);
@@ -504,11 +510,13 @@
           return;
         }
 
-        // 查價線啟動狀態下，順暢跟隨手指移動
+        // 查價線啟動狀態下，順暢跟隨手指最新的即時位置移動
         if (touchRaf) return;
         touchRaf = requestAnimationFrame(() => {
           touchRaf = null;
-          updateCrosshairPosition(e);
+          if (lastTouchEvent) {
+            updateCrosshairPosition(lastTouchEvent);
+          }
         });
       };
 
