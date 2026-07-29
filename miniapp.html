@@ -137,7 +137,7 @@
       position: relative;
       flex: 1;
       width: 100%;
-      touch-action: none; /* 阻止瀏覽器預設滑動干擾 */
+      touch-action: none;
     }
     .price-panel {
       display: flex;
@@ -237,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 60 FPS 極速手勢準星 + 觸動震動 | 雙指縮放 | 15s 動態連線</div>
+  <div class="footer-hint">🟢 OKX 風格後段線條虛化特效 | 絲滑準星 + 震動反饋</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -255,7 +255,7 @@
     let myChart = null;
     let refreshTimer = null;
     let lastHoveredIndex = -1;
-    let activeTouchX = null; // 實時手勢追蹤 X 座標
+    let activeTouchX = null;
 
     // 📳 輕量化非阻塞震動
     function triggerHapticFeedbackAsync() {
@@ -270,7 +270,7 @@
       }, 0);
     }
 
-    // 🎯 60 FPS 獨立原生 Canvas 準星 Plugin (不受任何套件鎖定干擾)
+    // 🎯 60 FPS 獨立原生 Canvas 準星 Plugin
     const okxCrosshairPlugin = {
       id: 'okxCrosshair',
       afterDatasetsDraw: (chart) => {
@@ -369,7 +369,6 @@
     }
 
     function setupDirectTouchListeners(canvas) {
-      // 👈 直連 DOM 原生手勢監聽器，避開 Zoom 插件拖曳鎖定問題！
       const handleTouch = (e) => {
         if (!myChart) return;
         const rect = canvas.getBoundingClientRect();
@@ -379,14 +378,13 @@
         const x = touch.clientX - rect.left;
         const y = touch.clientY - rect.top;
 
-        // 尋找距離手指最近的資料點
         const elements = myChart.getElementsAtEventForMode(
           e, 'index', { intersect: false }, false
         );
 
         if (elements && elements.length > 0) {
           const idx = elements[0].index;
-          activeTouchX = elements[0].element.x; // 鎖定精準 X 座標
+          activeTouchX = elements[0].element.x;
 
           if (idx !== lastHoveredIndex) {
             lastHoveredIndex = idx;
@@ -394,7 +392,7 @@
           }
           myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
           myChart.tooltip.setActiveElements([{ datasetIndex: 0, index: idx }], { x, y });
-          myChart.update('none');
+          myChart.update('none'); // 實時更新 Segment 線條虛化
         }
       };
 
@@ -404,13 +402,13 @@
         if (myChart) {
           myChart.setActiveElements([]);
           myChart.tooltip.setActiveElements([]);
-          myChart.update('none');
+          myChart.update('none'); // 恢復全線段亮眼實線
         }
       };
 
       canvas.addEventListener('touchstart', handleTouch, { passive: true });
       canvas.addEventListener('touchmove', handleTouch, { passive: true });
-      canvas.addEventListener('touchend', handleTouch, { passive: true });
+      canvas.addEventListener('touchend', handleTouchEnd, { passive: true });
       canvas.addEventListener('mousemove', handleTouch);
       canvas.addEventListener('mouseleave', handleTouchEnd);
     }
@@ -446,7 +444,22 @@
                 pointHoverBorderWidth: 2,
                 tension: 0.25,
                 yAxisID: 'y',
-                spanGaps: true
+                spanGaps: true,
+                // 🎨 OKX 風格：選中點之後的趨勢線自動半透明 + 微虛線化！
+                segment: {
+                  borderColor: (ctx) => {
+                    if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
+                      return 'rgba(63, 185, 80, 0.25)'; // 選中點後段線條淡化/半透明
+                    }
+                    return '#3fb950'; // 選中點前段保持亮眼霓虹綠
+                  },
+                  borderDash: (ctx) => {
+                    if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
+                      return [3, 3]; // 後段同時帶有精美虛線效果
+                    }
+                    return undefined;
+                  }
+                }
               }
             ]
           },
@@ -471,10 +484,10 @@
                 displayColors: false
               },
               zoom: {
-                pan: { enabled: false }, // 👈 關閉單指 pan，徹底解決單指滑動與 Tooltip 衝突卡死的終極元兇！
+                pan: { enabled: false },
                 zoom: { 
                   wheel: { enabled: true }, 
-                  pinch: { enabled: true }, // 保留極致順暢的雙指 pinch 縮放！
+                  pinch: { enabled: true }, 
                   mode: 'x'
                 }
               }
