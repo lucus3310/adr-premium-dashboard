@@ -237,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 已修復 ul 28 歷史時間格式 | 純粹 14:10 與 7/28 日期切換 | 15s 動態連線</div>
+  <div class="footer-hint">🟢 完美解析 MM-dd HH:mm 實時時間 | 跨日標記 7/29 | 15s 動態連線</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -272,15 +272,22 @@
       }, 0);
     }
 
-    // 🕐 超強大通用時間解析器 (100% 相容 "ul 28 2026", "Jul 28 2026", "07-28 14:10" 等所有歷史格式)
+    // 🕐 解析時間字串 (完全相容 "07-29 12:20", "2026-07-29 12:20:00", "ul 29 2026 12:20")
     function parseTimeStr(rawStr) {
       if (!rawStr) return { date: "", time: "--:--" };
       let str = rawStr.toString().trim();
-
-      // 自動修復早期的 "ul 28 2026 14:10" -> "Jul 28 2026 14:10"
       let cleanStr = str.replace(/^ul\s+/i, 'Jul ');
 
-      // 1. 嘗試 JS 標準 Date 解析
+      // 1. 先嘗試匹配標準格式 "MM-dd HH:mm" 或 "MM/dd HH:mm"
+      const m1 = str.match(/(\d{1,2})[-/](\d{1,2})\s+(\d{1,2}):(\d{2})/);
+      if (m1) {
+        return {
+          date: `${parseInt(m1[1], 10)}/${parseInt(m1[2], 10)}`,
+          time: `${parseInt(m1[3], 10)}:${m1[4]}`
+        };
+      }
+
+      // 2. 嘗試 JS 標準 Date 解析
       let d = new Date(cleanStr);
       if (!isNaN(d.getTime())) {
         const month = d.getMonth() + 1;
@@ -290,26 +297,6 @@
         return {
           date: `${month}/${day}`,
           time: `${hour}:${minute}`
-        };
-      }
-
-      // 2. 正則表達式匹配 "07-28 14:10"
-      const m1 = str.match(/(\d{1,2})[-/](\d{1,2})\s+(\d{1,2}):(\d{2})/);
-      if (m1) {
-        return {
-          date: `${parseInt(m1[1])}/${parseInt(m1[2])}`,
-          time: `${parseInt(m1[3])}:${m1[4]}`
-        };
-      }
-
-      // 3. 正則表達式匹配 "ul 28 2026" 或 "28 2026"
-      const m2 = str.match(/(?:ul|Jul)?\s*(\d{1,2})\s+(\d{4})/i);
-      if (m2) {
-        const month = 7; // 7月歷史預設
-        const day = parseInt(m2[1]);
-        return {
-          date: `${month}/${day}`,
-          time: `0:00`
         };
       }
 
@@ -338,7 +325,7 @@
 
           // 2. 繪製無背景框純文字標籤
           const parsed = processedDataStore.parsedTimes[lastHoveredIndex];
-          const timeLabel = parsed.time; // 例如 "14:10" 或 "2:10"
+          const timeLabel = parsed.time; // 例如 "12:20" 或 "2:10"
           const rawVal = chart.data.datasets[0].data[lastHoveredIndex];
           
           let unit = '%';
@@ -359,7 +346,7 @@
           const yPos = activeTouchY ? Math.max(topY + 14, Math.min(bottomY - 14, activeTouchY)) : topY + 16;
           ctx.fillText(valLabel, textX, yPos);
 
-          // 時間文字 (例如 "14:10"，青藍色)
+          // 時間文字 (例如 "12:20"，青藍色)
           ctx.fillStyle = '#58a6ff';
           ctx.fillText(timeLabel, textX, bottomY - 6);
 
@@ -574,7 +561,6 @@
                   maxRotation: 0,
                   color: '#8b949e', 
                   font: { size: 9 },
-                  // 👈 核心修復：底部橫軸跨日顯示 "7/28"，同一天內顯示 "14:10" 或 "2:10" 格式！
                   callback: function(val, index) {
                     const parsedList = processedDataStore.parsedTimes;
                     if (!parsedList || !parsedList[index]) return "";
@@ -585,11 +571,9 @@
                     }
                     
                     const prev = parsedList[index - 1];
-                    // 若前一點與當前點的日期不同（跨日切換點），顯示 "7/28"！
                     if (prev && curr.date && prev.date && curr.date !== prev.date) {
                       return curr.date;
                     }
-                    // 同一天內，只顯示 "14:10" 或 "2:10" 格式！
                     return curr.time;
                   }
                 }, 
