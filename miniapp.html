@@ -628,7 +628,7 @@
               type: 'category',
               ticks: { 
                 autoSkip: true,
-                maxTicksLimit: 7,
+                maxTicksLimit: 8,
                 maxRotation: 0,
                 color: '#8b949e', 
                 font: { size: 9 },
@@ -637,15 +637,24 @@
                   if (!parsedList || !parsedList[index]) return "";
 
                   const curr = parsedList[index];
+                  const timeParts = curr.time ? curr.time.split(':') : [];
+                  const minute = timeParts[1] || "";
+                  const isFullHour = (minute === "00");
+
                   if (index === 0) {
                     return curr.date ? `${curr.date} ${curr.time}` : curr.time;
                   }
-                  
+
                   const prev = parsedList[index - 1];
                   if (prev && curr.date && prev.date && curr.date !== prev.date) {
                     return curr.date;
                   }
-                  return curr.time;
+
+                  if (isFullHour) {
+                    return curr.time;
+                  }
+
+                  return "";
                 }
               }, 
               grid: { color: 'rgba(255,255,255,0.03)' } 
