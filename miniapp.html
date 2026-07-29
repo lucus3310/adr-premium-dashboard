@@ -630,40 +630,27 @@
             x: { 
               type: 'category',
               ticks: { 
-                autoSkip: false,
+                autoSkip: true,
+                maxTicksLimit: 7,
                 maxRotation: 0,
                 color: '#8b949e', 
                 font: { size: 9 },
                 callback: function(val, index) {
                   const parsedList = processedDataStore.parsedTimes;
-                  if (!parsedList || parsedList.length === 0) return "";
+                  if (!parsedList || !parsedList[index]) return "";
 
-                  const total = parsedList.length;
-                  if (total <= 1) return parsedList[0].time;
-
-                  // 📐 計算 6 個 100% 等距離的背景格線分割點 (0%, 20%, 40%, 60%, 80%, 100%)
-                  const ticksCount = 6;
-                  const step = (total - 1) / (ticksCount - 1);
-                  const targetIndices = new Set();
-                  for (let i = 0; i < ticksCount; i++) {
-                    targetIndices.add(Math.round(i * step));
+                  const curr = parsedList[index];
+                  if (index === 0) {
+                    return curr.date ? `${curr.date} ${curr.hour}:00` : `${curr.hour}:00`;
                   }
 
-                  // 只有落在 6 個等距格線上時才印出時間文字！
-                  if (targetIndices.has(index)) {
-                    const curr = parsedList[index];
-                    if (!curr) return "";
+                  const prev = index > 0 ? parsedList[index - 1] : null;
+                  if (prev && curr.date && prev.date && curr.date !== prev.date) {
+                    return curr.date;
+                  }
 
-                    if (index === 0) {
-                      return curr.date ? `${curr.date} ${curr.time}` : curr.time;
-                    }
-
-                    const prev = index > 0 ? parsedList[index - 1] : null;
-                    if (prev && curr.date && prev.date && curr.date !== prev.date) {
-                      return curr.date;
-                    }
-
-                    return curr.time;
+                  if (prev && curr.hour && prev.hour && curr.hour !== prev.hour) {
+                    return `${curr.hour}:00`;
                   }
 
                   return "";
