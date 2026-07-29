@@ -404,8 +404,8 @@
       let step = 1;
 
       if (range === '1d') { limit = 1440; step = 1; }
-      else if (range === '5d') { limit = 7200; step = 25; }
-      else if (range === '1m') { limit = 43200; step = 150; }
+      else if (range === '5d') { limit = 7200; step = 6; }
+      else if (range === '1m') { limit = 43200; step = 15; }
 
       const sliced = rawSheetData.slice(-limit);
       const labels = [];
