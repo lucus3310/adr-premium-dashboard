@@ -237,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 OKX 風格後段線條虛化特效 | 絲滑準星 + 震動反饋</div>
+  <div class="footer-hint">🟢 無殘影單點精準鎖定 | 60 FPS 絲滑準星 | 15s 動態連線</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -390,9 +390,10 @@
             lastHoveredIndex = idx;
             triggerHapticFeedbackAsync();
           }
+          // 👈 核心修復：精確強制只高亮當前單一元素，徹底杜絕多點殘影！
           myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
           myChart.tooltip.setActiveElements([{ datasetIndex: 0, index: idx }], { x, y });
-          myChart.update('none'); // 實時更新 Segment 線條虛化
+          myChart.update('none');
         }
       };
 
@@ -402,7 +403,7 @@
         if (myChart) {
           myChart.setActiveElements([]);
           myChart.tooltip.setActiveElements([]);
-          myChart.update('none'); // 恢復全線段亮眼實線
+          myChart.update('none');
         }
       };
 
@@ -445,17 +446,16 @@
                 tension: 0.25,
                 yAxisID: 'y',
                 spanGaps: true,
-                // 🎨 OKX 風格：選中點之後的趨勢線自動半透明 + 微虛線化！
                 segment: {
                   borderColor: (ctx) => {
                     if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
-                      return 'rgba(63, 185, 80, 0.25)'; // 選中點後段線條淡化/半透明
+                      return 'rgba(63, 185, 80, 0.25)';
                     }
-                    return '#3fb950'; // 選中點前段保持亮眼霓虹綠
+                    return '#3fb950';
                   },
                   borderDash: (ctx) => {
                     if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
-                      return [3, 3]; // 後段同時帶有精美虛線效果
+                      return [3, 3];
                     }
                     return undefined;
                   }
@@ -466,6 +466,12 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            // 👈 核心修復：關閉 Point Hover 漸變動畫，手指划過時前一點瞬間縮小為 0，絕不留下綠點殘影！
+            hover: {
+              mode: 'index',
+              intersect: false,
+              animationDuration: 0
+            },
             animation: {
               duration: 350,
               easing: 'easeOutQuart'
@@ -481,7 +487,8 @@
                 borderColor: '#30363d',
                 borderWidth: 1,
                 padding: 10,
-                displayColors: false
+                displayColors: false,
+                animation: false // 關閉提示框動畫殘影
               },
               zoom: {
                 pan: { enabled: false },
