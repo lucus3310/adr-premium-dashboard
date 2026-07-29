@@ -454,6 +454,16 @@
     function setupDirectTouchListeners(canvas) {
       const handleTouch = (e) => {
         if (!myChart) return;
+
+        // 🖐️ 雙指以上觸控 (Pinch Zoom)：自動暫停單指十字線，專心進行雙指放大縮小！
+        if (e.touches && e.touches.length >= 2) {
+          activeTouchX = null;
+          activeTouchY = null;
+          lastHoveredIndex = -1;
+          myChart.setActiveElements([]);
+          myChart.update('none');
+          return;
+        }
         
         if (touchRaf) return;
         touchRaf = requestAnimationFrame(() => {
