@@ -450,48 +450,97 @@
     }
 
     let touchRaf = null;
+    let longPressTimer = null;
+    let crosshairActive = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     function setupDirectTouchListeners(canvas) {
-      const handleTouch = (e) => {
+      const handleTouchStart = (e) => {
         if (!myChart) return;
 
-        // 🖐️ 雙指以上觸控 (Pinch Zoom)：自動暫停單指十字線，專心進行雙指放大縮小！
+        // 🖐️ 雙指以上觸控 (Pinch Zoom)：直接取消查價線，專心進行雙指放大縮小！
         if (e.touches && e.touches.length >= 2) {
-          activeTouchX = null;
-          activeTouchY = null;
-          lastHoveredIndex = -1;
-          myChart.setActiveElements([]);
-          myChart.update('none');
+          clearLongPress();
+          deactivateCrosshair();
           return;
         }
-        
+
+        const touch = e.touches ? e.touches[0] : e;
+        if (!touch) return;
+
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        crosshairActive = false;
+
+        // ⏱️ 長按 150ms 啟動查價線 (TradingView 標準模式)
+        clearLongPress();
+        longPressTimer = setTimeout(() => {
+          crosshairActive = true;
+          triggerHapticFeedbackAsync();
+          updateCrosshairPosition(e);
+        }, 150);
+      };
+
+      const handleTouchMove = (e) => {
+        if (!myChart) return;
+
+        // 雙指動作直接取消長按與查價線
+        if (e.touches && e.touches.length >= 2) {
+          clearLongPress();
+          deactivateCrosshair();
+          return;
+        }
+
+        const touch = e.touches ? e.touches[0] : e;
+        if (!touch) return;
+
+        // 如果尚未長按滿 150ms，且手指滑動超過 8px，代表使用者是在滑動/縮放頁面，取消長按觸發！
+        if (!crosshairActive) {
+          const moveDist = Math.hypot(touch.clientX - touchStartX, touch.clientY - touchStartY);
+          if (moveDist > 8) {
+            clearLongPress();
+          }
+          return;
+        }
+
+        // 查價線啟動狀態下，順暢跟隨手指移動
         if (touchRaf) return;
         touchRaf = requestAnimationFrame(() => {
           touchRaf = null;
-          const rect = canvas.getBoundingClientRect();
-          const touch = e.touches ? e.touches[0] : e;
-          if (!touch) return;
-
-          const elements = myChart.getElementsAtEventForMode(
-            e, 'index', { intersect: false }, false
-          );
-
-          if (elements && elements.length > 0) {
-            const idx = elements[0].index;
-            activeTouchX = elements[0].element.x;
-            activeTouchY = elements[0].element.y;
-
-            if (idx !== lastHoveredIndex) {
-              lastHoveredIndex = idx;
-              triggerHapticFeedbackAsync();
-            }
-            myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
-            myChart.update('none');
-          }
+          updateCrosshairPosition(e);
         });
       };
 
-      const handleTouchEnd = () => {
+      const updateCrosshairPosition = (e) => {
+        const elements = myChart.getElementsAtEventForMode(
+          e, 'index', { intersect: false }, false
+        );
+
+        if (elements && elements.length > 0) {
+          const idx = elements[0].index;
+          activeTouchX = elements[0].element.x;
+          activeTouchY = elements[0].element.y;
+
+          if (idx !== lastHoveredIndex) {
+            lastHoveredIndex = idx;
+            triggerHapticFeedbackAsync();
+          }
+          myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
+          myChart.update('none');
+        }
+      };
+
+      const clearLongPress = () => {
+        if (longPressTimer) {
+          clearTimeout(longPressTimer);
+          longPressTimer = null;
+        }
+      };
+
+      const deactivateCrosshair = () => {
+        clearLongPress();
+        crosshairActive = false;
         if (touchRaf) {
           cancelAnimationFrame(touchRaf);
           touchRaf = null;
@@ -505,11 +554,12 @@
         }
       };
 
-      canvas.addEventListener('touchstart', handleTouch, { passive: true });
-      canvas.addEventListener('touchmove', handleTouch, { passive: true });
-      canvas.addEventListener('touchend', handleTouchEnd, { passive: true });
-      canvas.addEventListener('mousemove', handleTouch);
-      canvas.addEventListener('mouseleave', handleTouchEnd);
+      canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
+      canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
+      canvas.addEventListener('touchend', deactivateCrosshair, { passive: true });
+      canvas.addEventListener('touchcancel', deactivateCrosshair, { passive: true });
+      canvas.addEventListener('mousemove', handleTouchMove);
+      canvas.addEventListener('mouseleave', deactivateCrosshair);
     }
 
     function renderChart(isSilent = false, animate = false) {
