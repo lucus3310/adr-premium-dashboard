@@ -272,25 +272,21 @@
       }, 0);
     }
 
-    // 🕐 解析時間字串 (完全相容 "07-29 12:20", "2026-07-29 12:20:00", "ul 29 2026 12:20")
+    // 🕐 解析時間字串 (包含時間戳記以利精確幾何插值)
     function parseTimeStr(rawStr) {
-      if (!rawStr) return { date: "", time: "--:--", hour: "" };
+      if (!rawStr) return { date: "", time: "--:--", hour: "", timestamp: 0 };
       let str = rawStr.toString().trim();
       let cleanStr = str.replace(/^ul\s+/i, 'Jul ');
 
-      // 1. 先嘗試匹配標準格式 "MM-dd HH:mm" 或 "MM/dd HH:mm"
-      const m1 = str.match(/(\d{1,2})[-/](\d{1,2})\s+(\d{1,2}):(\d{2})/);
-      if (m1) {
-        const h = (parseInt(m1[3], 10) < 10 ? '0' : '') + parseInt(m1[3], 10);
-        return {
-          date: `${parseInt(m1[1], 10)}/${parseInt(m1[2], 10)}`,
-          time: `${h}:${m1[4]}`,
-          hour: h
-        };
+      let d = new Date(cleanStr);
+      if (isNaN(d.getTime())) {
+        const currentYear = new Date().getFullYear();
+        const m1 = str.match(/(\d{1,2})[-/](\d{1,2})\s+(\d{1,2}):(\d{2})/);
+        if (m1) {
+          d = new Date(currentYear, parseInt(m1[1], 10) - 1, parseInt(m1[2], 10), parseInt(m1[3], 10), parseInt(m1[4], 10));
+        }
       }
 
-      // 2. 嘗試 JS 標準 Date 解析
-      let d = new Date(cleanStr);
       if (!isNaN(d.getTime())) {
         const month = d.getMonth() + 1;
         const day = d.getDate();
@@ -299,12 +295,100 @@
         return {
           date: `${month}/${day}`,
           time: `${hour}:${minute}`,
-          hour: hour
+          hour: hour,
+          timestamp: d.getTime()
         };
       }
 
-      return { date: "", time: str, hour: "" };
+      return { date: "", time: str, hour: "", timestamp: 0 };
     }
+
+    // 📐 100% 精確幾何插值「整點背景格線與標籤」Plugin (不需要資料點踩在格線上)
+    const fullHourGridPlugin = {
+      id: 'fullHourGrid',
+      beforeDraw: (chart) => {
+        const parsedList = processedDataStore.parsedTimes;
+        if (!parsedList || parsedList.length < 2) return;
+
+        const meta = chart.getDatasetMeta(0);
+        if (!meta || !meta.data || meta.data.length < 2) return;
+
+        const ctx = chart.ctx;
+        const topY = chart.scales.y.top;
+        const bottomY = chart.scales.y.bottom;
+
+        ctx.save();
+        ctx.lineWidth = 1;
+
+        const points = [];
+        for (let i = 0; i < parsedList.length; i++) {
+          const p = meta.data[i];
+          if (p && parsedList[i].timestamp) {
+            points.push({
+              ts: parsedList[i].timestamp,
+              x: p.x
+            });
+          }
+        }
+
+        if (points.length < 2) {
+          ctx.restore();
+          return;
+        }
+
+        const minTs = points[0].ts;
+        const maxTs = points[points.length - 1].ts;
+
+        // 計算整點間隔：1D 每 2小時，5D 每 6小時，1M 每 24小時 (1天)
+        let intervalHours = 2;
+        if (currentRange === '5d') intervalHours = 6;
+        else if (currentRange === '1m') intervalHours = 24;
+
+        const stepMs = intervalHours * 3600000;
+        const startHourTs = Math.ceil(minTs / stepMs) * stepMs;
+
+        for (let targetTs = startHourTs; targetTs <= maxTs; targetTs += stepMs) {
+          let pLeft = null, pRight = null;
+          for (let j = 0; j < points.length - 1; j++) {
+            if (points[j].ts <= targetTs && points[j+1].ts >= targetTs) {
+              pLeft = points[j];
+              pRight = points[j+1];
+              break;
+            }
+          }
+
+          if (pLeft && pRight) {
+            const ratio = (pLeft.ts === pRight.ts) ? 0 : (targetTs - pLeft.ts) / (pRight.ts - pLeft.ts);
+            const gridX = pLeft.x + (pRight.x - pLeft.x) * ratio;
+
+            const d = new Date(targetTs);
+            const hourNum = d.getHours();
+            const month = d.getMonth() + 1;
+            const day = d.getDate();
+            
+            let labelText = `${hourNum}:00`;
+            if (hourNum === 0 || currentRange === '1m') {
+              labelText = `${month}/${day}`;
+            }
+
+            // 1. 繪製精確幾何整點背景格線
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.beginPath();
+            ctx.moveTo(gridX, topY);
+            ctx.lineTo(gridX, bottomY);
+            ctx.stroke();
+
+            // 2. 繪製底部整點標籤
+            ctx.fillStyle = '#8b949e';
+            ctx.font = '9px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(labelText, gridX, bottomY + 12);
+          }
+        }
+
+        ctx.restore();
+      }
+    };
 
     // 🎯 60 FPS 無框極簡純文字 Crosshair Plugin
     const okxCrosshairPlugin = {
@@ -629,34 +713,8 @@
           scales: {
             x: { 
               type: 'category',
-              ticks: { 
-                autoSkip: true,
-                maxTicksLimit: 7,
-                maxRotation: 0,
-                color: '#8b949e', 
-                font: { size: 9 },
-                callback: function(val, index) {
-                  const parsedList = processedDataStore.parsedTimes;
-                  if (!parsedList || !parsedList[index]) return "";
-
-                  const curr = parsedList[index];
-                  if (index === 0) {
-                    return curr.date ? `${curr.date} ${curr.hour}:00` : `${curr.hour}:00`;
-                  }
-
-                  const prev = index > 0 ? parsedList[index - 1] : null;
-                  if (prev && curr.date && prev.date && curr.date !== prev.date) {
-                    return curr.date;
-                  }
-
-                  if (prev && curr.hour && prev.hour && curr.hour !== prev.hour) {
-                    return `${curr.hour}:00`;
-                  }
-
-                  return "";
-                }
-              }, 
-              grid: { color: 'rgba(255,255,255,0.03)' } 
+              ticks: { display: false }, 
+              grid: { display: false } 
             },
             y: { 
               position: 'left',
