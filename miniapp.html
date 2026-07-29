@@ -237,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 簡約 OKX 貫穿準星 + 後段線條虛化 | 0 圓點干擾</div>
+  <div class="footer-hint">🟢 準星無框時間與數值標籤 | 0 背景黑框純淨美感</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -256,6 +256,7 @@
     let refreshTimer = null;
     let lastHoveredIndex = -1;
     let activeTouchX = null;
+    let activeTouchY = null;
 
     // 📳 輕量化非阻塞震動
     function triggerHapticFeedbackAsync() {
@@ -270,23 +271,53 @@
       }, 0);
     }
 
-    // 🎯 60 FPS 簡約 OKX 垂直貫穿準星 Plugin (不繪製任何圓點)
+    // 🎯 60 FPS 無框極簡純文字 Crosshair Plugin
     const okxCrosshairPlugin = {
       id: 'okxCrosshair',
       afterDatasetsDraw: (chart) => {
-        if (activeTouchX !== null) {
+        if (activeTouchX !== null && lastHoveredIndex !== -1) {
           const topY = chart.scales.y.top;
           const bottomY = chart.scales.y.bottom;
           const ctx = chart.ctx;
 
           ctx.save();
+          
+          // 1. 繪製垂直貫穿虛線
           ctx.beginPath();
           ctx.setLineDash([4, 4]);
           ctx.moveTo(activeTouchX, topY);
           ctx.lineTo(activeTouchX, bottomY);
           ctx.lineWidth = 1.2;
-          ctx.strokeStyle = 'rgba(88, 166, 255, 0.9)';
+          ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
           ctx.stroke();
+
+          // 2. 繪製無背景框純文字標籤
+          const timeLabel = chart.data.labels[lastHoveredIndex];
+          const rawVal = chart.data.datasets[0].data[lastHoveredIndex];
+          
+          let unit = '%';
+          if (currentTarget === 'oil') unit = ' USD';
+          else if (currentTarget === 'metal') unit = 'x';
+
+          const valLabel = (rawVal >= 0 ? '+' : '') + rawVal + unit;
+
+          ctx.setLineDash([]);
+          ctx.font = '10px monospace';
+          
+          // 決定文字貼在準星左側還是右側（防止靠右邊界被裁剪）
+          const isRightSide = activeTouchX > chart.width - 90;
+          const textX = isRightSide ? activeTouchX - 8 : activeTouchX + 8;
+          ctx.textAlign = isRightSide ? 'right' : 'left';
+
+          // 頂部價格數值文字 (無背景框，亮色高對比)
+          ctx.fillStyle = '#3fb950';
+          const yPos = activeTouchY ? Math.max(topY + 14, Math.min(bottomY - 14, activeTouchY)) : topY + 16;
+          ctx.fillText(valLabel, textX, yPos);
+
+          // 底部時間文字 (無背景框，青藍色)
+          ctx.fillStyle = '#58a6ff';
+          ctx.fillText(timeLabel, textX, bottomY - 6);
+
           ctx.restore();
         }
       }
@@ -385,23 +416,23 @@
         if (elements && elements.length > 0) {
           const idx = elements[0].index;
           activeTouchX = elements[0].element.x;
+          activeTouchY = elements[0].element.y;
 
           if (idx !== lastHoveredIndex) {
             lastHoveredIndex = idx;
             triggerHapticFeedbackAsync();
           }
           myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
-          myChart.tooltip.setActiveElements([{ datasetIndex: 0, index: idx }], { x, y });
           myChart.update('none');
         }
       };
 
       const handleTouchEnd = () => {
         activeTouchX = null;
+        activeTouchY = null;
         lastHoveredIndex = -1;
         if (myChart) {
           myChart.setActiveElements([]);
-          myChart.tooltip.setActiveElements([]);
           myChart.update('none');
         }
       };
@@ -438,7 +469,7 @@
                 fill: true,
                 borderWidth: 2,
                 pointRadius: 0,
-                pointHoverRadius: 0, // 👈 完全關閉點位放大，移動時完全無任何圓點！
+                pointHoverRadius: 0,
                 tension: 0.25,
                 yAxisID: 'y',
                 spanGaps: true,
@@ -477,15 +508,7 @@
             plugins: {
               legend: { display: false },
               tooltip: {
-                enabled: true,
-                backgroundColor: '#161b22',
-                titleColor: '#58a6ff',
-                bodyColor: '#e6edf3',
-                borderColor: '#30363d',
-                borderWidth: 1,
-                padding: 10,
-                displayColors: false,
-                animation: false
+                enabled: false // 👈 完全停用預設笨重的黑色背景框 Tooltip！
               },
               zoom: {
                 pan: { enabled: false },
