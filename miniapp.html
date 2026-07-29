@@ -398,7 +398,7 @@
     }
 
     function processData(target, range) {
-      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], parsedTimes: [] };
+      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], maxData: [], minData: [], parsedTimes: [] };
 
       let limit = 1440;
       let step = 5;
@@ -410,27 +410,42 @@
       const sliced = rawSheetData.slice(-limit);
       const labels = [];
       const data = [];
+      const maxData = [];
+      const minData = [];
       const parsedTimes = [];
 
       for (let i = 0; i < sliced.length; i += step) {
-        const item = sliced[i];
-        let val = 0;
-        
-        if (target === 'skhy') {
-          val = parseFloat(item.skhy);
-          if (val > 0 && val < 1.0) val = parseFloat((val * 100).toFixed(2));
+        const windowItems = sliced.slice(i, i + step);
+        if (windowItems.length === 0) continue;
+
+        let vals = [];
+        for (let item of windowItems) {
+          let v = 0;
+          if (target === 'skhy') {
+            v = parseFloat(item.skhy);
+            if (v > 0 && v < 1.0) v = parseFloat((v * 100).toFixed(2));
+          }
+          else if (target === 'oil') v = parseFloat(item.oil);
+          else if (target === 'metal') v = parseFloat(item.metal);
+
+          if (!isNaN(v) && v !== 0) vals.push(v);
         }
-        else if (target === 'oil') val = parseFloat(item.oil);
-        else if (target === 'metal') val = parseFloat(item.metal);
 
-        if (isNaN(val) || val === 0) continue;
+        if (vals.length === 0) continue;
 
-        labels.push(item.time);
-        data.push(val);
-        parsedTimes.push(parseTimeStr(item.time));
+        const closeVal = vals[vals.length - 1];
+        const maxVal = Math.max(...vals);
+        const minVal = Math.min(...vals);
+        const lastItem = windowItems[windowItems.length - 1];
+
+        labels.push(lastItem.time);
+        data.push(closeVal);
+        maxData.push(maxVal);
+        minData.push(minVal);
+        parsedTimes.push(parseTimeStr(lastItem.time));
       }
 
-      processedDataStore = { labels, data, parsedTimes };
+      processedDataStore = { labels, data, maxData, minData, parsedTimes };
       return processedDataStore;
     }
 
@@ -490,121 +505,141 @@
       gradientGreen.addColorStop(0, 'rgba(63, 185, 80, 0.25)');
       gradientGreen.addColorStop(1, 'rgba(63, 185, 80, 0.0)');
 
-      if (!myChart) {
-        myChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: processed.labels,
-            datasets: [
-              {
-                label: '走勢軌跡',
-                data: processed.data,
-                borderColor: '#3fb950',
-                backgroundColor: gradientGreen,
-                fill: true,
-                borderWidth: 2,
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                tension: 0.25,
-                yAxisID: 'y',
-                spanGaps: true,
-                segment: {
-                  borderColor: (ctx) => {
-                    if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
-                      return 'rgba(63, 185, 80, 0.25)';
-                    }
-                    return '#3fb950';
-                  },
-                  borderDash: (ctx) => {
-                    if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
-                      return [3, 3];
-                    }
-                    return undefined;
-                  }
-                }
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            transitions: {
-              active: {
-                animation: {
-                  duration: 0
-                }
-              }
-            },
-            animation: {
-              duration: 350,
-              easing: 'easeOutQuart'
-            },
-            interaction: { mode: 'index', intersect: false },
-            plugins: {
-              legend: { display: false },
-              tooltip: { enabled: false },
-              zoom: {
-                pan: { enabled: false },
-                zoom: { 
-                  wheel: { enabled: true }, 
-                  pinch: { enabled: true }, 
-                  mode: 'x'
-                }
-              }
-            },
-            scales: {
-              x: { 
-                type: 'category',
-                ticks: { 
-                  autoSkip: true,
-                  maxTicksLimit: 7,
-                  maxRotation: 0,
-                  color: '#8b949e', 
-                  font: { size: 9 },
-                  callback: function(val, index) {
-                    const parsedList = processedDataStore.parsedTimes;
-                    if (!parsedList || !parsedList[index]) return "";
+      const isMultiDay = currentRange !== '1d';
 
-                    const curr = parsedList[index];
-                    if (index === 0) {
-                      return curr.date ? `${curr.date} ${curr.time}` : curr.time;
-                    }
-                    
-                    const prev = parsedList[index - 1];
-                    if (prev && curr.date && prev.date && curr.date !== prev.date) {
-                      return curr.date;
-                    }
-                    return curr.time;
-                  }
-                }, 
-                grid: { color: 'rgba(255,255,255,0.03)' } 
-              },
-              y: { 
-                position: 'left',
-                ticks: { color: '#3fb950', font: { size: 10 } }, 
-                grid: { color: 'rgba(255,255,255,0.05)' } 
-              }
-            }
-          }
-        });
-
-        setupDirectTouchListeners(canvas);
-      } else {
-        myChart.data.labels = processed.labels;
-        myChart.data.datasets[0].data = processed.data;
-        myChart.data.datasets[0].backgroundColor = gradientGreen;
-        
-        if (myChart.resetZoom) {
-          myChart.resetZoom('none');
-        }
-        
-        if (animate) {
-          myChart.update();
-        } else {
-          myChart.update('none');
-        }
+      if (myChart) {
+        myChart.destroy();
+        myChart = null;
       }
 
+      const datasets = [
+        {
+          label: '收盤軌跡',
+          data: processed.data,
+          borderColor: '#3fb950',
+          backgroundColor: gradientGreen,
+          fill: !isMultiDay,
+          borderWidth: 2,
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          tension: 0.25,
+          yAxisID: 'y',
+          spanGaps: true,
+          segment: {
+            borderColor: (ctx) => {
+              if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
+                return 'rgba(63, 185, 80, 0.25)';
+              }
+              return '#3fb950';
+            },
+            borderDash: (ctx) => {
+              if (lastHoveredIndex !== -1 && ctx.p1DataIndex > lastHoveredIndex) {
+                return [3, 3];
+              }
+              return undefined;
+            }
+          }
+        }
+      ];
+
+      if (isMultiDay && processed.maxData.length > 0) {
+        datasets.push({
+          label: '最高波動',
+          data: processed.maxData,
+          borderColor: 'rgba(63, 185, 80, 0.3)',
+          borderWidth: 1,
+          borderDash: [2, 2],
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          tension: 0.25,
+          yAxisID: 'y',
+          fill: false
+        });
+        datasets.push({
+          label: '最低波動',
+          data: processed.minData,
+          borderColor: 'rgba(63, 185, 80, 0.3)',
+          backgroundColor: 'rgba(63, 185, 80, 0.08)',
+          borderWidth: 1,
+          borderDash: [2, 2],
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          tension: 0.25,
+          yAxisID: 'y',
+          fill: '-1'
+        });
+      }
+
+      myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: processed.labels,
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          transitions: {
+            active: {
+              animation: {
+                duration: 0
+              }
+            }
+          },
+          animation: animate ? {
+            duration: 350,
+            easing: 'easeOutQuart'
+          } : false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false },
+            zoom: {
+              pan: { enabled: false },
+              zoom: { 
+                wheel: { enabled: true }, 
+                pinch: { enabled: true }, 
+                mode: 'x'
+              }
+            }
+          },
+          scales: {
+            x: { 
+              type: 'category',
+              ticks: { 
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 0,
+                color: '#8b949e', 
+                font: { size: 9 },
+                callback: function(val, index) {
+                  const parsedList = processedDataStore.parsedTimes;
+                  if (!parsedList || !parsedList[index]) return "";
+
+                  const curr = parsedList[index];
+                  if (index === 0) {
+                    return curr.date ? `${curr.date} ${curr.time}` : curr.time;
+                  }
+                  
+                  const prev = parsedList[index - 1];
+                  if (prev && curr.date && prev.date && curr.date !== prev.date) {
+                    return curr.date;
+                  }
+                  return curr.time;
+                }
+              }, 
+              grid: { color: 'rgba(255,255,255,0.03)' } 
+            },
+            y: { 
+              position: 'left',
+              ticks: { color: '#3fb950', font: { size: 10 } }, 
+              grid: { color: 'rgba(255,255,255,0.05)' } 
+            }
+          }
+        }
+      });
+
+      setupDirectTouchListeners(canvas);
       updatePricePanel(processed.data);
     }
 
