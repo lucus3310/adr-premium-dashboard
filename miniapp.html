@@ -237,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 零延遲單點鎖定 | 原生 60 FPS 準星 | 15s 動態連線</div>
+  <div class="footer-hint">🟢 簡約 OKX 貫穿準星 + 後段線條虛化 | 0 圓點干擾</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -256,7 +256,6 @@
     let refreshTimer = null;
     let lastHoveredIndex = -1;
     let activeTouchX = null;
-    let activeTouchY = null; // 實時手勢 Y 座標
 
     // 📳 輕量化非阻塞震動
     function triggerHapticFeedbackAsync() {
@@ -271,18 +270,16 @@
       }, 0);
     }
 
-    // 🎯 60 FPS 獨立原生 Canvas 準星與單一焦點 Plugin (完全繞過 Chart.js 動畫殘影)
+    // 🎯 60 FPS 簡約 OKX 垂直貫穿準星 Plugin (不繪製任何圓點)
     const okxCrosshairPlugin = {
       id: 'okxCrosshair',
       afterDatasetsDraw: (chart) => {
-        if (activeTouchX !== null && activeTouchY !== null) {
+        if (activeTouchX !== null) {
           const topY = chart.scales.y.top;
           const bottomY = chart.scales.y.bottom;
           const ctx = chart.ctx;
 
           ctx.save();
-          
-          // 1. 繪製垂直貫穿虛線
           ctx.beginPath();
           ctx.setLineDash([4, 4]);
           ctx.moveTo(activeTouchX, topY);
@@ -290,17 +287,6 @@
           ctx.lineWidth = 1.2;
           ctx.strokeStyle = 'rgba(88, 166, 255, 0.9)';
           ctx.stroke();
-
-          // 2. 原生精準繪製【唯一一顆】亮眼綠色焦點 (0毫秒延遲，0殘影！)
-          ctx.beginPath();
-          ctx.setLineDash([]);
-          ctx.arc(activeTouchX, activeTouchY, 5, 0, 2 * Math.PI);
-          ctx.fillStyle = '#3fb950';
-          ctx.fill();
-          ctx.lineWidth = 2;
-          ctx.strokeStyle = '#ffffff';
-          ctx.stroke();
-
           ctx.restore();
         }
       }
@@ -399,7 +385,6 @@
         if (elements && elements.length > 0) {
           const idx = elements[0].index;
           activeTouchX = elements[0].element.x;
-          activeTouchY = elements[0].element.y; // 鎖定點位精確 Y 座標
 
           if (idx !== lastHoveredIndex) {
             lastHoveredIndex = idx;
@@ -413,7 +398,6 @@
 
       const handleTouchEnd = () => {
         activeTouchX = null;
-        activeTouchY = null;
         lastHoveredIndex = -1;
         if (myChart) {
           myChart.setActiveElements([]);
@@ -454,7 +438,7 @@
                 fill: true,
                 borderWidth: 2,
                 pointRadius: 0,
-                pointHoverRadius: 0, // 👈 核心修復 1：完全關閉 Chart.js 內建 pointHover 渲染，繞過它的動畫佇列！
+                pointHoverRadius: 0, // 👈 完全關閉點位放大，移動時完全無任何圓點！
                 tension: 0.25,
                 yAxisID: 'y',
                 spanGaps: true,
@@ -478,7 +462,6 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            // 👈 核心修復 2：徹底關閉 Active 狀態下的物理彈簧過渡動畫 (duration: 0)，實現 0ms 瞬移！
             transitions: {
               active: {
                 animation: {
