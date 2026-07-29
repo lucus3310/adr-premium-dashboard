@@ -237,7 +237,7 @@
     </div>
   </div>
 
-  <div class="footer-hint">🟢 準星無框時間與數值標籤 | 0 背景黑框純淨美感</div>
+  <div class="footer-hint">🟢 準星極簡 2:10 時間與數值標籤 | 跨日自動顯示 7/28 日期 | 15s 動態連線</div>
 
   <script>
     if (window.Telegram && window.Telegram.WebApp) {
@@ -257,6 +257,7 @@
     let lastHoveredIndex = -1;
     let activeTouchX = null;
     let activeTouchY = null;
+    let processedDataStore = { labels: [], data: [], parsedTimes: [] };
 
     // 📳 輕量化非阻塞震動
     function triggerHapticFeedbackAsync() {
@@ -271,11 +272,28 @@
       }, 0);
     }
 
+    // 🕐 解析時間字串 (如 "07-28 14:10" -> { date: "7/28", time: "14:10" })
+    function parseTimeStr(rawStr) {
+      if (!rawStr) return { date: "", time: "--:--" };
+      const match = rawStr.match(/(\d{1,2})[-/](\d{1,2})\s+(\d{1,2}):(\d{2})/);
+      if (match) {
+        const month = parseInt(match[1], 10);
+        const day = parseInt(match[2], 10);
+        const hour = parseInt(match[3], 10);
+        const minute = match[4];
+        return {
+          date: `${month}/${day}`,
+          time: `${hour}:${minute}`
+        };
+      }
+      return { date: "", time: rawStr };
+    }
+
     // 🎯 60 FPS 無框極簡純文字 Crosshair Plugin
     const okxCrosshairPlugin = {
       id: 'okxCrosshair',
       afterDatasetsDraw: (chart) => {
-        if (activeTouchX !== null && lastHoveredIndex !== -1) {
+        if (activeTouchX !== null && lastHoveredIndex !== -1 && processedDataStore.parsedTimes[lastHoveredIndex]) {
           const topY = chart.scales.y.top;
           const bottomY = chart.scales.y.bottom;
           const ctx = chart.ctx;
@@ -291,8 +309,9 @@
           ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
           ctx.stroke();
 
-          // 2. 繪製無背景框純文字標籤
-          const timeLabel = chart.data.labels[lastHoveredIndex];
+          // 2. 繪製無背景框純文字標籤 (時間僅顯示 2:10 格式，無多餘長字串)
+          const parsed = processedDataStore.parsedTimes[lastHoveredIndex];
+          const timeLabel = parsed.time; // 例如 "14:10" 或 "2:10"
           const rawVal = chart.data.datasets[0].data[lastHoveredIndex];
           
           let unit = '%';
@@ -304,17 +323,16 @@
           ctx.setLineDash([]);
           ctx.font = '10px monospace';
           
-          // 決定文字貼在準星左側還是右側（防止靠右邊界被裁剪）
-          const isRightSide = activeTouchX > chart.width - 90;
-          const textX = isRightSide ? activeTouchX - 8 : activeTouchX + 8;
+          const isRightSide = activeTouchX > chart.width - 80;
+          const textX = isRightSide ? activeTouchX - 6 : activeTouchX + 6;
           ctx.textAlign = isRightSide ? 'right' : 'left';
 
-          // 頂部價格數值文字 (無背景框，亮色高對比)
+          // 數值文字 (亮霓虹綠)
           ctx.fillStyle = '#3fb950';
           const yPos = activeTouchY ? Math.max(topY + 14, Math.min(bottomY - 14, activeTouchY)) : topY + 16;
           ctx.fillText(valLabel, textX, yPos);
 
-          // 底部時間文字 (無背景框，青藍色)
+          // 時間文字 (例如 "14:10"，青藍色)
           ctx.fillStyle = '#58a6ff';
           ctx.fillText(timeLabel, textX, bottomY - 6);
 
@@ -366,7 +384,7 @@
     }
 
     function processData(target, range) {
-      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [] };
+      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], parsedTimes: [] };
 
       let limit = 1440;
       let step = 5;
@@ -378,6 +396,7 @@
       const sliced = rawSheetData.slice(-limit);
       const labels = [];
       const data = [];
+      const parsedTimes = [];
 
       for (let i = 0; i < sliced.length; i += step) {
         const item = sliced[i];
@@ -394,9 +413,11 @@
 
         labels.push(item.time);
         data.push(val);
+        parsedTimes.push(parseTimeStr(item.time));
       }
 
-      return { labels, data };
+      processedDataStore = { labels, data, parsedTimes };
+      return processedDataStore;
     }
 
     function setupDirectTouchListeners(canvas) {
@@ -507,9 +528,7 @@
             interaction: { mode: 'index', intersect: false },
             plugins: {
               legend: { display: false },
-              tooltip: {
-                enabled: false // 👈 完全停用預設笨重的黑色背景框 Tooltip！
-              },
+              tooltip: { enabled: false },
               zoom: {
                 pan: { enabled: false },
                 zoom: { 
@@ -527,7 +546,25 @@
                   maxTicksLimit: 7,
                   maxRotation: 0,
                   color: '#8b949e', 
-                  font: { size: 9 }
+                  font: { size: 9 },
+                  // 👈 核心修復：底部橫軸只在跨日 (Day Switch) 時顯示 7/28，平時只顯示 2:10 格式時間！
+                  callback: function(val, index) {
+                    const parsedList = processedDataStore.parsedTimes;
+                    if (!parsedList || !parsedList[index]) return "";
+
+                    const curr = parsedList[index];
+                    if (index === 0) {
+                      return curr.date ? `${curr.date} ${curr.time}` : curr.time;
+                    }
+                    
+                    const prev = parsedList[index - 1];
+                    // 若前一點與當前點的日期不同（跨日切換點），顯示 "7/28"！
+                    if (prev && curr.date && prev.date && curr.date !== prev.date) {
+                      return curr.date;
+                    }
+                    // 同一天內，只顯示 "14:10" 或 "2:10" 格式！
+                    return curr.time;
+                  }
                 }, 
                 grid: { color: 'rgba(255,255,255,0.03)' } 
               },
