@@ -25,8 +25,10 @@
       padding: 8px;
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
+      height: auto;
+      min-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
     .top-bar {
       display: flex;
@@ -124,7 +126,8 @@
       box-shadow: 0 0 10px rgba(46, 160, 67, 0.4);
     }
     .chart-card {
-      flex: 1;
+      min-height: 270px;
+      height: 270px;
       background: #0d1117;
       border-radius: 8px;
       border: 1px solid #21262d;
@@ -132,6 +135,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
+      margin-bottom: 8px;
     }
     .chart-container {
       position: relative;
@@ -193,6 +197,260 @@
       color: #484f58;
       margin-top: 6px;
     }
+
+    /* Position Section & Cards */
+    .pos-section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+    .pos-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #21262d;
+    }
+    .pos-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #e6edf3;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-add-pos {
+      background: #238636;
+      color: #fff;
+      border: 1px solid #2ea043;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-add-pos:active {
+      transform: scale(0.96);
+    }
+    .pnl-summary-card {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pnl-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+    .pnl-label {
+      color: #8b949e;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pnl-val {
+      font-weight: 700;
+      font-family: monospace;
+      font-size: 13px;
+    }
+    .pnl-val.pos { color: #3fb950; }
+    .pnl-val.neg { color: #f85149; }
+    .pnl-val.zero { color: #8b949e; }
+    .sim-bar {
+      background: #0d1117;
+      border: 1px dashed #30363d;
+      border-radius: 6px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    .sim-header {
+      font-size: 11px;
+      color: #58a6ff;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sim-inputs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .sim-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .sim-input-group label {
+      font-size: 9px;
+      color: #8b949e;
+    }
+    .sim-input-group input {
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #3fb950;
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: 11px;
+      font-family: monospace;
+      font-weight: 700;
+      width: 100%;
+    }
+    .pos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pos-item {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+    }
+    .pos-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pos-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pos-badge.skhy { background: rgba(88, 166, 255, 0.15); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.3); }
+    .pos-badge.oil { background: rgba(210, 153, 34, 0.15); color: #d29922; border: 1px solid rgba(210, 153, 34, 0.3); }
+    .pos-badge.metal { background: rgba(187, 128, 255, 0.15); color: #bc8cff; border: 1px solid rgba(187, 128, 255, 0.3); }
+    .pos-badge.single { background: rgba(56, 139, 253, 0.15); color: #388bfd; border: 1px solid rgba(56, 139, 253, 0.3); }
+    .pos-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-icon {
+      background: transparent;
+      border: none;
+      color: #8b949e;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .btn-icon:hover { color: #58a6ff; }
+    .pos-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #8b949e;
+    }
+    .pos-pnl-box {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 4px;
+      padding: 4px 6px;
+      font-size: 11px;
+    }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 360px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .modal-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #e6edf3;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #21262d;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .form-group label {
+      font-size: 11px;
+      color: #8b949e;
+      font-weight: 600;
+    }
+    .form-control {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      color: #d1d4dc;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: #58a6ff;
+    }
+    .modal-btns {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .btn-cancel {
+      flex: 1;
+      background: #21262d;
+      color: #8b949e;
+      border: 1px solid #30363d;
+      padding: 8px 0;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-submit {
+      flex: 1;
+      background: #238636;
+      color: #fff;
+      border: 1px solid #2ea043;
+      padding: 8px 0;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -237,6 +495,122 @@
     </div>
   </div>
 
+  <!-- 💼 手動幣安倉位與損益試算面板 -->
+  <div class="pos-section">
+    <div class="pos-header">
+      <div class="pos-title">
+        💼 幣安倉位與損益試算
+      </div>
+      <button class="btn-add-pos" onclick="openPosModal()">
+        <span>＋</span> 新增倉位
+      </button>
+    </div>
+
+    <!-- 損益總計卡片 -->
+    <div class="pnl-summary-card">
+      <div class="pnl-row">
+        <span class="pnl-label">⚡ 即時未實現總損益:</span>
+        <span class="pnl-val zero" id="total-live-pnl">$0.00 USDT</span>
+      </div>
+      <div class="pnl-row" style="padding-top:4px; border-top: 1px dashed #21262d;">
+        <span class="pnl-label">🎯 情境/游標試算總損益:</span>
+        <span class="pnl-val zero" id="total-sim-pnl">$0.00 USDT</span>
+      </div>
+    </div>
+
+    <!-- 自訂目標情境輸入列 -->
+    <div class="sim-bar">
+      <div class="sim-header">
+        <span>🎯 目標情境推演 (可手動輸入或滑動圖表游標)</span>
+        <button onclick="resetSimToLive()" style="background:transparent; border:none; color:#58a6ff; font-size:10px; cursor:pointer; text-decoration:underline;">重置為現價</button>
+      </div>
+      <div class="sim-inputs">
+        <div class="sim-input-group">
+          <label for="sim-skhy">SK海力士溢價 (%)</label>
+          <input type="number" id="sim-skhy" step="0.01" oninput="onSimInputChanged()">
+        </div>
+        <div class="sim-input-group">
+          <label for="sim-oil">原油 BZ-CL ($)</label>
+          <input type="number" id="sim-oil" step="0.01" oninput="onSimInputChanged()">
+        </div>
+        <div class="sim-input-group">
+          <label for="sim-metal">金銀比 (x)</label>
+          <input type="number" id="sim-metal" step="0.01" oninput="onSimInputChanged()">
+        </div>
+      </div>
+    </div>
+
+    <!-- 倉位列表 -->
+    <div class="pos-list" id="pos-list-container">
+      <div style="text-align:center; padding:16px; color:#484f58; font-size:11px;">
+        尚無手動倉位，點擊右上角【＋ 新增倉位】即可開始紀錄與對沖試算。
+      </div>
+    </div>
+  </div>
+
+  <!-- 新增/編輯倉位 Modal 彈窗 -->
+  <div class="modal-overlay" id="pos-modal">
+    <div class="modal-content">
+      <div class="modal-title" id="modal-title-text">新增幣安倉位</div>
+      <input type="hidden" id="pos-edit-id">
+
+      <div class="form-group">
+        <label for="pos-category">倉位與策略類型</label>
+        <select id="pos-category" class="form-control" onchange="onCategoryChanged()">
+          <option value="skhy">海力士溢價對沖 (SKHY Pair)</option>
+          <option value="oil">原油價差對沖 (BZ-CL Spread)</option>
+          <option value="metal">金銀比對沖 (XAU-XAG Ratio)</option>
+          <option value="single">單邊幣安期貨 (Single Contract)</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="symbol-select-group" style="display:none;">
+        <label for="pos-symbol">期貨合約標的</label>
+        <select id="pos-symbol" class="form-control">
+          <option value="BZUSDT">BZUSDT (Brent 原油期貨)</option>
+          <option value="CLUSDT">CLUSDT (WTI 原油期貨)</option>
+          <option value="XAUUSDT">XAUUSDT (黃金期貨)</option>
+          <option value="XAGUSDT">XAGUSDT (白銀期貨)</option>
+          <option value="SKHYUSDT">SKHYUSDT (海力士 DR 期貨)</option>
+          <option value="SKHYNIXUSDT">SKHYNIXUSDT (海力士原股期貨)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="pos-type">交易方向</label>
+        <select id="pos-type" class="form-control">
+          <option value="spread_long">多價差 / 多溢價 (期待價差/溢價擴張)</option>
+          <option value="spread_short">空價差 / 空溢價 (期待價差/溢價收斂)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="pos-entry" id="label-pos-entry">開倉溢價 (%)</label>
+        <input type="number" id="pos-entry" class="form-control" placeholder="請輸入開倉時的數值" step="any">
+      </div>
+
+      <div class="form-group">
+        <label for="pos-size" id="label-pos-size">倉位本金 (USDT)</label>
+        <input type="number" id="pos-size" class="form-control" placeholder="例如: 10000" step="any">
+      </div>
+
+      <div class="form-group">
+        <label for="pos-mult">合約乘數 / 單位價值 multiplier (預設 1.0)</label>
+        <input type="number" id="pos-mult" class="form-control" value="1.0" step="any">
+      </div>
+
+      <div class="form-group">
+        <label for="pos-note">備註 (選填)</label>
+        <input type="text" id="pos-note" class="form-control" placeholder="選填交易筆記...">
+      </div>
+
+      <div class="modal-btns">
+        <button class="btn-cancel" onclick="closePosModal()">取消</button>
+        <button class="btn-submit" onclick="savePositionFromModal()">儲存倉位</button>
+      </div>
+    </div>
+  </div>
+
   <div class="footer-hint">🟢 完美解析 MM-dd HH:mm 實時時間 | 跨日標記 7/29 | 15s 動態連線</div>
 
   <script>
@@ -257,7 +631,376 @@
     let lastHoveredIndex = -1;
     let activeTouchX = null;
     let activeTouchY = null;
-    let processedDataStore = { labels: [], data: [], parsedTimes: [] };
+    let processedDataStore = { labels: [], data: [], parsedTimes: [], rawItems: [] };
+
+    // ==========================================
+    // 💼 幣安手動倉位與損益試算核心引擎
+    // ==========================================
+    const POS_STORAGE_KEY = "binance_manual_positions_v1";
+    let positionsList = [];
+    let isCustomSim = false;
+
+    function loadPositions() {
+      try {
+        const raw = localStorage.getItem(POS_STORAGE_KEY);
+        if (raw) {
+          positionsList = JSON.parse(raw);
+        } else {
+          positionsList = [];
+        }
+      } catch(e) {
+        positionsList = [];
+      }
+    }
+
+    function savePositions() {
+      try {
+        localStorage.setItem(POS_STORAGE_KEY, JSON.stringify(positionsList));
+      } catch(e) {}
+    }
+
+    function getLatestLiveMarketData() {
+      if (!rawSheetData || rawSheetData.length === 0) {
+        return { skhy: 0, oil: 0, metal: 0, brent: 0, wti: 0, gold: 0, silver: 0, skhyDr: 0, skhyLocal: 0 };
+      }
+      const item = rawSheetData[rawSheetData.length - 1];
+      let skhy = parseFloat(item.skhy) || 0;
+      if (skhy > 0 && skhy < 1.0) skhy = parseFloat((skhy * 100).toFixed(2));
+      return {
+        skhy: skhy,
+        oil: parseFloat(item.oil) || 0,
+        metal: parseFloat(item.metal) || 0,
+        brent: parseFloat(item.brent) || 0,
+        wti: parseFloat(item.wti) || 0,
+        gold: parseFloat(item.gold) || 0,
+        silver: parseFloat(item.silver) || 0,
+        skhyDr: parseFloat(item.skhyDr) || 0,
+        skhyLocal: parseFloat(item.skhyLocal) || 0,
+        time: item.time
+      };
+    }
+
+    function getSimMarketData() {
+      const live = getLatestLiveMarketData();
+
+      if (!isCustomSim && lastHoveredIndex !== -1 && processedDataStore.rawItems && processedDataStore.rawItems[lastHoveredIndex]) {
+        const item = processedDataStore.rawItems[lastHoveredIndex];
+        let skhy = parseFloat(item.skhy) || 0;
+        if (skhy > 0 && skhy < 1.0) skhy = parseFloat((skhy * 100).toFixed(2));
+        return {
+          skhy: skhy,
+          oil: parseFloat(item.oil) || 0,
+          metal: parseFloat(item.metal) || 0,
+          brent: parseFloat(item.brent) || 0,
+          wti: parseFloat(item.wti) || 0,
+          gold: parseFloat(item.gold) || 0,
+          silver: parseFloat(item.silver) || 0,
+          skhyDr: parseFloat(item.skhyDr) || 0,
+          skhyLocal: parseFloat(item.skhyLocal) || 0,
+          time: item.time
+        };
+      }
+
+      const inputSkhy = parseFloat(document.getElementById('sim-skhy') ? document.getElementById('sim-skhy').value : NaN);
+      const inputOil = parseFloat(document.getElementById('sim-oil') ? document.getElementById('sim-oil').value : NaN);
+      const inputMetal = parseFloat(document.getElementById('sim-metal') ? document.getElementById('sim-metal').value : NaN);
+
+      return {
+        skhy: !isNaN(inputSkhy) ? inputSkhy : live.skhy,
+        oil: !isNaN(inputOil) ? inputOil : live.oil,
+        metal: !isNaN(inputMetal) ? inputMetal : live.metal,
+        brent: live.brent,
+        wti: live.wti,
+        gold: live.gold,
+        silver: live.silver,
+        skhyDr: live.skhyDr,
+        skhyLocal: live.skhyLocal,
+        time: live.time
+      };
+    }
+
+    function calculatePnL(pos, marketData) {
+      const size = parseFloat(pos.size) || 0;
+      const entry = parseFloat(pos.entryValue) || 0;
+      const mult = parseFloat(pos.contractMultiplier) || 1.0;
+      if (size === 0) return 0;
+
+      if (pos.category === 'skhy') {
+        const currentPrem = marketData.skhy;
+        const diff = currentPrem - entry;
+        if (pos.type === 'spread_long') return size * (diff / 100) * mult;
+        else return size * (-diff / 100) * mult;
+      }
+      else if (pos.category === 'oil') {
+        const currentOil = marketData.oil;
+        const diff = currentOil - entry;
+        if (pos.type === 'spread_long') return size * diff * mult;
+        else return size * (-diff) * mult;
+      }
+      else if (pos.category === 'metal') {
+        const currentMetal = marketData.metal;
+        if (entry === 0) return 0;
+        const pct = (currentMetal - entry) / entry;
+        if (pos.type === 'spread_long') return size * pct * mult;
+        else return size * (-pct) * mult;
+      }
+      else if (pos.category === 'single') {
+        let currentPrice = 0;
+        if (pos.symbol === 'BZUSDT') currentPrice = marketData.brent;
+        else if (pos.symbol === 'CLUSDT') currentPrice = marketData.wti;
+        else if (pos.symbol === 'XAUUSDT') currentPrice = marketData.gold;
+        else if (pos.symbol === 'XAGUSDT') currentPrice = marketData.silver;
+        else if (pos.symbol === 'SKHYUSDT') currentPrice = marketData.skhyDr;
+        else if (pos.symbol === 'SKHYNIXUSDT') currentPrice = marketData.skhyLocal;
+
+        if (currentPrice === 0) return 0;
+        const diff = currentPrice - entry;
+        if (pos.type === 'long') return size * diff * mult;
+        else return size * (-diff) * mult;
+      }
+
+      return 0;
+    }
+
+    function renderPositionsSection() {
+      const liveMarket = getLatestLiveMarketData();
+      const simMarket = getSimMarketData();
+
+      const elemSkhy = document.getElementById('sim-skhy');
+      const elemOil = document.getElementById('sim-oil');
+      const elemMetal = document.getElementById('sim-metal');
+
+      if (!isCustomSim && elemSkhy && elemOil && elemMetal) {
+        if (document.activeElement !== elemSkhy && document.activeElement !== elemOil && document.activeElement !== elemMetal) {
+          elemSkhy.value = simMarket.skhy;
+          elemOil.value = simMarket.oil;
+          elemMetal.value = simMarket.metal;
+        }
+      }
+
+      let totalLivePnl = 0;
+      let totalSimPnl = 0;
+
+      const container = document.getElementById('pos-list-container');
+      if (!container) return;
+
+      if (positionsList.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:16px; color:#484f58; font-size:11px;">
+          尚無手動倉位，點擊右上角【＋ 新增倉位】即可開始紀錄與對沖試算。
+        </div>`;
+        const liveElem = document.getElementById('total-live-pnl');
+        const simElem = document.getElementById('total-sim-pnl');
+        if (liveElem) { liveElem.innerText = "$0.00 USDT"; liveElem.className = "pnl-val zero"; }
+        if (simElem) { simElem.innerText = "$0.00 USDT"; simElem.className = "pnl-val zero"; }
+        return;
+      }
+
+      let html = "";
+      positionsList.forEach((pos) => {
+        const livePnl = calculatePnL(pos, liveMarket);
+        const simPnl = calculatePnL(pos, simMarket);
+        totalLivePnl += livePnl;
+        totalSimPnl += simPnl;
+
+        let catBadgeClass = pos.category;
+        let catText = "對沖倉位";
+        let unit = "";
+        let currentVal = 0;
+        let simVal = 0;
+
+        if (pos.category === 'skhy') {
+          catText = "SK海力士溢價";
+          unit = "%";
+          currentVal = liveMarket.skhy;
+          simVal = simMarket.skhy;
+        } else if (pos.category === 'oil') {
+          catText = "原油 BZ-CL 價差";
+          unit = " USD";
+          currentVal = liveMarket.oil;
+          simVal = simMarket.oil;
+        } else if (pos.category === 'metal') {
+          catText = "金銀比";
+          unit = "x";
+          currentVal = liveMarket.metal;
+          simVal = simMarket.metal;
+        } else if (pos.category === 'single') {
+          catText = pos.symbol || "單邊期貨";
+          unit = " USD";
+          if (pos.symbol === 'BZUSDT') { currentVal = liveMarket.brent; simVal = simMarket.brent; }
+          else if (pos.symbol === 'CLUSDT') { currentVal = liveMarket.wti; simVal = simMarket.wti; }
+          else if (pos.symbol === 'XAUUSDT') { currentVal = liveMarket.gold; simVal = simMarket.gold; }
+          else if (pos.symbol === 'XAGUSDT') { currentVal = liveMarket.silver; simVal = simMarket.silver; }
+          else if (pos.symbol === 'SKHYUSDT') { currentVal = liveMarket.skhyDr; simVal = simMarket.skhyDr; }
+          else if (pos.symbol === 'SKHYNIXUSDT') { currentVal = liveMarket.skhyLocal; simVal = simMarket.skhyLocal; }
+        }
+
+        let dirText = (pos.type === 'spread_long' || pos.type === 'long') ? "🟢 多 (Long)" : "🔴 空 (Short)";
+        let livePnlClass = livePnl > 0 ? "pos" : (livePnl < 0 ? "neg" : "zero");
+        let simPnlClass = simPnl > 0 ? "pos" : (simPnl < 0 ? "neg" : "zero");
+
+        html += `
+          <div class="pos-item">
+            <div class="pos-item-header">
+              <span class="pos-badge ${catBadgeClass}">${catText} | ${dirText}</span>
+              <div class="pos-actions">
+                <button class="btn-icon" onclick="editPosition('${pos.id}')" title="編輯">✏️</button>
+                <button class="btn-icon" onclick="deletePosition('${pos.id}')" title="刪除">🗑️</button>
+              </div>
+            </div>
+            <div class="pos-details">
+              <div>開倉數值: <b style="color:#d1d4dc">${pos.entryValue}${unit}</b> | 規模: ${pos.size}</div>
+              ${pos.note ? `<div style="color:#6e7681">${pos.note}</div>` : ''}
+            </div>
+            <div class="pos-pnl-box">
+              <div>即時現價: ${currentVal}${unit} ➔ <b class="pnl-val ${livePnlClass}">${livePnl >= 0 ? '+' : ''}${livePnl.toFixed(2)} USDT</b></div>
+              <div>試算現價: ${simVal}${unit} ➔ <b class="pnl-val ${simPnlClass}">${simPnl >= 0 ? '+' : ''}${simPnl.toFixed(2)} USDT</b></div>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+
+      const liveElem = document.getElementById('total-live-pnl');
+      if (liveElem) {
+        liveElem.innerText = (totalLivePnl >= 0 ? '+' : '') + totalLivePnl.toFixed(2) + " USDT";
+        liveElem.className = "pnl-val " + (totalLivePnl > 0 ? "pos" : (totalLivePnl < 0 ? "neg" : "zero"));
+      }
+
+      const simElem = document.getElementById('total-sim-pnl');
+      if (simElem) {
+        simElem.innerText = (totalSimPnl >= 0 ? '+' : '') + totalSimPnl.toFixed(2) + " USDT";
+        simElem.className = "pnl-val " + (totalSimPnl > 0 ? "pos" : (totalSimPnl < 0 ? "neg" : "zero"));
+      }
+    }
+
+    function onSimInputChanged() {
+      isCustomSim = true;
+      renderPositionsSection();
+    }
+
+    function resetSimToLive() {
+      isCustomSim = false;
+      const live = getLatestLiveMarketData();
+      document.getElementById('sim-skhy').value = live.skhy;
+      document.getElementById('sim-oil').value = live.oil;
+      document.getElementById('sim-metal').value = live.metal;
+      renderPositionsSection();
+    }
+
+    function openPosModal(pos = null) {
+      document.getElementById('pos-modal').classList.add('active');
+      if (pos) {
+        document.getElementById('modal-title-text').innerText = "編輯幣安倉位";
+        document.getElementById('pos-edit-id').value = pos.id;
+        document.getElementById('pos-category').value = pos.category;
+        document.getElementById('pos-type').value = pos.type;
+        document.getElementById('pos-entry').value = pos.entryValue;
+        document.getElementById('pos-size').value = pos.size;
+        document.getElementById('pos-mult').value = pos.contractMultiplier || 1.0;
+        document.getElementById('pos-note').value = pos.note || '';
+        if (pos.symbol) document.getElementById('pos-symbol').value = pos.symbol;
+      } else {
+        document.getElementById('modal-title-text').innerText = "新增幣安倉位";
+        document.getElementById('pos-edit-id').value = '';
+        document.getElementById('pos-entry').value = '';
+        document.getElementById('pos-size').value = '';
+        document.getElementById('pos-mult').value = '1.0';
+        document.getElementById('pos-note').value = '';
+      }
+      onCategoryChanged();
+    }
+
+    function closePosModal() {
+      document.getElementById('pos-modal').classList.remove('active');
+    }
+
+    function onCategoryChanged() {
+      const cat = document.getElementById('pos-category').value;
+      const symGroup = document.getElementById('symbol-select-group');
+      const typeSelect = document.getElementById('pos-type');
+      const labelEntry = document.getElementById('label-pos-entry');
+      const labelSize = document.getElementById('label-pos-size');
+
+      if (cat === 'single') {
+        symGroup.style.display = 'flex';
+        typeSelect.innerHTML = `
+          <option value="long">做多 (Long)</option>
+          <option value="short">做空 (Short)</option>
+        `;
+        labelEntry.innerText = "開倉單價 ($)";
+        labelSize.innerText = "持倉張數/數量 (Qty)";
+      } else {
+        symGroup.style.display = 'none';
+        typeSelect.innerHTML = `
+          <option value="spread_long">多價差 / 多溢價 (期待價差/溢價擴張)</option>
+          <option value="spread_short">空價差 / 空溢價 (期待價差/溢價收斂)</option>
+        `;
+
+        if (cat === 'skhy') {
+          labelEntry.innerText = "開倉溢價 (%)";
+          labelSize.innerText = "倉位本金 (USDT)";
+        } else if (cat === 'oil') {
+          labelEntry.innerText = "開倉價差 ($)";
+          labelSize.innerText = "對沖桶數/數量";
+        } else if (cat === 'metal') {
+          labelEntry.innerText = "開倉金銀比 (x)";
+          labelSize.innerText = "倉位本金 (USDT)";
+        }
+      }
+    }
+
+    function savePositionFromModal() {
+      const editId = document.getElementById('pos-edit-id').value;
+      const cat = document.getElementById('pos-category').value;
+      const type = document.getElementById('pos-type').value;
+      const entry = parseFloat(document.getElementById('pos-entry').value);
+      const size = parseFloat(document.getElementById('pos-size').value);
+      const mult = parseFloat(document.getElementById('pos-mult').value) || 1.0;
+      const note = document.getElementById('pos-note').value.trim();
+      const symbol = cat === 'single' ? document.getElementById('pos-symbol').value : '';
+
+      if (isNaN(entry) || isNaN(size)) {
+        alert("請輸入有效的開倉數值與倉位規模！");
+        return;
+      }
+
+      if (editId) {
+        const idx = positionsList.findIndex(p => p.id === editId);
+        if (idx !== -1) {
+          positionsList[idx] = { id: editId, category: cat, type, entryValue: entry, size, contractMultiplier: mult, note, symbol };
+        }
+      } else {
+        const newPos = {
+          id: "pos_" + Date.now(),
+          category: cat,
+          type,
+          entryValue: entry,
+          size,
+          contractMultiplier: mult,
+          note,
+          symbol
+        };
+        positionsList.push(newPos);
+      }
+
+      savePositions();
+      closePosModal();
+      renderPositionsSection();
+    }
+
+    function editPosition(id) {
+      const pos = positionsList.find(p => p.id === id);
+      if (pos) openPosModal(pos);
+    }
+
+    function deletePosition(id) {
+      if (confirm("確定要刪除此倉位嗎？")) {
+        positionsList = positionsList.filter(p => p.id !== id);
+        savePositions();
+        renderPositionsSection();
+      }
+    }
 
     // 📳 輕量化非阻塞震動
     function triggerHapticFeedbackAsync() {
@@ -376,6 +1119,7 @@
           rawSheetData = json.data;
           statusText.innerText = "15s 即時動態 (" + rawSheetData.length + "筆)";
           renderChart(isSilent);
+          renderPositionsSection();
         } else {
           if (!isSilent) showError("⚠️ 數據庫尚無資料，請先在 Apps Script 執行歷史寫入。");
         }
@@ -398,7 +1142,7 @@
     }
 
     function processData(target, range) {
-      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], maxData: [], minData: [], parsedTimes: [] };
+      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], maxData: [], minData: [], parsedTimes: [], rawItems: [] };
 
       let limit = 1440;
       let step = 1;
@@ -413,6 +1157,7 @@
       const maxData = [];
       const minData = [];
       const parsedTimes = [];
+      const rawItems = [];
 
       for (let i = 0; i < sliced.length; i += step) {
         const windowItems = sliced.slice(i, i + step);
@@ -443,9 +1188,10 @@
         maxData.push(maxVal);
         minData.push(minVal);
         parsedTimes.push(parseTimeStr(lastItem.time));
+        rawItems.push(lastItem);
       }
 
-      processedDataStore = { labels, data, maxData, minData, parsedTimes };
+      processedDataStore = { labels, data, maxData, minData, parsedTimes, rawItems };
       return processedDataStore;
     }
 
@@ -533,6 +1279,7 @@
           if (idx !== lastHoveredIndex) {
             lastHoveredIndex = idx;
             triggerHapticFeedbackAsync();
+            renderPositionsSection();
           }
           myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
           myChart.update('none');
@@ -560,6 +1307,7 @@
           myChart.setActiveElements([]);
           myChart.update('none');
         }
+        renderPositionsSection();
       };
 
       canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
@@ -793,6 +1541,7 @@
     });
 
     window.onload = () => {
+      loadPositions();
       loadData();
       startAutoRefresh();
     };
