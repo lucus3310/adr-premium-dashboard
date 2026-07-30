@@ -530,15 +530,15 @@
       <div class="sim-inputs">
         <div class="sim-input-group">
           <label for="sim-skhy">SK海力士溢價 (%)</label>
-          <input type="number" id="sim-skhy" step="0.01" oninput="onSimInputChanged()">
+          <input type="number" id="sim-skhy" step="0.01" inputmode="decimal" enterkeyhint="done" oninput="onSimInputChanged()" onkeydown="if(event.key==='Enter'){this.blur();}">
         </div>
         <div class="sim-input-group">
           <label for="sim-oil">原油 BZ-CL ($)</label>
-          <input type="number" id="sim-oil" step="0.01" oninput="onSimInputChanged()">
+          <input type="number" id="sim-oil" step="0.01" inputmode="decimal" enterkeyhint="done" oninput="onSimInputChanged()" onkeydown="if(event.key==='Enter'){this.blur();}">
         </div>
         <div class="sim-input-group">
           <label for="sim-metal">金銀比 (x)</label>
-          <input type="number" id="sim-metal" step="0.01" oninput="onSimInputChanged()">
+          <input type="number" id="sim-metal" step="0.01" inputmode="decimal" enterkeyhint="done" oninput="onSimInputChanged()" onkeydown="if(event.key==='Enter'){this.blur();}">
         </div>
       </div>
     </div>
@@ -588,12 +588,12 @@
             </div>
             <div class="form-group">
               <label>開倉單價 ($)</label>
-              <input type="number" id="leg1-entry" class="form-control" placeholder="例: 18.50" step="any" oninput="calculateImpliedEntryRate()">
+              <input type="number" id="leg1-entry" class="form-control" placeholder="例: 18.50" step="any" inputmode="decimal" enterkeyhint="done" oninput="calculateImpliedEntryRate()" onkeydown="if(event.key==='Enter'){this.blur();}">
             </div>
           </div>
           <div class="form-group">
             <label>持倉規模 (張數/數量/桶數)</label>
-            <input type="number" id="leg1-size" class="form-control" placeholder="例: 100" step="any">
+            <input type="number" id="leg1-size" class="form-control" placeholder="例: 100" step="any" inputmode="decimal" enterkeyhint="done" onkeydown="if(event.key==='Enter'){this.blur();}">
           </div>
         </div>
 
@@ -613,12 +613,12 @@
             </div>
             <div class="form-group">
               <label>開倉單價 ($)</label>
-              <input type="number" id="leg2-entry" class="form-control" placeholder="例: 179.20" step="any" oninput="calculateImpliedEntryRate()">
+              <input type="number" id="leg2-entry" class="form-control" placeholder="例: 179.20" step="any" inputmode="decimal" enterkeyhint="done" oninput="calculateImpliedEntryRate()" onkeydown="if(event.key==='Enter'){this.blur();}">
             </div>
           </div>
           <div class="form-group">
             <label>持倉規模 (張數/數量/桶數)</label>
-            <input type="number" id="leg2-size" class="form-control" placeholder="例: 10" step="any">
+            <input type="number" id="leg2-size" class="form-control" placeholder="例: 10" step="any" inputmode="decimal" enterkeyhint="done" onkeydown="if(event.key==='Enter'){this.blur();}">
           </div>
         </div>
       </div>
@@ -643,7 +643,7 @@
 
       <div class="form-group">
         <label for="pos-note">備註 (選填)</label>
-        <input type="text" id="pos-note" class="form-control" placeholder="選填交易筆記...">
+        <input type="text" id="pos-note" class="form-control" placeholder="選填交易筆記..." enterkeyhint="done" onkeydown="if(event.key==='Enter'){this.blur();}">
       </div>
 
       <div class="modal-btns">
