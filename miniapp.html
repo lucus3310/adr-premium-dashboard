@@ -137,11 +137,14 @@
       flex-direction: column;
       margin-bottom: 8px;
     }
+    canvas#myChart {
+      touch-action: pan-y !important;
+    }
     .chart-container {
       position: relative;
       flex: 1;
       width: 100%;
-      touch-action: pan-y;
+      touch-action: pan-y !important;
     }
     .price-panel {
       display: flex;
@@ -550,8 +553,8 @@
     </div>
 
     <div id="loading" class="loading-overlay">正在讀取多日跨度歷史數據...</div>
-    <div class="chart-container">
-      <canvas id="myChart"></canvas>
+    <div class="chart-container" style="touch-action: pan-y !important;">
+      <canvas id="myChart" style="touch-action: pan-y !important;"></canvas>
     </div>
   </div>
 
@@ -1756,7 +1759,7 @@
               pan: { enabled: false },
               zoom: { 
                 wheel: { enabled: true }, 
-                pinch: { enabled: true }, 
+                pinch: { enabled: false }, 
                 mode: 'x'
               }
             }
