@@ -373,12 +373,12 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       justify-content: center;
-      align-items: center;
-      padding: 16px;
+      align-items: flex-end;
+      padding: 0;
     }
     .modal-overlay.active {
       display: flex;
@@ -386,14 +386,49 @@
     .modal-content {
       background: #161b22;
       border: 1px solid #30363d;
-      border-radius: 10px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
       width: 100%;
-      max-width: 360px;
-      padding: 16px;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 12px 18px 24px 18px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
+      animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .modal-drag-handle {
+      width: 36px;
+      height: 4px;
+      background: #30363d;
+      border-radius: 2px;
+      align-self: center;
+      margin-bottom: 2px;
+    }
+    .preset-btn {
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #8b949e;
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .preset-btn:active, .preset-btn:hover {
+      background: #21262d;
+      color: #58a6ff;
+      border-color: #58a6ff;
     }
     .modal-title {
       font-size: 15px;
@@ -480,15 +515,40 @@
     <button class="range-btn" onclick="resetZoom()">🔍 重置縮放</button>
   </div>
 
-  <div class="price-panel">
-    <div class="price-main up" id="val-current">--</div>
-    <div class="price-sub-info">
-      <div>最高 <span id="val-max" style="color:#3fb950">--</span></div>
-      <div>最低 <span id="val-min" style="color:#f85149">--</span></div>
+  <div class="price-panel" style="flex-direction:column; align-items:stretch; gap:6px;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline;">
+      <div class="price-main up" id="val-current">--</div>
+      <div class="price-sub-info">
+        <div>最高 <span id="val-max" style="color:#2ebd85">--</span></div>
+        <div>最低 <span id="val-min" style="color:#f6465d">--</span></div>
+      </div>
+    </div>
+    
+    <!-- OKX 24h 價差高低相對位置條 -->
+    <div style="margin-top:2px; padding-top:6px; border-top:1px solid #21262d;">
+      <div style="display:flex; justify-content:space-between; font-size:10px; color:#8b949e; margin-bottom:4px;">
+        <span>24h 最低 <b id="range-min-text" style="color:#f6465d">--</b></span>
+        <span style="color:#58a6ff; font-weight:600;" id="range-pos-text">當前溢價位置: --%</span>
+        <span>24h 最高 <b id="range-max-text" style="color:#2ebd85">--</b></span>
+      </div>
+      <div style="height:6px; background:#0d1117; border-radius:3px; position:relative; border:1px solid #21262d; overflow:hidden;">
+        <div id="range-bar-fill" style="position:absolute; top:0; bottom:0; left:0; width:50%; background:linear-gradient(90deg, #f6465d, #d29922, #2ebd85); border-radius:3px; transition:width 0.3s ease;"></div>
+        <div id="range-bar-pin" style="position:absolute; top:-1px; left:50%; width:8px; height:8px; background:#ffffff; border:2px solid #58a6ff; border-radius:50%; transform:translateX(-50%); box-shadow:0 0 6px rgba(88,166,255,0.9); transition:left 0.3s ease;"></div>
+      </div>
     </div>
   </div>
 
   <div class="chart-card">
+    <!-- OKX 懸浮 HUD 數據卡片 -->
+    <div id="okx-hud" style="display:none; position:absolute; top:10px; left:10px; z-index:15; background:rgba(13,17,23,0.9); backdrop-filter:blur(6px); border:1px solid rgba(88,166,255,0.4); border-radius:6px; padding:6px 10px; font-size:10px; color:#c9d1d9; pointer-events:none; box-shadow:0 4px 12px rgba(0,0,0,0.6);">
+      <div style="color:#8b949e; font-size:9px; margin-bottom:2px;" id="hud-time">--:--</div>
+      <div style="display:flex; gap:10px; font-weight:700;">
+        <div>價差/溢價: <span id="hud-val" style="color:#58a6ff;">--</span></div>
+        <div id="hud-leg1-box" style="display:none;">腿1: <span id="hud-leg1" style="color:#2ebd85;">--</span></div>
+        <div id="hud-leg2-box" style="display:none;">腿2: <span id="hud-leg2" style="color:#d29922;">--</span></div>
+      </div>
+    </div>
+
     <div id="loading" class="loading-overlay">正在讀取多日跨度歷史數據...</div>
     <div class="chart-container">
       <canvas id="myChart"></canvas>
@@ -521,12 +581,20 @@
     <!-- 自訂目標情境輸入列 -->
     <div class="sim-bar">
       <div class="sim-header">
-        <span>🎯 目標情境推演 (可手動輸入或滑動圖表游標)</span>
+        <span>🎯 目標情境推演 (可快捷點擊或手動輸入)</span>
         <div>
           <button onclick="dismissKeyboard()" style="background:transparent; border:none; color:#8b949e; font-size:10px; cursor:pointer; text-decoration:underline; margin-right:6px;">收起輸入</button>
           <button onclick="resetSimToLive()" style="background:transparent; border:none; color:#58a6ff; font-size:10px; cursor:pointer; text-decoration:underline;">重置為現價</button>
         </div>
       </div>
+      
+      <!-- OKX 一鍵情境快捷鍵按鈕組 -->
+      <div style="display:flex; gap:4px; margin-bottom:8px; overflow-x:auto; padding-bottom:2px;">
+        <button class="preset-btn" onclick="applyPresetSim('mean')">⚖️ 均值回歸 (歷史均價)</button>
+        <button class="preset-btn" onclick="applyPresetSim('expand')">📈 +1.0% / +$1 擴大</button>
+        <button class="preset-btn" onclick="applyPresetSim('narrow')">📉 -1.0% / -$1 收窄</button>
+      </div>
+
       <div class="sim-inputs">
         <div class="sim-input-group">
           <label for="sim-skhy">SK海力士溢價 (%)</label>
@@ -551,9 +619,10 @@
     </div>
   </div>
 
-  <!-- 新增/編輯倉位 Modal 彈窗 (雙腿精準價量模式) -->
+  <!-- 新增/編輯倉位 Modal 彈窗 (OKX 底部滑出抽屜模式) -->
   <div class="modal-overlay" id="pos-modal" onclick="onOverlayClick(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-drag-handle"></div>
       <div class="modal-title" style="display:flex; justify-content:space-between; align-items:center;">
         <span id="modal-title-text">新增幣安倉位</span>
         <button onclick="closePosModal()" style="background:transparent; border:none; color:#8b949e; font-size:18px; font-weight:700; cursor:pointer; padding:0 4px;" title="關閉窗口">✕</button>
@@ -1489,6 +1558,52 @@
           }
           myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
           myChart.update('none');
+
+          // OKX 懸浮 HUD 數據卡片即時更新
+          const okxHud = document.getElementById('okx-hud');
+          if (okxHud && processedDataStore.rawItems && processedDataStore.rawItems[idx]) {
+            const rawItem = processedDataStore.rawItems[idx];
+            okxHud.style.display = 'block';
+            const timeElem = document.getElementById('hud-time');
+            if (timeElem) timeElem.innerText = rawItem.time || '--';
+            
+            let unit = '%';
+            if (currentTarget === 'oil') unit = ' USD';
+            else if (currentTarget === 'metal') unit = 'x';
+            
+            const rawVal = chart.data.datasets[0].data[idx];
+            const hudValElem = document.getElementById('hud-val');
+            if (hudValElem) hudValElem.innerText = (rawVal >= 0 ? '+' : '') + rawVal + unit;
+
+            const leg1Box = document.getElementById('hud-leg1-box');
+            const leg2Box = document.getElementById('hud-leg2-box');
+
+            if (currentTarget === 'skhy' && rawItem.skhyDr && rawItem.skhyLocal) {
+              if (leg1Box) leg1Box.style.display = 'block';
+              if (leg2Box) leg2Box.style.display = 'block';
+              const leg1Elem = document.getElementById('hud-leg1');
+              const leg2Elem = document.getElementById('hud-leg2');
+              if (leg1Elem) leg1Elem.innerText = 'DR $' + rawItem.skhyDr;
+              if (leg2Elem) leg2Elem.innerText = '原股 ₩' + rawItem.skhyLocal;
+            } else if (currentTarget === 'oil' && rawItem.brent && rawItem.wti) {
+              if (leg1Box) leg1Box.style.display = 'block';
+              if (leg2Box) leg2Box.style.display = 'block';
+              const leg1Elem = document.getElementById('hud-leg1');
+              const leg2Elem = document.getElementById('hud-leg2');
+              if (leg1Elem) leg1Elem.innerText = 'BZ $' + rawItem.brent;
+              if (leg2Elem) leg2Elem.innerText = 'CL $' + rawItem.wti;
+            } else if (currentTarget === 'metal' && rawItem.gold && rawItem.silver) {
+              if (leg1Box) leg1Box.style.display = 'block';
+              if (leg2Box) leg2Box.style.display = 'block';
+              const leg1Elem = document.getElementById('hud-leg1');
+              const leg2Elem = document.getElementById('hud-leg2');
+              if (leg1Elem) leg1Elem.innerText = 'Au $' + rawItem.gold;
+              if (leg2Elem) leg2Elem.innerText = 'Ag $' + rawItem.silver;
+            } else {
+              if (leg1Box) leg1Box.style.display = 'none';
+              if (leg2Box) leg2Box.style.display = 'none';
+            }
+          }
         }
       };
 
@@ -1509,6 +1624,8 @@
         activeTouchX = null;
         activeTouchY = null;
         lastHoveredIndex = -1;
+        const okxHud = document.getElementById('okx-hud');
+        if (okxHud) okxHud.style.display = 'none';
         if (myChart) {
           myChart.setActiveElements([]);
           myChart.update('none');
@@ -1687,11 +1804,69 @@
       else if (currentTarget === 'metal') unit = 'x';
 
       const panel = document.getElementById('val-current');
-      panel.className = 'price-main ' + (last >= 0 ? 'up' : 'down');
-      panel.innerText = (last >= 0 ? '+' : '') + last + unit;
+      if (panel) {
+        panel.className = 'price-main ' + (last >= 0 ? 'up' : 'down');
+        panel.innerText = (last >= 0 ? '+' : '') + last + unit;
+      }
 
-      document.getElementById('val-max').innerText = (max >= 0 ? '+' : '') + max + unit;
-      document.getElementById('val-min').innerText = (min >= 0 ? '+' : '') + min + unit;
+      const maxElem = document.getElementById('val-max');
+      const minElem = document.getElementById('val-min');
+      if (maxElem) maxElem.innerText = (max >= 0 ? '+' : '') + max + unit;
+      if (minElem) minElem.innerText = (min >= 0 ? '+' : '') + min + unit;
+
+      // OKX 24h 價差高低相對位置條動態渲染
+      const rangeMinElem = document.getElementById('range-min-text');
+      const rangeMaxElem = document.getElementById('range-max-text');
+      const rangePosElem = document.getElementById('range-pos-text');
+      const rangeFill = document.getElementById('range-bar-fill');
+      const rangePin = document.getElementById('range-bar-pin');
+
+      if (rangeMinElem && rangeMaxElem && rangeFill && rangePin) {
+        rangeMinElem.innerText = (min >= 0 ? '+' : '') + min + unit;
+        rangeMaxElem.innerText = (max >= 0 ? '+' : '') + max + unit;
+
+        let pct = 50;
+        if (max > min) {
+          pct = ((last - min) / (max - min)) * 100;
+          pct = Math.max(0, Math.min(100, pct));
+        }
+        if (rangePosElem) rangePosElem.innerText = `當前溢價位置: ${pct.toFixed(0)}%`;
+        rangeFill.style.width = pct.toFixed(1) + '%';
+        rangePin.style.left = pct.toFixed(1) + '%';
+      }
+    }
+
+    function applyPresetSim(type) {
+      isCustomSim = true;
+      const live = getLatestLiveMarketData();
+
+      let targetInputId = 'sim-oil';
+      let currentVal = live.oil;
+      if (currentTarget === 'skhy') {
+        targetInputId = 'sim-skhy';
+        currentVal = live.skhy;
+      } else if (currentTarget === 'metal') {
+        targetInputId = 'sim-metal';
+        currentVal = live.metal;
+      }
+
+      const inputElem = document.getElementById(targetInputId);
+      if (!inputElem) return;
+
+      if (type === 'mean') {
+        if (processedDataStore.data && processedDataStore.data.length > 0) {
+          const sum = processedDataStore.data.reduce((a, b) => a + b, 0);
+          const avg = sum / processedDataStore.data.length;
+          inputElem.value = avg.toFixed(2);
+        }
+      } else if (type === 'expand') {
+        const delta = (currentTarget === 'skhy' ? 1.0 : (currentTarget === 'oil' ? 1.0 : 0.5));
+        inputElem.value = (currentVal + delta).toFixed(2);
+      } else if (type === 'narrow') {
+        const delta = (currentTarget === 'skhy' ? 1.0 : (currentTarget === 'oil' ? 1.0 : 0.5));
+        inputElem.value = (currentVal - delta).toFixed(2);
+      }
+      onSimInputChanged();
     }
 
     function switchTarget(target) {
