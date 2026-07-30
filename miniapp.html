@@ -141,7 +141,7 @@
       position: relative;
       flex: 1;
       width: 100%;
-      touch-action: none;
+      touch-action: pan-y;
     }
     .price-panel {
       display: flex;
@@ -1522,10 +1522,19 @@
 
         lastTouchEvent = e;
 
-        // 如果尚未長按滿 150ms，且手指滑動超過 8px，代表使用者是在滑動/縮放頁面，取消長按觸發！
+        // 如果尚未長按滿 150ms，檢測手指滑動方向
         if (!crosshairActive) {
-          const moveDist = Math.hypot(touch.clientX - touchStartX, touch.clientY - touchStartY);
-          if (moveDist > 8) {
+          const deltaX = Math.abs(touch.clientX - touchStartX);
+          const deltaY = Math.abs(touch.clientY - touchStartY);
+
+          // ↕️ 垂直滑動幅度大於水平滑動 (deltaY > deltaX 且 deltaY > 5px)：代表使用者在滑動網頁！
+          // 立即取消查價線，讓手機瀏覽器執行順暢的頁面上下捲動！
+          if (deltaY > deltaX && deltaY > 5) {
+            clearLongPress();
+            return;
+          }
+
+          if (Math.hypot(deltaX, deltaY) > 8) {
             clearLongPress();
           }
           return;
