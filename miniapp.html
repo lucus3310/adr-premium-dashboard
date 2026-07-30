@@ -18,6 +18,18 @@
       user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
+    button, input, select, .range-btn, .asset-btn, .preset-btn, .btn-add-pos, .btn-icon, .btn-cancel, .btn-submit {
+      touch-action: manipulation;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      transform: translateZ(0);
+      will-change: transform, opacity;
+    }
+    button:active, .range-btn:active, .asset-btn:active, .preset-btn:active, .btn-add-pos:active, .btn-cancel:active, .btn-submit:active {
+      transform: scale(0.95) translateZ(0);
+      transition: transform 0.04s ease-out;
+      opacity: 0.85;
+    }
     body {
       background-color: #0d1117;
       color: #d1d4dc;
@@ -586,7 +598,6 @@
       <div class="sim-header">
         <span>🎯 目標情境推演 (可快捷點擊或手動輸入)</span>
         <div>
-          <button onclick="dismissKeyboard()" style="background:transparent; border:none; color:#8b949e; font-size:10px; cursor:pointer; text-decoration:underline; margin-right:6px;">收起輸入</button>
           <button onclick="resetSimToLive()" style="background:transparent; border:none; color:#58a6ff; font-size:10px; cursor:pointer; text-decoration:underline;">重置為現價</button>
         </div>
       </div>
