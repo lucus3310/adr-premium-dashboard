@@ -548,25 +548,79 @@
     </div>
   </div>
 
-  <!-- 新增/編輯倉位 Modal 彈窗 -->
+  <!-- 新增/編輯倉位 Modal 彈窗 (雙腿精準價量模式) -->
   <div class="modal-overlay" id="pos-modal">
     <div class="modal-content">
       <div class="modal-title" id="modal-title-text">新增幣安倉位</div>
       <input type="hidden" id="pos-edit-id">
 
       <div class="form-group">
-        <label for="pos-category">倉位與策略類型</label>
+        <label for="pos-category">對沖與策略組合</label>
         <select id="pos-category" class="form-control" onchange="onCategoryChanged()">
-          <option value="skhy">海力士溢價對沖 (SKHY Pair)</option>
-          <option value="oil">原油價差對沖 (BZ-CL Spread)</option>
-          <option value="metal">金銀比對沖 (XAU-XAG Ratio)</option>
-          <option value="single">單邊幣安期貨 (Single Contract)</option>
+          <option value="skhy">海力士對沖組合 (SKHYUSDT / SKHYNIXUSDT)</option>
+          <option value="oil">原油價差對沖組合 (BZUSDT / CLUSDT)</option>
+          <option value="metal">金銀比對沖組合 (XAUUSDT / XAGUSDT)</option>
+          <option value="single">單邊期貨合約 (Single Futures)</option>
         </select>
       </div>
 
-      <div class="form-group" id="symbol-select-group" style="display:none;">
-        <label for="pos-symbol">期貨合約標的</label>
-        <select id="pos-symbol" class="form-control">
+      <!-- 雙腿 Leg 1 & Leg 2 區塊 -->
+      <div id="dual-leg-fields" style="display:flex; flex-direction:column; gap:10px;">
+        <!-- Leg 1 -->
+        <div style="background:#0d1117; border:1px solid #21262d; border-radius:6px; padding:8px; display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:11px; font-weight:700; color:#58a6ff; display:flex; justify-content:space-between;">
+            <span id="leg1-title-text">標的 A (腿 1)</span>
+            <span id="leg1-symbol-badge" style="color:#8b949e">SKHYUSDT</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <div class="form-group">
+              <label>交易方向</label>
+              <select id="leg1-side" class="form-control" onchange="calculateImpliedEntryRate()">
+                <option value="short">🔴 做空 (Short)</option>
+                <option value="long">🟢 做多 (Long)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>開倉單價 ($)</label>
+              <input type="number" id="leg1-entry" class="form-control" placeholder="例: 18.50" step="any" oninput="calculateImpliedEntryRate()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>持倉規模 (張數/數量/桶數)</label>
+            <input type="number" id="leg1-size" class="form-control" placeholder="例: 100" step="any">
+          </div>
+        </div>
+
+        <!-- Leg 2 -->
+        <div id="leg2-card" style="background:#0d1117; border:1px solid #21262d; border-radius:6px; padding:8px; display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:11px; font-weight:700; color:#d29922; display:flex; justify-content:space-between;">
+            <span id="leg2-title-text">標的 B (腿 2)</span>
+            <span id="leg2-symbol-badge" style="color:#8b949e">SKHYNIXUSDT</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <div class="form-group">
+              <label>交易方向</label>
+              <select id="leg2-side" class="form-control" onchange="calculateImpliedEntryRate()">
+                <option value="long">🟢 做多 (Long)</option>
+                <option value="short">🔴 做空 (Short)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>開倉單價 ($)</label>
+              <input type="number" id="leg2-entry" class="form-control" placeholder="例: 179.20" step="any" oninput="calculateImpliedEntryRate()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>持倉規模 (張數/數量/桶數)</label>
+            <input type="number" id="leg2-size" class="form-control" placeholder="例: 10" step="any">
+          </div>
+        </div>
+      </div>
+
+      <!-- 單邊期貨時使用的選單 -->
+      <div class="form-group" id="single-symbol-group" style="display:none;">
+        <label for="single-symbol">期貨合約標的</label>
+        <select id="single-symbol" class="form-control" onchange="onSingleSymbolChanged()">
           <option value="BZUSDT">BZUSDT (Brent 原油期貨)</option>
           <option value="CLUSDT">CLUSDT (WTI 原油期貨)</option>
           <option value="XAUUSDT">XAUUSDT (黃金期貨)</option>
@@ -576,27 +630,9 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="pos-type">交易方向</label>
-        <select id="pos-type" class="form-control">
-          <option value="spread_long">多價差 / 多溢價 (期待價差/溢價擴張)</option>
-          <option value="spread_short">空價差 / 空溢價 (期待價差/溢價收斂)</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="pos-entry" id="label-pos-entry">開倉溢價 (%)</label>
-        <input type="number" id="pos-entry" class="form-control" placeholder="請輸入開倉時的數值" step="any">
-      </div>
-
-      <div class="form-group">
-        <label for="pos-size" id="label-pos-size">倉位本金 (USDT)</label>
-        <input type="number" id="pos-size" class="form-control" placeholder="例如: 10000" step="any">
-      </div>
-
-      <div class="form-group">
-        <label for="pos-mult">合約乘數 / 單位價值 multiplier (預設 1.0)</label>
-        <input type="number" id="pos-mult" class="form-control" value="1.0" step="any">
+      <!-- 💡 即時算出的開倉溢價/價差 Preview -->
+      <div id="implied-preview-box" style="font-size:11px; background:rgba(88,166,255,0.1); border:1px solid rgba(88,166,255,0.3); border-radius:4px; padding:6px; color:#58a6ff; font-weight:600; text-align:center;">
+        💡 開倉算得溢價/價差：--
       </div>
 
       <div class="form-group">
@@ -719,47 +755,108 @@
       };
     }
 
-    function calculatePnL(pos, marketData) {
-      const size = parseFloat(pos.size) || 0;
-      const entry = parseFloat(pos.entryValue) || 0;
-      const mult = parseFloat(pos.contractMultiplier) || 1.0;
-      if (size === 0) return 0;
-
-      if (pos.category === 'skhy') {
-        const currentPrem = marketData.skhy;
-        const diff = currentPrem - entry;
-        if (pos.type === 'spread_long') return size * (diff / 100) * mult;
-        else return size * (-diff / 100) * mult;
-      }
-      else if (pos.category === 'oil') {
-        const currentOil = marketData.oil;
-        const diff = currentOil - entry;
-        if (pos.type === 'spread_long') return size * diff * mult;
-        else return size * (-diff) * mult;
-      }
-      else if (pos.category === 'metal') {
-        const currentMetal = marketData.metal;
-        if (entry === 0) return 0;
-        const pct = (currentMetal - entry) / entry;
-        if (pos.type === 'spread_long') return size * pct * mult;
-        else return size * (-pct) * mult;
-      }
-      else if (pos.category === 'single') {
-        let currentPrice = 0;
-        if (pos.symbol === 'BZUSDT') currentPrice = marketData.brent;
-        else if (pos.symbol === 'CLUSDT') currentPrice = marketData.wti;
-        else if (pos.symbol === 'XAUUSDT') currentPrice = marketData.gold;
-        else if (pos.symbol === 'XAGUSDT') currentPrice = marketData.silver;
-        else if (pos.symbol === 'SKHYUSDT') currentPrice = marketData.skhyDr;
-        else if (pos.symbol === 'SKHYNIXUSDT') currentPrice = marketData.skhyLocal;
-
-        if (currentPrice === 0) return 0;
-        const diff = currentPrice - entry;
-        if (pos.type === 'long') return size * diff * mult;
-        else return size * (-diff) * mult;
-      }
-
+    function getSymbolPrice(symbol, marketData) {
+      if (!marketData) return 0;
+      if (symbol === 'BZUSDT') return marketData.brent || 0;
+      if (symbol === 'CLUSDT') return marketData.wti || 0;
+      if (symbol === 'XAUUSDT') return marketData.gold || 0;
+      if (symbol === 'XAGUSDT') return marketData.silver || 0;
+      if (symbol === 'SKHYUSDT') return marketData.skhyDr || 0;
+      if (symbol === 'SKHYNIXUSDT') return marketData.skhyLocal || 0;
       return 0;
+    }
+
+    function getSimMarketData() {
+      const live = getLatestLiveMarketData();
+
+      if (!isCustomSim && lastHoveredIndex !== -1 && processedDataStore.rawItems && processedDataStore.rawItems[lastHoveredIndex]) {
+        const item = processedDataStore.rawItems[lastHoveredIndex];
+        let skhy = parseFloat(item.skhy) || 0;
+        if (skhy > 0 && skhy < 1.0) skhy = parseFloat((skhy * 100).toFixed(2));
+        return {
+          skhy: skhy,
+          oil: parseFloat(item.oil) || 0,
+          metal: parseFloat(item.metal) || 0,
+          brent: parseFloat(item.brent) || 0,
+          wti: parseFloat(item.wti) || 0,
+          gold: parseFloat(item.gold) || 0,
+          silver: parseFloat(item.silver) || 0,
+          skhyDr: parseFloat(item.skhyDr) || 0,
+          skhyLocal: parseFloat(item.skhyLocal) || 0,
+          time: item.time
+        };
+      }
+
+      const inputSkhy = parseFloat(document.getElementById('sim-skhy') ? document.getElementById('sim-skhy').value : NaN);
+      const inputOil = parseFloat(document.getElementById('sim-oil') ? document.getElementById('sim-oil').value : NaN);
+      const inputMetal = parseFloat(document.getElementById('sim-metal') ? document.getElementById('sim-metal').value : NaN);
+
+      const simSkhy = !isNaN(inputSkhy) ? inputSkhy : live.skhy;
+      const simOil = !isNaN(inputOil) ? inputOil : live.oil;
+      const simMetal = !isNaN(inputMetal) ? inputMetal : live.metal;
+
+      const oilDiff = simOil - live.oil;
+      const simBrent = live.brent + (oilDiff / 2);
+      const simWti = live.wti - (oilDiff / 2);
+
+      const skhyRatioShift = (simSkhy - live.skhy) / 100;
+      const simSkhyDr = live.skhyDr * (1 + skhyRatioShift / 2);
+      const simSkhyLocal = live.skhyLocal * (1 - skhyRatioShift / 2);
+
+      const metalRatioShift = (live.metal > 0) ? (simMetal - live.metal) / live.metal : 0;
+      const simGold = live.gold * (1 + metalRatioShift / 2);
+      const simSilver = live.silver * (1 - metalRatioShift / 2);
+
+      return {
+        skhy: simSkhy,
+        oil: simOil,
+        metal: simMetal,
+        brent: simBrent,
+        wti: simWti,
+        gold: simGold,
+        silver: simSilver,
+        skhyDr: simSkhyDr,
+        skhyLocal: simSkhyLocal,
+        time: live.time
+      };
+    }
+
+    function calculatePnL(pos, marketData) {
+      if (!pos) return 0;
+
+      if (!pos.leg1Symbol && pos.category) {
+        const size = parseFloat(pos.size) || 0;
+        const entry = parseFloat(pos.entryValue) || 0;
+        if (pos.category === 'skhy') {
+          const diff = marketData.skhy - entry;
+          return pos.type === 'spread_long' ? size * (diff / 100) : size * (-diff / 100);
+        } else if (pos.category === 'oil') {
+          const diff = marketData.oil - entry;
+          return pos.type === 'spread_long' ? size * diff : size * (-diff);
+        } else if (pos.category === 'metal') {
+          if (entry === 0) return 0;
+          const pct = (marketData.metal - entry) / entry;
+          return pos.type === 'spread_long' ? size * pct : size * (-pct);
+        }
+      }
+
+      let leg1Price = getSymbolPrice(pos.leg1Symbol, marketData);
+      let pnl1 = 0;
+      if (leg1Price > 0 && pos.leg1Entry > 0 && pos.leg1Size > 0) {
+        const diff1 = leg1Price - pos.leg1Entry;
+        pnl1 = (pos.leg1Side === 'long') ? pos.leg1Size * diff1 : pos.leg1Size * (-diff1);
+      }
+
+      let pnl2 = 0;
+      if (pos.isDualLeg && pos.leg2Symbol) {
+        let leg2Price = getSymbolPrice(pos.leg2Symbol, marketData);
+        if (leg2Price > 0 && pos.leg2Entry > 0 && pos.leg2Size > 0) {
+          const diff2 = leg2Price - pos.leg2Entry;
+          pnl2 = (pos.leg2Side === 'long') ? pos.leg2Size * diff2 : pos.leg2Size * (-diff2);
+        }
+      }
+
+      return pnl1 + pnl2;
     }
 
     function renderPositionsSection() {
@@ -786,7 +883,7 @@
 
       if (positionsList.length === 0) {
         container.innerHTML = `<div style="text-align:center; padding:16px; color:#484f58; font-size:11px;">
-          尚無手動倉位，點擊右上角【＋ 新增倉位】即可開始紀錄與對沖試算。
+          尚無手動倉位，點擊右上角【＋ 新增倉位】即可開始紀錄雙腿對沖與試算。
         </div>`;
         const liveElem = document.getElementById('total-live-pnl');
         const simElem = document.getElementById('total-sim-pnl');
@@ -802,58 +899,46 @@
         totalLivePnl += livePnl;
         totalSimPnl += simPnl;
 
-        let catBadgeClass = pos.category;
-        let catText = "對沖倉位";
-        let unit = "";
-        let currentVal = 0;
-        let simVal = 0;
+        let catBadgeClass = pos.category || 'oil';
+        let catText = "對沖組合";
+        if (pos.category === 'skhy') catText = "SK海力士對沖";
+        else if (pos.category === 'oil') catText = "原油價差對沖";
+        else if (pos.category === 'metal') catText = "金銀比對沖";
+        else if (pos.category === 'single') catText = "單邊期貨";
 
-        if (pos.category === 'skhy') {
-          catText = "SK海力士溢價";
-          unit = "%";
-          currentVal = liveMarket.skhy;
-          simVal = simMarket.skhy;
-        } else if (pos.category === 'oil') {
-          catText = "原油 BZ-CL 價差";
-          unit = " USD";
-          currentVal = liveMarket.oil;
-          simVal = simMarket.oil;
-        } else if (pos.category === 'metal') {
-          catText = "金銀比";
-          unit = "x";
-          currentVal = liveMarket.metal;
-          simVal = simMarket.metal;
-        } else if (pos.category === 'single') {
-          catText = pos.symbol || "單邊期貨";
-          unit = " USD";
-          if (pos.symbol === 'BZUSDT') { currentVal = liveMarket.brent; simVal = simMarket.brent; }
-          else if (pos.symbol === 'CLUSDT') { currentVal = liveMarket.wti; simVal = simMarket.wti; }
-          else if (pos.symbol === 'XAUUSDT') { currentVal = liveMarket.gold; simVal = simMarket.gold; }
-          else if (pos.symbol === 'XAGUSDT') { currentVal = liveMarket.silver; simVal = simMarket.silver; }
-          else if (pos.symbol === 'SKHYUSDT') { currentVal = liveMarket.skhyDr; simVal = simMarket.skhyDr; }
-          else if (pos.symbol === 'SKHYNIXUSDT') { currentVal = liveMarket.skhyLocal; simVal = simMarket.skhyLocal; }
-        }
-
-        let dirText = (pos.type === 'spread_long' || pos.type === 'long') ? "🟢 多 (Long)" : "🔴 空 (Short)";
         let livePnlClass = livePnl > 0 ? "pos" : (livePnl < 0 ? "neg" : "zero");
         let simPnlClass = simPnl > 0 ? "pos" : (simPnl < 0 ? "neg" : "zero");
+
+        let leg1Text = "";
+        if (pos.leg1Symbol) {
+          leg1Text = `腿1: <b style="color:#e6edf3">${pos.leg1Symbol}</b> (${pos.leg1Side === 'long' ? '🟢多' : '🔴空'}) @ $${pos.leg1Entry} × ${pos.leg1Size}`;
+        } else if (pos.entryValue) {
+          leg1Text = `開倉數值: <b style="color:#e6edf3">${pos.entryValue}</b> | 規模: ${pos.size}`;
+        }
+
+        let leg2Text = "";
+        if (pos.isDualLeg && pos.leg2Symbol) {
+          leg2Text = `腿2: <b style="color:#e6edf3">${pos.leg2Symbol}</b> (${pos.leg2Side === 'long' ? '🟢多' : '🔴空'}) @ $${pos.leg2Entry} × ${pos.leg2Size}`;
+        }
 
         html += `
           <div class="pos-item">
             <div class="pos-item-header">
-              <span class="pos-badge ${catBadgeClass}">${catText} | ${dirText}</span>
+              <span class="pos-badge ${catBadgeClass}">${catText}</span>
               <div class="pos-actions">
                 <button class="btn-icon" onclick="editPosition('${pos.id}')" title="編輯">✏️</button>
                 <button class="btn-icon" onclick="deletePosition('${pos.id}')" title="刪除">🗑️</button>
               </div>
             </div>
-            <div class="pos-details">
-              <div>開倉數值: <b style="color:#d1d4dc">${pos.entryValue}${unit}</b> | 規模: ${pos.size}</div>
+            <div class="pos-details" style="flex-direction:column; gap:2px; padding:2px 0;">
+              <div>${leg1Text}</div>
+              ${leg2Text ? `<div>${leg2Text}</div>` : ''}
+              ${pos.impliedEntryStr ? `<div style="color:#58a6ff; font-weight:600; font-size:10px; margin-top:2px;">💡 ${pos.impliedEntryStr}</div>` : ''}
               ${pos.note ? `<div style="color:#6e7681">${pos.note}</div>` : ''}
             </div>
             <div class="pos-pnl-box">
-              <div>即時現價: ${currentVal}${unit} ➔ <b class="pnl-val ${livePnlClass}">${livePnl >= 0 ? '+' : ''}${livePnl.toFixed(2)} USDT</b></div>
-              <div>試算現價: ${simVal}${unit} ➔ <b class="pnl-val ${simPnlClass}">${simPnl >= 0 ? '+' : ''}${simPnl.toFixed(2)} USDT</b></div>
+              <div>即時現價 ➔ <b class="pnl-val ${livePnlClass}">${livePnl >= 0 ? '+' : ''}${livePnl.toFixed(2)} USDT</b></div>
+              <div>試算現價 ➔ <b class="pnl-val ${simPnlClass}">${simPnl >= 0 ? '+' : ''}${simPnl.toFixed(2)} USDT</b></div>
             </div>
           </div>
         `;
@@ -893,19 +978,22 @@
       if (pos) {
         document.getElementById('modal-title-text').innerText = "編輯幣安倉位";
         document.getElementById('pos-edit-id').value = pos.id;
-        document.getElementById('pos-category').value = pos.category;
-        document.getElementById('pos-type').value = pos.type;
-        document.getElementById('pos-entry').value = pos.entryValue;
-        document.getElementById('pos-size').value = pos.size;
-        document.getElementById('pos-mult').value = pos.contractMultiplier || 1.0;
+        document.getElementById('pos-category').value = pos.category || 'oil';
+        document.getElementById('leg1-side').value = pos.leg1Side || 'long';
+        document.getElementById('leg1-entry').value = pos.leg1Entry || pos.entryValue || '';
+        document.getElementById('leg1-size').value = pos.leg1Size || pos.size || '';
+        document.getElementById('leg2-side').value = pos.leg2Side || 'short';
+        document.getElementById('leg2-entry').value = pos.leg2Entry || '';
+        document.getElementById('leg2-size').value = pos.leg2Size || '';
         document.getElementById('pos-note').value = pos.note || '';
-        if (pos.symbol) document.getElementById('pos-symbol').value = pos.symbol;
+        if (pos.leg1Symbol) document.getElementById('single-symbol').value = pos.leg1Symbol;
       } else {
-        document.getElementById('modal-title-text').innerText = "新增幣安倉位";
+        document.getElementById('modal-title-text').innerText = "新增雙腿幣安倉位";
         document.getElementById('pos-edit-id').value = '';
-        document.getElementById('pos-entry').value = '';
-        document.getElementById('pos-size').value = '';
-        document.getElementById('pos-mult').value = '1.0';
+        document.getElementById('leg1-entry').value = '';
+        document.getElementById('leg1-size').value = '';
+        document.getElementById('leg2-entry').value = '';
+        document.getElementById('leg2-size').value = '';
         document.getElementById('pos-note').value = '';
       }
       onCategoryChanged();
@@ -917,71 +1005,152 @@
 
     function onCategoryChanged() {
       const cat = document.getElementById('pos-category').value;
-      const symGroup = document.getElementById('symbol-select-group');
-      const typeSelect = document.getElementById('pos-type');
-      const labelEntry = document.getElementById('label-pos-entry');
-      const labelSize = document.getElementById('label-pos-size');
+      const dualFields = document.getElementById('dual-leg-fields');
+      const leg2Card = document.getElementById('leg2-card');
+      const singleGroup = document.getElementById('single-symbol-group');
+      const leg1Badge = document.getElementById('leg1-symbol-badge');
+      const leg2Badge = document.getElementById('leg2-symbol-badge');
+      const leg1Title = document.getElementById('leg1-title-text');
+      const leg2Title = document.getElementById('leg2-title-text');
 
       if (cat === 'single') {
-        symGroup.style.display = 'flex';
-        typeSelect.innerHTML = `
-          <option value="long">做多 (Long)</option>
-          <option value="short">做空 (Short)</option>
-        `;
-        labelEntry.innerText = "開倉單價 ($)";
-        labelSize.innerText = "持倉張數/數量 (Qty)";
+        dualFields.style.display = 'flex';
+        leg2Card.style.display = 'none';
+        singleGroup.style.display = 'flex';
+        leg1Title.innerText = "單邊期貨合約";
+        onSingleSymbolChanged();
       } else {
-        symGroup.style.display = 'none';
-        typeSelect.innerHTML = `
-          <option value="spread_long">多價差 / 多溢價 (期待價差/溢價擴張)</option>
-          <option value="spread_short">空價差 / 空溢價 (期待價差/溢價收斂)</option>
-        `;
+        dualFields.style.display = 'flex';
+        leg2Card.style.display = 'flex';
+        singleGroup.style.display = 'none';
 
         if (cat === 'skhy') {
-          labelEntry.innerText = "開倉溢價 (%)";
-          labelSize.innerText = "倉位本金 (USDT)";
+          leg1Title.innerText = "腿 1 (DR 美股期貨)";
+          leg1Badge.innerText = "SKHYUSDT";
+
+          leg2Title.innerText = "腿 2 (原股 韓股期貨)";
+          leg2Badge.innerText = "SKHYNIXUSDT";
         } else if (cat === 'oil') {
-          labelEntry.innerText = "開倉價差 ($)";
-          labelSize.innerText = "對沖桶數/數量";
+          leg1Title.innerText = "腿 1 (Brent 原油期貨)";
+          leg1Badge.innerText = "BZUSDT";
+
+          leg2Title.innerText = "腿 2 (WTI 原油期貨)";
+          leg2Badge.innerText = "CLUSDT";
         } else if (cat === 'metal') {
-          labelEntry.innerText = "開倉金銀比 (x)";
-          labelSize.innerText = "倉位本金 (USDT)";
+          leg1Title.innerText = "腿 1 (黃金期貨)";
+          leg1Badge.innerText = "XAUUSDT";
+
+          leg2Title.innerText = "腿 2 (白銀期貨)";
+          leg2Badge.innerText = "XAGUSDT";
         }
+      }
+
+      calculateImpliedEntryRate();
+    }
+
+    function onSingleSymbolChanged() {
+      const sym = document.getElementById('single-symbol').value;
+      document.getElementById('leg1-symbol-badge').innerText = sym;
+      calculateImpliedEntryRate();
+    }
+
+    function calculateImpliedEntryRate() {
+      const cat = document.getElementById('pos-category').value;
+      const p1 = parseFloat(document.getElementById('leg1-entry').value);
+      const p2 = parseFloat(document.getElementById('leg2-entry').value);
+      const box = document.getElementById('implied-preview-box');
+      if (!box) return;
+
+      if (cat === 'single') {
+        box.innerText = `💡 單邊持倉開倉單價: ${isNaN(p1) ? '--' : '$' + p1}`;
+        return;
+      }
+
+      if (isNaN(p1) || isNaN(p2) || p1 === 0 || p2 === 0) {
+        box.innerText = "💡 請輸入腿 1 與腿 2 開倉單價以自動算得對沖價差/溢價";
+        return;
+      }
+
+      if (cat === 'skhy') {
+        const prem = (((p1 / 0.1) / p2 - 1) * 100).toFixed(2);
+        box.innerText = `💡 算得海力士開倉折溢價率: ${(prem >= 0 ? '+' : '')}${prem}%`;
+      } else if (cat === 'oil') {
+        const spread = (p1 - p2).toFixed(2);
+        box.innerText = `💡 算得 Brent-WTI 開倉價差: ${(spread >= 0 ? '+' : '')}$${spread} USD`;
+      } else if (cat === 'metal') {
+        const ratio = (p1 / p2).toFixed(2);
+        box.innerText = `💡 算得開倉金銀比: ${ratio}x`;
       }
     }
 
     function savePositionFromModal() {
       const editId = document.getElementById('pos-edit-id').value;
       const cat = document.getElementById('pos-category').value;
-      const type = document.getElementById('pos-type').value;
-      const entry = parseFloat(document.getElementById('pos-entry').value);
-      const size = parseFloat(document.getElementById('pos-size').value);
-      const mult = parseFloat(document.getElementById('pos-mult').value) || 1.0;
-      const note = document.getElementById('pos-note').value.trim();
-      const symbol = cat === 'single' ? document.getElementById('pos-symbol').value : '';
+      const isDualLeg = (cat !== 'single');
 
-      if (isNaN(entry) || isNaN(size)) {
-        alert("請輸入有效的開倉數值與倉位規模！");
+      let leg1Sym = "";
+      if (cat === 'skhy') leg1Sym = "SKHYUSDT";
+      else if (cat === 'oil') leg1Sym = "BZUSDT";
+      else if (cat === 'metal') leg1Sym = "XAUUSDT";
+      else leg1Sym = document.getElementById('single-symbol').value;
+
+      let leg2Sym = "";
+      if (cat === 'skhy') leg2Sym = "SKHYNIXUSDT";
+      else if (cat === 'oil') leg2Sym = "CLUSDT";
+      else if (cat === 'metal') leg2Sym = "XAGUSDT";
+
+      const leg1Side = document.getElementById('leg1-side').value;
+      const leg1Entry = parseFloat(document.getElementById('leg1-entry').value);
+      const leg1Size = parseFloat(document.getElementById('leg1-size').value);
+
+      const leg2Side = document.getElementById('leg2-side').value;
+      const leg2Entry = parseFloat(document.getElementById('leg2-entry').value);
+      const leg2Size = parseFloat(document.getElementById('leg2-size').value);
+      const note = document.getElementById('pos-note').value.trim();
+
+      if (isNaN(leg1Entry) || isNaN(leg1Size)) {
+        alert("請輸入有效的標的 1 (腿 1) 開倉價與持倉數量！");
         return;
       }
 
+      if (isDualLeg && (isNaN(leg2Entry) || isNaN(leg2Size))) {
+        alert("請輸入有效的標的 2 (腿 2) 開倉價與持倉數量！");
+        return;
+      }
+
+      let impliedStr = "";
+      if (cat === 'skhy') {
+        const prem = (((leg1Entry / 0.1) / leg2Entry - 1) * 100).toFixed(2);
+        impliedStr = `開倉溢價 ${(prem >= 0 ? '+' : '')}${prem}%`;
+      } else if (cat === 'oil') {
+        const spread = (leg1Entry - leg2Entry).toFixed(2);
+        impliedStr = `開倉 Brent-WTI 價差 $${spread} USD`;
+      } else if (cat === 'metal') {
+        const ratio = (leg1Entry / leg2Entry).toFixed(2);
+        impliedStr = `開倉金銀比 ${ratio}x`;
+      }
+
+      const posData = {
+        id: editId || ("pos_" + Date.now()),
+        category: cat,
+        isDualLeg: isDualLeg,
+        leg1Symbol: leg1Sym,
+        leg1Side: leg1Side,
+        leg1Entry: leg1Entry,
+        leg1Size: leg1Size,
+        leg2Symbol: leg2Sym,
+        leg2Side: leg2Side,
+        leg2Entry: leg2Entry,
+        leg2Size: leg2Size,
+        impliedEntryStr: impliedStr,
+        note: note
+      };
+
       if (editId) {
         const idx = positionsList.findIndex(p => p.id === editId);
-        if (idx !== -1) {
-          positionsList[idx] = { id: editId, category: cat, type, entryValue: entry, size, contractMultiplier: mult, note, symbol };
-        }
+        if (idx !== -1) positionsList[idx] = posData;
       } else {
-        const newPos = {
-          id: "pos_" + Date.now(),
-          category: cat,
-          type,
-          entryValue: entry,
-          size,
-          contractMultiplier: mult,
-          note,
-          symbol
-        };
-        positionsList.push(newPos);
+        positionsList.push(posData);
       }
 
       savePositions();
