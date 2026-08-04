@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Hynix 盤中套利監控</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(23, 28, 41, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --up-color: #10b981;
+            --down-color: #ef4444;
+            --accent-blue: #3b82f6;
+            --skhy-color: #06b6d4; /* cyan */
+            --skhynix-color: #f59e0b; /* orange */
+            --skhyusdt-color: #8b5cf6; /* purple */
+            --spread-color: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--up-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--up-color);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .card-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .card-change {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .up { color: var(--up-color); }
+        .down { color: var(--down-color); }
+
+        .chart-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            min-height: 400px;
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            touch-action: pan-y;
+        }
+
+        .spread-chart-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            height: 250px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            padding-top: 10px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        @media (max-width: 768px) {
+            .cards-container { grid-template-columns: 1fr; }
+            .header { flex-direction: column; align-items: flex-start; }
+            .canvas-wrapper { min-height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-title">
+            <a href="index.html" class="back-link">← 返回主頁</a>
+            <h1>SK Hynix 盤中套利監控</h1>
+        </div>
+        <div class="header-controls">
+            <div class="status-badge" id="marketStatus">
+                <span class="pulse-dot" id="marketDot"></span>
+                <span id="marketText">檢查市場狀態...</span>
+            </div>
+            <div class="status-badge">
+                <span id="countdown">15s 後更新</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-header">
+                <span>SKHY (美股 ADR)</span>
+                <span style="color: var(--skhy-color)">■</span>
+            </div>
+            <div class="card-price" id="skhyPrice">--</div>
+            <div class="card-change" id="skhyChange">--%</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <span>SKHYNIXUSDT (幣安原股合約)</span>
+                <span style="color: var(--skhynix-color)">■</span>
+            </div>
+            <div class="card-price" id="binancePrice">--</div>
+            <div class="card-change" id="binanceChange">--%</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span>即時價差 (ADR% - 原股%)</span>
+                <span></span>
+            </div>
+            <div class="card-price" id="spreadValue">--</div>
+            <div class="card-change" id="spreadStatus">--</div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="chart-controls">
+            <button class="toggle-btn" id="toggleSkhyusdt">顯示 SKHYUSDT (DR合約)</button>
+            <button class="toggle-btn" id="togglePreMarket">顯示盤前數據</button>
+        </div>
+        <div class="canvas-wrapper">
+            <canvas id="mainChart"></canvas>
+        </div>
+    </div>
+
+    <div class="spread-chart-container">
+        <div class="canvas-wrapper">
+            <canvas id="spreadChart"></canvas>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>數據來源: Yahoo Finance (ADR), Binance Futures (合約) | 基準: 美股開盤價 (13:30 UTC)</div>
+        <div id="lastUpdate">最後更新: --</div>
+    </footer>
+
+    <script>
+        // Constants & State
+        const REFRESH_INTERVAL = 15;
+        let countdown = REFRESH_INTERVAL;
+        let showSkhyusdt = false;
+        let showPreMarket = false;
+        
+        let mainChart = null;
+        let spreadChart = null;
+
+        // UI Elements
+        const elCountdown = document.getElementById('countdown');
+        const elSkhyPrice = document.getElementById('skhyPrice');
+        const elSkhyChange = document.getElementById('skhyChange');
+        const elBinancePrice = document.getElementById('binancePrice');
+        const elBinanceChange = document.getElementById('binanceChange');
+        const elSpreadValue = document.getElementById('spreadValue');
+        const elSpreadStatus = document.getElementById('spreadStatus');
+        const elMarketStatus = document.getElementById('marketStatus');
+        const elMarketText = document.getElementById('marketText');
+        const elMarketDot = document.getElementById('marketDot');
+        const elLastUpdate = document.getElementById('lastUpdate');
+
+        // Toggles
+        document.getElementById('toggleSkhyusdt').addEventListener('click', function() {
+            showSkhyusdt = !showSkhyusdt;
+            this.classList.toggle('active');
+            updateChartsVisibility();
+        });
+
+        document.getElementById('togglePreMarket').addEventListener('click', function() {
+            showPreMarket = !showPreMarket;
+            this.classList.toggle('active');
+            fetchData(); // Refetch to apply pre-market filter
+        });
+
+        // Initialize Charts
+        function initCharts() {
+            const ctxMain = document.getElementById('mainChart').getContext('2d');
+            
+            mainChart = new Chart(ctxMain, {
+                type: 'line',
+                data: {
+                    datasets: [
+                        {
+                            label: 'SKHY ADR %',
+                            borderColor: '#06b6d4',
+                            backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            pointHitRadius: 10,
+                            fill: false,
+                            data: []
+                        },
+                        {
+                            label: 'SKHYNIXUSDT %',
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            pointHitRadius: 10,
+                            fill: false,
+                            data: []
+                        },
+                        {
+                            label: 'SKHYUSDT %',
+                            borderColor: '#8b5cf6',
+                            borderWidth: 1.5,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            hidden: true,
+                            data: []
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { labels: { color: '#f3f4f6' } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
+                                }
+                            }
+                        },
+                        zoom: {
+                            pan: { enabled: true, mode: 'x' },
+                            zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#9ca3af' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.05)', zeroLineColor: 'rgba(255,255,255,0.2)' },
+                            ticks: { 
+                                color: '#9ca3af',
+                                callback: function(value) { return value + '%'; }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const ctxSpread = document.getElementById('spreadChart').getContext('2d');
+            spreadChart = new Chart(ctxSpread, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Spread (ADR% - NIX%)',
+                        borderWidth: 1.5,
+                        pointRadius: 0,
+                        fill: true,
+                        data: [],
+                        segment: {
+                            borderColor: ctx => ctx.p1DataPoint.y >= 0 ? '#10b981' : '#ef4444',
+                            backgroundColor: ctx => ctx.p1DataPoint.y >= 0 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)'
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) { return 'Spread: ' + context.parsed.y.toFixed(2) + '%'; }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
+                            grid: { display: false },
+                            ticks: { color: '#9ca3af' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#9ca3af', callback: function(value) { return value + '%'; } }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChartsVisibility() {
+            mainChart.data.datasets[2].hidden = !showSkhyusdt;
+            mainChart.update();
+        }
+
+        // Utils
+        function formatNumber(num, decimals = 2) {
+            return Number(num).toFixed(decimals);
+        }
+
+        function formatChange(num) {
+            const val = Number(num);
+            const sign = val > 0 ? '+' : '';
+            return {
+                text: `${sign}${val.toFixed(2)}%`,
+                className: val >= 0 ? 'up' : 'down'
+            };
+        }
+
+        function getUSMarketOpenTimestamp() {
+            // US Market opens at 9:30 AM Eastern Time
+            // For simplicity in this demo, we assume UTC 13:30 (adjust for DST in real app)
+            const now = new Date();
+            const openTime = new Date(now);
+            openTime.setUTCHours(13, 30, 0, 0);
+            
+            // If it's before open today, use yesterday's open
+            if (now.getTime() < openTime.getTime()) {
+                openTime.setUTCDate(openTime.getUTCDate() - 1);
+            }
+            // Skip weekends
+            while (openTime.getUTCDay() === 0 || openTime.getUTCDay() === 6) {
+                openTime.setUTCDate(openTime.getUTCDate() - 1);
+            }
+            return openTime.getTime();
+        }
+
+        // Fetch Data
+        async function fetchData() {
+            try {
+                const targetOpenTime = getUSMarketOpenTimestamp();
+                const now = Date.now();
+                
+                // Determine market status roughly
+                const isMarketOpen = (now - targetOpenTime >= 0) && (now - targetOpenTime <= 6.5 * 60 * 60 * 1000);
+                
+                if (isMarketOpen) {
+                    elMarketText.textContent = '🟢 美股交易中';
+                    elMarketDot.style.backgroundColor = '#10b981';
+                } else {
+                    elMarketText.textContent = '🔴 美股已收盤/未開盤';
+                    elMarketDot.style.backgroundColor = '#ef4444';
+                    elMarketDot.style.animation = 'none';
+                }
+
+                // 1. Fetch Binance SKHYNIXUSDT
+                const resNix = await fetch('https://fapi.binance.com/fapi/v1/klines?symbol=SKHYNIXUSDT&interval=1m&limit=480');
+                const dataNix = await resNix.json();
+                
+                // 2. Fetch Binance SKHYUSDT
+                const resUsdt = await fetch('https://fapi.binance.com/fapi/v1/klines?symbol=SKHYUSDT&interval=1m&limit=480');
+                const dataUsdt = await resUsdt.json();
+
+                // 3. Fetch Yahoo SKHY ADR
+                // Since this runs in browser, we point to the local proxy
+                let dataSkhy = null;
+                try {
+                    const resSkhy = await fetch('/api/yahoo-chart/SKHY');
+                    if(resSkhy.ok) {
+                        dataSkhy = await resSkhy.json();
+                    }
+                } catch (e) {
+                    console.warn('Yahoo fetch failed. Make sure proxy is running:', e);
+                }
+
+                processData(dataSkhy, dataNix, dataUsdt, targetOpenTime);
+
+                elLastUpdate.textContent = `最後更新: ${new Date().toLocaleTimeString()}`;
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
+        }
+
+        function processData(yahooData, nixData, usdtData, targetOpenTime) {
+            // Process Binance NIX
+            let nixOpenPrice = null;
+            let nixChartData = [];
+            
+            // Find open price for Binance at targetOpenTime
+            for (const kline of nixData) {
+                const time = kline[0];
+                if (time >= targetOpenTime && nixOpenPrice === null) {
+                    nixOpenPrice = parseFloat(kline[1]); // Open price of that minute
+                }
+            }
+            
+            if (!nixOpenPrice && nixData.length > 0) {
+                nixOpenPrice = parseFloat(nixData[0][1]); // Fallback
+            }
+
+            if (nixOpenPrice) {
+                for (const kline of nixData) {
+                    const time = kline[0];
+                    if (!showPreMarket && time < targetOpenTime) continue;
+                    const closePrice = parseFloat(kline[4]);
+                    const pctChange = ((closePrice - nixOpenPrice) / nixOpenPrice) * 100;
+                    nixChartData.push({ x: time, y: pctChange, price: closePrice });
+                }
+            }
+
+            // Process Binance USDT
+            let usdtOpenPrice = null;
+            let usdtChartData = [];
+            for (const kline of usdtData) {
+                const time = kline[0];
+                if (time >= targetOpenTime && usdtOpenPrice === null) usdtOpenPrice = parseFloat(kline[1]);
+            }
+            if (!usdtOpenPrice && usdtData.length > 0) usdtOpenPrice = parseFloat(usdtData[0][1]);
+            
+            if (usdtOpenPrice) {
+                for (const kline of usdtData) {
+                    const time = kline[0];
+                    if (!showPreMarket && time < targetOpenTime) continue;
+                    const closePrice = parseFloat(kline[4]);
+                    const pctChange = ((closePrice - usdtOpenPrice) / usdtOpenPrice) * 100;
+                    usdtChartData.push({ x: time, y: pctChange });
+                }
+            }
+
+            // Process Yahoo ADR
+            let skhyOpenPrice = null;
+            let skhyChartData = [];
+            
+            if (yahooData && yahooData.chart && yahooData.chart.result && yahooData.chart.result.length > 0) {
+                const result = yahooData.chart.result[0];
+                const timestamps = result.timestamp || [];
+                const closePrices = result.indicators.quote[0].close || [];
+                const openPrices = result.indicators.quote[0].open || [];
+                
+                // Find open
+                for (let i = 0; i < timestamps.length; i++) {
+                    const time = timestamps[i] * 1000;
+                    if (time >= targetOpenTime && skhyOpenPrice === null && openPrices[i]) {
+                        skhyOpenPrice = openPrices[i];
+                    }
+                }
+                
+                if (!skhyOpenPrice && openPrices.length > 0) {
+                    // Fallback to previous close or first open
+                    skhyOpenPrice = result.meta.chartPreviousClose || openPrices[0];
+                }
+
+                if (skhyOpenPrice) {
+                    for (let i = 0; i < timestamps.length; i++) {
+                        const time = timestamps[i] * 1000;
+                        if (!showPreMarket && time < targetOpenTime) continue;
+                        
+                        const closePrice = closePrices[i];
+                        if (closePrice !== null) {
+                            const pctChange = ((closePrice - skhyOpenPrice) / skhyOpenPrice) * 100;
+                            skhyChartData.push({ x: time, y: pctChange, price: closePrice });
+                        }
+                    }
+                }
+            }
+
+            // Align data by time for Spread calculation
+            // Map Binance data by time (rounded to minute)
+            const nixMap = new Map();
+            nixChartData.forEach(d => {
+                const roundedTime = Math.floor(d.x / 60000) * 60000;
+                nixMap.set(roundedTime, d.y);
+            });
+
+            const spreadData = [];
+            skhyChartData.forEach(d => {
+                const roundedTime = Math.floor(d.x / 60000) * 60000;
+                if (nixMap.has(roundedTime)) {
+                    const spread = d.y - nixMap.get(roundedTime);
+                    spreadData.push({ x: d.x, y: spread });
+                }
+            });
+
+            // Update UI
+            if (skhyChartData.length > 0) {
+                const lastSkhy = skhyChartData[skhyChartData.length - 1];
+                elSkhyPrice.textContent = lastSkhy.price.toFixed(2);
+                const changeObj = formatChange(lastSkhy.y);
+                elSkhyChange.textContent = changeObj.text;
+                elSkhyChange.className = 'card-change ' + changeObj.className;
+            }
+
+            if (nixChartData.length > 0) {
+                const lastNix = nixChartData[nixChartData.length - 1];
+                elBinancePrice.textContent = lastNix.price.toFixed(2);
+                const changeObj = formatChange(lastNix.y);
+                elBinanceChange.textContent = changeObj.text;
+                elBinanceChange.className = 'card-change ' + changeObj.className;
+            }
+
+            if (spreadData.length > 0) {
+                const lastSpread = spreadData[spreadData.length - 1].y;
+                elSpreadValue.textContent = formatNumber(Math.abs(lastSpread)) + '%';
+                elSpreadValue.className = 'card-price ' + (lastSpread >= 0 ? 'up' : 'down');
+                elSpreadStatus.textContent = lastSpread >= 0 ? 'ADR 溢價 (Premium)' : '原股 溢價 (Discount)';
+            }
+
+            // Update Charts
+            mainChart.data.datasets[0].data = skhyChartData;
+            mainChart.data.datasets[1].data = nixChartData;
+            mainChart.data.datasets[2].data = usdtChartData;
+            mainChart.update();
+
+            spreadChart.data.datasets[0].data = spreadData;
+            spreadChart.update();
+        }
+
+        // Loop
+        setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+                countdown = REFRESH_INTERVAL;
+                fetchData();
+            }
+            elCountdown.textContent = `${countdown}s 後更新`;
+        }, 1000);
+
+        // Load chart.js adapters for time axis dynamically since it's required for time scale
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js';
+        script.onload = () => {
+            initCharts();
+            fetchData();
+        };
+        document.head.appendChild(script);
+
+    </script>
+</body>
+</html>

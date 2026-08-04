@@ -1211,6 +1211,264 @@
             color: #0b0f19;
             box-shadow: 0 0 8px var(--accent-glow);
         }
+
+        /* Intraday % Change Arbitrage Monitor Panel Styling */
+        .intraday-monitor-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .monitor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .monitor-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        .pulse-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #10b981;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulseGlow 1.8s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .badge-tag {
+            font-size: 0.72rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            background: rgba(0, 242, 254, 0.12);
+            color: #00f2fe;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            font-weight: 600;
+        }
+
+        .monitor-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-ctrl {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            transition: var(--transition);
+        }
+
+        .btn-ctrl:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-ctrl:active {
+            transform: scale(0.96);
+        }
+
+        .select-ctrl {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .intraday-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .intraday-stat-box {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .intraday-stat-box.leg1-theme {
+            border-left: 4px solid #00f2fe;
+        }
+
+        .intraday-stat-box.leg2-theme {
+            border-left: 4px solid #ff9900;
+        }
+
+        .intraday-stat-box.spread-theme {
+            border-left: 4px solid #a5b4fc;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .badge-sub {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+        }
+
+        .stat-value-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin: 0.2rem 0;
+        }
+
+        .stat-pct {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stat-price-sub {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .stat-base-info {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        .spread-indicator-badge {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.3rem 0.65rem;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transition: var(--transition);
+        }
+
+        .spread-indicator-badge.alert-active {
+            background: rgba(239, 68, 68, 0.25);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.6);
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+            animation: flashAlert 1s infinite alternate;
+        }
+
+        @keyframes flashAlert {
+            from { opacity: 0.75; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1.02); }
+        }
+
+        .settings-drawer {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px dashed var(--card-border);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .drawer-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .drawer-inputs {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .input-field label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .input-field input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0.45rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .btn-save-base {
+            background: var(--accent-primary);
+            color: #0b0f19;
+            font-weight: 700;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            transition: var(--transition);
+        }
+
+        .btn-save-base:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
     </style>
 </head>
 <body>
@@ -1231,7 +1489,10 @@
                     <h1>海外存託憑證 (DR) 折溢價分析儀表板</h1>
                     <div class="subtitle">大型科技與權值股 ADR/GDR 歷史數據整理、溢價波動與套利監測</div>
                 </div>
-                <div class="last-update" id="latest-update-time">數據載入中...</div>
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <a href="arbitrage_monitor.html" style="font-size: 0.85rem; color: #06b6d4; background: rgba(6, 182, 212, 0.1); padding: 0.5rem 1rem; border-radius: 9999px; border: 1px solid rgba(6, 182, 212, 0.3); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#06b6d4';this.style.background='rgba(6,182,212,0.2)'" onmouseout="this.style.borderColor='rgba(6,182,212,0.3)';this.style.background='rgba(6,182,212,0.1)'">📊 盤中套利監控</a>
+                    <div class="last-update" id="latest-update-time">數據載入中...</div>
+                </div>
             </div>
         </header>
 
@@ -1272,7 +1533,95 @@
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
             <div>
-                <strong>提示：</strong> 當前選定的憑證歷史交易數據較短。建議切換至同一檔股票的歐股或德股憑證（如有），以取得完整的歷史統計溢價。
+                <strong>提示：</strong> 當前選定的憑證歷史數據較短。建議切換至同一檔股票的歐股或德股憑證（如有），以取得完整的歷史統計溢價。
+            </div>
+        </div>
+
+        <!-- ⚡ 盤中雙標的價格漲跌幅 (% Change 0% Baseline) 套利監控儀表板 -->
+        <div class="intraday-monitor-card" id="intraday-arbitrage-panel">
+            <div class="monitor-header">
+                <div class="monitor-title">
+                    <span class="pulse-status-dot"></span>
+                    <span>盤中價格漲跌幅 (0% Baseline) 統計套利監控</span>
+                    <span class="badge-tag">即時監測</span>
+                </div>
+                <div class="monitor-controls">
+                    <button class="btn-ctrl" onclick="resetIntradayBaseline()" title="將當前即時價格校正為 0% 基準">
+                        ⚡ 當前價設為 0% 基準
+                    </button>
+                    <button class="btn-ctrl" onclick="toggleIntradaySettingsDrawer()" title="開啟/關閉開盤價手動校正抽屜">
+                        ⚙️ 開盤價校正
+                    </button>
+                    <select id="arbitrage-threshold-select" class="select-ctrl" onchange="updateIntradayThreshold(this.value)">
+                        <option value="0.5">警報閾值: 0.5%</option>
+                        <option value="1.0" selected>警報閾值: 1.0%</option>
+                        <option value="1.5">警報閾值: 1.5%</option>
+                        <option value="2.0">警報閾值: 2.0%</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 數據指標卡片區 -->
+            <div class="intraday-stats-grid">
+                <!-- Card 1: Leg 1 (美股 / SKHY) -->
+                <div class="intraday-stat-box leg1-theme">
+                    <div class="stat-label">
+                        <span id="intra-leg1-name">美股 ADR (SKHY / SKHYUSDT)</span>
+                        <span class="badge-sub">Leg 1 (主導標的)</span>
+                    </div>
+                    <div class="stat-value-row">
+                        <span class="stat-pct" id="intra-leg1-pct" style="color: var(--accent-primary);">0.00%</span>
+                        <span class="stat-price-sub" id="intra-leg1-price">$0.00</span>
+                    </div>
+                    <div class="stat-base-info">開盤/基準價: <span id="intra-leg1-base">--</span></div>
+                </div>
+
+                <!-- Card 2: Leg 2 (幣安 / SKHYNIXUSDT) -->
+                <div class="intraday-stat-box leg2-theme">
+                    <div class="stat-label">
+                        <span id="intra-leg2-name">幣安海力士 (SKHYNIXUSDT)</span>
+                        <span class="badge-sub">Leg 2 (跟隨標的)</span>
+                    </div>
+                    <div class="stat-value-row">
+                        <span class="stat-pct" id="intra-leg2-pct" style="color: #ff9900;">0.00%</span>
+                        <span class="stat-price-sub" id="intra-leg2-price">$0.00</span>
+                    </div>
+                    <div class="stat-base-info">開盤/基準價: <span id="intra-leg2-base">--</span></div>
+                </div>
+
+                <!-- Card 3: Spread Gap 脫鉤價差與套利訊號 -->
+                <div class="intraday-stat-box spread-theme" id="intra-spread-box">
+                    <div class="stat-label">
+                        <span>脫鉤漲跌幅差 (Spread)</span>
+                        <span class="badge-sub">ΔLeg1 - ΔLeg2</span>
+                    </div>
+                    <div class="stat-value-row">
+                        <span class="stat-pct" id="intra-spread-pct">0.00%</span>
+                        <span class="spread-indicator-badge" id="intra-status-badge">🟢 走勢同步</span>
+                    </div>
+                    <div class="stat-base-info" id="intra-action-hint">兩標的盤中漲跌幅跟隨正常，無顯著脫鉤套利空間</div>
+                </div>
+            </div>
+
+            <!-- 開盤價手動校正抽屜 -->
+            <div id="intraday-settings-drawer" class="settings-drawer" style="display: none;">
+                <div class="drawer-title">⚙️ 手動設定開盤/基準價格 (用於計算 0% 基準點)</div>
+                <div class="drawer-inputs">
+                    <div class="input-field">
+                        <label id="label-base-leg1">Leg 1 開盤價 (SKHY / 美股):</label>
+                        <input type="number" id="input-base-leg1" step="any" placeholder="例如: 18.50">
+                    </div>
+                    <div class="input-field">
+                        <label id="label-base-leg2">Leg 2 開盤價 (SKHYNIXUSDT):</label>
+                        <input type="number" id="input-base-leg2" step="any" placeholder="例如: 179.20">
+                    </div>
+                    <button class="btn-save-base" onclick="applyCustomIntradayBases()">套用並重新計算 0% 基準</button>
+                </div>
+            </div>
+
+            <!-- 折線對比與脫鉤差值圖表 -->
+            <div style="height: 300px; position: relative; margin-top: 1rem;">
+                <canvas id="intradayPctChart"></canvas>
             </div>
         </div>
 
@@ -2652,11 +3001,270 @@
             // Real-time price tracking via Binance WebSockets (bypasses CORS)
             let latestPriceDr = null;
             let latestPriceLocal = null;
+            // =========================================================
+            // ⚡ INTRADAY % CHANGE (0% BASELINE) ARBITRAGE MONITOR LOGIC
+            // =========================================================
+            let intradayBaseLeg1 = null; // Open/Base price for Leg 1 (e.g. SKHY / 美股)
+            let intradayBaseLeg2 = null; // Open/Base price for Leg 2 (e.g. SKHYNIXUSDT)
+            let intradayThreshold = 1.0;  // Alert threshold in % (default 1.0%)
+            let intradayPctChartInstance = null;
+
+            function initIntradayPctChart() {
+                const ctx = document.getElementById('intradayPctChart');
+                if (!ctx) return;
+                
+                if (intradayPctChartInstance) {
+                    intradayPctChartInstance.destroy();
+                }
+                
+                intradayPctChartInstance = new Chart(ctx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [
+                            {
+                                label: 'Leg 1 盤中漲跌幅 (%)',
+                                data: [],
+                                borderColor: '#00f2fe',
+                                backgroundColor: 'rgba(0, 242, 254, 0.05)',
+                                borderWidth: 2.5,
+                                pointRadius: 2,
+                                tension: 0.2,
+                                fill: false,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Leg 2 盤中漲跌幅 (%)',
+                                data: [],
+                                borderColor: '#ff9900',
+                                backgroundColor: 'rgba(255, 153, 0, 0.05)',
+                                borderWidth: 2.5,
+                                pointRadius: 2,
+                                tension: 0.2,
+                                fill: false,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: '脫鉤差值 Spread (%)',
+                                data: [],
+                                borderColor: '#a5b4fc',
+                                backgroundColor: 'rgba(165, 180, 252, 0.15)',
+                                borderWidth: 1.5,
+                                pointRadius: 0,
+                                tension: 0.1,
+                                fill: true,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: { color: '#9ca3af', font: { size: 10 } }
+                            },
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                                ticks: {
+                                    color: '#9ca3af',
+                                    font: { size: 11 },
+                                    callback: function(val) { return (val >= 0 ? '+' : '') + val.toFixed(2) + '%'; }
+                                },
+                                title: { display: true, text: '漲跌幅 (%)', color: '#9ca3af', font: { size: 11 } }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                grid: { drawOnChartArea: false },
+                                ticks: {
+                                    color: '#a5b4fc',
+                                    font: { size: 10 },
+                                    callback: function(val) { return (val >= 0 ? '+' : '') + val.toFixed(2) + '%'; }
+                                },
+                                title: { display: true, text: '脫鉤價差 Spread (%)', color: '#a5b4fc', font: { size: 10 } }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: { color: '#f3f4f6', font: { size: 11, family: 'Outfit' } }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        let val = context.parsed.y;
+                                        return `${label}: ${val >= 0 ? '+' : ''}${val.toFixed(2)}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function resetIntradayBaseline() {
+                if (latestPriceDr !== null && latestPriceLocal !== null) {
+                    intradayBaseLeg1 = latestPriceDr;
+                    intradayBaseLeg2 = latestPriceLocal;
+                    
+                    document.getElementById('intra-leg1-base').innerText = `$${intradayBaseLeg1.toFixed(4)}`;
+                    document.getElementById('intra-leg2-base').innerText = `$${intradayBaseLeg2.toFixed(4)}`;
+                    
+                    document.getElementById('input-base-leg1').value = intradayBaseLeg1;
+                    document.getElementById('input-base-leg2').value = intradayBaseLeg2;
+                    
+                    if (intradayPctChartInstance) {
+                        intradayPctChartInstance.data.labels = [];
+                        intradayPctChartInstance.data.datasets[0].data = [];
+                        intradayPctChartInstance.data.datasets[1].data = [];
+                        intradayPctChartInstance.data.datasets[2].data = [];
+                        intradayPctChartInstance.update();
+                    }
+                    
+                    updateIntradayArbitrageUI(latestPriceLocal, latestPriceDr);
+                } else {
+                    alert('尚未取得即時價格，請等待 WebSocket 連線成功。');
+                }
+            }
+
+            function toggleIntradaySettingsDrawer() {
+                const drawer = document.getElementById('intraday-settings-drawer');
+                if (drawer) {
+                    drawer.style.display = drawer.style.display === 'none' ? 'block' : 'none';
+                }
+            }
+
+            function applyCustomIntradayBases() {
+                const v1 = parseFloat(document.getElementById('input-base-leg1').value);
+                const v2 = parseFloat(document.getElementById('input-base-leg2').value);
+                if (!isNaN(v1) && v1 > 0 && !isNaN(v2) && v2 > 0) {
+                    intradayBaseLeg1 = v1;
+                    intradayBaseLeg2 = v2;
+                    document.getElementById('intra-leg1-base').innerText = `$${v1.toFixed(4)}`;
+                    document.getElementById('intra-leg2-base').innerText = `$${v2.toFixed(4)}`;
+                    
+                    if (latestPriceLocal !== null && latestPriceDr !== null) {
+                        updateIntradayArbitrageUI(latestPriceLocal, latestPriceDr);
+                    }
+                    toggleIntradaySettingsDrawer();
+                } else {
+                    alert('請輸入正確且大於 0 的基準價格');
+                }
+            }
+
+            function updateIntradayThreshold(val) {
+                intradayThreshold = parseFloat(val) || 1.0;
+                if (latestPriceLocal !== null && latestPriceDr !== null) {
+                    updateIntradayArbitrageUI(latestPriceLocal, latestPriceDr);
+                }
+            }
+
+            function updateIntradayArbitrageUI(localPrice, drPrice) {
+                if (intradayBaseLeg1 === null || intradayBaseLeg2 === null) {
+                    intradayBaseLeg1 = drPrice;
+                    intradayBaseLeg2 = localPrice;
+                    document.getElementById('intra-leg1-base').innerText = `$${drPrice.toFixed(4)}`;
+                    document.getElementById('intra-leg2-base').innerText = `$${localPrice.toFixed(4)}`;
+                    document.getElementById('input-base-leg1').value = drPrice;
+                    document.getElementById('input-base-leg2').value = localPrice;
+                }
+                
+                // Leg 1 (drPrice / 美股) % Change
+                const leg1Pct = ((drPrice - intradayBaseLeg1) / intradayBaseLeg1) * 100;
+                // Leg 2 (localPrice / 幣安海力士) % Change
+                const leg2Pct = ((localPrice - intradayBaseLeg2) / intradayBaseLeg2) * 100;
+                // Spread = Leg1 % - Leg2 %
+                const spreadPct = leg1Pct - leg2Pct;
+                
+                // DOM Elements
+                const leg1PctEl = document.getElementById('intra-leg1-pct');
+                const leg1PriceEl = document.getElementById('intra-leg1-price');
+                const leg2PctEl = document.getElementById('intra-leg2-pct');
+                const leg2PriceEl = document.getElementById('intra-leg2-price');
+                const spreadPctEl = document.getElementById('intra-spread-pct');
+                const badgeEl = document.getElementById('intra-status-badge');
+                const actionHintEl = document.getElementById('intra-action-hint');
+                
+                if (leg1PctEl) {
+                    leg1PctEl.innerText = (leg1Pct >= 0 ? '+' : '') + leg1Pct.toFixed(2) + '%';
+                    leg1PctEl.style.color = leg1Pct >= 0 ? '#10b981' : '#ef4444';
+                    leg1PriceEl.innerText = `$${drPrice.toFixed(4)}`;
+                }
+                
+                if (leg2PctEl) {
+                    leg2PctEl.innerText = (leg2Pct >= 0 ? '+' : '') + leg2Pct.toFixed(2) + '%';
+                    leg2PctEl.style.color = leg2Pct >= 0 ? '#10b981' : '#ef4444';
+                    leg2PriceEl.innerText = `$${localPrice.toFixed(4)}`;
+                }
+                
+                if (spreadPctEl) {
+                    spreadPctEl.innerText = (spreadPct >= 0 ? '+' : '') + spreadPct.toFixed(2) + '%';
+                    spreadPctEl.style.color = spreadPct >= 0 ? '#10b981' : '#ef4444';
+                }
+                
+                // Arbitrage Signal Decision
+                const absSpread = Math.abs(spreadPct);
+                if (absSpread >= intradayThreshold) {
+                    badgeEl.className = 'spread-indicator-badge alert-active';
+                    badgeEl.innerText = `🔥 發現脫鉤套利 (Spread: ${spreadPct >= 0 ? '+' : ''}${spreadPct.toFixed(2)}%)`;
+                    
+                    if (spreadPct > 0) {
+                        actionHintEl.innerHTML = `<strong style="color:#ef4444;">建議策略：</strong> Leg 1 美股領漲 +${leg1Pct.toFixed(2)}%，Leg 2 幣安海力士漲幅落後 (+${leg2Pct.toFixed(2)}%)！👉 <span style="color:#10b981; font-weight:700;">做多 SKHYNIXUSDT (博補漲)</span>`;
+                    } else {
+                        actionHintEl.innerHTML = `<strong style="color:#ef4444;">建議策略：</strong> Leg 2 幣安海力士過度衝高 +${leg2Pct.toFixed(2)}%，Leg 1 美股走弱 (+${leg1Pct.toFixed(2)}%)！👉 <span style="color:#ef4444; font-weight:700;">做空 SKHYNIXUSDT (博補跌)</span>`;
+                    }
+                } else {
+                    badgeEl.className = 'spread-indicator-badge';
+                    badgeEl.innerText = '🟢 走勢同步';
+                    actionHintEl.innerText = '兩標的盤中漲跌幅跟隨正常，無顯著脫鉤套利空間';
+                }
+                
+                // Push point into Chart.js
+                const now = new Date();
+                const timeStr = now.toTimeString().split(' ')[0];
+                
+                if (!intradayPctChartInstance) {
+                    initIntradayPctChart();
+                }
+                
+                if (intradayPctChartInstance) {
+                    const labels = intradayPctChartInstance.data.labels;
+                    if (labels.length === 0 || labels[labels.length - 1] !== timeStr) {
+                        labels.push(timeStr);
+                        intradayPctChartInstance.data.datasets[0].data.push(parseFloat(leg1Pct.toFixed(2)));
+                        intradayPctChartInstance.data.datasets[1].data.push(parseFloat(leg2Pct.toFixed(2)));
+                        intradayPctChartInstance.data.datasets[2].data.push(parseFloat(spreadPct.toFixed(2)));
+                        
+                        if (labels.length > 60) {
+                            labels.shift();
+                            intradayPctChartInstance.data.datasets[0].data.shift();
+                            intradayPctChartInstance.data.datasets[1].data.shift();
+                            intradayPctChartInstance.data.datasets[2].data.shift();
+                        }
+                        intradayPctChartInstance.update('none');
+                    }
+                }
+            }
+
             let binanceWs = null;
 
             function updateLivePremiumUI(localPrice, drPrice) {
                 const isBinance = currentStock === 'skhynix' && currentDr === 'binance';
                 if (!isBinance) return;
+
+                // ⚡ Update Intraday Arbitrage Monitor UI
+                updateIntradayArbitrageUI(localPrice, drPrice);
+
                 if (activeBinanceChartView !== 'live_1m') return;
 
                 const ratio = 0.1;
@@ -2673,7 +3281,6 @@
                 // Update calculator if open and has SK Hynix select
                 const calcDrPriceInput = document.getElementById('calc-dr-price');
                 const calcLocalPriceInput = document.getElementById('calc-local-price');
-                // (Only update inputs if the user is not actively editing them)
                 if (calcDrPriceInput && document.activeElement !== calcDrPriceInput) {
                     calcDrPriceInput.value = drPrice;
                 }

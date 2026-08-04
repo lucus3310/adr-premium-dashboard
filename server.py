@@ -9,6 +9,7 @@ import sys
 from data_fetcher import fetch_data, get_binance_futures_price
 import json
 import numpy as np
+import urllib.request
 
 PORT = 8000
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -17,6 +18,57 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         # Set the directory to host files from
         super().__init__(*args, directory=DIRECTORY, **kwargs)
+
+    def do_GET(self):
+        # --- API Proxy: Yahoo Finance Chart ---
+        if self.path.startswith('/api/yahoo-chart/'):
+            symbol = self.path.split('/api/yahoo-chart/')[1].split('?')[0]
+            yahoo_url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1m&range=1d&includePrePost=true'
+            try:
+                req = urllib.request.Request(yahoo_url, headers={
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+                })
+                with urllib.request.urlopen(req, timeout=10) as res:
+                    data = res.read()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Cache-Control', 'no-cache')
+                self.end_headers()
+                self.wfile.write(data)
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': str(e)}).encode('utf-8'))
+            return
+
+        # --- API Proxy: Binance Klines (fallback for CORS issues) ---
+        if self.path.startswith('/api/binance-klines/'):
+            parts = self.path.split('/api/binance-klines/')[1]
+            symbol = parts.split('?')[0]
+            binance_url = f'https://fapi.binance.com/fapi/v1/klines?symbol={symbol}&interval=1m&limit=480'
+            try:
+                req = urllib.request.Request(binance_url, headers={
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+                })
+                with urllib.request.urlopen(req, timeout=10) as res:
+                    data = res.read()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Cache-Control', 'no-cache')
+                self.end_headers()
+                self.wfile.write(data)
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': str(e)}).encode('utf-8'))
+            return
+
+        # --- Default: serve static files ---
+        super().do_GET()
 
     def end_headers(self):
         # Disable caching for data files to guarantee real-time updates on refresh
