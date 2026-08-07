@@ -205,6 +205,7 @@
       border-radius: 8px;
       z-index: 10;
       transition: opacity 0.3s ease;
+      pointer-events: none;
     }
     .footer-hint {
       text-align: center;
@@ -1806,9 +1807,11 @@
       const isMultiDay = currentRange !== '1d';
 
       if (myChart) {
-        myChart.destroy();
+        try { myChart.stop(); } catch(e) {}
+        try { myChart.destroy(); } catch(e) {}
         myChart = null;
       }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const datasets = [
         {
@@ -1952,10 +1955,12 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
-      if (myPriceChart && typeof myPriceChart.destroy === 'function') {
-        myPriceChart.destroy();
+      if (myPriceChart) {
+        try { myPriceChart.stop(); } catch(e) {}
+        try { myPriceChart.destroy(); } catch(e) {}
         myPriceChart = null;
       }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       let leg1Label = 'DR ($)';
       let leg2Label = '原股 (₩)';
