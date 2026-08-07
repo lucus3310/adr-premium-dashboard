@@ -1347,54 +1347,160 @@
       return { date: "", time: str, hour: "", timestamp: 0 };
     }
 
-    // 🎯 60 FPS 無框極簡純文字 Crosshair Plugin
+    // 🎯 60 FPS 無框極簡純文字 Crosshair Plugin (同時相容折溢價主圖與標的現價雙軸圖)
     const okxCrosshairPlugin = {
       id: 'okxCrosshair',
       afterDatasetsDraw: (chart) => {
         if (activeTouchX !== null && lastHoveredIndex !== -1 && processedDataStore.parsedTimes[lastHoveredIndex]) {
-          const topY = chart.scales.y.top;
-          const bottomY = chart.scales.y.bottom;
           const ctx = chart.ctx;
-
-          ctx.save();
-          
-          // 1. 繪製垂直貫穿虛線
-          ctx.beginPath();
-          ctx.setLineDash([4, 4]);
-          ctx.moveTo(activeTouchX, topY);
-          ctx.lineTo(activeTouchX, bottomY);
-          ctx.lineWidth = 1.2;
-          ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
-          ctx.stroke();
-
-          // 2. 繪製無背景框純文字標籤
           const parsed = processedDataStore.parsedTimes[lastHoveredIndex];
-          const timeLabel = parsed.time; // 例如 "12:20" 或 "2:10"
-          const rawVal = chart.data.datasets[0].data[lastHoveredIndex];
-          
-          let unit = '%';
-          if (currentTarget === 'oil') unit = ' USD';
-          else if (currentTarget === 'metal') unit = 'x';
+          const timeLabel = parsed ? parsed.time : "";
 
-          const valLabel = (rawVal >= 0 ? '+' : '') + rawVal + unit;
+          // ==========================================
+          // 情況 A：上方折溢價率主圖 (myChart)
+          // ==========================================
+          if (chart.canvas.id === 'myChart' && chart.scales.y) {
+            const topY = chart.scales.y.top;
+            const bottomY = chart.scales.y.bottom;
 
-          ctx.setLineDash([]);
-          ctx.font = '10px monospace';
-          
-          const isRightSide = activeTouchX > chart.width - 80;
-          const textX = isRightSide ? activeTouchX - 6 : activeTouchX + 6;
-          ctx.textAlign = isRightSide ? 'right' : 'left';
+            ctx.save();
+            // 1. 垂直貫穿虛線
+            ctx.beginPath();
+            ctx.setLineDash([4, 4]);
+            ctx.moveTo(activeTouchX, topY);
+            ctx.lineTo(activeTouchX, bottomY);
+            ctx.lineWidth = 1.2;
+            ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
+            ctx.stroke();
 
-          // 數值文字 (亮霓虹綠)
-          ctx.fillStyle = '#3fb950';
-          const yPos = activeTouchY ? Math.max(topY + 14, Math.min(bottomY - 14, activeTouchY)) : topY + 16;
-          ctx.fillText(valLabel, textX, yPos);
+            // 2. 文字標籤
+            const rawVal = chart.data.datasets[0].data[lastHoveredIndex];
+            let unit = '%';
+            if (currentTarget === 'oil') unit = ' USD';
+            else if (currentTarget === 'metal') unit = 'x';
 
-          // 時間文字 (例如 "12:20"，青藍色)
-          ctx.fillStyle = '#58a6ff';
-          ctx.fillText(timeLabel, textX, bottomY - 6);
+            const valLabel = (rawVal >= 0 ? '+' : '') + rawVal + unit;
 
-          ctx.restore();
+            ctx.setLineDash([]);
+            ctx.font = '10px monospace';
+            const isRightSide = activeTouchX > chart.width - 80;
+            const textX = isRightSide ? activeTouchX - 6 : activeTouchX + 6;
+            ctx.textAlign = isRightSide ? 'right' : 'left';
+
+            ctx.fillStyle = '#3fb950';
+            const yPos = activeTouchY ? Math.max(topY + 14, Math.min(bottomY - 14, activeTouchY)) : topY + 16;
+            ctx.fillText(valLabel, textX, yPos);
+
+            ctx.fillStyle = '#58a6ff';
+            ctx.fillText(timeLabel, textX, bottomY - 6);
+            ctx.restore();
+          }
+
+          // ==========================================
+          // 情況 B：下方標的現價走勢圖 (priceChart)
+          // ==========================================
+          if (chart.canvas.id === 'priceChart' && chart.scales.y1 && chart.scales.y2) {
+            const topY = chart.scales.y1.top;
+            const bottomY = chart.scales.y1.bottom;
+
+            const leg1Val = processedDataStore.leg1Data[lastHoveredIndex];
+            const leg2Val = processedDataStore.leg2Data[lastHoveredIndex];
+
+            let leg1Str = "";
+            let leg2Str = "";
+            let leg1Color = "#2ebd85";
+            let leg2Color = "#d29922";
+
+            if (currentTarget === 'skhy') {
+              leg1Str = "DR $" + leg1Val;
+              leg2Str = "原股 ₩" + leg2Val;
+              leg1Color = "#2ebd85";
+              leg2Color = "#d29922";
+            } else if (currentTarget === 'oil') {
+              leg1Str = "BZ $" + leg1Val;
+              leg2Str = "CL $" + leg2Val;
+              leg1Color = "#2ebd85";
+              leg2Color = "#d29922";
+            } else if (currentTarget === 'metal') {
+              leg1Str = "Au $" + leg1Val;
+              leg2Str = "Ag $" + leg2Val;
+              leg1Color = "#d29922";
+              leg2Color = "#bc8cff";
+            }
+
+            const y1Pixel = chart.scales.y1.getPixelForValue(leg1Val);
+            const y2Pixel = chart.scales.y2.getPixelForValue(leg2Val);
+
+            ctx.save();
+            // 1. 垂直貫穿虛線
+            ctx.beginPath();
+            ctx.setLineDash([4, 4]);
+            ctx.moveTo(activeTouchX, topY);
+            ctx.lineTo(activeTouchX, bottomY);
+            ctx.lineWidth = 1.2;
+            ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
+            ctx.stroke();
+
+            // 2. Leg 1 橫向虛線與雙色彩點
+            if (!isNaN(y1Pixel)) {
+              ctx.beginPath();
+              ctx.setLineDash([2, 2]);
+              ctx.moveTo(chart.scales.y1.left, y1Pixel);
+              ctx.lineTo(activeTouchX, y1Pixel);
+              ctx.lineWidth = 1;
+              ctx.strokeStyle = leg1Color;
+              ctx.stroke();
+
+              ctx.beginPath();
+              ctx.arc(activeTouchX, y1Pixel, 4, 0, 2 * Math.PI);
+              ctx.fillStyle = leg1Color;
+              ctx.fill();
+              ctx.lineWidth = 1.5;
+              ctx.strokeStyle = '#ffffff';
+              ctx.stroke();
+            }
+
+            // 3. Leg 2 橫向虛線與雙色彩點
+            if (!isNaN(y2Pixel)) {
+              ctx.beginPath();
+              ctx.setLineDash([2, 2]);
+              ctx.moveTo(activeTouchX, y2Pixel);
+              ctx.lineTo(chart.scales.y2.right, y2Pixel);
+              ctx.lineWidth = 1;
+              ctx.strokeStyle = leg2Color;
+              ctx.stroke();
+
+              ctx.beginPath();
+              ctx.arc(activeTouchX, y2Pixel, 4, 0, 2 * Math.PI);
+              ctx.fillStyle = leg2Color;
+              ctx.fill();
+              ctx.lineWidth = 1.5;
+              ctx.strokeStyle = '#ffffff';
+              ctx.stroke();
+            }
+
+            // 4. 文字標籤 (左腿 Leg 1 標籤、右腿 Leg 2 標籤、時間)
+            ctx.setLineDash([]);
+            ctx.font = '10px monospace';
+
+            const isRightSide = activeTouchX > chart.width - 90;
+            ctx.textAlign = isRightSide ? 'right' : 'left';
+            const textX = isRightSide ? activeTouchX - 6 : activeTouchX + 6;
+
+            if (!isNaN(y1Pixel)) {
+              ctx.fillStyle = leg1Color;
+              ctx.fillText(leg1Str, textX, Math.max(topY + 12, Math.min(bottomY - 24, y1Pixel - 4)));
+            }
+
+            if (!isNaN(y2Pixel)) {
+              ctx.fillStyle = leg2Color;
+              ctx.fillText(leg2Str, textX, Math.max(topY + 24, Math.min(bottomY - 12, y2Pixel + 12)));
+            }
+
+            ctx.fillStyle = '#58a6ff';
+            ctx.fillText(timeLabel, textX, bottomY - 6);
+            ctx.restore();
+          }
         }
       }
     };
