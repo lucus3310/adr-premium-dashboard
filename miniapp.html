@@ -1442,7 +1442,7 @@
     }
 
     function processData(target, range) {
-      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], maxData: [], minData: [], parsedTimes: [], rawItems: [] };
+      if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], maxData: [], minData: [], leg1Data: [], leg2Data: [], parsedTimes: [], rawItems: [] };
 
       let limit = 1440;
       let step = 1;
@@ -1456,6 +1456,8 @@
       const data = [];
       const maxData = [];
       const minData = [];
+      const leg1Data = [];
+      const leg2Data = [];
       const parsedTimes = [];
       const rawItems = [];
 
@@ -1483,15 +1485,30 @@
         const minVal = Math.min(...vals);
         const lastItem = windowItems[windowItems.length - 1];
 
+        let l1 = 0;
+        let l2 = 0;
+        if (target === 'skhy') {
+          l1 = parseFloat(lastItem.skhyDr) || 0;
+          l2 = parseFloat(lastItem.skhyLocal) || 0;
+        } else if (target === 'oil') {
+          l1 = parseFloat(lastItem.brent) || 0;
+          l2 = parseFloat(lastItem.wti) || 0;
+        } else if (target === 'metal') {
+          l1 = parseFloat(lastItem.gold) || 0;
+          l2 = parseFloat(lastItem.silver) || 0;
+        }
+
         labels.push(lastItem.time);
         data.push(closeVal);
         maxData.push(maxVal);
         minData.push(minVal);
+        leg1Data.push(l1);
+        leg2Data.push(l2);
         parsedTimes.push(parseTimeStr(lastItem.time));
         rawItems.push(lastItem);
       }
 
-      processedDataStore = { labels, data, maxData, minData, parsedTimes, rawItems };
+      processedDataStore = { labels, data, maxData, minData, leg1Data, leg2Data, parsedTimes, rawItems };
       return processedDataStore;
     }
 
@@ -1576,7 +1593,10 @@
       };
 
       const updateCrosshairPosition = (e) => {
-        const elements = myChart.getElementsAtEventForMode(
+        const targetChart = (canvas.id === 'priceChart' && priceChart) ? priceChart : myChart;
+        if (!targetChart) return;
+
+        const elements = targetChart.getElementsAtEventForMode(
           e, 'index', { intersect: false }, false
         );
 
