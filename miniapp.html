@@ -763,6 +763,7 @@
     let currentTarget = 'skhy';
     let currentRange = '5d';
     let myChart = null;
+    let myPriceChart = null;
     let refreshTimer = null;
     let lastHoveredIndex = -1;
     let activeTouchX = null;
@@ -1593,7 +1594,7 @@
       };
 
       const updateCrosshairPosition = (e) => {
-        const targetChart = (canvas.id === 'priceChart' && priceChart) ? priceChart : myChart;
+        const targetChart = (canvas.id === 'priceChart' && myPriceChart) ? myPriceChart : myChart;
         if (!targetChart) return;
 
         const elements = targetChart.getElementsAtEventForMode(
@@ -1614,9 +1615,9 @@
             myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
             myChart.update('none');
           }
-          if (priceChart) {
-            priceChart.setActiveElements([{ datasetIndex: 0, index: idx }, { datasetIndex: 1, index: idx }]);
-            priceChart.update('none');
+          if (myPriceChart) {
+            myPriceChart.setActiveElements([{ datasetIndex: 0, index: idx }, { datasetIndex: 1, index: idx }]);
+            myPriceChart.update('none');
           }
 
           // OKX 懸浮 HUD 數據卡片即時更新
@@ -1690,9 +1691,9 @@
           myChart.setActiveElements([]);
           myChart.update('none');
         }
-        if (priceChart) {
-          priceChart.setActiveElements([]);
-          priceChart.update('none');
+        if (myPriceChart) {
+          myPriceChart.setActiveElements([]);
+          myPriceChart.update('none');
         }
         renderPositionsSection();
       };
@@ -1863,9 +1864,9 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
-      if (priceChart) {
-        priceChart.destroy();
-        priceChart = null;
+      if (myPriceChart && typeof myPriceChart.destroy === 'function') {
+        myPriceChart.destroy();
+        myPriceChart = null;
       }
 
       let leg1Label = 'DR ($)';
@@ -1924,7 +1925,7 @@
         }
       ];
 
-      priceChart = new Chart(ctx, {
+      myPriceChart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: processed.labels,
@@ -2095,11 +2096,11 @@
     }
 
     function resetZoom() {
-      if (myChart) {
+      if (myChart && typeof myChart.resetZoom === 'function') {
         myChart.resetZoom();
       }
-      if (priceChart) {
-        priceChart.resetZoom();
+      if (myPriceChart && typeof myPriceChart.resetZoom === 'function') {
+        myPriceChart.resetZoom();
       }
       renderChart(false, true);
     }
