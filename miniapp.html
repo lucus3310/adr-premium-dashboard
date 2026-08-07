@@ -1536,11 +1536,11 @@
       if (!rawSheetData || rawSheetData.length === 0) return { labels: [], data: [], maxData: [], minData: [], leg1Data: [], leg2Data: [], parsedTimes: [], rawItems: [] };
 
       let limit = 1440;
-      let step = 1;
+      let step = 4;
 
-      if (range === '1d') { limit = 1440; step = 1; }
-      else if (range === '5d') { limit = 7200; step = 6; }
-      else if (range === '1m') { limit = 43200; step = 15; }
+      if (range === '1d') { limit = 1440; step = 4; }
+      else if (range === '5d') { limit = 7200; step = 20; }
+      else if (range === '1m') { limit = 43200; step = 120; }
 
       const sliced = rawSheetData.slice(-limit);
       const labels = [];
@@ -1898,9 +1898,12 @@
             legend: { display: false },
             tooltip: { enabled: false },
             zoom: {
+              limits: {
+                x: { minRange: 15 }
+              },
               pan: { enabled: true, mode: 'x', threshold: 10 },
               zoom: { 
-                wheel: { enabled: true }, 
+                wheel: { enabled: true, speed: 0.05 }, 
                 pinch: { enabled: true }, 
                 mode: 'x'
               }
@@ -2040,9 +2043,12 @@
             },
             tooltip: { enabled: false },
             zoom: {
+              limits: {
+                x: { minRange: 15 }
+              },
               pan: { enabled: true, mode: 'x', threshold: 10 },
               zoom: { 
-                wheel: { enabled: true }, 
+                wheel: { enabled: true, speed: 0.05 }, 
                 pinch: { enabled: true }, 
                 mode: 'x'
               }
