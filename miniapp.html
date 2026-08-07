@@ -1654,15 +1654,33 @@
         const targetChart = (canvas.id === 'priceChart' && myPriceChart) ? myPriceChart : myChart;
         if (!targetChart) return;
 
+        const touchEvent = (e.touches && e.touches.length > 0) ? e.touches[0] : 
+                           ((e.changedTouches && e.changedTouches.length > 0) ? e.changedTouches[0] : e);
+
+        let idx = -1;
         const elements = targetChart.getElementsAtEventForMode(
-          e, 'index', { intersect: false }, false
+          touchEvent, 'index', { intersect: false }, false
         );
 
         if (elements && elements.length > 0) {
-          const idx = elements[0].index;
+          idx = elements[0].index;
           activeTouchX = elements[0].element.x;
           activeTouchY = elements[0].element.y;
+        } else if (touchEvent && touchEvent.clientX) {
+          // 💡 降級計算：若行動端極端 TouchEvent 未能獲取 elements，依據 X 軸像素比例算出 index
+          const rect = targetChart.canvas.getBoundingClientRect();
+          const chartX = touchEvent.clientX - rect.left;
+          const xScale = targetChart.scales.x;
+          if (xScale && processedDataStore.data && processedDataStore.data.length > 0) {
+            let approxIdx = Math.round(xScale.getValueForPixel(chartX));
+            if (isNaN(approxIdx)) approxIdx = 0;
+            idx = Math.max(0, Math.min(processedDataStore.data.length - 1, approxIdx));
+            activeTouchX = xScale.getPixelForValue(idx);
+            activeTouchY = rect.height / 2;
+          }
+        }
 
+        if (idx >= 0) {
           if (idx !== lastHoveredIndex) {
             lastHoveredIndex = idx;
             triggerHapticFeedbackAsync();
