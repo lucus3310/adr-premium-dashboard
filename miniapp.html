@@ -1590,13 +1590,10 @@
     let crosshairActive = false;
     let touchStartX = 0;
     let touchStartY = 0;
-    let lastTouchEvent = null;
-
     function setupDirectTouchListeners(canvas) {
       const handleTouchStart = (e) => {
         if (!myChart) return;
 
-        // 🖐️ 雙指以上觸控 (Pinch Zoom)：直接取消查價線，專心進行雙指放大縮小！
         if (e.touches && e.touches.length >= 2) {
           clearLongPress();
           deactivateCrosshair();
@@ -1609,23 +1606,13 @@
         touchStartX = touch.clientX;
         touchStartY = touch.clientY;
         lastTouchEvent = e;
-        crosshairActive = false;
-
-        // ⏱️ 長按 150ms 啟動查價線 (TradingView 標準模式)
-        clearLongPress();
-        longPressTimer = setTimeout(() => {
-          crosshairActive = true;
-          triggerHapticFeedbackAsync();
-          if (lastTouchEvent) {
-            updateCrosshairPosition(lastTouchEvent);
-          }
-        }, 150);
+        crosshairActive = true;
+        updateCrosshairPosition(e);
       };
 
       const handleTouchMove = (e) => {
         if (!myChart) return;
 
-        // 雙指動作直接取消長按與查價線
         if (e.touches && e.touches.length >= 2) {
           clearLongPress();
           deactivateCrosshair();
@@ -1637,25 +1624,16 @@
 
         lastTouchEvent = e;
 
-        // 如果尚未長按滿 150ms，檢測手指滑動方向
-        if (!crosshairActive) {
-          const deltaX = Math.abs(touch.clientX - touchStartX);
-          const deltaY = Math.abs(touch.clientY - touchStartY);
+        const deltaX = Math.abs(touch.clientX - touchStartX);
+        const deltaY = Math.abs(touch.clientY - touchStartY);
 
-          // ↕️ 垂直滑動幅度大於水平滑動 (deltaY > deltaX 且 deltaY > 5px)：代表使用者在滑動網頁！
-          // 立即取消查價線，讓手機瀏覽器執行順暢的頁面上下捲動！
-          if (deltaY > deltaX && deltaY > 5) {
-            clearLongPress();
-            return;
-          }
-
-          if (Math.hypot(deltaX, deltaY) > 8) {
-            clearLongPress();
-          }
+        // ↕️ 垂直滑動頁面檢測：若純垂直滑動則讓瀏覽器順暢捲動頁面
+        if (!crosshairActive && deltaY > deltaX && deltaY > 10) {
+          deactivateCrosshair();
           return;
         }
 
-        // 查價線啟動狀態下，順暢跟隨手指最新的即時位置移動
+        crosshairActive = true;
         if (touchRaf) return;
         touchRaf = requestAnimationFrame(() => {
           touchRaf = null;
@@ -1663,6 +1641,13 @@
             updateCrosshairPosition(lastTouchEvent);
           }
         });
+      };
+
+      const handleMouseMove = (e) => {
+        if (!myChart) return;
+        lastTouchEvent = e;
+        crosshairActive = true;
+        updateCrosshairPosition(e);
       };
 
       const updateCrosshairPosition = (e) => {
@@ -1730,7 +1715,7 @@
       canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
       canvas.addEventListener('touchend', deactivateCrosshair, { passive: true });
       canvas.addEventListener('touchcancel', deactivateCrosshair, { passive: true });
-      canvas.addEventListener('mousemove', handleTouchMove);
+      canvas.addEventListener('mousemove', handleMouseMove);
       canvas.addEventListener('mouseleave', deactivateCrosshair);
     }
 
