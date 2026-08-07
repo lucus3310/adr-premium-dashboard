@@ -554,8 +554,8 @@
   </div>
 
   <div class="chart-card">
-    <!-- OKX 懸浮 HUD 數據卡片 -->
-    <div id="okx-hud" style="display:none; position:absolute; top:10px; left:10px; z-index:15; background:rgba(13,17,23,0.9); backdrop-filter:blur(6px); border:1px solid rgba(88,166,255,0.4); border-radius:6px; padding:6px 10px; font-size:10px; color:#c9d1d9; pointer-events:none; box-shadow:0 4px 12px rgba(0,0,0,0.6);">
+    <!-- OKX 懸浮 HUD 數據卡片 (預設常駐顯示最新即時數據，觸控滑動時同步切換) -->
+    <div id="okx-hud" style="display:block; position:absolute; top:10px; left:10px; z-index:15; background:rgba(13,17,23,0.9); backdrop-filter:blur(6px); border:1px solid rgba(88,166,255,0.4); border-radius:6px; padding:6px 10px; font-size:10px; color:#c9d1d9; pointer-events:none; box-shadow:0 4px 12px rgba(0,0,0,0.6);">
       <div style="color:#8b949e; font-size:9px; margin-bottom:2px;" id="hud-time">--:--</div>
       <div style="display:flex; gap:10px; font-weight:700;">
         <div>價差/溢價: <span id="hud-val" style="color:#58a6ff;">--</span></div>
@@ -1692,50 +1692,7 @@
           }
 
           // OKX 懸浮 HUD 數據卡片即時更新
-          const okxHud = document.getElementById('okx-hud');
-          if (okxHud && processedDataStore.rawItems && processedDataStore.rawItems[idx]) {
-            const rawItem = processedDataStore.rawItems[idx];
-            okxHud.style.display = 'block';
-            const timeElem = document.getElementById('hud-time');
-            if (timeElem) timeElem.innerText = rawItem.time || '--';
-            
-            let unit = '%';
-            if (currentTarget === 'oil') unit = ' USD';
-            else if (currentTarget === 'metal') unit = 'x';
-            
-            const rawVal = myChart ? myChart.data.datasets[0].data[idx] : 0;
-            const hudValElem = document.getElementById('hud-val');
-            if (hudValElem) hudValElem.innerText = (rawVal >= 0 ? '+' : '') + rawVal + unit;
-
-            const leg1Box = document.getElementById('hud-leg1-box');
-            const leg2Box = document.getElementById('hud-leg2-box');
-
-            if (currentTarget === 'skhy' && rawItem.skhyDr && rawItem.skhyLocal) {
-              if (leg1Box) leg1Box.style.display = 'block';
-              if (leg2Box) leg2Box.style.display = 'block';
-              const leg1Elem = document.getElementById('hud-leg1');
-              const leg2Elem = document.getElementById('hud-leg2');
-              if (leg1Elem) leg1Elem.innerText = 'DR $' + rawItem.skhyDr;
-              if (leg2Elem) leg2Elem.innerText = '原股 ₩' + rawItem.skhyLocal;
-            } else if (currentTarget === 'oil' && rawItem.brent && rawItem.wti) {
-              if (leg1Box) leg1Box.style.display = 'block';
-              if (leg2Box) leg2Box.style.display = 'block';
-              const leg1Elem = document.getElementById('hud-leg1');
-              const leg2Elem = document.getElementById('hud-leg2');
-              if (leg1Elem) leg1Elem.innerText = 'BZ $' + rawItem.brent;
-              if (leg2Elem) leg2Elem.innerText = 'CL $' + rawItem.wti;
-            } else if (currentTarget === 'metal' && rawItem.gold && rawItem.silver) {
-              if (leg1Box) leg1Box.style.display = 'block';
-              if (leg2Box) leg2Box.style.display = 'block';
-              const leg1Elem = document.getElementById('hud-leg1');
-              const leg2Elem = document.getElementById('hud-leg2');
-              if (leg1Elem) leg1Elem.innerText = 'Au $' + rawItem.gold;
-              if (leg2Elem) leg2Elem.innerText = 'Ag $' + rawItem.silver;
-            } else {
-              if (leg1Box) leg1Box.style.display = 'none';
-              if (leg2Box) leg2Box.style.display = 'none';
-            }
-          }
+          updateHud(idx);
         }
       };
 
@@ -1756,8 +1713,7 @@
         activeTouchX = null;
         activeTouchY = null;
         lastHoveredIndex = -1;
-        const okxHud = document.getElementById('okx-hud');
-        if (okxHud) okxHud.style.display = 'none';
+        updateHud(-1);
         if (myChart) {
           myChart.setActiveElements([]);
           myChart.update('none');
@@ -1775,6 +1731,76 @@
       canvas.addEventListener('touchcancel', deactivateCrosshair, { passive: true });
       canvas.addEventListener('mousemove', handleTouchMove);
       canvas.addEventListener('mouseleave', deactivateCrosshair);
+    }
+
+    function updateHud(idx = -1) {
+      const okxHud = document.getElementById('okx-hud');
+      if (!okxHud) return;
+
+      const rawItems = processedDataStore.rawItems || [];
+      if (rawItems.length === 0) {
+        okxHud.style.display = 'none';
+        return;
+      }
+
+      let targetIdx = idx;
+      if (targetIdx < 0 || targetIdx >= rawItems.length) {
+        targetIdx = rawItems.length - 1;
+      }
+
+      const rawItem = rawItems[targetIdx];
+      if (!rawItem) return;
+
+      okxHud.style.display = 'block';
+      const timeElem = document.getElementById('hud-time');
+      if (timeElem) timeElem.innerText = rawItem.time || '--';
+
+      let unit = '%';
+      if (currentTarget === 'oil') unit = ' USD';
+      else if (currentTarget === 'metal') unit = 'x';
+
+      let rawVal = 0;
+      if (currentTarget === 'skhy') {
+        let v = parseFloat(rawItem.skhy);
+        if (v > 0 && v < 1.0) v = parseFloat((v * 100).toFixed(2));
+        rawVal = v;
+      } else if (currentTarget === 'oil') {
+        rawVal = parseFloat(rawItem.oil) || 0;
+      } else if (currentTarget === 'metal') {
+        rawVal = parseFloat(rawItem.metal) || 0;
+      }
+
+      const hudValElem = document.getElementById('hud-val');
+      if (hudValElem) hudValElem.innerText = (rawVal >= 0 ? '+' : '') + rawVal + unit;
+
+      const leg1Box = document.getElementById('hud-leg1-box');
+      const leg2Box = document.getElementById('hud-leg2-box');
+
+      if (currentTarget === 'skhy' && rawItem.skhyDr && rawItem.skhyLocal) {
+        if (leg1Box) leg1Box.style.display = 'block';
+        if (leg2Box) leg2Box.style.display = 'block';
+        const leg1Elem = document.getElementById('hud-leg1');
+        const leg2Elem = document.getElementById('hud-leg2');
+        if (leg1Elem) leg1Elem.innerText = 'DR $' + rawItem.skhyDr;
+        if (leg2Elem) leg2Elem.innerText = '原股 ₩' + rawItem.skhyLocal;
+      } else if (currentTarget === 'oil' && rawItem.brent && rawItem.wti) {
+        if (leg1Box) leg1Box.style.display = 'block';
+        if (leg2Box) leg2Box.style.display = 'block';
+        const leg1Elem = document.getElementById('hud-leg1');
+        const leg2Elem = document.getElementById('hud-leg2');
+        if (leg1Elem) leg1Elem.innerText = 'BZ $' + rawItem.brent;
+        if (leg2Elem) leg2Elem.innerText = 'CL $' + rawItem.wti;
+      } else if (currentTarget === 'metal' && rawItem.gold && rawItem.silver) {
+        if (leg1Box) leg1Box.style.display = 'block';
+        if (leg2Box) leg2Box.style.display = 'block';
+        const leg1Elem = document.getElementById('hud-leg1');
+        const leg2Elem = document.getElementById('hud-leg2');
+        if (leg1Elem) leg1Elem.innerText = 'Au $' + rawItem.gold;
+        if (leg2Elem) leg2Elem.innerText = 'Ag $' + rawItem.silver;
+      } else {
+        if (leg1Box) leg1Box.style.display = 'none';
+        if (leg2Box) leg2Box.style.display = 'none';
+      }
     }
 
     function renderChart(isSilent = false, animate = false) {
@@ -2080,6 +2106,8 @@
       const last = arr[arr.length - 1];
       const max = Math.max(...arr);
       const min = Math.min(...arr);
+
+      updateHud(-1);
 
       let unit = '%';
       if (currentTarget === 'oil') unit = ' USD';
