@@ -1441,7 +1441,7 @@
             ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
             ctx.stroke();
 
-            // 2. Leg 1 橫向虛線與雙色彩點
+            // 2. Leg 1 橫向虛線
             if (!isNaN(y1Pixel)) {
               ctx.beginPath();
               ctx.setLineDash([2, 2]);
@@ -1450,17 +1450,9 @@
               ctx.lineWidth = 1;
               ctx.strokeStyle = leg1Color;
               ctx.stroke();
-
-              ctx.beginPath();
-              ctx.arc(activeTouchX, y1Pixel, 4, 0, 2 * Math.PI);
-              ctx.fillStyle = leg1Color;
-              ctx.fill();
-              ctx.lineWidth = 1.5;
-              ctx.strokeStyle = '#ffffff';
-              ctx.stroke();
             }
 
-            // 3. Leg 2 橫向虛線與雙色彩點
+            // 3. Leg 2 橫向虛線
             if (!isNaN(y2Pixel)) {
               ctx.beginPath();
               ctx.setLineDash([2, 2]);
@@ -1468,14 +1460,6 @@
               ctx.lineTo(chart.scales.y2.right, y2Pixel);
               ctx.lineWidth = 1;
               ctx.strokeStyle = leg2Color;
-              ctx.stroke();
-
-              ctx.beginPath();
-              ctx.arc(activeTouchX, y2Pixel, 4, 0, 2 * Math.PI);
-              ctx.fillStyle = leg2Color;
-              ctx.fill();
-              ctx.lineWidth = 1.5;
-              ctx.strokeStyle = '#ffffff';
               ctx.stroke();
             }
 
