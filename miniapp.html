@@ -1794,6 +1794,11 @@
     }
 
     function renderChart(isSilent = false, animate = false) {
+      lastHoveredIndex = -1;
+      activeTouchX = null;
+      activeTouchY = null;
+      crosshairActive = false;
+
       const canvas = document.getElementById('myChart');
       const ctx = canvas.getContext('2d');
       const processed = processData(currentTarget, currentRange);
