@@ -1373,23 +1373,12 @@
             ctx.strokeStyle = 'rgba(88, 166, 255, 0.85)';
             ctx.stroke();
 
-            // 2. 文字標籤
-            const rawVal = chart.data.datasets[0].data[lastHoveredIndex];
-            let unit = '%';
-            if (currentTarget === 'oil') unit = ' USD';
-            else if (currentTarget === 'metal') unit = 'x';
-
-            const valLabel = (rawVal >= 0 ? '+' : '') + rawVal + unit;
-
+            // 2. 時間標籤
             ctx.setLineDash([]);
             ctx.font = '10px monospace';
             const isRightSide = activeTouchX > chart.width - 80;
             const textX = isRightSide ? activeTouchX - 6 : activeTouchX + 6;
             ctx.textAlign = isRightSide ? 'right' : 'left';
-
-            ctx.fillStyle = '#3fb950';
-            const yPos = activeTouchY ? Math.max(topY + 14, Math.min(bottomY - 14, activeTouchY)) : topY + 16;
-            ctx.fillText(valLabel, textX, yPos);
 
             ctx.fillStyle = '#58a6ff';
             ctx.fillText(timeLabel, textX, bottomY - 6);
@@ -1406,24 +1395,16 @@
             const leg1Val = processedDataStore.leg1Data[lastHoveredIndex];
             const leg2Val = processedDataStore.leg2Data[lastHoveredIndex];
 
-            let leg1Str = "";
-            let leg2Str = "";
             let leg1Color = "#2ebd85";
             let leg2Color = "#d29922";
 
             if (currentTarget === 'skhy') {
-              leg1Str = "DR $" + leg1Val;
-              leg2Str = "原股 ₩" + leg2Val;
               leg1Color = "#2ebd85";
               leg2Color = "#d29922";
             } else if (currentTarget === 'oil') {
-              leg1Str = "BZ $" + leg1Val;
-              leg2Str = "CL $" + leg2Val;
               leg1Color = "#2ebd85";
               leg2Color = "#d29922";
             } else if (currentTarget === 'metal') {
-              leg1Str = "Au $" + leg1Val;
-              leg2Str = "Ag $" + leg2Val;
               leg1Color = "#d29922";
               leg2Color = "#bc8cff";
             }
@@ -1463,7 +1444,7 @@
               ctx.stroke();
             }
 
-            // 4. 文字標籤 (左腿 Leg 1 標籤、右腿 Leg 2 標籤、時間)
+            // 4. 時間標籤
             ctx.setLineDash([]);
             ctx.font = '10px monospace';
 
