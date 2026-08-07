@@ -570,6 +570,17 @@
     </div>
   </div>
 
+  <!-- 💵 第二圖表卡片：標的股價/現價走勢圖 (位於折溢價率圖表正下方，雙圖連動查價線) -->
+  <div class="chart-card" id="price-chart-card" style="min-height: 220px; height: 220px;">
+    <div style="font-size:12px; font-weight:700; color:#58a6ff; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; padding:2px 4px;">
+      <span id="price-chart-title">💵 標的現價走勢軌跡</span>
+      <span style="font-size:10px; color:#8b949e;" id="price-chart-subtitle">DR ($) vs 原股 (₩)</span>
+    </div>
+    <div class="chart-container" style="touch-action: pan-y !important;">
+      <canvas id="priceChart" style="touch-action: pan-y !important;"></canvas>
+    </div>
+  </div>
+
   <!-- 💼 手動幣安倉位與損益試算面板 -->
   <div class="pos-section">
     <div class="pos-header">
@@ -1579,8 +1590,14 @@
             triggerHapticFeedbackAsync();
             renderPositionsSection();
           }
-          myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
-          myChart.update('none');
+          if (myChart) {
+            myChart.setActiveElements([{ datasetIndex: 0, index: idx }]);
+            myChart.update('none');
+          }
+          if (priceChart) {
+            priceChart.setActiveElements([{ datasetIndex: 0, index: idx }, { datasetIndex: 1, index: idx }]);
+            priceChart.update('none');
+          }
 
           // OKX 懸浮 HUD 數據卡片即時更新
           const okxHud = document.getElementById('okx-hud');
@@ -1594,7 +1611,7 @@
             if (currentTarget === 'oil') unit = ' USD';
             else if (currentTarget === 'metal') unit = 'x';
             
-            const rawVal = chart.data.datasets[0].data[idx];
+            const rawVal = myChart ? myChart.data.datasets[0].data[idx] : 0;
             const hudValElem = document.getElementById('hud-val');
             if (hudValElem) hudValElem.innerText = (rawVal >= 0 ? '+' : '') + rawVal + unit;
 
@@ -1652,6 +1669,10 @@
         if (myChart) {
           myChart.setActiveElements([]);
           myChart.update('none');
+        }
+        if (priceChart) {
+          priceChart.setActiveElements([]);
+          priceChart.update('none');
         }
         renderPositionsSection();
       };
@@ -1813,7 +1834,141 @@
       });
 
       setupDirectTouchListeners(canvas);
+      renderPriceChart(processed, animate);
       updatePricePanel(processed.data);
+    }
+
+    function renderPriceChart(processed, animate = false) {
+      const canvas = document.getElementById('priceChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      if (priceChart) {
+        priceChart.destroy();
+        priceChart = null;
+      }
+
+      let leg1Label = 'DR ($)';
+      let leg2Label = '原股 (₩)';
+      let leg1Color = '#2ebd85';
+      let leg2Color = '#d29922';
+      let titleText = '💵 標的現價走勢軌跡';
+      let subtitleText = 'DR ($) vs 原股 (₩)';
+
+      if (currentTarget === 'skhy') {
+        leg1Label = '海力士 DR ($)';
+        leg2Label = '海力士 原股 (₩)';
+        titleText = '💵 SK海力士 雙腿現價軌跡';
+        subtitleText = '美股 DR ($) vs 韓股原股 (₩)';
+      } else if (currentTarget === 'oil') {
+        leg1Label = 'Brent 原油 ($)';
+        leg2Label = 'WTI 原油 ($)';
+        titleText = '🛢️ 原油 期貨現價軌跡';
+        subtitleText = 'Brent 布蘭特 ($) vs WTI 紐約 ($)';
+      } else if (currentTarget === 'metal') {
+        leg1Label = '黃金 ($)';
+        leg2Label = '白銀 ($)';
+        leg1Color = '#d29922';
+        leg2Color = '#bc8cff';
+        titleText = '🥇 貴金屬 期貨現價軌跡';
+        subtitleText = '黃金 ($) vs 白銀 ($)';
+      }
+
+      const elemTitle = document.getElementById('price-chart-title');
+      const elemSubtitle = document.getElementById('price-chart-subtitle');
+      if (elemTitle) elemTitle.innerText = titleText;
+      if (elemSubtitle) elemSubtitle.innerText = subtitleText;
+
+      const datasets = [
+        {
+          label: leg1Label,
+          data: processed.leg1Data,
+          borderColor: leg1Color,
+          borderWidth: 1.8,
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          tension: 0.25,
+          yAxisID: 'y1',
+          spanGaps: true
+        },
+        {
+          label: leg2Label,
+          data: processed.leg2Data,
+          borderColor: leg2Color,
+          borderWidth: 1.8,
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          tension: 0.25,
+          yAxisID: 'y2',
+          spanGaps: true
+        }
+      ];
+
+      priceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: processed.labels,
+          datasets: datasets
+        },
+        options: {
+          normalized: true,
+          events: [],
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: animate ? { duration: 350, easing: 'easeOutQuart' } : false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              align: 'end',
+              labels: {
+                boxWidth: 8,
+                boxHeight: 8,
+                color: '#8b949e',
+                font: { size: 9 }
+              }
+            },
+            tooltip: { enabled: false }
+          },
+          scales: {
+            x: {
+              type: 'category',
+              ticks: {
+                autoSkip: true,
+                maxTicksLimit: 7,
+                maxRotation: 0,
+                color: '#8b949e',
+                font: { size: 9 },
+                callback: function(val, index) {
+                  const parsedList = processedDataStore.parsedTimes;
+                  if (!parsedList || !parsedList[index]) return "";
+                  const curr = parsedList[index];
+                  if (index === 0) return curr.date ? `${curr.date} ${curr.time}` : curr.time;
+                  const prev = index > 0 ? parsedList[index - 1] : null;
+                  if (prev && curr.date && prev.date && curr.date !== prev.date) return curr.date;
+                  return curr.time;
+                }
+              },
+              grid: { color: 'rgba(255, 255, 255, 0.05)' }
+            },
+            y1: {
+              type: 'linear',
+              position: 'left',
+              ticks: { color: leg1Color, font: { size: 9 } },
+              grid: { color: 'rgba(255,255,255,0.05)' }
+            },
+            y2: {
+              type: 'linear',
+              position: 'right',
+              ticks: { color: leg2Color, font: { size: 9 } },
+              grid: { drawOnChartArea: false }
+            }
+          }
+        }
+      });
+
+      setupDirectTouchListeners(canvas);
     }
 
     function updatePricePanel(arr) {
@@ -1922,6 +2077,9 @@
     function resetZoom() {
       if (myChart) {
         myChart.resetZoom();
+      }
+      if (priceChart) {
+        priceChart.resetZoom();
       }
       renderChart(false, true);
     }
